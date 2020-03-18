@@ -1,3 +1,4 @@
+/*Inicialização de variáveis e definições globais*/
 :root {
     --color1: #FCFBE3;
     --color2: #FBCFCF;
@@ -5,12 +6,14 @@
     --color4: #A37E58;
     --color5: #755C3B;
     --color5opacity: #755C3B99;
+    --footerHeight: 104px;
 }
 
 body {
     background-color:var(--color1);
     margin: 0;
     font-family: "roboto";
+    color: var(--color5);
 }
 
 a {
@@ -24,25 +27,28 @@ li {
     padding: 0;
 }
 
+/*Configurações do cabeçalho*/
 header {
-    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 30vh;
     background-color:var(--color5);
 }
 
 header img {
-    display:block;
     width: 180px;
-    margin: 0 auto;
 }
 
 header ul {
+    display: flex;
+    flex-wrap: wrap;
     padding:0;
-    width: 325px;
-    margin: auto;
 }
 
 header li {
-    display: inline-block;
     margin: 5px;
     width: 150px;
     padding: 10px 20px;
@@ -52,64 +58,58 @@ header li {
     text-align: center;
 }
 
-main {
-    text-align: center;    
-}
-
-main div.BorderDeco {
-    width:100%;
+.BorderDeco {
+    widows: 100vw;
     height: 50px;
     background-color: var(--color2);
     clip-path: polygon(0% 0%, 0% 100%, 50% 50%, 100% 100%, 100% 0%);
 }
 
-main p {
-    color: var(--color5)
-}
-
+/*Configurações do rodapé*/
 footer {
-    position:fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
     bottom:0;
-    width:100%;
-    height: 104px;
+    width: 100vw;
+    height: var(--footerHeight);
     background-color: var(--color2);
 }
 
-footer p {
-    display:inline-block;
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: var(--color5)
-}
-
 footer ul {
-    display: inline-block;
-    padding:0;
     position: absolute;
-    right: 20px;
+    right: 25px;
+    margin: auto 0;
 }
 
+/*Configurações do corpo Institucional*/
+main {
+    display: flex;
+    justify-content: center;
+}
+
+/*Configurações das telas de login e cadastro*/
 .form-container {
-    margin: 0 auto;
-    padding-top: 10px;
-    width: 70%;
-    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 35px;
+    margin-bottom: calc(var(--footerHeight) + 20px);
     background-image: url(../img/brigadeiro.png);
     background-size: cover;
     border-radius: 60px;
 }
 
-.cadastro {
-    height: 380px;
-}
-
 form {
-    margin: 0 auto;
-    width: 60%;
-    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+    width: 30vw;
+    height: 320px;
     background-color: var(--color5opacity);
     border-radius: 30px;
 }
@@ -119,18 +119,20 @@ form {
 }
 
 form h2 {
-    padding: 40px 0 0 0;
     color: var(--color1);
 }
 
 form label{
-    display: block;
-    margin: 20px;
+    min-width: 250px;
+    width: 30vw;
+    margin: 10px;
     color: var(--color1);
+    text-align: center;
 }
 
 form input {
-    max-width: 80%;
+    max-width: 300px;
+    width: 90%;
     background-color: var(--color4);
     border: none;
     border-radius: 5px;
@@ -159,9 +161,14 @@ form button:hover {
     cursor: pointer;
 }
 
+#primeiroAcesso {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 form p, form a {
     padding: 10px 20px;
-    display: inline-block;
     color: var(--color1)
 }
 
@@ -169,10 +176,6 @@ form a:hover {
     background-color: var(--color2);
     color: var(--color5);
     border-radius: 10px;
-}
-
-form p {
-    transform: translateY(-5%);
 }
 
 form img {
