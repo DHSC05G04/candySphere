@@ -9,7 +9,11 @@ router.get('/', function(req, res, next) {
                   clientesAct: "inactive",
                   funcionariosAct: "inactive",
                   pdvAct: "inactive"};
-  res.render('home', { title: 'Express', tabs: tabActive });
+  res.render('index', { title: 'Express', tabs: tabActive });
+});
+
+router.post('/', function(req, res) {
+  res.redirect('/home');
 });
 
 module.exports = router;

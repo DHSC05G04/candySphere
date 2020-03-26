@@ -6,13 +6,15 @@
     --color4: #A37E58;
     --color5: #755C3B;
     --color5opacity: #755C3B99;
-    --footerHeight: 104px;
+    --headerHeight: 22vh;
+    --footerHeight: 30px;
 }
 
 body {
     background-color:var(--color1);
     margin: 0;
     font-family: "roboto";
+    font-size: 16px;
     color: var(--color5);
 }
 
@@ -32,37 +34,96 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100vw;
-    height: 30vh;
+    height: var(--headerHeight);
     background-color:var(--color5);
 }
 
-header img {
-    width: 180px;
+header #logo {
+    height: 60px;
+}
+
+#systemTitle {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+}
+
+#systemTitle h1 {
+    color: var(--color1);
+    font-size: 1.5em;
+}
+
+#logout {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0px;
+    max-height: 30px;
+    width: 10vw;
+    max-width: 128px;
+    box-sizing: border-box;
+    background-color: var(--color2);
+    border: none;
+    border-radius: 1em;
+    font-size: .8em;
+    font-weight: bold;
+}
+
+#logout:hover {
+    background-color: var(--color5);
+    color: var(--color1);
+    cursor: pointer;
+}
+
+#logout img {
+    width: 15%;
+}
+
+.BorderDeco {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color2);
+    clip-path: polygon(0% 0%, 0% 100%, 50% 50%, 100% 100%, 100% 0%);
 }
 
 header ul {
     display: flex;
+    justify-content: center;
+    align-items: flex-end;
     flex-wrap: wrap;
+    margin: 10px 0 0 0;
     padding:0;
 }
 
 header li {
-    margin: 5px;
-    width: 150px;
-    padding: 10px 20px;
+    margin: 0px;
+    width: 8em;
+    padding: 5px 0px;
     box-sizing: border-box;
     background-color: var(--color2);
-    border-radius: 10px;
+    border: 1px solid var(--color5);
     text-align: center;
 }
 
-.BorderDeco {
-    widows: 100vw;
-    height: 50px;
-    background-color: var(--color2);
-    clip-path: polygon(0% 0%, 0% 100%, 50% 50%, 100% 100%, 100% 0%);
+header li.active {
+    background-color: var(--color5);
+    border: 1px solid var(--color2);
+    border-bottom: none;
+}
+
+header li.active a {
+    color: var(--color2);
+}
+
+header li:first-child {
+    border-radius: 1.25em 0 0 0;
+}
+
+header li:last-child {
+    border-radius: 0 1.25em 0 0;
 }
 
 /*Configurações do rodapé*/
@@ -84,20 +145,16 @@ footer ul {
     margin: auto 0;
 }
 
-/*Configurações do corpo Institucional*/
-main {
-    display: flex;
-    justify-content: center;
-}
-
 /*Configurações das telas de login e cadastro*/
 .form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 35px 35px;
-    margin-bottom: calc(var(--footerHeight) + 20px);
-    background-image: url(../img/brigadeiro.png);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url('/images/brigadeiro.png');
     background-size: cover;
     border-radius: 60px;
 }
@@ -109,17 +166,18 @@ form {
     justify-content: center;
     min-width: 300px;
     width: 30vw;
-    height: 320px;
+    height: 400px;
     background-color: var(--color5opacity);
     border-radius: 30px;
 }
 
-.cadastro form {
-    height: 350px;
+form img.logo {
+    width: 40%;
 }
 
 form h2 {
     color: var(--color1);
+    font-size: 1.5em;
 }
 
 form label{
@@ -139,11 +197,6 @@ form input {
     color: var(--color1);
 }
 
-form input::placeholder {
-    color: var(--color1);
-    opacity: .4;
-}
-
 form button {
     display: block;
     margin: 10px auto;
@@ -152,7 +205,7 @@ form button {
     color: var(--color5);
     text-transform: uppercase;
     border: none;
-    border-radius: 10px;;
+    border-radius: 10px;
 }
 
 form button:hover {
@@ -161,23 +214,66 @@ form button:hover {
     cursor: pointer;
 }
 
-#primeiroAcesso {
+/*Configurações do corpo*/
+main {
     display: flex;
+    justify-content: center;
+    margin:0 20px;
+    background-color: var(--color5);
+    color: var(--color1);
+    height: calc(100vh - var(--footerHeight) - var(--headerHeight));
+    overflow: auto;
+}
+
+/*Configurações do corpo Home*/
+#home {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+#home img {
+    height: 30vh;
+}
+
+#home h2 {
+    text-transform: capitalize;
+}
+
+#home p {
+    margin: 0 10%;
+}
+
+/*Configurações do corpo Administração*/
+#administracao {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.adminCardContainer {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+    width: 300px;
+    border: 1px solid var(--color2);
 }
 
-form p, form a {
-    padding: 10px 20px;
-    color: var(--color1)
-}
-
-form a:hover {
+.adminCardContainer section.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
     background-color: var(--color2);
-    color: var(--color5);
-    border-radius: 10px;
 }
 
-form img {
-    width: 20px;
+.adminCardContainer section.description {
+    padding: 10px;
+    color: var(--color5);
+    background-color: var(--color1);
 }
