@@ -1,0 +1,183 @@
+/*Inicialização de variáveis e definições globais*/
+:root {
+    --color1: #FCFBE3;
+    --color2: #FBCFCF;
+    --color3: #CDBB99;
+    --color4: #A37E58;
+    --color5: #755C3B;
+    --color5opacity: #755C3B99;
+    --footerHeight: 104px;
+}
+
+body {
+    background-color:var(--color1);
+    margin: 0;
+    font-family: "roboto";
+    color: var(--color5);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color5);
+}
+
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*Configurações do cabeçalho*/
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 30vh;
+    background-color:var(--color5);
+}
+
+header img {
+    width: 180px;
+}
+
+header ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding:0;
+}
+
+header li {
+    margin: 5px;
+    width: 150px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: var(--color2);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.BorderDeco {
+    widows: 100vw;
+    height: 50px;
+    background-color: var(--color2);
+    clip-path: polygon(0% 0%, 0% 100%, 50% 50%, 100% 100%, 100% 0%);
+}
+
+/*Configurações do rodapé*/
+footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom:0;
+    width: 100vw;
+    height: var(--footerHeight);
+    background-color: var(--color2);
+}
+
+footer ul {
+    position: absolute;
+    right: 25px;
+    margin: auto 0;
+}
+
+/*Configurações do corpo Institucional*/
+main {
+    display: flex;
+    justify-content: center;
+}
+
+/*Configurações das telas de login e cadastro*/
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 35px;
+    margin-bottom: calc(var(--footerHeight) + 20px);
+    background-image: url(../img/brigadeiro.png);
+    background-size: cover;
+    border-radius: 60px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+    width: 30vw;
+    height: 320px;
+    background-color: var(--color5opacity);
+    border-radius: 30px;
+}
+
+.cadastro form {
+    height: 350px;
+}
+
+form h2 {
+    color: var(--color1);
+}
+
+form label{
+    min-width: 250px;
+    width: 30vw;
+    margin: 10px;
+    color: var(--color1);
+    text-align: center;
+}
+
+form input {
+    max-width: 300px;
+    width: 90%;
+    background-color: var(--color4);
+    border: none;
+    border-radius: 5px;
+    color: var(--color1);
+}
+
+form input::placeholder {
+    color: var(--color1);
+    opacity: .4;
+}
+
+form button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 30px;
+    background-color: var(--color2);
+    color: var(--color5);
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;;
+}
+
+form button:hover {
+    background-color: var(--color5);
+    color: var(--color1);
+    cursor: pointer;
+}
+
+#primeiroAcesso {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+form p, form a {
+    padding: 10px 20px;
+    color: var(--color1)
+}
+
+form a:hover {
+    background-color: var(--color2);
+    color: var(--color5);
+    border-radius: 10px;
+}
+
+form img {
+    width: 20px;
+}
