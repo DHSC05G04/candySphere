@@ -16,6 +16,11 @@ body {
     font-family: "roboto";
     font-size: 16px;
     color: var(--color5);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 a {
@@ -35,7 +40,8 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    width: 100vw;
+    width: 96%;
+    align-self: center;
     height: var(--headerHeight);
     background-color:var(--color5);
 }
@@ -83,8 +89,8 @@ header #logo {
 }
 
 .BorderDeco {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 30%;
     background-color: var(--color2);
     clip-path: polygon(0% 0%, 0% 100%, 50% 50%, 100% 100%, 100% 0%);
 }
@@ -146,12 +152,17 @@ footer ul {
 }
 
 /*Configurações das telas de login e cadastro*/
+#loginBody {
+    justify-content: center;
+    align-items: center;   
+}
+
 .form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 95vw;
+    height: 95vh;
     margin: 0;
     padding: 0;
     background-image: url('/images/brigadeiro.png');
@@ -218,7 +229,8 @@ form button:hover {
 main {
     display: flex;
     justify-content: center;
-    margin:0 20px;
+    width: 96%;
+    align-self: center;
     background-color: var(--color5);
     color: var(--color1);
     height: calc(100vh - var(--footerHeight) - var(--headerHeight));
