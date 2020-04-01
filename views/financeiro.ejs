@@ -1,53 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <%- include('./partials/head') %>
+<%- include('./partials/head') %>
 
-    <body>
+<body>
 
-        <%- include('./partials/header') %>
-       
-        <main id="financeiro">
-            <input type="checkbox" id="check" >
-            <label  for="check"><span id="icone-sanduiche" class="material-icons">reorder</span></label>
-            <aside id="painel">
-                <nav>
-                    <a  href="#">
-                        <div id="teste" class="link">Relatorio - 1 <span class="material-icons">
-                         pie_chart
-                         </span></div>
-                    </a>
-                    <a href="#">
-                        <div class="link">Relatorio - 2<span class="material-icons">
-                         insert_chart
-                         </span></div>
-                    </a>
-                    <a href="#">
-                        <div class="link">Relatorio - 3<span class="material-icons">
-                         show_chart
-                         </span></div>
-                    </a>
-                    <a href="#">
-                        <div class="link">Relatorio - 4<span class="material-icons">
-                         bubble_chart
-                         </span></div>
-                    </a>
-                    <a href="#">
-                        <div class="link">Relatorio - 5<span  class="material-icons">
-                         scatter_plot
-                         </span></div>
-                    </a>
-                </nav>
-                 
-             </aside>
-             <section></section>
+    <%- include('./partials/header') %>
 
-        </main>
-    
-        <%- include('./partials/footer') %>
+    <main id="financeiro">
+        <input type="checkbox" id="check">
+        <label for="check"><span id="icone-sanduiche" class="material-icons">reorder</span></label>
+        <aside id="painel">
+            <nav>
+                <a href="#">
+                    <div id="teste" class="link">Relatorio - 1 <span class="material-icons">
+                            pie_chart
+                        </span></div>
+                </a>
+                <a href="#">
+                    <div class="link">Relatorio - 2<span class="material-icons">
+                            insert_chart
+                        </span></div>
+                </a>
+                <a href="#">
+                    <div class="link">Relatorio - 3<span class="material-icons">
+                            show_chart
+                        </span></div>
+                </a>
+                <a href="#">
+                    <div class="link">Relatorio - 4<span class="material-icons">
+                            bubble_chart
+                        </span></div>
+                </a>
+                <a href="#">
+                    <div class="link">Relatorio - 5<span class="material-icons">
+                            scatter_plot
+                        </span></div>
+                </a>
+            </nav>
 
-        <%- include('./partials/scripts') %>
+        </aside>
+        <section id="dash-bord">
+            <div class="card-faturamento">
+                <div class=card-lateral>
+                    <span class="material-icons">
+                        monetization_on
+                    </span>
+                </div>
+                <ul class="lista-card">
+                    <li>Faturamento</li>
+                    <li>R$ 20.555,22</li>
+                </ul>
+            </div>
+            <div class="card-faturamento">
+                <div class=card-lateral>
+                    <span class="material-icons">
+                        shopping_cart
+                    </span>
 
-    </body>
+                </div>
+            </div>
+            <div class="card-faturamento">
+                <div class=card-lateral>
+                    <span class="material-icons">
+                        local_mall
+                    </span></div>
+            </div>
+        </section>
+
+    </main>
+
+    <%- include('./partials/footer') %>
+
+    <%- include('./partials/scripts') %>
+
+</body>
 
 </html>
