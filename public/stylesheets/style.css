@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color:var(--color1);
+    background-color: var(--color1);
     margin: 0;
     font-family: "roboto";
     font-size: 16px;
@@ -43,7 +43,7 @@ header {
     width: 96%;
     align-self: center;
     height: var(--headerHeight);
-    background-color:var(--color5);
+    background-color: var(--color5);
 }
 
 header #logo {
@@ -101,7 +101,7 @@ header ul {
     align-items: flex-end;
     flex-wrap: wrap;
     margin: 10px 0 0 0;
-    padding:0;
+    padding: 0;
 }
 
 header li {
@@ -139,7 +139,7 @@ footer {
     align-items: center;
     justify-content: center;
     position: fixed;
-    bottom:0;
+    bottom: 0;
     width: 100vw;
     height: var(--footerHeight);
     background-color: var(--color2);
@@ -154,7 +154,7 @@ footer ul {
 /*Configurações das telas de login e cadastro*/
 #loginBody {
     justify-content: center;
-    align-items: center;   
+    align-items: center;
 }
 
 .form-container {
@@ -191,7 +191,7 @@ form h2 {
     font-size: 1.5em;
 }
 
-form label{
+form label {
     min-width: 250px;
     width: 30vw;
     margin: 10px;
@@ -289,3 +289,201 @@ main {
     color: var(--color5);
     background-color: var(--color1);
 }
+
+/*###### FINANCEIRO#########*/
+
+/*Configuração do menu Lateral*/
+
+main#financeiro * {
+    margin-left:5 px;
+    padding: 0px;
+   
+}
+
+ aside#painel {
+    height: 80vh;
+    width: 300px;
+   
+    position: absolute;
+    
+  
+    transition: all .2s linear;
+    left: -250px;
+}
+
+main#financeiro #check {
+    display: none;
+}
+
+main#financeiro label span#icone-sanduiche {
+    cursor: pointer;
+    padding: 25px;
+    position: absolute;
+    z-index: 1;
+
+}
+
+aside#painel nav {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+}
+
+aside#painel nav a {
+    text-decoration: none;
+}
+
+main#financeiro aside#painel nav a div.link{
+    background-color: var(--color2);
+    padding: 20px;
+    font-family: arial;
+    font-size: 12pt;
+    transition: all .2s linear;
+    color:var(--color4);
+    border-bottom: 2px solid var(--color4);
+    opacity: 1;
+    padding-left: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+main#financeiro aside#painel nav a div.link:hover{
+    background-color:var(--color4);
+    color: var(--color2);
+
+}
+main#financeiro nav :hover{
+    background-color: var(--color4);
+    color: var(--color2);
+}
+
+
+main#financeiro input#check:checked~#painel {
+    transform: translatex(250px);
+    background-color: var(--color5);
+    transition: all .4s linear;
+    opacity: 1;
+    text-align: center;
+    box-shadow: 0px 0px 9px black;
+}
+main#financeiro input#check:checked ~ #painel nav a div.link{
+    background-color: var(--color2);
+}
+main#financeiro input#check:checked ~ #painel nav a div.link:hover{
+    color: var(--color2);
+    background-color: var(--color4);
+}
+main#financeiro section{
+  
+    width: 100%;
+    margin-right:50px ;
+    
+   
+  }
+ 
+  
+ main#financeiro section #periodo{
+      
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+
+  }
+  
+  main#financeiro section #cards{
+    
+      height: 100px;
+      display: flex;
+     
+  }
+  main#financeiro section #graficos{
+      background-color: cadetblue;
+      height: 100%;
+  }
+
+  form#datas{
+   
+    height: 70px;
+    width: 100%;
+  margin-left: 50px; 
+
+
+}
+form#datas label{  
+  font-size: 10px;  
+  text-align: right;
+  margin-right: -5px;
+  
+}
+
+form#datas label#btn-label{
+    color: var(--color5);
+} 
+form#datas input{
+    width: 120px;
+    height: 30px;
+    margin-left: 5px;
+    background-color: var(--color2);
+    color: var(--color5);
+    text-align: center;
+    
+}
+section#dash-board div#cards{
+    display: flex;
+    flex-direction: column;
+    
+   
+}
+section#dash-board div#cards div.card-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+section#dash-board div#cards div.card-main{
+    width: 250px;
+    height: 100px;
+    background-color: var(--color1);
+    border-radius: 8px;
+    box-shadow: 0px 2px 9px black;
+    display: flex;
+    align-items:center;
+    margin-left: 60px;
+    margin-top: 20px;
+    
+    
+    
+}
+
+
+section#dash-board div#cards div.card-main div.card-left{
+    width: 80px;
+    height: 100px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius:8px 8px;
+    background-color: var(--color2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color5);
+    
+}
+
+section#dash-board div#cards div.card-main div.card-left span{
+    font-size: 35px;
+}
+section#dash-board div#cards div.card-main div.card-dados{
+   
+   margin-left:20px;
+   color: var(--color5);
+}
+section#dash-board div#cards div.card-main div.card-dados div{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+ 
+  
+
+  

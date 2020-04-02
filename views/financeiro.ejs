@@ -1,20 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <%- include('./partials/head') %>
+<%- include('./partials/head') %>
 
-    <body>
+<body>
 
-        <%- include('./partials/header') %>
+    <%- include('./partials/header') %>
 
-        <main id="financeiro">
-            
-        </main>
+    <main id="financeiro">
+        <input type="checkbox" id="check">
+        <label for="check"><span id="icone-sanduiche" class="material-icons">reorder</span></label>
+        <aside id="painel">
+            <nav>
+                <a href="#">
+                    <div class="link">Relatorio - 1 <span class="material-icons">
+                            pie_chart
+                        </span></div>
+                </a>
+                <a href="#">
+                    <div class="link">Relatorio - 2<span class="material-icons">
+                            insert_chart
+                        </span></div>
+                </a>
+                <a href="#">
+                    <div class="link">Relatorio - 3<span class="material-icons">
+                            show_chart
+                        </span></div>
+                </a>
+                <a href="#">
+                    <div class="link">Relatorio - 4<span class="material-icons">
+                            bubble_chart
+                        </span></div>
+                </a>
+                <a href="#">
+                    <div class="link">Relatorio - 5<span class="material-icons">
+                            scatter_plot
+                        </span></div>
+                </a>
+            </nav>
+        </aside>
 
-        <%- include('./partials/footer') %>
+        <section id="dash-board">
 
-        <%- include('./partials/scripts') %>
+            <form id="datas" action="">
+                <div id="periodo">
+                    <div class="input-data">
+                        <label for="data-inicial">data inicial</label>
+                        <input type="date" id="data-inicial">
+                    </div>
+                    <div class="input-data">
+                        <label for="data-final">data final</label>
+                        <input type="date" id="data-final">
+                    </div>
+                    <div class="input-data">
+                        <label id="btn-label" for="data-inicial">.</label>
+                        <input type="submit" id="btn-data" value="Buscar">
+                    </div>
+                </div>
 
-    </body>
+            </form>
+
+            <div id="cards">
+                <div class="card-container">
+                    <div class="card-main">
+                        <div class="card-left">
+                            <span class="material-icons">
+                                monetization_on
+                            </span>
+                        </div>
+                        <div class="card-dados">
+                            <div>Faturamento</div>
+                            <div>R$20.545,33</div>
+                        </div>
+                    </div>
+                    <div class="card-main">
+                        <div class="card-left">
+                            <span class="material-icons">
+                                local_atm
+                            </span>
+                        </div>
+                        <div class="card-dados">
+                            <div>Lucros</div>
+                            <div>R$5.000,00</div>
+                        </div>
+                    </div>
+                    <div class="card-main">
+                        <div class="card-left">
+                            <span class="material-icons">
+                                local_mall
+                            </span>
+                        </div>
+                        <div class="card-dados">
+                            <div>Despesas</div>
+                            <div>R$15.545,33</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="graficos">
+                    tyesdsj
+                </div>
+            </div>
+           
+        </section>
+
+    </main>
+
+    <%- include('./partials/footer') %>
+
+    <%- include('./partials/scripts') %>
+
+</body>
 
 </html>
