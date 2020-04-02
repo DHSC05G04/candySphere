@@ -317,9 +317,10 @@ main#financeiro #check {
 
 main#financeiro label span#icone-sanduiche {
     cursor: pointer;
-    padding: 15px;
+    padding: 25px;
     position: absolute;
     z-index: 1;
+
 }
 
 aside#painel nav {
@@ -375,7 +376,7 @@ main#financeiro section{
   
     width: 100%;
     margin-right:50px ;
-    margin-left:50px ;
+    
    
   }
  
@@ -385,12 +386,15 @@ main#financeiro section{
       width: 100%;
       margin-top: 20px;
       display: flex;
+      flex-direction: row;
 
   }
   
   main#financeiro section #cards{
-      background-color: blueviolet;
+    
       height: 100px;
+      display: flex;
+     
   }
   main#financeiro section #graficos{
       background-color: cadetblue;
@@ -401,8 +405,7 @@ main#financeiro section{
    
     height: 70px;
     width: 100%;
-  
-    margin: 0px auto;
+  margin-left: 50px; 
 
 
 }
@@ -425,8 +428,60 @@ form#datas input{
     text-align: center;
     
 }
+section#dash-board div#cards{
+    display: flex;
+    flex-direction: column;
+    
+   
+}
+section#dash-board div#cards div.card-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+section#dash-board div#cards div.card-main{
+    width: 250px;
+    height: 100px;
+    background-color: var(--color1);
+    border-radius: 8px;
+    box-shadow: 0px 2px 9px black;
+    display: flex;
+    align-items:center;
+    margin-left: 60px;
+    margin-top: 20px;
+    
+    
+    
+}
 
-  
+
+section#dash-board div#cards div.card-main div.card-left{
+    width: 80px;
+    height: 100px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius:8px 8px;
+    background-color: var(--color2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color5);
+    
+}
+
+section#dash-board div#cards div.card-main div.card-left span{
+    font-size: 35px;
+}
+section#dash-board div#cards div.card-main div.card-dados{
+   
+   margin-left:20px;
+   color: var(--color5);
+}
+section#dash-board div#cards div.card-main div.card-dados div{
+    font-size: 20px;
+    font-weight: bold;
+}
 
  
   
