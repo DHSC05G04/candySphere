@@ -34,7 +34,8 @@ li {
     padding: 0;
 }
 
-/*Configurações do cabeçalho*/
+/* Configurações do cabeçalho */
+
 header {
     display: flex;
     flex-direction: column;
@@ -44,6 +45,7 @@ header {
     align-self: center;
     height: var(--headerHeight);
     background-color: var(--color5);
+    margin-top: 1%;
 }
 
 header #logo {
@@ -82,6 +84,7 @@ header #logo {
     background-color: var(--color5);
     color: var(--color1);
     cursor: pointer;
+    border: 1px solid var(--color2);
 }
 
 #logout img {
@@ -290,23 +293,19 @@ main {
     background-color: var(--color1);
 }
 
-/*###### FINANCEIRO#########*/
+/* ###### FINANCEIRO ######### */
 
-/*Configuração do menu Lateral*/
+/* Configuração do menu Lateral */
 
 main#financeiro * {
     margin-left:5 px;
     padding: 0px;
-   
 }
 
  aside#painel {
     height: 80vh;
     width: 300px;
-   
     position: absolute;
-    
-  
     transition: all .2s linear;
     left: -250px;
 }
@@ -320,7 +319,6 @@ main#financeiro label span#icone-sanduiche {
     padding: 25px;
     position: absolute;
     z-index: 1;
-
 }
 
 aside#painel nav {
@@ -328,10 +326,10 @@ aside#painel nav {
     position: absolute;
     top: 60px;
 }
-
+/* 
 aside#painel nav a {
     text-decoration: none;
-}
+} */
 
 main#financeiro aside#painel nav a div.link{
     background-color: var(--color2);
@@ -346,16 +344,16 @@ main#financeiro aside#painel nav a div.link{
     display: flex;
     justify-content: space-between;
 }
+
 main#financeiro aside#painel nav a div.link:hover{
     background-color:var(--color4);
     color: var(--color2);
-
 }
+
 main#financeiro nav :hover{
     background-color: var(--color4);
     color: var(--color2);
 }
-
 
 main#financeiro input#check:checked~#painel {
     transform: translatex(250px);
@@ -365,83 +363,89 @@ main#financeiro input#check:checked~#painel {
     text-align: center;
     box-shadow: 0px 0px 9px black;
 }
-main#financeiro input#check:checked ~ #painel nav a div.link{
+
+main#financeiro input#check:checked ~ #painel nav a div.link {
     background-color: var(--color2);
 }
-main#financeiro input#check:checked ~ #painel nav a div.link:hover{
+
+main#financeiro input#check:checked ~ #painel nav a div.link:hover {
     color: var(--color2);
     background-color: var(--color4);
 }
-main#financeiro section{
-  
+
+main#financeiro section {
     width: 100%;
     margin-right:50px ;
-    
-   
-  }
- 
+}
   
- main#financeiro section #periodo{
-      
-      width: 100%;
-      margin-top: 20px;
-      display: flex;
-      flex-direction: row;
-
-  }
+main#financeiro section #periodo {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
   
-  main#financeiro section #cards{
-    
-      height: 100px;
-      display: flex;
-     
-  }
-  main#financeiro section #graficos{
-      background-color: cadetblue;
-      height: 100%;
-  }
+main#financeiro section #cards {
+    height: 100px;
+    display: flex;
+}
 
-  form#datas{
-   
+main#financeiro section #graficos {
+    background-color: cadetblue;
+    height: 100%;
+    }
+
+form#datas {
     height: 70px;
     width: 100%;
-  margin-left: 50px; 
-
-
-}
-form#datas label{  
-  font-size: 10px;  
-  text-align: right;
-  margin-right: -5px;
-  
+    margin-left: 50px; 
 }
 
-form#datas label#btn-label{
+form#datas label {  
+    font-size: 1em;
+    margin-left: 15px; 
+    text-align: right;
+}
+
+form#datas label#btn-label {
     color: var(--color5);
-} 
-form#datas input{
+}
+
+sss
+#btn-data:hover {
+    background-color: var(--color5);
+    color: var(--color1);
+    cursor: pointer;
+    border: 1px solid var(--color2);
+}
+
+
+form#datas input {
     width: 120px;
     height: 30px;
     margin-left: 5px;
     background-color: var(--color2);
     color: var(--color5);
     text-align: center;
-    
+    font-weight: bold;
+ 
 }
-section#dash-board div#cards{
+
+section#dash-board div#cards {
     display: flex;
     flex-direction: column;
-    
-   
 }
-section#dash-board div#cards div.card-container{
+
+section#dash-board div#cards div.card-container {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-section#dash-board div#cards div.card-main{
+
+section#dash-board div#cards div.card-main {
     width: 250px;
     height: 100px;
     background-color: var(--color1);
@@ -451,13 +455,11 @@ section#dash-board div#cards div.card-main{
     align-items:center;
     margin-left: 60px;
     margin-top: 20px;
-    
-    
-    
+    margin-bottom: 10px;
 }
 
 
-section#dash-board div#cards div.card-main div.card-left{
+section#dash-board div#cards div.card-main div.card-left {
     width: 80px;
     height: 100px;
     border-top-left-radius: 8px;
@@ -467,23 +469,19 @@ section#dash-board div#cards div.card-main div.card-left{
     justify-content: center;
     align-items: center;
     color: var(--color5);
-    
 }
 
-section#dash-board div#cards div.card-main div.card-left span{
+section#dash-board div#cards div.card-main div.card-left span {
     font-size: 35px;
 }
-section#dash-board div#cards div.card-main div.card-dados{
-   
+
+section#dash-board div#cards div.card-main div.card-dados {
    margin-left:20px;
    color: var(--color5);
 }
-section#dash-board div#cards div.card-main div.card-dados div{
-    font-size: 20px;
+
+section#dash-board div#cards div.card-main div.card-dados div {
     font-weight: bold;
 }
-
- 
-  
 
   
