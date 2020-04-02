@@ -13,7 +13,7 @@
         <aside id="painel">
             <nav>
                 <a href="#">
-                    <div id="teste" class="link">Relatorio - 1 <span class="material-icons">
+                    <div class="link">Relatorio - 1 <span class="material-icons">
                             pie_chart
                         </span></div>
                 </a>
@@ -38,34 +38,30 @@
                         </span></div>
                 </a>
             </nav>
-
         </aside>
-        <section id="dash-bord">
-            <div class="card-faturamento">
-                <div class=card-lateral>
-                    <span class="material-icons">
-                        monetization_on
-                    </span>
-                </div>
-                <ul class="lista-card">
-                    <li>Faturamento</li>
-                    <li>R$ 20.555,22</li>
-                </ul>
-            </div>
-            <div class="card-faturamento">
-                <div class=card-lateral>
-                    <span class="material-icons">
-                        shopping_cart
-                    </span>
 
+        <section id="dash-board">
+
+            <form id="datas" action="">
+                <div id="periodo">
+                    <div class="input-data">
+                        <label for="data-inicial">data inicial</label>
+                        <input type="date" id="data-inicial">
+                    </div>
+                    <div class="input-data">
+                        <label for="data-final">data final</label>
+                        <input type="date" id="data-final">
+                    </div> 
+                    <div class="input-data">
+                     <label id="btn-label" for="data-inicial">.</label>
+                    <input type="submit" id="btn-data" value="Buscar">
+                </div> 
                 </div>
-            </div>
-            <div class="card-faturamento">
-                <div class=card-lateral>
-                    <span class="material-icons">
-                        local_mall
-                    </span></div>
-            </div>
+               
+            </form>
+
+            <div id="cards"></div>
+            <div id="graficos"></div>
         </section>
 
     </main>

@@ -373,50 +373,62 @@ main#financeiro input#check:checked ~ #painel nav a div.link:hover{
 }
 main#financeiro section{
   
-   
     width: 100%;
     margin-right:50px ;
     margin-left:50px ;
    
   }
-
-  main#financeiro section#dash-bord{
+ 
+  
+ main#financeiro section #periodo{
+      
+      width: 100%;
+      margin-top: 20px;
       display: flex;
-     justify-content: center;
-     flex-wrap: wrap;
-     
-    
+
+  }
+  
+  main#financeiro section #cards{
+      background-color: blueviolet;
+      height: 100px;
+  }
+  main#financeiro section #graficos{
+      background-color: cadetblue;
+      height: 100%;
   }
 
-  main#financeiro section#dash-bord div.card-faturamento{
-    display: flex;
-    align-items: center;  
-    background-color: var(--color1);
-      color: var(--color4);
-      width: 250px;
-     height: 100px;
-     margin-top: 10px;
-     border-radius: 8px;
-     box-shadow: 0px 0px 10px black;
-     margin-left: 20px;
+  form#datas{
+   
+    height: 70px;
+    width: 100%;
+  
+    margin: 0px auto;
+
+
+}
+form#datas label{  
+  font-size: 10px;  
+  text-align: right;
+  margin-right: -5px;
+  
+}
+
+form#datas label#btn-label{
+    color: var(--color5);
+} 
+form#datas input{
+    width: 120px;
+    height: 30px;
+    margin-left: 5px;
+    background-color: var(--color2);
+    color: var(--color5);
+    text-align: center;
     
-  }
-  main#financeiro section#dash-bord div.card-faturamento div.card-lateral{
-      background-color: var(--color2);
-      height: 100px; 
-      width: 60px ;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
-  }
-  main#financeiro section#dash-bord div.card-faturamento div.card-lateral span{
-      font-size: 40px;
-  }
-  ul.lista-card, ul.lista-card li{
-      text-align: center;
-      margin: 0 auto;
-      font-size: 25px;
-  }
+}
+
+  
+
+ 
+  
+
   
