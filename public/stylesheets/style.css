@@ -404,8 +404,17 @@ aside#painel nav {
     position: absolute;
     top: 60px;
 }
+<<<<<<< HEAD
 
 
+=======
+
+/* 
+aside#painel nav a {
+    text-decoration: none;
+} */
+
+>>>>>>> Inserido grafico de linha
 main#financeiro aside#painel nav a div.link {
     background-color: var(--color2);
     padding: 20px;
@@ -582,12 +591,18 @@ main#financeiro section #graficos .grafico-meio {
 }
 
 main#financeiro section #graficos .grafico-baixo {
+<<<<<<< HEAD
     width:900px;
     height:200px;
+=======
+    width: 100%;
+    height: 300px;
+>>>>>>> Inserido grafico de linha
     background-color: var(--color1);
     border-left: 18px solid var(--color2);
     box-shadow: 0px 1px 9px black;
     margin-top: 15px;
+<<<<<<< HEAD
     margin-left: 10px;
     padding-bottom: 10px;
     overflow:visible;
@@ -747,3 +762,9 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo{
   text-align: left;
 }
 >>>>>>> Add new features
+=======
+    margin-left: 73px;
+}
+
+#donutchart {}
+>>>>>>> Inserido grafico de linha
