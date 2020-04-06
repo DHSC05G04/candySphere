@@ -1,3 +1,6 @@
+const path = require('path');
+const fs = require('fs');
+
 const adminController = {
     index: (req, res, next) => {
         let tabActive = {homeAct: "inactive",
@@ -15,7 +18,12 @@ const adminController = {
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
-        res.render('admin/produtos', { title: 'Express', tabs: tabActive });
+
+        const produtos = JSON.parse(
+                        fs.readFileSync(
+                        path.join('database', 'produtos.json')));
+
+        res.render('admin/produtos', { title: 'Express', tabs: tabActive , produtos});
     },
     indexEstoque: (req, res, next) => {
         let tabActive = {homeAct: "inactive",
@@ -33,7 +41,12 @@ const adminController = {
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
-        res.render('admin/receitas', { title: 'Express', tabs: tabActive });
+
+        const receitas = JSON.parse(
+                        fs.readFileSync(
+                        path.join('database', 'receitas.json')));
+
+        res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas });
     }
 };
 

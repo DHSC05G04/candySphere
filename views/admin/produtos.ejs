@@ -8,7 +8,17 @@
         <%- include('../partials/header') %>
 
         <main id="administracao">
-
+            <% produtos.forEach(produto => { %>
+                <a href="/admin/produtos" class="adminCardContainer">
+                    <section class="foto" style="background-image: url(<%= produto.imagem %>); background-size: cover;">
+                    </section>
+                    <section class="description">
+                        <h3><%= produto.nome %></h3>
+                        <p><%= produto.descricao %></p>
+                        <p>R$ <%= produto.valor %></p>
+                    </section>
+                </a>                                
+            <% }); %>
         </main>
 
         <%- include('../partials/footer') %>

@@ -275,7 +275,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .adminCardContainer {
@@ -283,8 +283,10 @@ main {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 15px;
+    box-sizing: border-box;
+    margin: 30px 10px;
     width: 300px;
+    height: 320px;
     border: 1px solid var(--color2);
 }
 
@@ -302,9 +304,22 @@ main {
 }
 
 .adminCardContainer section.description {
+    box-sizing: border-box;
+    width: 100%;
+    height: 200px;
     padding: 10px;
     color: var(--color5);
     background-color: var(--color1);
+}
+
+/*Configuração cards de receitas */
+.adminCardContainer section.foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    background-color: var(--color2);
 }
 
 /* ###### FINANCEIRO ######### */
