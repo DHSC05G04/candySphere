@@ -375,11 +375,11 @@ main {
 /* Configuração do menu Lateral */
 
 main#financeiro * {
-    margin-left:5 px;
+    margin-left: 5 px;
     padding: 0px;
 }
 
- aside#painel {
+aside#painel {
     height: 80vh;
     width: 300px;
     position: absolute;
@@ -403,18 +403,15 @@ aside#painel nav {
     position: absolute;
     top: 60px;
 }
-/* 
-aside#painel nav a {
-    text-decoration: none;
-} */
 
-main#financeiro aside#painel nav a div.link{
+
+main#financeiro aside#painel nav a div.link {
     background-color: var(--color2);
     padding: 20px;
     font-family: arial;
     font-size: 12pt;
     transition: all .2s linear;
-    color:var(--color4);
+    color: var(--color4);
     border-bottom: 2px solid var(--color4);
     opacity: 1;
     padding-left: 100px;
@@ -422,12 +419,12 @@ main#financeiro aside#painel nav a div.link{
     justify-content: space-between;
 }
 
-main#financeiro aside#painel nav a div.link:hover{
-    background-color:var(--color4);
+main#financeiro aside#painel nav a div.link:hover {
+    background-color: var(--color4);
     color: var(--color2);
 }
 
-main#financeiro nav :hover{
+main#financeiro nav :hover {
     background-color: var(--color4);
     color: var(--color2);
 }
@@ -441,20 +438,20 @@ main#financeiro input#check:checked~#painel {
     box-shadow: 0px 0px 9px black;
 }
 
-main#financeiro input#check:checked ~ #painel nav a div.link {
+main#financeiro input#check:checked~#painel nav a div.link {
     background-color: var(--color2);
 }
 
-main#financeiro input#check:checked ~ #painel nav a div.link:hover {
+main#financeiro input#check:checked~#painel nav a div.link:hover {
     color: var(--color2);
     background-color: var(--color4);
 }
 
 main#financeiro section {
     width: 100%;
-    margin-right:50px ;
+    margin-right: 50px;
 }
-  
+
 main#financeiro section #periodo {
     width: 100%;
     margin-top: 20px;
@@ -462,7 +459,7 @@ main#financeiro section #periodo {
     flex-direction: row;
     align-items: center;
 }
-  
+
 main#financeiro section #cards {
     height: 100px;
     display: flex;
@@ -471,12 +468,12 @@ main#financeiro section #cards {
 form#datas {
     height: 70px;
     width: 100%;
-    margin-left: 50px; 
+    margin-left: 50px;
 }
 
-form#datas label {  
+form#datas label {
     font-size: 1em;
-    margin-left: 15px; 
+    margin-left: 15px;
     text-align: right;
 }
 
@@ -501,7 +498,7 @@ form#datas input {
     color: var(--color5);
     text-align: center;
     font-weight: bold;
- 
+
 }
 
 section#dash-board div#cards {
@@ -529,7 +526,7 @@ section#dash-board div#cards div.card-main {
     border-radius: 8px;
     box-shadow: 0px 2px 3px black;
     display: flex;
-    align-items:center;
+    align-items: center;
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -539,7 +536,7 @@ section#dash-board div#cards div.card-main div.card-left {
     width: 60px;
     height: 60px;
     border-top-left-radius: 8px;
-    border-bottom-left-radius:8px 8px;
+    border-bottom-left-radius: 8px 8px;
     background-color: var(--color2);
     display: flex;
     justify-content: center;
@@ -553,10 +550,10 @@ section#dash-board div#cards div.card-main div.card-left span {
 }
 
 section#dash-board div#cards div.card-main div.card-dados {
-   /*! margin-left:20px; */
-   color: var(--color5);
-   padding-right: 5px;
-   text-align: left;
+    /*! margin-left:20px; */
+    color: var(--color5);
+    padding-right: 5px;
+    text-align: left;
 }
 
 section#dash-board div#cards div.card-main div.card-dados div {
@@ -564,33 +561,38 @@ section#dash-board div#cards div.card-main div.card-dados div {
 }
 
 main#financeiro section #graficos {
-    
+
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
-    
-   
-      
-    }
-    main#financeiro section #graficos .grafico-meio{
-        width: 400px;
-        height: 200px;
-        background-color: var(--color1);
-        border-left:18px solid var(--color2);
-        box-shadow: 0px 1px 9px black;
-        margin-top: 15px;
-        margin-left: 73px;
-        padding-bottom: 10px;
-    }
-    main#financeiro section #graficos .grafico-baixo{
-        width: 100%;
-        height: 300px;
-        background-color: var(--color1);
-        border-left:18px solid var(--color2);
-        box-shadow: 0px 1px 9px black;
-        margin-top: 15px;
-        margin-left: 73px;
-    }
+    margin-left: 59;
+    margin-right: 48px;
+}
+
+main#financeiro section #graficos .grafico-meio {
+    width: 400px;
+    height: 200px;
+    background-color: var(--color1);
+    border-left: 18px solid var(--color2);
+    box-shadow: 0px 1px 9px black;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+}
+
+main#financeiro section #graficos .grafico-baixo {
+    width:900px;
+    height:200px;
+    background-color: var(--color1);
+    border-left: 18px solid var(--color2);
+    box-shadow: 0px 1px 9px black;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+    overflow:visible;
+    margin-bottom: 40px;
+    padding: 10px;
+}
 
 @media screen and (max-width: 800px) {
     body {
@@ -667,3 +669,4 @@ main#financeiro section #graficos {
         border-radius: 0 0 0 0;
     }
 }
+#donutchart {}
