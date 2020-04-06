@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <%- include('./partials/head') %>
+    <%- include('../partials/head') %>
 
     <body>
 
-        <%- include('./partials/header') %>
+        <%- include('../partials/header') %>
 
         <main id="administracao">
-            <div class="adminCardContainer">
+            <a href="/admin/produtos" class="adminCardContainer">
                 <section class="logo">
-                    <img src="/images/productIco.svg" alt="">
+                    <span class="material-icons">shopping_cart</span>
                 </section>
                 <section class="description">
                     <h3>Produtos</h3>
                     <p>no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no</p>
                 </section>
-            </div>
-            <div class="adminCardContainer">
+            </a>
+            <a href="/admin/estoque" class="adminCardContainer">
                 <section class="logo">
-                    <img src="/images/inventoryIco.png" alt="">
+                    <span class="material-icons">list_alt</span>
                 </section>
                 <section class="description">
                     <h3>Estoque</h3>
                     <p>no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no</p>
                 </section>
-            </div>
-            <div class="adminCardContainer">
+            </a>
+            <a href="/admin/receitas" class="adminCardContainer">
                 <section class="logo">
-                    <img src="/images/recipesIco.svg" alt="">
+                    <span class="material-icons">menu_book</span>
                 </section>
                 <section class="description">
-                    <h3>Receituário</h3>
+                    <h3>Receitas</h3>
                     <p>no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no no</p>
                 </section>
-            </div>
+            </a>
         </main>
 
-        <%- include('./partials/footer') %>
+        <%- include('../partials/footer') %>
 
-        <%- include('./partials/scripts') %>
+        <%- include('../partials/scripts') %>
 
     </body>
 

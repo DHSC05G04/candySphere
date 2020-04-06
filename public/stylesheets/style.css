@@ -297,6 +297,10 @@ main {
     background-color: var(--color2);
 }
 
+.adminCardContainer .material-icons {
+    font-size: 5em;
+}
+
 .adminCardContainer section.description {
     padding: 10px;
     color: var(--color5);

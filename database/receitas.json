@@ -1,0 +1,10 @@
+[{
+    "nome":"Brigadeiro",
+    "descrição":"Brigadeiro de cholocate, 200 unidades",
+    "ingredientes":[{"nome":"Chocolate em pó",
+                    "quantidade":{"valor":200,"unidade":"gramas"}},
+                    {"nome":"Leite condensado",
+                    "quantidade":{"valor":200,"unidade":"ml"}}],
+    "preparo":"descrever o preparo da receita",
+    "imagem":"/images/produtos/brigadeiro.png"
+    }]
