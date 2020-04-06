@@ -127,7 +127,7 @@ function drawBasic() {
 
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
-      data.addColumn('number', 'Dogs');
+      data.addColumn('number', 'Recita');
 
       data.addRows([
         [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
@@ -149,8 +149,9 @@ function drawBasic() {
           title: 'Time'
         },
         vAxis: {
-          title: 'Popularity'
-        }
+          title: 'Exemplos da confeitaria'
+        },
+        backgroundColor: 'none'
       };
 
       var chart = new google.visualization.LineChart(document.getElementById('linha'));
