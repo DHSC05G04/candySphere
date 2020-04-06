@@ -11,14 +11,15 @@
         <input type="checkbox" id="check">
         <label for="check"><span id="icone-sanduiche" class="material-icons">reorder</span></label>
         <aside id="painel">
+            <h2>Relatorios</h2>
             <nav>
                 <a href="#">
-                    <div class="link">Relatorio - 1 <span class="material-icons">
+                    <div class="link"> Financeiro <span class="material-icons">
                             pie_chart
                         </span></div>
                 </a>
                 <a href="#">
-                    <div class="link">Relatorio - 2<span class="material-icons">
+                    <div class="link">Vendas<span class="material-icons">
                             insert_chart
                         </span></div>
                 </a>
@@ -105,26 +106,23 @@
                     <div class="grafico-meio">
                         <canvas id="pizza-despesa"></canvas>
                     </div>
-                    <div class="grafico-meio">
-                        <div id="donutchart" style="width: 100%; height:100%;"></div>
-                    </div>
-                    <!-- **********************************************
+                                       <!-- **********************************************
                     Gráfico misto***********************************-->
                     <div class="grafico-meio">
                         <canvas id="bar-line"></canvas>
                     </div>
                     <div class="grafico-baixo">
-                        <canvas id="linha"></canvas>
+                        <canvas id="linha-diario" width="1000px" height="200px"></canvas>
                     </div>
                 </div>
             </div>
-
+          
         </section>
 
     </main>
 
     <%- include('./partials/footer') %>
-    <%= dataFinanceiro[0].data %>
+    <%= //dataFinanceiro[0].data %>
 
     <%- include('./partials/scripts') %>
     
@@ -132,45 +130,50 @@
     <script>
         var dbData = <%- JSON.stringify(dataFinanceiro) %>;
     </script>
-    
-    <script>
-        var ctx = document.getElementById('barra').getContext('2d');
-                
-        var myChart = new Chart(ctx, {
-            type: 'horizontalBar',
-            data: {
-                labels: dbData[0].labels,
-                datasets: [{
-                    label:'Receita x Despesas',
-                    data: dbData[0].data,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
-                        
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
+     <!-- Função para pegar core aleatorias -->
+     <script> function background(teste){
+        const cores =[];
+        teste.forEach(element => {
+            cores.push(`rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.3)`);
         });
-    </script>
+        return cores;
+       } </script>
+
+     <!-- Começo do grafico Despesa x Recita -->
+     <script>
+        
+         var dataTeste =dbData[0].data;
+         var cor = background(dataTeste);
+         var ctx = document.getElementById('barra').getContext('2d');
+         var myChart = new Chart(ctx, {
+             type: 'horizontalBar',
+             data: {
+                 labels: ['Receita', 'Despesas', 'Lucros'],
+                 datasets: [{
+                     label: 'Receita x Despesas',
+                     data: dataTeste,
+                     
+                     backgroundColor: cor,
+                     borderColor: cor,
+                     borderWidth: 1
+                 }]
+             },
+             options: {
+                 scales: {
+                     yAxes: [{
+                         ticks: {
+                             beginAtZero: true
+                         }
+                     }]
+                 }
+             }
+         });
+     </script>
+    
 
         <script>
+            var dataTeste =dbData[1].data;
+         var cor = background(dataTeste);
             var ctx = document.getElementById('pizza-despesa').getContext('2d');
             var myChart = new Chart(ctx, {
             type: 'doughnut',
@@ -179,22 +182,8 @@
                 datasets: [{
                     
                     data: dbData[1].data,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(154, 62, 255, 0.2)',
-                        'rgba(100, 206, 86, 0.2)'
-                        
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(154, 62, 255, 1)',
-                        'rgba(100, 206, 86, 1)',
-                        
-                    ],
+                    backgroundColor: cor,
+                    borderColor: cor,
                     borderWidth: 1
                 }]
             },
@@ -204,51 +193,79 @@
         });
         </script>
 
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-          google.charts.load("current", {packages:["corechart"]});
-          google.charts.setOnLoadCallback(drawChart);
-          function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-              ['Task', 'Hours per Day'],
-              ['Work',     11],
-              ['Eat',      2],
-              ['Commute',  2],
-              ['Watch TV', 2],
-              ['Sleep',    7]
-            ]);
-        
-            var options = {
-              title: 'My Daily Activities',
-              pieHole: 0.4,
-            };
-        
-            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-            chart.draw(data, options);
-          }
-        </script>
-        
+       
+      
         <!-- *********************************************************************
         Gráfico de barras com linhas****************************************** -->
         
         <script>
+             var dataTeste =dbData[2].data;
+         var cor2 = background(dataTeste);
             var ctx = document.getElementById('bar-line').getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     datasets: [{
+                       
                         label: 'Gráfico de barras',
-                        data: dbData[2].data
+                        data: dbData[2].data,
+                        backgroundColor:cor2,
+                        borderColor:cor2,
+                        borderWidth:1
                     },
                 {
+                   
+                    type: 'line',
                     label: 'Gráfico de linha',
                     data: dbData[3].data,
-                    type: 'line'
-                }],
-                labels: dbData[2].labels
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderColor: 'rgba(0,0,255,0.3)'
+                               
+                }
+            ],
+                labels: dbData[2].labels,
+              
                 } 
+                
             });
             </script>
+        <script>
+             var dataTeste =dbData[2].data;
+         var cor2 = background(dataTeste);
+            var ctx = document.getElementById('linha-diario').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    datasets: [
+                {
+                 
+                    type: 'line',
+                    label: 'Receita Diaria',
+                    data: dbData[4].data,
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderColor: 'rgba(0,0,255,0.3)'
+                               
+                },
+                {
+                 
+                    type: 'line',
+                    label: 'Meta',
+                    data: [180,180,180,180,180,180,180,180,180,180,180,180,180,180],
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderColor: 'rgba(255,0,0,0.3)'
+                               
+                },
+            ],
+                labels: dbData[4].labels,
+              
+                } 
+                
+            });
+            </script>
+            
+            
+          
 </body>
 
 </html>
+
