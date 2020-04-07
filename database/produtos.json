@@ -25,5 +25,145 @@
         "quantidade":7,
         "valor":8.00,
         "imagem":"/images/produtos/coca.png"
+    },
+    {
+        "nome":"Brigadeiro",
+        "descrição":"Brigadeiro de chococate",
+        "quantidade":10,
+        "valor":10.99,
+        "imagem":"/images/produtos/brigadeiro.png"
+    },
+    {
+        "nome":"Docinho de leite",
+        "descrição":"Doce de leite em pó",
+        "quantidade":8,
+        "valor":12.00,
+        "imagem":"/images/produtos/doce_de_leite.png"
+    },
+    {
+        "nome":"H2O",
+        "descrição":"Bebida gaseificada de limão",
+        "quantidade":5,
+        "valor":8.00,
+        "imagem":"/images/produtos/H2O.png"
+    },
+    {
+        "nome":"Coca-cola",
+        "descrição":"Refrigerante",
+        "quantidade":7,
+        "valor":8.00,
+        "imagem":"/images/produtos/coca.png"
+    },
+    {
+        "nome":"Brigadeiro",
+        "descrição":"Brigadeiro de chococate",
+        "quantidade":10,
+        "valor":10.99,
+        "imagem":"/images/produtos/brigadeiro.png"
+    },
+    {
+        "nome":"Docinho de leite",
+        "descrição":"Doce de leite em pó",
+        "quantidade":8,
+        "valor":12.00,
+        "imagem":"/images/produtos/doce_de_leite.png"
+    },
+    {
+        "nome":"H2O",
+        "descrição":"Bebida gaseificada de limão",
+        "quantidade":5,
+        "valor":8.00,
+        "imagem":"/images/produtos/H2O.png"
+    },
+    {
+        "nome":"Coca-cola",
+        "descrição":"Refrigerante",
+        "quantidade":7,
+        "valor":8.00,
+        "imagem":"/images/produtos/coca.png"
+    },
+    {
+        "nome":"Brigadeiro",
+        "descrição":"Brigadeiro de chococate",
+        "quantidade":10,
+        "valor":10.99,
+        "imagem":"/images/produtos/brigadeiro.png"
+    },
+    {
+        "nome":"Docinho de leite",
+        "descrição":"Doce de leite em pó",
+        "quantidade":8,
+        "valor":12.00,
+        "imagem":"/images/produtos/doce_de_leite.png"
+    },
+    {
+        "nome":"H2O",
+        "descrição":"Bebida gaseificada de limão",
+        "quantidade":5,
+        "valor":8.00,
+        "imagem":"/images/produtos/H2O.png"
+    },
+    {
+        "nome":"Coca-cola",
+        "descrição":"Refrigerante",
+        "quantidade":7,
+        "valor":8.00,
+        "imagem":"/images/produtos/coca.png"
+    },
+    {
+        "nome":"Brigadeiro",
+        "descrição":"Brigadeiro de chococate",
+        "quantidade":10,
+        "valor":10.99,
+        "imagem":"/images/produtos/brigadeiro.png"
+    },
+    {
+        "nome":"Docinho de leite",
+        "descrição":"Doce de leite em pó",
+        "quantidade":8,
+        "valor":12.00,
+        "imagem":"/images/produtos/doce_de_leite.png"
+    },
+    {
+        "nome":"H2O",
+        "descrição":"Bebida gaseificada de limão",
+        "quantidade":5,
+        "valor":8.00,
+        "imagem":"/images/produtos/H2O.png"
+    },
+    {
+        "nome":"Coca-cola",
+        "descrição":"Refrigerante",
+        "quantidade":7,
+        "valor":8.00,
+        "imagem":"/images/produtos/coca.png"
+    },
+    {
+        "nome":"Brigadeiro",
+        "descrição":"Brigadeiro de chococate",
+        "quantidade":10,
+        "valor":10.99,
+        "imagem":"/images/produtos/brigadeiro.png"
+    },
+    {
+        "nome":"Docinho de leite",
+        "descrição":"Doce de leite em pó",
+        "quantidade":8,
+        "valor":12.00,
+        "imagem":"/images/produtos/doce_de_leite.png"
+    },
+    {
+        "nome":"H2O",
+        "descrição":"Bebida gaseificada de limão",
+        "quantidade":5,
+        "valor":8.00,
+        "imagem":"/images/produtos/H2O.png"
+    },
+    {
+        "nome":"Coca-cola",
+        "descrição":"Refrigerante",
+        "quantidade":7,
+        "valor":8.00,
+        "imagem":"/images/produtos/coca.png"
     }
 ]
