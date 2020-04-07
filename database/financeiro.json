@@ -7,14 +7,27 @@
     "data": [400, 309, 130,358,400]
 },
 {
-    "labels": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
+    "labels": ["Dinheiro", "Debito", "Credito", "Ticket", "Outros"],
     "data": [100, 500, 250, 300, 90]
 },
 {
-    "labels": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
-    "data": [80, 250, 300, 150, 100]
+    "labels": ["Dinheiro", "Debito", "Credito", "Ticket", "Outros"],
+    "data": [100, 492.50, 239.50, 290, 81]
 },
 {
     "labels": ["01", "02", "03", "04", "05","06","07","08","09","10",11,12,13],
     "data": [200, 250, 300, 150, 100,215,180,99,105,215,230,223,81,22]
-}]
+},
+{
+    "labels": ["Bolos", "Tortas", "Doces", "Bebidas", "Salgados"],
+    "data": [200, 150, 100, 50, 25]
+},
+{
+    "labels": ["chocolate", "Morango", "Trufado", "Frutas", "Romeu & Julieta"],
+    "data": [20, 9, 15, 25, 19]
+},
+{
+    "labels": ["Holandesa", "cremosa", "prestigio", "Frutas", "chocolate"],
+    "data": [15, 19, 20, 13, 8]
+}
+]

@@ -13,19 +13,19 @@
         <aside id="painel">
             <h2>Relatorios</h2>
             <nav>
-                <a href="#">
+                <a href="/financeiro/relatorio?relatorio=financeiro">
                     <div class="link"> Financeiro <span class="material-icons">
                             pie_chart
                         </span></div>
                 </a>
-                <a href="#">
+                <a href="/financeiro/relatorio?relatorio=vendas">
                     <div class="link">Vendas<span class="material-icons">
-                            insert_chart
+                        local_grocery_store
                         </span></div>
                 </a>
                 <a href="#">
                     <div class="link">Relatorio - 3<span class="material-icons">
-                            show_chart
+                            insert_chart
                         </span></div>
                 </a>
                 <a href="#">
@@ -40,89 +40,11 @@
                 </a>
             </nav>
         </aside>
-
-        <section id="dash-board">
-
-            <form id="datas" action="">
-                <div id="periodo">
-                    <div class="input-data">
-                        <label for="data-inicial">data inicial</label>
-                        <input type="date" id="data-inicial">
-                    </div>
-                    <div class="input-data">
-                        <label for="data-final">data final</label>
-                        <input type="date" id="data-final">
-                    </div>
-                    <div class="input-data">
-                        <label id="btn-label" for="data-inicial">.</label>
-                        <input type="submit" id="btn-data" value="Buscar">
-                    </div>
-                </div>
-
-            </form>
-
-            <div id="cards">
-                <div class="card-container">
-                    <div class="card-main">
-                        <div class="card-left">
-                            <span class="material-icons">
-                                monetization_on
-                            </span>
-                        </div>
-                        <div class="card-dados">
-                            <div>Faturamento</div>
-                            <div>R$ 20.545,33</div>
-                        </div>
-                    </div>
-                    <div class="card-main">
-                        <div class="card-left">
-                            <span class="material-icons">
-                                local_atm
-                            </span>
-                        </div>
-                        <div class="card-dados">
-                            <div>Lucros</div>
-                            <div>R$ 99.999.999,99</div>
-                        </div>
-                    </div>
-                    <div class="card-main">
-                        <div class="card-left">
-                            <span class="material-icons">
-                                local_mall
-                            </span>
-                        </div>
-                        <div class="card-dados">
-                            <div>Despesas</div>
-                            <div>R$ 545,33</div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="graficos">
-                    <div class="grafico-meio">
-                        <canvas id="barra"></canvas>
-                    </div>
-                    <div class="grafico-meio">
-                        <canvas id="pizza-despesa"></canvas>
-                    </div>
-                                       <!-- **********************************************
-                    Gráfico misto***********************************-->
-                    <div class="grafico-meio">
-                        <canvas id="bar-line"></canvas>
-                    </div>
-                    <div class="grafico-baixo">
-
-                        <canvas id="linha-diario" width="1000px" height="200px"></canvas>
-
-                    </div>
-                </div>
-            </div>
-          
-        </section>
-
+        
+        <%- include('./relatorios/' + tipoGrafico) %>
+      
     </main>
-
+   
     <%- include('./partials/footer') %>
     <%= //dataFinanceiro[0].data %>
 
@@ -264,7 +186,76 @@
                 
             });
             </script>
+
+            <!-- Inicio dos graficos Vendas -->
+            <script>
+                var dataTeste =dbData[5].data;
+                var cor = background(dataTeste);
+                var ctx = document.getElementById('top-5').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'horizontalBar',
+                    data: {
+                        labels: dbData[5].labels,
+                        datasets: [{
+                            label: 'TOP - 5',
+                            data: dbData[5].data,
+                            
+                            backgroundColor: cor,
+                            borderColor: cor,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
+
+             <script>
+         var dataTeste = dbData[6].data;
+                var cor = background(dataTeste);
+         var dataTeste2 = dbData[6].data;
+                var cor2 = background(dataTeste);
+                var ctx = document.getElementById('radar-vendas').getContext('2d');
+                var myRadarChart = new Chart(ctx, {
+                type: 'radar',
+                data:{
+    labels:  dbData[6].labels,
+    labels:  dbData[7].labels,
+    datasets: [{
+        label: 'Bolo',
+        data: dbData[6].data,
+        backgroundColor: cor,
+        borderColor: cor,
+        borderWidth: 1
+    },
+    {
+        label: 'Torta',
+        data: dbData[7].data,
+        backgroundColor: cor2,
+        borderColor: cor2,
+        borderWidth: 1
+    }
+]
+},
+                options:{
+    scale: {
+        angleLines: {
+            display: false
+        },
+        ticks: {
             
+        }
+    }
+}
+            });
+            </script>
             
           
 </body>
