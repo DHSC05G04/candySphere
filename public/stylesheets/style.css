@@ -328,6 +328,7 @@ main#financeiro label span#icone-sanduiche {
     cursor: pointer;
     padding: 25px;
     position: absolute;
+    left:25px;
     z-index: 1;
 }
 
@@ -527,4 +528,13 @@ main#financeiro section #graficos .grafico-baixo {
     padding: 10px;
 }
 
-#donutchart {}
+main#financeiro section #graficos .grafico-vendas-meio {
+    width: 400px;
+    height: 200px;
+    background-color: var(--color1);
+    border-left: 18px solid var(--color2);
+    box-shadow: 0px 1px 9px black;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+}
