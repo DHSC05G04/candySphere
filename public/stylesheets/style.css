@@ -51,13 +51,9 @@ header {
     justify-content: flex-end;
     width: 96%;
     align-self: center;
-    height: var(--headerHeight);
+    /*height: var(--headerHeight);*/
     background-color: var(--color5);
-    margin-top: 1%;
-}
-
-header #logo {
-    height: 60px;
+    padding-top: 1%;
 }
 
 #systemTitle {
@@ -65,6 +61,11 @@ header #logo {
     justify-content: space-around;
     align-items: center;
     width: 100vw;
+}
+
+header #logo {
+    height: 4em;
+    margin-bottom: 10px;
 }
 
 #systemTitle h1 {
@@ -101,9 +102,23 @@ header #logo {
 
 .BorderDeco {
     width: 100%;
-    height: 30%;
+    height: 20px;
     background-color: var(--color2);
     clip-path: polygon(0% 0%, 0% 100%, 50% 50%, 100% 100%, 100% 0%);
+}
+
+header nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header input {
+    display: none;
+}
+
+header label#icone-sanduiche {
+    display: none;
 }
 
 header ul {
@@ -244,10 +259,10 @@ main {
     justify-content: center;
     width: 96%;
     align-self: center;
+    flex-grow: 1;
     background-color: var(--color5);
     color: var(--color1);
-    height: calc(100vh - var(--footerHeight) - var(--headerHeight));
-    overflow: auto;
+    overflow-y: auto;
 }
 
 /*Configurações do corpo Home*/
@@ -275,7 +290,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .adminCardContainer {
@@ -283,8 +298,10 @@ main {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 15px;
+    box-sizing: border-box;
+    margin: 30px 10px;
     width: 300px;
+    height: 320px;
     border: 1px solid var(--color2);
 }
 
@@ -297,10 +314,60 @@ main {
     background-color: var(--color2);
 }
 
+.adminCardContainer .material-icons {
+    font-size: 5em;
+}
+
 .adminCardContainer section.description {
+    box-sizing: border-box;
+    flex-grow: 1;
+    width: 100%;
     padding: 10px;
     color: var(--color5);
     background-color: var(--color1);
+}
+
+/* Configuração cards de produtos*/
+.adminCardContainer.produtos {
+    width: 200px;
+    height: 280px;
+    text-align: center;
+}
+
+.adminCardContainer.produtos .description {
+    padding: 0;
+}
+
+.adminCardContainer.produtos .valor {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--color5);
+    color: var(--color2)
+}
+
+.adminCardContainer.produtos .addCart {
+    margin: 5px;
+    padding: .25em;
+    font-size: 2em;
+    border: 1px solid var(--color2);
+    border-radius: .75em;
+    background-color: var(--color2);
+}
+
+.adminCardContainer.produtos .addCart:hover {
+    color: var(--color2);
+    background-color: var(--color5);
+    cursor: pointer;
+}
+
+/*Configuração cards de receitas */
+.adminCardContainer section.foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    background-color: var(--color2);
 }
 
 /* ###### FINANCEIRO ######### */
@@ -525,3 +592,78 @@ main#financeiro section #graficos {
         margin-left: 73px;
     }
 
+@media screen and (max-width: 800px) {
+    body {
+        font-size: 12px;
+    }
+
+    header label#icone-sanduiche {
+        display: inline-block;
+        font-size: 2.5em;
+        color: var(--color2);
+        border: 2px solid var(--color2);
+        border-radius: 10px;
+    }
+    
+    header label#icone-sanduiche:hover{
+        color: var(--color5);
+        background-color: var(--color2);
+        cursor: pointer;
+    }
+
+    header ul {
+        height: 0;
+        width: 65%;
+        transition: height 2s linear;
+    }
+
+    header input#menu:checked~#mainNav {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 800px){
+    header li:nth-child(3) {
+        border-radius: 0 1.25em 0 0;
+    }
+
+    header li:nth-last-child(3) {
+        border-radius: 0 0 0 1.25em;
+    }
+
+    header li:last-child {
+        border-radius: 0 0 1.25em 0;
+    }
+
+    header li:nth-child(2) {
+        border-radius: 0 0 0 0;
+    }
+
+    header li:nth-last-child(2) {
+        border-radius: 0 0 0 0;
+    }
+}
+
+/* Max-width para transição sem alterar font-size: 615px */
+
+@media screen and (max-width: 490px) {
+    header li:nth-child(2) {
+        border-radius: 0 1.25em 0 0;
+    }
+
+    header li:nth-last-child(2) {
+        border-radius: 0 0 0 1.25em;
+    }
+
+    header li:last-child {
+        border-radius: 0 0 1.25em 0;
+    }
+
+    header li:nth-child(3) {
+        border-radius: 0 0 0 0;
+    }
+
+    header li:nth-last-child(3) {
+        border-radius: 0 0 0 0;
+    }
+}

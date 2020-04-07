@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <%- include('../partials/head') %>
+
+    <body>
+
+        <%- include('../partials/header') %>
+
+        <main id="administracao">
+            <a href="/admin/produtos" class="adminCardContainer">
+                <section class="logo">
+                    <span class="material-icons">shopping_cart</span>
+                </section>
+                <section class="description">
+                    <h3>Produtos</h3>
+                    <p>Visualização de produtos disponíveis para vendas e inclusão dos mesmos no carrinho de compras</p>
+                </section>
+            </a>
+            <a href="/admin/estoque" class="adminCardContainer">
+                <section class="logo">
+                    <span class="material-icons">list_alt</span>
+                </section>
+                <section class="description">
+                    <h3>Estoque</h3>
+                    <p>Controle e administração do estoque</p>
+                </section>
+            </a>
+            <a href="/admin/receitas" class="adminCardContainer">
+                <section class="logo">
+                    <span class="material-icons">menu_book</span>
+                </section>
+                <section class="description">
+                    <h3>Receitas</h3>
+                    <p>Lista de receitas cadastradas no sistema</p>
+                </section>
+            </a>
+        </main>
+
+        <%- include('../partials/footer') %>
+
+        <%- include('../partials/scripts') %>
+
+    </body>
+
+</html>

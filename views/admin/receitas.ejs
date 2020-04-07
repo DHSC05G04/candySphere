@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <%- include('../partials/head') %>
+
+    <body>
+
+        <%- include('../partials/header') %>
+
+        <main id="administracao">
+            <% receitas.forEach(receita => { %>
+                <a href="/admin/produtos" class="adminCardContainer">
+                    <section class="foto" style="background-image: url(<%= receita.imagem %>); background-size: cover;">
+                    </section>
+                    <section class="description">
+                        <h3><%= receita.nome %></h3>
+                        <p><%= receita.descricao %></p>
+                    </section>
+                </a>                                
+            <% }); %>
+        </main>
+
+        <%- include('../partials/footer') %>
+
+        <%- include('../partials/scripts') %>
+
+    </body>
+
+</html>
