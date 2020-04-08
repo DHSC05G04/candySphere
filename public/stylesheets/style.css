@@ -395,7 +395,7 @@ main#financeiro label span#icone-sanduiche {
     cursor: pointer;
     padding: 25px;
     position: absolute;
-    left:25px;
+    left: 25px;
     z-index: 1;
 }
 
@@ -582,15 +582,15 @@ main#financeiro section #graficos .grafico-meio {
 }
 
 main#financeiro section #graficos .grafico-baixo {
-    width:900px;
-    height:200px;
+    width: 900px;
+    height: 200px;
     background-color: var(--color1);
     border-left: 18px solid var(--color2);
     box-shadow: 0px 1px 9px black;
     margin-top: 15px;
     margin-left: 10px;
     padding-bottom: 10px;
-    overflow:visible;
+    overflow: visible;
     margin-bottom: 40px;
     padding: 10px;
 }
@@ -620,51 +620,123 @@ main#financeiro section #graficos .grafico-vendas-radar {
 
 /* ############### Inicio do Clientes ################# */
 
- section#tabela-corpo {
-    width: 80%;
+/*  */
+
+
+
+section#tabela-corpo {
+   
     background-color: var(--color2);
-    margin-top: 25px;
+    width: -webkit-fill-available;
+    height:100vh;
+    margin: 20px;
+    
 }
-section#tabela-corpo h2{
+
+section#tabela-corpo h2 {
     color: var(--color5);
-  text-align: center;
-  
+    text-align: center;
+
 }
-section#tabela-corpo table#tabela-cliente{
+
+section#tabela-corpo table#tabela-cliente {
     background-color: var(--color1);
     color: var(--color5);
-    width: 80%;
-    margin: 0 auto;
-    
-    
+    width: -webkit-fill-available;
+    margin: 20px;
 }
-section#tabela-corpo table#tabela-cliente, tr, th{
+section#tabela-corpo table#tabela-cliente thead {
+    display: fixed;
+}
+section#tabela-corpo table#tabela-cliente tbody {
+    overflow: auto;
+}
+
+
+section#tabela-corpo table#tabela-cliente,
+th,
+td {
     border-collapse: collapse;
     border: 1px solid var(--color5);
 }
-section#tabela-corpo table#tabela-cliente tr th{
+
+section#tabela-corpo table#tabela-cliente tr th {
     text-align: center;
     color: var(--color1);
     background-color: var(--color5);
     height: 35px;
-    
-}
-section#tabela-corpo table#tabela-cliente tr{
-   
+
 }
 
-section#tabela-corpo table#tabela-cliente tr td{
+section#tabela-corpo table#tabela-cliente tbody tr:hover {
+    background-color: var(--color3);
+    transition: .4s;
+    font-weight: bold;
+
+}
+
+section#tabela-corpo table#tabela-cliente tr td {
     text-align: center;
     height: 35px;
-    
-   
+
+
 }
-section#tabela-corpo table#tabela-cliente tr td span.profile{
+
+section#tabela-corpo table#tabela-cliente tr td span.profile {
     font-size: 40px;
 }
-section#tabela-corpo table#tabela-cliente tr td.nome-campo, td.email-campo{
-  text-align: left;
+
+section#tabela-corpo table#tabela-cliente tr td.nome-campo,
+section#tabela-corpo table#tabela-cliente tr td.email-campo {
+    text-align: left;
+    padding-left: 10px;
+   
 }
-section#tabela-corpo table#tabela-cliente tr td.email-campo{
-  text-align: left;
+section#tabela-corpo table#tabela-cliente tr td a.btn-acao :hover{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+    background-color:var(--color5);
+    color: var(--color2);
+    border-radius: 40px;
+  padding-top: 2px;
+  transition: .5s;
+
+
 }
+section#tabela-corpo div.add-cliente{
+   display: flex;
+    justify-content: center;
+  
+   
+
+  
+}
+section#tabela-corpo div.add-cliente a {
+ position: fixed;
+ top:88%;
+  z-index: 10000000;
+ 
+}
+section#tabela-corpo div.add-cliente a span{
+    font-size: 50px;
+    text-shadow: 1px 5px 9px;
+   
+}
+   
+div.add-cliente a  :hover{
+background-color: var(--color5);
+color: var(--color2);
+border-radius: 50px;
+transition: all 1s linear;
+}
+
+section#tabela-corpo div.add-cliente a span:hover{
+    text-shadow: none;
+  
+}
+@media(max-width: 520px) {
+    th.email-head, td.email-campo{
+     display: none;
+    }
+  }
