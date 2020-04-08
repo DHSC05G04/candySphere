@@ -625,55 +625,50 @@ main#financeiro section #graficos .grafico-vendas-radar {
 
 
 section#tabela-corpo {
-   
-    background-color: var(--color2);
     width: -webkit-fill-available;
     height:100vh;
-    margin: 20px;
-    
-}
+    margin: 0 auto;
+   }
 
 section#tabela-corpo h2 {
     color: var(--color5);
     text-align: center;
-
 }
 
 section#tabela-corpo table#tabela-cliente {
     background-color: var(--color1);
     color: var(--color5);
-    width: -webkit-fill-available;
-    margin: 20px;
+    width: 70%;
+    margin: 20px auto;
 }
-section#tabela-corpo table#tabela-cliente thead {
-    display: fixed;
-}
+
 section#tabela-corpo table#tabela-cliente tbody {
     overflow: auto;
 }
 
 
-section#tabela-corpo table#tabela-cliente,
-th,
-td {
+section#tabela-corpo table#tabela-cliente, td {
     border-collapse: collapse;
-    border: 1px solid var(--color5);
+    border: 1px solid var(--color4);
 }
 
 section#tabela-corpo table#tabela-cliente tr th {
     text-align: center;
-    color: var(--color1);
-    background-color: var(--color5);
+    color: var(--color5);
+    display: fixed;
+    background-color: var(--color2);
     height: 35px;
+    border-collapse: collapse;
+    border: 1px solid var(--color4);
 
 }
 
 section#tabela-corpo table#tabela-cliente tbody tr:hover {
     background-color: var(--color3);
     transition: .4s;
-    font-weight: bold;
-
+      
 }
+
 
 section#tabela-corpo table#tabela-cliente tr td {
     text-align: center;
@@ -692,21 +687,17 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
     padding-left: 10px;
    
 }
+
 section#tabela-corpo table#tabela-cliente tr td a.btn-acao :hover{
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-    background-color:var(--color5);
-    color: var(--color2);
-    border-radius: 40px;
-  padding-top: 2px;
-  transition: .5s;
+  
+       color: var(--color2);
+     transition: .5s;
 
 
 }
 section#tabela-corpo div.add-cliente{
    display: flex;
-    justify-content: center;
+   justify-content: center;
   
    
 
@@ -714,26 +705,28 @@ section#tabela-corpo div.add-cliente{
 }
 section#tabela-corpo div.add-cliente a {
  position: fixed;
- top:88%;
+ top:75%;
   z-index: 10000000;
+ 
  
 }
 section#tabela-corpo div.add-cliente a span{
     font-size: 50px;
-    text-shadow: 1px 5px 9px;
+   text-shadow: 0px 3px  7px black;
+    color: var(--color2);
    
 }
    
 div.add-cliente a  :hover{
-background-color: var(--color5);
-color: var(--color2);
+background-color: var(--color2);
+
 border-radius: 50px;
 transition: all 1s linear;
 }
 
 section#tabela-corpo div.add-cliente a span:hover{
     text-shadow: none;
-  
+    color: var(--color5);
 }
 section#tabela-corpo table#tabela-cliente tr td.email-campo{
   text-align: left;
