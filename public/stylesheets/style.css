@@ -405,16 +405,22 @@ aside#painel nav {
     top: 60px;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
+=======
+>>>>>>> 1c77d14b2297a588fbd87acf57d2cb6eb363d01a
 
 /* 
 aside#painel nav a {
     text-decoration: none;
 } */
 
+<<<<<<< HEAD
 >>>>>>> Inserido grafico de linha
+=======
+>>>>>>> 1c77d14b2297a588fbd87acf57d2cb6eb363d01a
 main#financeiro aside#painel nav a div.link {
     background-color: var(--color2);
     padding: 20px;
@@ -592,16 +598,22 @@ main#financeiro section #graficos .grafico-meio {
 
 main#financeiro section #graficos .grafico-baixo {
 <<<<<<< HEAD
+<<<<<<< HEAD
     width:900px;
     height:200px;
 =======
     width: 100%;
     height: 300px;
 >>>>>>> Inserido grafico de linha
+=======
+    width: 100%;
+    height: 300px;
+>>>>>>> 1c77d14b2297a588fbd87acf57d2cb6eb363d01a
     background-color: var(--color1);
     border-left: 18px solid var(--color2);
     box-shadow: 0px 1px 9px black;
     margin-top: 15px;
+<<<<<<< HEAD
 <<<<<<< HEAD
     margin-left: 10px;
     padding-bottom: 10px;
@@ -750,11 +762,58 @@ section#tabela-corpo table#tabela-cliente tr td{
     text-align: center;
     height: 35px;
     
+=======
+    margin-left: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* ############### Inicio do Clientes ################# */
+
+ section#tabela-corpo {
+    width: 80%;
+    background-color: var(--color2);
+    margin-top: 25px;
+}
+section#tabela-corpo h2{
+    color: var(--color5);
+  text-align: center;
+  
+}
+section#tabela-corpo table#tabela-cliente{
+    background-color: var(--color1);
+    color: var(--color5);
+    width: 80%;
+    margin: 0 auto;
+    
+    
+}
+section#tabela-corpo table#tabela-cliente, tr, th{
+    border-collapse: collapse;
+    border: 1px solid var(--color5);
+}
+section#tabela-corpo table#tabela-cliente tr th{
+    text-align: center;
+    color: var(--color1);
+    background-color: var(--color5);
+    height: 35px;
+    
+}
+section#tabela-corpo table#tabela-cliente tr{
+   
+}
+
+section#tabela-corpo table#tabela-cliente tr td{
+    text-align: center;
+    height: 35px;
+    
+>>>>>>> 1c77d14b2297a588fbd87acf57d2cb6eb363d01a
    
 }
 section#tabela-corpo table#tabela-cliente tr td span.profile{
     font-size: 40px;
 }
+<<<<<<< HEAD
 section#tabela-corpo table#tabela-cliente tr td.nome-campo, td.email-campo{
   text-align: left;
 }
@@ -768,3 +827,18 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo{
 
 #donutchart {}
 >>>>>>> Inserido grafico de linha
+=======
+
+section#tabela-corpo table#tabela-cliente tr td.nome-campo, td.email-campo{
+  text-align: left;
+}
+
+section#tabela-corpo table#tabela-cliente tr td.email-campo{
+  text-align: left;
+   margin-left: 73px;
+}
+
+#donutchart {
+
+}
+>>>>>>> 1c77d14b2297a588fbd87acf57d2cb6eb363d01a
