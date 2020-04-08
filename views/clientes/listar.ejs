@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('../partials/head') %>
+
+<body>
+
+    <%- include('../partials/header') %>
+
+    <main id="clientes">
+
+        <section id="tabela-corpo">
+
+
+            <table id="tabela-cliente">
+                <thead>
+                    <tr>
+
+                        <th>Nome</th>
+                        <th class="email-head">Email</th>
+                        <th>Celular</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% clientes.forEach(elemento => {%>
+
+
+                    <tr>
+                        <td class="nome-campo"><a href=""><%= elemento.nome%> </a></td>
+                        <td class="email-campo"><a href=""><%= elemento.email%></a></td>
+                        <td><a href=""><%= elemento.celular%></a</td> <td>
+                                <a class="btn-acao" href=""><span class="material-icons">
+                                        edit
+                                    </span></a>
+                                <a class="btn-acao" href=""><span class="material-icons">
+                                        delete
+                                    </span></a>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <div class="add-cliente"> <a href="clientes/cadastrarCliente"><span class="material-icons">add_circle</span></a></div>
+        </section>
+       
+    </main>
+   
+    <%- include('../partials/footer') %>
+ <div id="modal-cliente" class="modal-container">
+        sdasd
+    </div>    
+    <%- include('../partials/scripts') %>
+
+
+</body>
+
+</html>
