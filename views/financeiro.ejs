@@ -226,16 +226,17 @@
                 var myRadarChart = new Chart(ctx, {
                 type: 'radar',
                 data:{
-    labels:  dbData[6].labels,
-    labels:  dbData[7].labels,
+  
+                    labels:  dbData[7].labels,
     datasets: [{
+        labels:  dbData[6].labels,
         label: 'Bolo',
         data: dbData[6].data,
         backgroundColor: cor,
         borderColor: cor,
         borderWidth: 1
     },
-    {
+    {   
         label: 'Torta',
         data: dbData[7].data,
         backgroundColor: cor2,
