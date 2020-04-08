@@ -4,3 +4,163 @@
 
 
 
+<script>
+    var ctx = document.getElementById('barra').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: ['Receita', 'Despesas', 'Lucros'],
+            datasets: [{
+                label: 'Receita x Despesas',
+                data: [200, 109, 30],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+<script>
+    var ctx = document.getElementById('pizza-despesa').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Serviços', 'Produtos', 'Limpeza', 'Pessoal', 'Manutenção'],
+            datasets: [{
+
+                data: [400, 309, 130, 358, 400],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(154, 62, 255, 0.2)',
+                    'rgba(100, 206, 86, 0.2)'
+
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(154, 62, 255, 1)',
+                    'rgba(100, 206, 86, 1)',
+
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+
+        }
+    });
+</script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", {
+        packages: ["corechart"]
+    });
+    google.charts.setOnLoadCallback(drawChart);
+    let teste = [
+        {
+        descricao: "Serviços",
+        total: 20
+    },
+        {
+        descricao: "Produto",
+        total: 30
+    },
+        {
+        descricao: "Limpeza",
+        total: 86
+    },
+        {
+        descricao: "Pessoal",
+        total: 100
+    },
+        {
+        descricao: "Manutenção",
+        total: 45
+    }
+    ]
+
+    
+        let dados = [["Despesas","Valor"]]
+        teste.forEach(element =>{
+            dados.push([element.descricao,element.total])
+        });
+   
+    
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable(dados);
+        
+       
+
+        var options = {
+            title: '',
+            pieHole: 0.2,
+            backgroundColor: 'none'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+    }
+</script>
+
+<script>
+   google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Recita');
+
+      data.addRows([
+        [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
+        [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
+        [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
+        [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
+        [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
+        [30, 55], [31, 60], [32, 61], [33, 59], [34, 62], [35, 65],
+        [36, 62], [37, 58], [38, 55], [39, 61], [40, 64], [41, 65],
+        [42, 63], [43, 66], [44, 67], [45, 69], [46, 69], [47, 70],
+        [48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
+        [54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
+        [60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
+        [66, 70], [67, 72], [68, 75], [69, 80]
+      ]);
+
+      var options = {
+        hAxis: {
+          title: 'Time'
+        },
+        vAxis: {
+          title: 'Exemplos da confeitaria'
+        },
+        backgroundColor: 'none'
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('linha'));
+
+      chart.draw(data, options);
+    }
+</script>

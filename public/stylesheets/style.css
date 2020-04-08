@@ -338,6 +338,10 @@ aside#painel nav {
     top: 60px;
 }
 
+/* 
+aside#painel nav a {
+    text-decoration: none;
+} */
 
 main#financeiro aside#painel nav a div.link {
     background-color: var(--color2);
@@ -515,32 +519,7 @@ main#financeiro section #graficos .grafico-meio {
 }
 
 main#financeiro section #graficos .grafico-baixo {
-    width:900px;
-    height:200px;
-    background-color: var(--color1);
-    border-left: 18px solid var(--color2);
-    box-shadow: 0px 1px 9px black;
-    margin-top: 15px;
-    margin-left: 10px;
-    padding-bottom: 10px;
-    overflow:visible;
-    margin-bottom: 40px;
-    padding: 10px;
-}
-
-main#financeiro section #graficos .grafico-vendas-meio {
-    width: 400px;
-    height: 200px;
-    background-color: var(--color1);
-    border-left: 18px solid var(--color2);
-    box-shadow: 0px 1px 9px black;
-    margin-top: 15px;
-    margin-left: 10px;
-    padding-bottom: 10px;
-}
-
-main#financeiro section #graficos .grafico-vendas-radar {
-    width: 600px;
+    width: 100%;
     height: 300px;
     background-color: var(--color1);
     border-left: 18px solid var(--color2);
@@ -595,9 +574,16 @@ section#tabela-corpo table#tabela-cliente tr td{
 section#tabela-corpo table#tabela-cliente tr td span.profile{
     font-size: 40px;
 }
+
 section#tabela-corpo table#tabela-cliente tr td.nome-campo, td.email-campo{
   text-align: left;
 }
+
 section#tabela-corpo table#tabela-cliente tr td.email-campo{
   text-align: left;
+   margin-left: 73px;
+}
+
+#donutchart {
+
 }
