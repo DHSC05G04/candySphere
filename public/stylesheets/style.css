@@ -706,7 +706,7 @@ section#tabela-corpo div.add-cliente{
 section#tabela-corpo div.add-cliente a {
  position: fixed;
  top:75%;
-  z-index: 10000000;
+  z-index: 1000;
  
  
 }
@@ -721,7 +721,7 @@ div.add-cliente a  :hover{
 background-color: var(--color2);
 
 border-radius: 50px;
-transition: all 1s linear;
+transition: all .3s linear;
 }
 
 section#tabela-corpo div.add-cliente a span:hover{
@@ -731,6 +731,108 @@ section#tabela-corpo div.add-cliente a span:hover{
 section#tabela-corpo table#tabela-cliente tr td.email-campo{
   text-align: left;
 }
+
+.modal-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.637);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+
+}
+
+.mostrar{
+    display: flex;
+}
+
+/* Inicio do Cadastro Modal */
+#conteudo-modal {
+    width: 60%;
+   text-align: end;
+  
+}
+@keyframes conteudo-modal{
+    from{
+        opacity: 0px;
+        transform: translate3d(0,-100px,0);
+    }
+    to{
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+
+}
+.mostrar  #conteudo-modal{
+    animation:conteudo-modal 1s ;
+}
+.btn-fechar{
+  
+   position: relative;
+    width: 100%;
+   
+    
+}
+.fechar-modal{
+width: 30px;
+height: 30px;
+display: block;
+font-size: 20px;
+background-color: var(--color2);
+border-radius: 30px;
+border: 2px solid var(--color5);
+box-shadow: 0px 0px 0px 3px var(--color2);
+color: var(--color5);
+z-index: 2000;
+position: absolute;
+top: -10px;
+right: 0px;
+
+}
+#form-cliente *{
+padding: 0px;
+margin: 0px;
+}
+#form-cliente{
+    background-color: var(--color1);
+    width:100%;
+    display: flex;
+    justify-content: center;
+    height: 60vh;
+    border: 5px solid var(--color5);
+    box-shadow: 0px 0px 0px 8px var(--color1) ;
+   
+    }
+    #form-cliente h1{
+        color: var(--color5);
+       
+    }
+  #form-cliente label{
+        color: var(--color5);
+        text-align: left;
+           }
+        #label-cliente{
+        width: 90%;
+        display: block;
+        text-align: left;
+    }
+    #form-cliente input{
+        margin-bottom: 20px;
+        height: 50px;
+    }
+    #form-cliente #nome-cliente {
+        background-color: var(--color1);
+        border: 1px solid var(--color5);
+        color: var(--color5);
+        font-size: 20px;
+       max-width: 100%;   
+       display: block;    
+    }
+/* fim da css clientes */
 
 @media screen and (max-width: 800px) {
     body {
