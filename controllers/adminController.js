@@ -32,7 +32,12 @@ const adminController = {
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
-        res.render('admin/estoque', { title: 'Express', tabs: tabActive });
+
+    const estoque = JSON.parse(
+        fs.readFileSync(
+        path.join('database', 'estoque.json')));
+
+        res.render('admin/estoque', { title: 'Express', tabs: tabActive, estoque });
     },
     indexReceitas: (req, res, next) => {
         let tabActive = {homeAct: "inactive",
