@@ -970,7 +970,7 @@ margin: 0px;
         border-radius: 0 1.25em 0 0;
     }
 
-    header li:nth-last-child(3) {
+    header li:nth-last-child(2) {
         border-radius: 0 0 0 1.25em;
     }
 
@@ -979,37 +979,52 @@ margin: 0px;
     }
 
     header li:nth-child(2) {
-        border-radius: 0 0 0 0;
-    }
-
-    header li:nth-last-child(2) {
         border-radius: 0 0 0 0;
     }
 }
 
 /* Max-width para transição sem alterar font-size: 615px */
 
-@media screen and (max-width: 490px) {
+@media screen and (max-width: 461px) {
     header li:nth-child(2) {
         border-radius: 0 1.25em 0 0;
     }
 
     header li:nth-last-child(2) {
+        border-radius: 0 0 1.25em 0;
+    }
+
+    header li:nth-last-child(3) {
         border-radius: 0 0 0 1.25em;
     }
 
     header li:last-child {
-        border-radius: 0 0 1.25em 0;
+        border-radius: 0 0 1.25em 1.25em;
+    }
+}
+
+@media screen and (max-width: 307px) {
+    header li:first-child {
+        border-radius: 1.25em 1.25em 0 0;
+    }
+
+    header li:nth-child(2) {
+        border-radius: 0 0 0 0;
     }
 
     header li:nth-child(3) {
         border-radius: 0 0 0 0;
     }
 
-    header li:nth-last-child(3) {
+    header li:nth-child(4) {
         border-radius: 0 0 0 0;
     }
+
+    header li:last-child {
+        border-radius: 0 0 1.25em 1.25em;
+    }
 }
+
 @media(max-width: 520px) {
     th.email-head, td.email-campo{
      display: none;
