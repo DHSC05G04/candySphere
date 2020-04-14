@@ -1,15 +1,11 @@
 var express = require('express');
 var router = express.Router();
+const funcionarioController = require('../controllers/funcionarioController');
 
 /* GET funcionarios page. */
-router.get('/', function(req, res, next) {
-  let tabActive = {homeAct: "inactive",
-                  adminAct: "inactive",
-                  financeiroAct: "inactive",
-                  clientesAct: "inactive",
-                  funcionariosAct: "active",
-                  pdvAct: "inactive"};
-  res.render('funcionarios', { title: 'Express', tabs: tabActive });
-});
+router.get('/',funcionarioController.listarFuncionario)
+router.get('/cadastrarFuncionario',(req,res)=>{
+    res.send("<h1>deu certo</h1>")
+})
 
 module.exports = router;

@@ -1,15 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+
+const adminController = require('../controllers/adminController');
+
+const router = express.Router();
 
 /* GET admin page. */
-router.get('/', function(req, res, next) {
-  let tabActive = {homeAct: "inactive",
-                  adminAct: "active",
-                  financeiroAct: "inactive",
-                  clientesAct: "inactive",
-                  funcionariosAct: "inactive",
-                  pdvAct: "inactive"};
-  res.render('admin', { title: 'Express', tabs: tabActive });
-});
+router.get('/', adminController.index);
+
+router.get('/produtos', adminController.indexProdutos);
+
+router.get('/estoque', adminController.indexEstoque);
+
+router.get('/receitas', adminController.indexReceitas);
 
 module.exports = router;

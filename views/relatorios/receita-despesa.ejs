@@ -1,0 +1,79 @@
+<section id="dash-board">
+
+    <form id="datas" action="">
+        <div id="periodo">
+            <div class="input-data">
+                <label for="data-inicial">data inicial</label>
+                <input type="date" id="data-inicial">
+            </div>
+            <div class="input-data">
+                <label for="data-final">data final</label>
+                <input type="date" id="data-final">
+            </div>
+            <div class="input-data">
+                <label id="btn-label" for="data-inicial">.</label>
+                <input type="submit" id="btn-data" value="Buscar">
+            </div>
+        </div>
+
+    </form>
+
+    <div id="cards">
+        <div class="card-container">
+            <div class="card-main">
+                <div class="card-left">
+                    <span class="material-icons">
+                        monetization_on
+                    </span>
+                </div>
+                <div class="card-dados">
+                    <div>Faturamento</div>
+                    <div>R$ 20.545,33</div>
+                </div>
+            </div>
+            <div class="card-main">
+                <div class="card-left">
+                    <span class="material-icons">
+                        local_atm
+                    </span>
+                </div>
+                <div class="card-dados">
+                    <div>Lucros</div>
+                    <div>R$ 99.999.999,99</div>
+                </div>
+            </div>
+            <div class="card-main">
+                <div class="card-left">
+                    <span class="material-icons">
+                        local_mall
+                    </span>
+                </div>
+                <div class="card-dados">
+                    <div>Despesas</div>
+                    <div>R$ 545,33</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="graficos">
+            <div class="grafico-meio">
+                <canvas id="barra"></canvas>
+            </div>
+            <div class="grafico-meio">
+                <canvas id="pizza-despesa"></canvas>
+            </div>
+                               <!-- **********************************************
+            Gráfico misto***********************************-->
+            <div class="grafico-meio">
+                <canvas id="bar-line"></canvas>
+            </div>
+            <div class="grafico-baixo">
+
+                <canvas id="linha-diario" width="1000px" height="200px"></canvas>
+
+            </div>
+        </div>
+    </div>
+  
+</section>

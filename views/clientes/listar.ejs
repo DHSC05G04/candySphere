@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('../partials/head') %>
+
+<body>
+
+    <%- include('../partials/header') %>
+
+    <main id="clientes">
+
+        <section id="tabela-corpo">
+
+
+            <table id="tabela-cliente">
+                <thead>
+                    <tr>
+
+                        <th>Nome</th>
+                        <th class="email-head">Email</th>
+                        <th>Celular</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% clientes.forEach(elemento => {%>
+
+
+                    <tr>
+                        <td class="nome-campo"><a href=""><%= elemento.nome%> </a></td>
+                        <td class="email-campo"><a href=""><%= elemento.email%></a></td>
+                        <td><a href=""><%= elemento.celular%></a</td> <td>
+                                <a class="btn-acao" href=""><span class="material-icons">
+                                        edit
+                                    </span></a>
+                                <a class="btn-acao" href=""><span class="material-icons">
+                                        delete
+                                    </span></a>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <div class="add-cliente"> <a  id="btn-add" href="#"><span
+                        class="material-icons">add_circle</span></a></div>
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>
+    <div id="modal-cliente" class="modal-container">
+        <div id="conteudo-modal">
+                <form id="form-cliente" action="">
+                <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
+                <h1>Cadastro de cliente</h1>
+                <div id="label-cliente"><label for="nome-cliente">Nome</label></div>
+                <input type="text" id="nome-cliente" class="input-cadastro" name="nome-cliente"
+                    placeholder="Digite o nome do cliente">
+                <div id="label-cliente"><label for="nome-cliente">Email</label></div>
+                <input type="text" id="nome-cliente" class="input-cadastro" name="email-cliente"
+                    placeholder="Digite o Email">
+                <div id="label-cliente"><label for="nome-cliente">Telefone</label></div>
+                <input type="text" id="nome-cliente" class="input-cadastro" name="tel-cliente"
+                    placeholder="Digite o telefone">
+                <div id="label-cliente"><label for="nome-cliente">Endereço</label></div>
+                <input type="text" id="nome-cliente" class="input-cadastro" name="end-cliente"
+                    placeholder="Digite  Endereço">
+                <input type="submit" class="btn-cliente" value="Salvar">
+            </form>
+        </div>
+    </div>
+    <%- include('../partials/scripts') %>
+
+<script>
+    function iniciaModal(modalId){
+        const modal = document.getElementById(modalId);
+        modal.classList.add('mostrar');
+        modal.addEventListener('click',(e)=>{
+           if(e.target.id =='fechar-tudo'){
+            modal.classList.remove('mostrar');
+           }
+        });
+    }
+    const btnClienteAdd = document.querySelector('.add-cliente');
+    btnClienteAdd.addEventListener('click',()=>{
+        iniciaModal('modal-cliente');
+       
+    });
+    
+</script>
+</body>
+
+</html>
