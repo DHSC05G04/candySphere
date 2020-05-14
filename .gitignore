@@ -104,6 +104,6 @@ dist
 .tern-port
 
 ## By LLS
-**/configs/.dbPass
-**/*.code-workspace
 
+**/*.code-workspace
+configs/.dbPass
