@@ -107,3 +107,4 @@ dist
 
 **/*.code-workspace
 configs/.dbPass
+**/configs/.dbPass
