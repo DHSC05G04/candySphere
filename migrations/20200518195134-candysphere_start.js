@@ -2,15 +2,53 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createDatabase('candySphere');
+    //await queryInterface.createDatabase('candySphere');
 
     /* Incluir tabela status */
 
     /* Incluir tabela formas_pagamento */
 
     /* Incluir tabela tipos_itens */
+    await queryInterface.createTable('tipos_itens', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER.UNSIGNED
+      },
+      tipo: {
+        type: Sequelize.STRING
+      },
+      data_criacao: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      data_modificacao: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
 
     /* Incluir tabela unidades */
+    await queryInterface.createTable('unidades', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER.UNSIGNED
+      },
+      unidade: {
+        type: Sequelize.STRING
+      },
+      data_criacao: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      data_modificacao: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
 
     /* Incluir tabela unidades_por_tipo */
 
