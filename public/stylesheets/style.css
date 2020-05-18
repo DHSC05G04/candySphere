@@ -855,6 +855,8 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo{
 #conteudo-modal {
     width: 60%;
    text-align: end;
+   display: flex;
+    justify-content: center;
   
 }
 @keyframes conteudo-modal{
