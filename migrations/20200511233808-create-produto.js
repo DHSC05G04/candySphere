@@ -6,31 +6,30 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED
       },
       estoque_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: 'estocaveis',
+          key: 'id'
+        }
       },
       receita_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: 'estocaveis',
+          key: 'id'
+        }
       },
       valor: {
         type: Sequelize.DECIMAL
       },
       data_criacao: {
-        type: Sequelize.DATE
-      },
-      data_modificacao: {
-        type: Sequelize.DATE
-      },
-      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      data_modificacao: {
         allowNull: false,
         type: Sequelize.DATE
       }

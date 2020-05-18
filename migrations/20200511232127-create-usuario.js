@@ -6,10 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED
       },
       nome_usuario: {
         type: Sequelize.STRING
@@ -21,19 +18,17 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       funcionario_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: 'funcionarios',
+          key: 'id'
+        }
       },
       data_criacao: {
-        type: Sequelize.DATE
-      },
-      data_modificacao: {
-        type: Sequelize.DATE
-      },
-      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      data_modificacao: {
         allowNull: false,
         type: Sequelize.DATE
       }
