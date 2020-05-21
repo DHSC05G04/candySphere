@@ -103,12 +103,8 @@ dist
 # TernJS port file
 .tern-port
 
-<<<<<<< HEAD
-.dbPass
-=======
 ## By LLS
 
 **/*.code-workspace
 configs/.dbPass
 **/configs/.dbPass
->>>>>>> d0bb81ada8928e3fddff5ad9d776b648b3c86a4f
