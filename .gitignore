@@ -106,5 +106,6 @@ dist
 ## By LLS
 
 **/*.code-workspace
-configs/.dbPass
+configs/.dbPass*
 **/configs/.dbPass
+.dbPass
