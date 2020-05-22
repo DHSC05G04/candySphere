@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
    return queryInterface.createTable(
-     'users',{
+     'pedidos',{
        id: {
           type: Sequelize.INTEGER,
           allowNull: false,
@@ -31,7 +31,7 @@ module.exports = {
         status_id: {
           type: Sequelize.INTEGER,
           references: {
-            model: 'Status',
+            model: 'status',
             key: 'id'
           },
         },

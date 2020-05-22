@@ -15,6 +15,12 @@ module.exports = (sequelize, DataTypes) => {
   });
   Status.associate = function(models) {
     // associations can be defined here
+    Status.hasMany(
+      models.Pedidos,{
+        foreignKey:'status_id',
+        as: 'pedidos'
+      }
+    )
   };
   return Status;
 };
