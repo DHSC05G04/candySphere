@@ -10,7 +10,7 @@ module.exports = {
       },
       firstName: {
         type: Sequelize.STRING
-      },
+      },ac
       lastName: {
         type: Sequelize.STRING
       },
