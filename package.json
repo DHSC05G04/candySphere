@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    // "prestart": "npx sequelize-cli db:migrate"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
