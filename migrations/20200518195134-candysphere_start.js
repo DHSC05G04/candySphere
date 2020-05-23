@@ -22,7 +22,7 @@ module.exports = {
       });
 
     /* Incluir tabela formas_pagamento */
-    queryInterface.createTable(
+    await queryInterface.createTable(
       'formas_pagamento',{
         id: {
           type: Sequelize.INTEGER,
