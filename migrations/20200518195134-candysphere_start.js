@@ -56,7 +56,8 @@ module.exports = {
         deleted_at: {
           type:Sequelize.DATE,
           allowNull: true
-        },
+        }
+      })
 
 /* Incluir tabela tipos_itens */
     await queryInterface.createTable(
