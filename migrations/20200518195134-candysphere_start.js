@@ -19,12 +19,16 @@ module.exports = {
       tipo: {
         type: Sequelize.STRING
       },
-      data_criacao: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      data_modificacao: {
+      updated_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
@@ -40,12 +44,16 @@ module.exports = {
       unidade: {
         type: Sequelize.STRING
       },
-      data_criacao: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      data_modificacao: {
+      updated_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
@@ -74,12 +82,16 @@ module.exports = {
       telefone: {
         type: Sequelize.STRING
       },
-      data_criacao: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      data_modificacao: {
+      updated_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
@@ -109,12 +121,16 @@ module.exports = {
       salario: {
         type: Sequelize.DECIMAL
       },
-      data_criacao: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      data_modificacao: {
+      updated_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
@@ -142,12 +158,16 @@ module.exports = {
           key: 'id'
         }
       },
-      data_criacao: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      data_modificacao: {
+      updated_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
@@ -188,12 +208,16 @@ module.exports = {
       vendavel: {
         type: Sequelize.BOOLEAN
       },
-      data_criacao: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      data_modificacao: {
+      updated_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
@@ -220,12 +244,16 @@ module.exports = {
       foto: {
         type: Sequelize.STRING
       },
-      data_criacao: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      data_modificacao: {
+      updated_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
@@ -261,12 +289,16 @@ module.exports = {
           key: 'id'
         }
       },
-      data_criacao: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      data_modificacao: {
+      updated_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
@@ -288,12 +320,16 @@ module.exports = {
           key: 'id'
         }
       },
-      data_criacao: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      data_modificacao: {
+      updated_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
@@ -322,12 +358,16 @@ module.exports = {
       valor: {
         type: Sequelize.DECIMAL
       },
-      data_criacao: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      data_modificacao: {
+      updated_at: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
