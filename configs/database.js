@@ -7,7 +7,7 @@ const config = {
     dialect: 'mysql',
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    timestamps: false
+    timestamps: true
 }
 
 module.exports = config;

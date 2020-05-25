@@ -1,14 +1,28 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const receita = sequelize.define('receita', {
-    id: DataTypes.INTEGER,
-    nome: DataTypes.STRING,
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      primaryKey: true,
+      allowNull: false,
+      autoIncrement: true
+    },
+    nome: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     descricao: DataTypes.STRING,
     tempo_preparo: DataTypes.INTEGER,
     rendimento: DataTypes.INTEGER,
     foto: DataTypes.STRING,
-    data_criacao: DataTypes.DATE,
-    data_modificacao: DataTypes.DATE
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    updated_at: {
+      type: DataTypes.DATE,
+      allowNull: false
+    }
   }, {});
   receita.associate = function(models) {
     // associations can be defined here
