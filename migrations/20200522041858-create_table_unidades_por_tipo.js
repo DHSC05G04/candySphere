@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.createTable(
-        'tipos_itens_has_unidades', {
+        'unidades_por_tipo', {
           id: {
             type: Sequelize.INTEGER,
             allowNull: false,

@@ -122,6 +122,33 @@ module.exports = {
         });
 
     /* Incluir tabela unidades_por_tipo */
+    await queryInterface.createTable(
+      'unidades_por_tipo', {
+        id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          unique: true,
+        },
+        tipos_itens_id:{
+          type:Sequelize.INTEGER,
+          alowNull: false,
+          references: {
+            model: 'Tipos_itens',
+            key: 'id'
+          },
+        },
+        unidades_id:{
+          type:Sequelize.INTEGER,
+          alowNull: false,
+          references: {
+            model: 'Unidades',
+            key: 'id'
+          },
+        }
+        });
+
 
     await queryInterface.createTable('clientes', {
       id: {
