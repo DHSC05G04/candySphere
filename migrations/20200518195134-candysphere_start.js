@@ -5,60 +5,147 @@ module.exports = {
     //await queryInterface.createDatabase('candySphere');
 
     /* Incluir tabela status */
+    await queryInterface.createTable(
+      'status',{
+        id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          unique: true,
+        },
+        descricao: {
+          type: Sequelize.STRING,
+          unique:true,
+          allowNull: false,
+        }
+      });
 
     /* Incluir tabela formas_pagamento */
+    await queryInterface.createTable(
+      'formas_pagamento',{
+        id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          unique: true,
+        },
+        descricao: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        taxa: {
+          type: Sequelize.DECIMAL,
+          allowNull: false,
+          default: 0.00
+        },
+        ativo: {
+          type: Sequelize.BOOLEAN,
+          default: true,
+        },
+        created_at: {
+          type:Sequelize.DATE,
+          default: new Date(),
+        },
+        updated_at: {
+          type:Sequelize.DATE,
+          default: new Date(),
+        },
+        // Paranoid Mode
+        deleted_at: {
+          type:Sequelize.DATE,
+          allowNull: true
+        },
 
-    /* Incluir tabela tipos_itens */
-    await queryInterface.createTable('tipos_itens', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER.UNSIGNED
-      },
-      tipo: {
-        type: Sequelize.STRING
-      },
-      created_at: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updated_at: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      deleted_at: {
-        allowNull: true,
-        type: Sequelize.DATE
-      }
-    });
+/* Incluir tabela tipos_itens */
+    await queryInterface.createTable(
+      'tipos_itens', {
+        id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          unique: true,
+        },
+        tipo: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        created_at: {
+          type:Sequelize.DATE,
+          default: new Date(),
+        },
+        updated_at: {
+          type:Sequelize.DATE,
+          default: new Date(),
+        },
+        // Paranoid Mode
+        deleted_at: {
+          type:Sequelize.DATE,
+          allowNull: true
+        },
+
+      });
 
     /* Incluir tabela unidades */
-    await queryInterface.createTable('unidades', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER.UNSIGNED
-      },
-      unidade: {
-        type: Sequelize.STRING
-      },
-      created_at: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updated_at: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      deleted_at: {
-        allowNull: true,
-        type: Sequelize.DATE
-      }
-    });
+    await queryInterface.createTable(
+      'unidades', {
+        id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          unique: true,
+        },
+        unidade: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        created_at: {
+          type:Sequelize.DATE,
+          default: new Date(),
+        },
+        updated_at: {
+          type:Sequelize.DATE,
+          default: new Date(),
+        },
+        // Paranoid Mode
+        deleted_at: {
+          type:Sequelize.DATE,
+          allowNull: true
+        },
+
+        });
 
     /* Incluir tabela unidades_por_tipo */
+    await queryInterface.createTable(
+      'unidades_por_tipo', {
+        id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          unique: true,
+        },
+        tipos_itens_id:{
+          type:Sequelize.INTEGER,
+          alowNull: false,
+          references: {
+            model: 'Tipos_itens',
+            key: 'id'
+          },
+        },
+        unidades_id:{
+          type:Sequelize.INTEGER,
+          alowNull: false,
+          references: {
+            model: 'Unidades',
+            key: 'id'
+          },
+        }
+        });
+
 
     await queryInterface.createTable('clientes', {
       id: {

@@ -9,8 +9,8 @@ module.exports = {
           primaryKey: true,
           autoIncrement: true,
         },
-        hora_abertura: Sequelize.DATETIME,
-        hora_fechamento: Sequelize.DATETIME,
+        hora_abertura: Sequelize.DATE,
+        hora_fechamento: Sequelize.DATE,
         terminal_id:{
           type:Sequelize.INTEGER,
           allowNull: false,
@@ -31,8 +31,8 @@ module.exports = {
             key:'id'
           }
         },
-        create_at: Sequelize.DATETIME,
-        update_at: Sequelize.DATETIME,
+        create_at: Sequelize.DATE,
+        update_at: Sequelize.DATE,
 
       });
 
