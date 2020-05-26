@@ -8,7 +8,7 @@ module.exports = {
     await queryInterface.createTable(
       'status',{
         id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
@@ -21,11 +21,13 @@ module.exports = {
         }
       });
 
+      console.log('Status OK')
+
     /* Incluir tabela formas_pagamento */
     await queryInterface.createTable(
       'formas_pagamento',{
         id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
@@ -59,11 +61,13 @@ module.exports = {
         }
       })
 
+      console.log('Formas de PGTO OK')
+
 /* Incluir tabela tipos_itens */
     await queryInterface.createTable(
       'tipos_itens', {
         id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
@@ -89,11 +93,13 @@ module.exports = {
 
       });
 
+      console.log('Tipos de itens OK')
+
     /* Incluir tabela unidades */
     await queryInterface.createTable(
       'unidades', {
         id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
@@ -119,18 +125,20 @@ module.exports = {
 
         });
 
+        console.log('Unidades OK')
+
     /* Incluir tabela unidades_por_tipo */
     await queryInterface.createTable(
       'unidades_por_tipo', {
         id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
           unique: true,
         },
         tipos_itens_id:{
-          type:Sequelize.INTEGER,
+          type:Sequelize.INTEGER.UNSIGNED,
           alowNull: false,
           references: {
             model: 'Tipos_itens',
@@ -138,7 +146,7 @@ module.exports = {
           },
         },
         unidades_id:{
-          type:Sequelize.INTEGER,
+          type:Sequelize.INTEGER.UNSIGNED,
           alowNull: false,
           references: {
             model: 'Unidades',
@@ -146,6 +154,8 @@ module.exports = {
           },
         }
         });
+
+        console.log('Unidades por tipo OK')
 
 
     await queryInterface.createTable('clientes', {
@@ -183,6 +193,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    console.log('Clientes OK')
 
     await queryInterface.createTable('funcionarios', {
       id: {
@@ -223,6 +235,8 @@ module.exports = {
       }
     });
 
+    console.log('Funcionários OK')
+
     await queryInterface.createTable('usuarios', {
       id: {
         allowNull: false,
@@ -259,6 +273,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    console.log('Usuários OK')
 
     await queryInterface.createTable('estocaveis', {
       id: {
@@ -310,6 +326,8 @@ module.exports = {
       }
     });
 
+    console.log('Estocáveis OK')
+
     await queryInterface.createTable('receitas', {
       id: {
         allowNull: false,
@@ -345,6 +363,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    console.log('Receitas OK')
 
     await queryInterface.createTable('ingredientes', {
       id: {
@@ -391,6 +411,8 @@ module.exports = {
       }
     });
 
+    console.log('Ingredientes OK')
+
     await queryInterface.createTable('instrucoes_preparos', {
       id: {
         allowNull: false,
@@ -421,6 +443,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    console.log('Instruções de preparo OK')
 
     await queryInterface.createTable('produtos', {
       id: {
@@ -459,6 +483,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    console.log('Produtos OK')
     
     /* Incluir tabela Terminais */
     await queryInterface.createTable('terminais', {
@@ -469,16 +495,6 @@ module.exports = {
       },
       descricao: Sequelize.STRING,
 
-      pedido_id: {
-        type: Sequelize.INTEGER.UNSIGNED,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: 'pedidos'
-          },
-          key: 'id'
-        }
-      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -492,6 +508,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    console.log('Terminais OK')
 
     /* Incluir tabela Caixa */
     await queryInterface.createTable('caixas', { 
@@ -535,6 +553,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    console.log('Caixas OK')
 
     /* Incluir tabela Pedidos */
     await queryInterface.createTable('pedidos', { 
@@ -594,6 +614,8 @@ module.exports = {
       }
     });
 
+    console.log('Pedidos OK')
+
     /* Incluir tabela Comandas */
     await queryInterface.createTable('comandas', { 
       id:{
@@ -637,6 +659,8 @@ module.exports = {
       }
     });
 
+    console.log('Comandas OK')
+
     /* Incluir tabela Recebimentos */
     await queryInterface.createTable('recebimentos', {
       id:{
@@ -645,7 +669,7 @@ module.exports = {
         autoIncrement: true,
       },
       valor: Sequelize.DECIMAL,
-      aprovado: Sequelize.BINARY,
+      aprovado: Sequelize.BOOLEAN,
       
       pedido_id:{
         type:Sequelize.INTEGER.UNSIGNED,
@@ -672,7 +696,7 @@ module.exports = {
         allowNull: false,
         references:{
           model:{
-            tableName:'forma_pagamentos'
+            tableName:'formas_pagamento'
           },
           key:'id'
         }
@@ -692,6 +716,8 @@ module.exports = {
 
     });
 
+    console.log('Recebimentos OK')
+
     /* Incluir tabela Contas */
     await queryInterface.createTable('contas', {
       id: {
@@ -700,7 +726,7 @@ module.exports = {
         autoIncrement: true,
       },
       valor: Sequelize.DECIMAL,
-      aprovado: Sequelize.BINARY,
+      aprovado: Sequelize.BOOLEAN,
       usuarios_id: {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
@@ -724,6 +750,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    console.log('Contas OK')
 
     /* Incluir tabela Pagamentos */
     queryInterface.createTable('pagamentos', { 
@@ -761,7 +789,7 @@ module.exports = {
         allowNull: false,
         references:{
           model:{
-            tableName:'formas_pagamentos'
+            tableName:'formas_pagamento'
           },
           key:'id'
         }
@@ -779,6 +807,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    console.log('Pagamentos OK')
 
     /* Incluir tabela conta_movimento */
     await queryInterface.createTable('conta_movimentos', { 
@@ -824,6 +854,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    console.log('Conta Movimento OK')
 
     return console.log('Banco de dados CandySphere criado corretamente!')
 
