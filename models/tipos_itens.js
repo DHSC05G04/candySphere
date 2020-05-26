@@ -31,5 +31,5 @@ module.exports = (sequelize, DataTypes) => {
     )
     
   };
-  return Status;
+  return Tipos_itens;
 };
