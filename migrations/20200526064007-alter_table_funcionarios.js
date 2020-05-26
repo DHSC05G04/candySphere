@@ -8,7 +8,7 @@ module.exports = {
       'salario',
       {
         type: Sequelize.DECIMAL(11,2),
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0.0
       }
     )
