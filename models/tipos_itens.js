@@ -21,15 +21,15 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     tableName: "tipos_itens"
   });
-  Tipos_itens.associate = function(models) {
-    // associations can be defined here
-    Tipos_itens.hasMany(
-      models.Unidades,{
-        foreignKey:'id',
-        as: 'unidades'
-      }
-    )
+  // Tipos_itens.associate = function(models) {
+  //   // associations can be defined here
+  //   Tipos_itens.hasMany(
+  //     models.Unidades,{
+  //       foreignKey:'id',
+  //       as: 'unidades'
+  //     }
+  //   )
     
-  };
+  // };
   return Tipos_itens;
 };
