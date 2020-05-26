@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const usuario = sequelize.define('usuario', {
+  const Usuario = sequelize.define('Usuario', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     acesso: DataTypes.INTEGER,
-    funcionario_id: DataTypes.INTEGER.UNSIGNED,
+    funcionario_id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false,
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -31,10 +34,25 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: true,
       field: 'deleted_at'      
-    }
-  }, {});
-  usuario.associate = function(models) {
-    // associations can be defined here
+    },
+  }, {
+    paranoid: true,
+
+  });
+  Usuario.associate = function(models) {
+    // Relacao 1:1 com tbl Usuario. Um usuario precisa ser funcionario
+    Usuario.hasOne(
+      models.Funcionario,{
+        foreignKey:'funcionario_id',
+        as: 'funcionario'
+      })
+
+      // Usuario.hasMany(
+      //   models.Caixa,{
+      //     foreignKey: 'usuario_id',
+      //     as: 'caixa'
+      // })
+
   };
-  return usuario;
+  return Usuario;
 };

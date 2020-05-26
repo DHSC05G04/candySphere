@@ -141,7 +141,7 @@ module.exports = {
           type:Sequelize.INTEGER.UNSIGNED,
           alowNull: false,
           references: {
-            model: 'Tipos_itens',
+            model: 'tipos_itens',
             key: 'id'
           },
         },
@@ -149,7 +149,7 @@ module.exports = {
           type:Sequelize.INTEGER.UNSIGNED,
           alowNull: false,
           references: {
-            model: 'Unidades',
+            model: 'unidades',
             key: 'id'
           },
         }

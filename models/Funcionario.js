@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const funcionario = sequelize.define('funcionario', {
+  const Funcionario = sequelize.define('Funcionario', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
@@ -35,8 +35,15 @@ module.exports = (sequelize, DataTypes) => {
       field: 'deleted_at'      
     }
   }, {});
-  funcionario.associate = function(models) {
-    // associations can be defined here
+
+  Funcionario.associate = function(models) {
+    // Relacao 1:1 com tbl Usuario. Um usuario precisa ser funcionario
+    Funcionario.belongsTo(models.Usuario {
+      foreignKey: 'funcionario_id',
+      as: 'usuario'
+    })
+  
   };
-  return funcionario;
+
+  return Funcionario;
 };
