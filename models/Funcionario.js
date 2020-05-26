@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     endereco: DataTypes.STRING,
     telefone: DataTypes.STRING,
     salario: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(11,2),
       allowNull: false
     },
     createdAt: {
