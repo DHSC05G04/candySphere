@@ -13,7 +13,7 @@ const authController = {
         } = req.body;
 
         const usuario = await Usuario.findOne({
-            nome_usuario
+            where: {nome_usuario}
         })
         const id = usuario.dataValues.id
         const login = usuario.dataValues.nome_usuario
