@@ -11,6 +11,7 @@ var financeiroRouter = require('./routes/financeiroRoute');
 var clientesRouter = require('./routes/clientesRoute');
 var funcionariosRouter = require('./routes/funcionariosRoute');
 var pdvRouter = require('./routes/pdvRoute');
+const usuariosRoute = require('./routes/usuariosRoute');
 
 var app = express();
 
@@ -23,7 +24,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', indexRouter);
 app.use('/home', homeRouter);
 app.use('/admin', adminRouter);
@@ -31,7 +31,7 @@ app.use('/financeiro', financeiroRouter);
 app.use('/clientes', clientesRouter);
 app.use('/funcionarios', funcionariosRouter);
 app.use('/pdv', pdvRouter);
-
+app.use('/usuarios',usuariosRoute)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
