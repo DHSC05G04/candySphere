@@ -1,4 +1,4 @@
-const Sequelize = require("sequelize");
+const {Usuario} = require('../models')
 const config = require("../configs/database");
 const bcrypt = require("bcrypt");
 
@@ -8,8 +8,15 @@ const usuarioControllers = {
         
     },
     store: async(req,res)=>{
-        
-        res.send("deu certo")
+        const hashSenha = bcrypt.hashSync('123',10);
+        const usuario = {
+            nome_usuario: "asovitorio",
+            senha:hashSenha,
+            acesso: 1,
+            funcionario_id:1
+        }
+       
+      
     },
 }
 
