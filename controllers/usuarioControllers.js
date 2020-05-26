@@ -14,7 +14,7 @@ const usuarioControllers = {
 }
 
 
-
+module.exports = usuarioControllers
 
 
 
