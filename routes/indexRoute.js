@@ -18,5 +18,17 @@ router.post('/', function(req, res) {
 });
 
 router.post("/logar",authControllers.store)
+router.get("/logout",(req,res) => {
+
+  req.session.user = {
+    id: "",
+    login: "",
+    acesso:'',
+}
+console.log(req.session.user)
+res.redirect('/')
+
+
+})
 
 module.exports = router;

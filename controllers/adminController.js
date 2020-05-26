@@ -9,7 +9,7 @@ const adminController = {
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
-        res.render('admin/admin', { title: 'Express', tabs: tabActive });
+        res.render('admin/admin', { title: 'Express', tabs: tabActive,usuario:req.session.user });
     },
     indexProdutos: (req, res, next) => {
         let tabActive = {homeAct: "inactive",
@@ -23,7 +23,7 @@ const adminController = {
                         fs.readFileSync(
                         path.join('database', 'produtos.json')));
 
-        res.render('admin/produtos', { title: 'Express', tabs: tabActive , produtos});
+        res.render('admin/produtos', { title: 'Express', tabs: tabActive , produtos,usuario:req.session.user});
     },
     indexEstoque: (req, res, next) => {
         let tabActive = {homeAct: "inactive",
@@ -37,7 +37,7 @@ const adminController = {
         fs.readFileSync(
         path.join('database', 'estoque.json')));
 
-        res.render('admin/estoque', { title: 'Express', tabs: tabActive, estoque });
+        res.render('admin/estoque', { title: 'Express', tabs: tabActive, estoque,usuario:req.session.user });
     },
     indexReceitas: (req, res, next) => {
         let tabActive = {homeAct: "inactive",
@@ -51,7 +51,7 @@ const adminController = {
                         fs.readFileSync(
                         path.join('database', 'receitas.json')));
 
-        res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas });
+        res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas,usuario:req.session.user });
     }
 };
 
