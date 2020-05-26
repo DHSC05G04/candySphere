@@ -34,7 +34,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       field: 'deleted_at'      
     }
-  }, {});
+  }, {
+    tableName: 'funcionarios',
+    paranoid: true,
+  });
 
   Funcionario.associate = function(models) {
     // Relacao 1:1 com tbl Usuario. Um usuario precisa ser funcionario
