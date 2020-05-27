@@ -6,11 +6,25 @@
     <body id="loginBody">
 
     <main class="form-container">
-        <form action="/logar" method="POST">
+        <form action="/logar" method="POST" id="form-login">
             <img class="logo" src="images/logo.png" alt="">
-            <h2>Login</h2>
-            <label for="email">Login: <input type="text" id="email" name="nome_usuario" height="40px"></label>
-            <label for="password">Senha: <input type="password" id="password" name="senha" height="40px"></label>
+            <div id="infUser"><h2>Login</h2></div>
+            <label for="email">Login:</label>
+                <input
+                    type="text" 
+                    id="email" 
+                    name="nome_usuario" 
+                    height="40px"
+                    placeholder="Digite seu nome de usuário"
+                >
+            
+            <label for="password">Senha:</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="senha"
+                    height="40px"
+                >
             <button type="submit">Entrar</button>
         </form>
     </main>
