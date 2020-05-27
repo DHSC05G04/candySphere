@@ -63,6 +63,26 @@ const authController = {
     },
 
 
+    
+    index: (req,res) => {
+        console.log('REQ.SESSION:'+req.session.user)
+        if (req.session.user === undefined ||   req.session==''){
+            console.log('Sessao nao iniciada')
+            let tabActive = {homeAct: "active",
+                  adminAct: "inactive",
+                  financeiroAct: "inactive",
+                  clientesAct: "inactive",
+                  funcionariosAct: "inactive",
+                  pdvAct: "inactive"};
+            res.render('index', { title: 'Express', tabs: tabActive });
+        } else {
+            console.log('Sessao OK')
+            console.log(req.session.user)
+            res.redirect('/home')
+        }
+    },
+
+
     store: async (req, res) => {
 
         const {
