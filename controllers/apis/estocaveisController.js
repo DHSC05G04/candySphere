@@ -13,7 +13,7 @@ const estocaveisController = {
 
     delete: (req, res) => {
 
-    }
+        }
 };
 
 module.exports = estocaveisController;
