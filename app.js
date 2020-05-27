@@ -1,20 +1,29 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
 const logger = require("morgan");
 const session = require("express-session");
 
-var indexRouter = require('./routes/indexRoute');
-var homeRouter = require('./routes/homeRoute');
-var adminRouter = require('./routes/adminRoute');
-var financeiroRouter = require('./routes/financeiroRoute');
-var clientesRouter = require('./routes/clientesRoute');
-var funcionariosRouter = require('./routes/funcionariosRoute');
-var pdvRouter = require('./routes/pdvRoute');
+//Front end routes
+const indexRouter = require('./routes/indexRoute');
+const homeRouter = require('./routes/homeRoute');
+const adminRouter = require('./routes/adminRoute');
+const financeiroRouter = require('./routes/financeiroRoute');
+const clientesRouter = require('./routes/clientesRoute');
+const funcionariosRouter = require('./routes/funcionariosRoute');
+const pdvRouter = require('./routes/pdvRoute');
 const usuariosRoute = require('./routes/usuariosRoute');
 
-var app = express();
+//API routes
+const estocaveisAPIRouter = require('./routes/apis/estocaveisRoute');
+const receitasAPIRouter = require('./routes/apis/receitasRoute');
+const produtosAPIRouter = require('./routes/apis/produtosRoute');
+const pedidosAPIRouter = require('./routes/apis/pedidosRoute');
+const funcionariosAPIRouter = require('./routes/apis/funcionariosRoute');
+const usuariosAPIRouter = require('./routes/apis/usuariosRoute');
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,7 +48,16 @@ app.use('/financeiro', financeiroRouter);
 app.use('/clientes', clientesRouter);
 app.use('/funcionarios', funcionariosRouter);
 app.use('/pdv', pdvRouter);
-app.use('/usuarios',usuariosRoute)
+app.use('/usuarios',usuariosRoute);
+
+//API paths
+app.use('/api/v0/estocaveis', estocaveisAPIRouter);
+app.use('/api/v0/receitas', receitasAPIRouter);
+app.use('/api/v0/produtos', produtosAPIRouter);
+app.use('/api/v0/pedidos', pedidosAPIRouter);
+app.use('/api/v0/funcionarios', funcionariosAPIRouter);
+app.use('/api/v0/usuarios', usuariosAPIRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
