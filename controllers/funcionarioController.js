@@ -18,7 +18,8 @@ const funcionarioController = {
                 res.render('funcionarios', {
             title: 'Express',
             tabs: tabActive,
-            funcionarios: dataFuncionario
+            funcionarios: dataFuncionario,
+            usuario:req.session.user
         });
     }
 
