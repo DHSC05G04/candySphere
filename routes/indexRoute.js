@@ -17,6 +17,7 @@ router.post('/', function(req, res) {
   res.redirect('/home');
 });
 
+router.get("/logar",authControllers.index)
 router.post("/logar",authControllers.store)
 router.get("/logout",(req,res) => {
 
