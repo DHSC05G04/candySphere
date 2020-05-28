@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 
-const { TiposItens } = require('../../models');
+const { TiposItens, sequelize } = require('../../models');
 
 const tiposController = {
     index: async (req, res) => {
@@ -43,7 +43,25 @@ const tiposController = {
     },
 
     create: async (req, res) => {
+        const {tipo} = req.body;
 
+        try {
+            const result = await sequelize.transaction(async (t) => {
+                const [tipoCadastrado, created] = await TiposItens.findOrCreate({
+                    where: {
+                        tipo
+                    },
+                    transaction: t
+                });
+
+                return [tipoCadastrado, created];
+            });
+
+            return res.status(200).json(result);
+
+        } catch (error) {
+            return res.status(400).json(error);
+        };
     },
 
     update: async (req, res) => {
