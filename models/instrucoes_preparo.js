@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const instrucoes_preparo = sequelize.define('instrucoes_preparo', {
+  const InstrucoesPreparo = sequelize.define('instrucoes_preparo', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
@@ -27,9 +27,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       field: 'deleted_at'      
     }
-  }, {});
-  instrucoes_preparo.associate = function(models) {
+  }, {
+    timestamps: true,
+    paranoid: true
+  });
+  InstrucoesPreparo.associate = function(models) {
     // associations can be defined here
+    InstrucoesPreparo.belongsTo(models.Receita, {
+      foreignKey: 'receita_id'
+    })
   };
-  return instrucoes_preparo;
+  return InstrucoesPreparo;
 };

@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const ingrediente = sequelize.define('ingrediente', {
+  const Ingrediente = sequelize.define('ingrediente', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
@@ -26,9 +26,26 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       field: 'deleted_at'      
     }
-  }, {});
-  ingrediente.associate = function(models) {
-    // associations can be defined here
+  }, {
+    timestamps: true,
+    paranoid: true
+  });
+
+  Ingrediente.associate = function(models) {
+    // Define relacionamento 1:m com estocáveis
+    Ingrediente.belongsTo(models.Estocaveis, {
+      foreignKey: 'estoque_id'
+    })
+
+    // Define relacionamento 1:m com unidades
+    Ingrediente.belongsTo(models.Unidade, {
+      foreignKey: 'unidade_id'
+    })
+
+    // Define relacionamento 1:m com receitas
+    Ingrediente.belongsTo(models.Receita, {
+      foreignKey: 'receita_id'
+    })
   };
-  return ingrediente;
+  return Ingrediente;
 };
