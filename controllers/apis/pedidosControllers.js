@@ -1,15 +1,20 @@
-const {Pedidos} = require('../../models');
+const {
+    Usuario
+} = require('../../models');
 
 const pedidosController = {
     index: async (req, res) => {
+
         try {
-            
-            const pedido = await Pedidos.findAll();
-           
-            return res.res.status(200).json(pedido);
+            const user = await Usuario.findAll()
+            return res.status(200).json(user);
+
         } catch (error) {
-            return res.status(400).json(error)
+            return res.status(400).json(error);
         }
+
+
+
     },
     store: async (req, res) => {
         const {
@@ -52,9 +57,9 @@ const pedidosController = {
                 estoque_id,
                 receita_id,
                 valor,
-            },{
-                where:{
-                    id:id
+            }, {
+                where: {
+                    id: id
                 }
             });
             return res.status(200).json(pedido);
@@ -68,7 +73,7 @@ const pedidosController = {
         const id = req.body.id;
         try {
             const pedido = Pedidos.destroy({
-                where:{
+                where: {
                     id
                 }
             });
