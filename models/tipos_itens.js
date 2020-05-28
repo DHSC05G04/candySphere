@@ -46,10 +46,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     );
 
-    //Definindo relação 1:n entre tipos e estocaveis
-    // TiposItens.hasOne(models.Estocaveis,{
-    //   foreignKey: 'tipo_id'
-    // })
+    // Definindo relação 1:n entre tipos e estocaveis
+    TiposItens.hasOne(models.Estocaveis,{
+      foreignKey: 'tipo_id'
+    })
     
   };
   

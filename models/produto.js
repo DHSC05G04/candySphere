@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Produto = sequelize.define('produto', {
+  const Produto = sequelize.define('Produto', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
@@ -31,14 +31,14 @@ module.exports = (sequelize, DataTypes) => {
   });
   Produto.associate = function(models) {
     // associations can be defined here
-    // Produto.belongsTo(models.Receita, {
-    //   foreignKey: 'receita_id'
-    // })
+    Produto.belongsTo(models.Receita, {
+      foreignKey: 'receita_id'
+    })
 
     // associations can be defined here
-    // Produto.belongsTo(models.Estocaveis, {
-    //   foreignKey: 'estoque_id'
-    // })
+    Produto.belongsTo(models.Estocaveis, {
+      foreignKey: 'estoque_id'
+    })
   };
   return Produto;
 };
