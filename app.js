@@ -58,6 +58,7 @@ app.use('/api/v0/pedidos', pedidosAPIRouter);
 app.use('/api/v0/funcionarios', funcionariosAPIRouter);
 app.use('/api/v0/usuarios', usuariosAPIRouter);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

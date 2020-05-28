@@ -1,33 +1,40 @@
-const {
-    Produto
-} = require('../../models');
+const {Pedidos} = require('../../models');
 
-const produtoController = {
+const pedidosController = {
     index: async (req, res) => {
         try {
-                        
-            const produtos = await Produto.findAll({
-                include:"produto"
-            });
             
-            return res.send(produto);
+            const pedido = await Pedidos.findAll();
+           
+            return res.res.status(200).json(pedido);
         } catch (error) {
             return res.status(400).json(error)
         }
     },
     store: async (req, res) => {
         const {
-            estoque_id,
-            receita_id,
-            valor
+            entrada,
+            entrega,
+            total,
+            sinal,
+            obervacao,
+            status_id,
+            caixa_id,
+            cliente_id
+
         } = req.body
         try {
-            const produto = await Produto.create({
-                estoque_id,
-                receita_id,
-                valor,
+            const pedido = await Pedidos.create({
+                entrada,
+                entrega,
+                total,
+                sinal,
+                obervacao,
+                status_id,
+                caixa_id,
+                cliente_id
             });
-            return res.status(201).json(produto);
+            return res.status(201).json(pedido);
         } catch (error) {
             return res.status(400).json(error)
         }
@@ -41,7 +48,7 @@ const produtoController = {
             valor
         } = req.body
         try {
-            const produto = await Produto.update({
+            const pedido = await Pedidos.update({
                 estoque_id,
                 receita_id,
                 valor,
@@ -50,7 +57,7 @@ const produtoController = {
                     id:id
                 }
             });
-            return res.status(200).json(produto);
+            return res.status(200).json(pedido);
         } catch (error) {
             return res.status(400).json(error)
         }
@@ -60,16 +67,16 @@ const produtoController = {
     delete: (req, res) => {
         const id = req.body.id;
         try {
-            const produto = Produto.destroy({
+            const pedido = Pedidos.destroy({
                 where:{
                     id
                 }
             });
-            return res.status(200).json(produto);
+            return res.status(200).json(pedido);
         } catch (error) {
             return res.status(400).json(error)
         }
     }
 };
 
-module.exports = produtoController;
+module.exports = pedidosController;
