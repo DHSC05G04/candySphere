@@ -48,9 +48,9 @@ module.exports = (sequelize, DataTypes) => {
         );
 
         //Definindo relação 1:n entre unidades e ingredientes
-        Unidade.hasOne(models.Ingrediente, {
-            foreignKey: 'unidade_id'
-        });
+        // Unidade.hasOne(models.Ingrediente, {
+        //     foreignKey: 'unidade_id'
+        // });
         
     };
 

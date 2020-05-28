@@ -31,14 +31,14 @@ module.exports = (sequelize, DataTypes) => {
   });
   Produto.associate = function(models) {
     // associations can be defined here
-    Produto.belongsTo(models.Receita, {
-      foreignKey: 'receita_id'
-    })
+    // Produto.belongsTo(models.Receita, {
+    //   foreignKey: 'receita_id'
+    // })
 
     // associations can be defined here
-    Produto.belongsTo(models.Estocaveis, {
-      foreignKey: 'estoque_id'
-    })
+    // Produto.belongsTo(models.Estocaveis, {
+    //   foreignKey: 'estoque_id'
+    // })
   };
   return Produto;
 };
