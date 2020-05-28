@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Ingrediente.associate = function(models) {
     // Define relacionamento 1:m com estocáveis
+<<<<<<< HEAD
     // Ingrediente.belongsTo(models.Estocaveis, {
     //   foreignKey: 'estoque_id'
     // })
@@ -46,6 +47,21 @@ module.exports = (sequelize, DataTypes) => {
     // Ingrediente.belongsTo(models.Receita, {
     //   foreignKey: 'receita_id'
     // })
+=======
+    Ingrediente.belongsTo(models.Estocaveis, {
+      foreignKey: 'estoque_id'
+    })
+
+    // Define relacionamento 1:m com unidades
+    Ingrediente.belongsTo(models.Unidade, {
+      foreignKey: 'unidade_id'
+    })
+
+    // Define relacionamento 1:m com receitas
+    Ingrediente.belongsTo(models.Receita, {
+      foreignKey: 'receita_id'
+    })
+>>>>>>> e1206d577bf91552cbb1209310959eadeac0257c
   };
   return Ingrediente;
 };

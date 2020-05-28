@@ -51,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
         // Unidade.hasOne(models.Ingrediente, {
         //     foreignKey: 'unidade_id'
         // });
+
         
     };
 
