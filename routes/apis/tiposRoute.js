@@ -7,5 +7,7 @@ const router = express.Router();
 router.post('/', tiposController.create);
 router.get('/', tiposController.index);
 router.get('/:id', tiposController.index);
+router.put('/', tiposController.update);
+router.put('/:id', tiposController.update);
 
 module.exports = router;

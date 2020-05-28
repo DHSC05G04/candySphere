@@ -65,7 +65,41 @@ const tiposController = {
     },
 
     update: async (req, res) => {
+        let id
+        let tipo
 
+        if(Object.keys(req.params).length === 0) {
+            //Permite alterações enviando todas informações pelo body
+            id = req.body.id;
+            tipo = req.body.tipo;
+        } else if(Object.keys(req.query).length === 0) {
+            //Permite alterações enviando id pelo endpoint e informações pelo body [/tipos/:id]
+            id = req.params.id;
+            tipo = req.body.tipo;
+        } else {
+            //Permite alterações enviando id pelo endpoint e informações por query [/tipos/:id?tipo=valorAtualizado]
+            id = req.params.id;
+            tipo = req.query.tipo;
+        }
+
+        try {
+            await sequelize.transaction(async (t) => {
+                await TiposItens.update({tipo: tipo}, {
+                    where: {
+                        id
+                    },
+                    transaction: t
+                });
+
+                return
+            })
+
+            const result = await TiposItens.findByPk(id);
+
+            return res.status(200).json(result);
+        } catch (error) {
+            return res.status(400).json(error);
+        };
     },
 
     delete: async (req, res) => {
