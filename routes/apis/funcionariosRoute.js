@@ -1,9 +1,9 @@
 const express = require('express');
 
-//const funcionariosController = require('../../controllers/apis/funcionariosController');
+const funcionariosControllers = require('../../controllers/apis/funcionarioControllers');
 
 const router = express.Router();
 
-
+router.get('/',funcionariosControllers.index)
 
 module.exports = router;

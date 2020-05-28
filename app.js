@@ -18,10 +18,16 @@ const usuariosRoute = require('./routes/usuariosRoute');
 //API routes
 const estocaveisAPIRouter = require('./routes/apis/estocaveisRoute');
 const receitasAPIRouter = require('./routes/apis/receitasRoute');
-const produtosAPIRouter = require('./routes/apis/produtosRoute');
+const produtosAPIRouter = require('./routes/apis/produtosRouter');
 const pedidosAPIRouter = require('./routes/apis/pedidosRoute');
 const funcionariosAPIRouter = require('./routes/apis/funcionariosRoute');
 const usuariosAPIRouter = require('./routes/apis/usuariosRoute');
+const terminaisAPIRouter = require('./routes/apis/terminaisRoute');
+const caixasAPIRouter = require('./routes/apis/caixasRoute');
+const statusAPIRouter = require('./routes/apis/statusRoute');
+const formaDePagamentoAPIRouter = require('./routes/apis/formasDePagamentoRoute');
+const comandasdAPIRouter = require('./routes/apis/comandasRoute');
+const recebimentodAPIRouter = require('./routes/apis/recebimentosRoute');
 
 const app = express();
 
@@ -57,6 +63,13 @@ app.use('/api/v0/produtos', produtosAPIRouter);
 app.use('/api/v0/pedidos', pedidosAPIRouter);
 app.use('/api/v0/funcionarios', funcionariosAPIRouter);
 app.use('/api/v0/usuarios', usuariosAPIRouter);
+app.use('/api/v0/terminais', terminaisAPIRouter);
+app.use('/api/v0/caixas', caixasAPIRouter);
+app.use('/api/v0/status', statusAPIRouter);
+app.use('/api/v0/forma-de-pagamento', formaDePagamentoAPIRouter);
+app.use('/api/v0/comandas', comandasdAPIRouter);
+app.use('/api/v0/recebimentos', recebimentodAPIRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
