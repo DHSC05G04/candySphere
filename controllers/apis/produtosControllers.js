@@ -11,11 +11,14 @@ const produtoController = {
             });
             
             return res.send(produto);
+            const produtos = await Produto.findAll();
+            return res.status(200).json(produtos);
         } catch (error) {
             return res.status(400).json(error)
         }
     },
-    store: async (req, res) => {
+   
+    store: (req, res) => {
         const {
             estoque_id,
             receita_id,
@@ -70,6 +73,7 @@ const produtoController = {
             return res.status(400).json(error)
         }
     }
-};
+}
 
 module.exports = produtoController;
+module.exports = estocaveisController;
