@@ -9,5 +9,7 @@ router.get('/', tiposController.index);
 router.get('/:id', tiposController.index);
 router.put('/', tiposController.update);
 router.put('/:id', tiposController.update);
+router.delete('/', tiposController.delete);
+router.delete('/:id', tiposController.delete);
 
 module.exports = router;

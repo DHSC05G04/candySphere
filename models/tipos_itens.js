@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     timestamps: true,
+    paranoid: true,
     tableName: "tipos_itens"
   });
 

@@ -91,7 +91,7 @@ const tiposController = {
                     transaction: t
                 });
 
-                return
+                return;
             })
 
             const result = await TiposItens.findByPk(id);
@@ -103,7 +103,34 @@ const tiposController = {
     },
 
     delete: async (req, res) => {
+        let id
 
+        if(Object.keys(req.params).length === 0) {
+            //Permite deletar enviando id pelo body
+            id = req.body.id;
+        } else {
+            //Permite deletar enviando id pelo endpoint [/tipos/:id]
+            id = req.params.id;
+        }
+
+        try {
+            await sequelize.transaction(async (t) => {
+                await TiposItens.destroy({
+                    where: {
+                        id
+                    },
+                    transaction: t
+                });
+
+                return;
+            })
+
+            const result = await TiposItens.findByPk(id, {paranoid:false});
+
+            return res.status(200).json(result);
+        } catch (error) {
+            return res.status(400).json(error);
+        };
     }
 }
 
