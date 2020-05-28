@@ -45,7 +45,6 @@ module.exports = (sequelize, DataTypes) => {
   });
   Estocaveis.associate = function(models) {
     // Define relação 1:m com ingredientes
-<<<<<<< HEAD
     // Estocaveis.hasMany(models.Ingrediente, {
     //   foreign_key: 'estoque_id',
     // });
@@ -54,16 +53,6 @@ module.exports = (sequelize, DataTypes) => {
     // Estocaveis.hasMany(models.Produto, {
     //   foreignKey: 'estoque_id'
     // });
-=======
-    Estocaveis.hasMany(models.Ingrediente, {
-      foreign_key: 'estoque_id',
-    });
-
-    // Define relação 1:m com produtos
-    Estocaveis.hasMany(models.Produto, {
-      foreignKey: 'estoque_id'
-    });
->>>>>>> e1206d577bf91552cbb1209310959eadeac0257c
 
     // Define relação 1:1 com tipos
     Estocaveis.belongsTo(models.TiposItens,{

@@ -33,15 +33,9 @@ module.exports = (sequelize, DataTypes) => {
   });
   InstrucoesPreparo.associate = function(models) {
     // associations can be defined here
-<<<<<<< HEAD
     // InstrucoesPreparo.belongsTo(models.Receita, {
     //   foreignKey: 'receita_id'
     // })
-=======
-    InstrucoesPreparo.belongsTo(models.Receita, {
-      foreignKey: 'receita_id'
-    })
->>>>>>> e1206d577bf91552cbb1209310959eadeac0257c
   };
   return InstrucoesPreparo;
 };

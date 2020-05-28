@@ -41,25 +41,15 @@ module.exports = (sequelize, DataTypes) => {
     TiposItens.belongsToMany(
       models.Unidade,{
         through: 'unidades_por_tipos',
-<<<<<<< HEAD
-=======
-        as: 'tipo',
->>>>>>> e1206d577bf91552cbb1209310959eadeac0257c
         foreignKey:'tipo_id',        
         otherKey: 'unidade_id'
       }
     );
 
     //Definindo relação 1:n entre tipos e estocaveis
-<<<<<<< HEAD
     // TiposItens.hasOne(models.Estocaveis,{
     //   foreignKey: 'tipo_id'
     // })
-=======
-    TiposItens.hasOne(models.Estocaveis,{
-      foreignKey: 'tipo_id'
-    })
->>>>>>> e1206d577bf91552cbb1209310959eadeac0257c
     
   };
   
