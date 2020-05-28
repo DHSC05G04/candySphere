@@ -16,9 +16,10 @@ const pdvRouter = require('./routes/pdvRoute');
 const usuariosRoute = require('./routes/usuariosRoute');
 
 //API routes
+const tiposAPIRouter = require('./routes/apis/tiposRoute');
 const estocaveisAPIRouter = require('./routes/apis/estocaveisRoute');
 const receitasAPIRouter = require('./routes/apis/receitasRoute');
-const produtosAPIRouter = require('./routes/apis/produtosRouter');
+const produtosAPIRouter = require('./routes/apis/produtosRoute');
 const pedidosAPIRouter = require('./routes/apis/pedidosRoute');
 const funcionariosAPIRouter = require('./routes/apis/funcionariosRoute');
 const usuariosAPIRouter = require('./routes/apis/usuariosRoute');
@@ -57,6 +58,7 @@ app.use('/pdv', pdvRouter);
 app.use('/usuarios',usuariosRoute);
 
 //API paths
+app.use('/api/v0/tipos', tiposAPIRouter);
 app.use('/api/v0/estocaveis', estocaveisAPIRouter);
 app.use('/api/v0/receitas', receitasAPIRouter);
 app.use('/api/v0/produtos', produtosAPIRouter);

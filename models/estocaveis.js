@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const estocaveis = sequelize.define('estocaveis', {
+  const Estocaveis = sequelize.define('estocaveis', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
@@ -39,10 +39,30 @@ module.exports = (sequelize, DataTypes) => {
       field: 'deleted_at'      
     }
   }, {
+    timestamps: true,
+    paranoid: true,
     freezeTableName: true
   });
-  estocaveis.associate = function(models) {
-    // associations can be defined here
+  Estocaveis.associate = function(models) {
+    // Define relação 1:m com ingredientes
+    // Estocaveis.hasMany(models.Ingrediente, {
+    //   foreign_key: 'estoque_id',
+    // });
+
+    // Define relação 1:m com produtos
+    // Estocaveis.hasMany(models.Produto, {
+    //   foreignKey: 'estoque_id'
+    // });
+
+    // Define relação 1:1 com tipos
+    Estocaveis.belongsTo(models.TiposItens,{
+      foreignKey: 'tipo_id'
+    });
+
+    // Define relação 1:1 com unidades
+    Estocaveis.belongsTo(models.Unidade,{
+      foreignKey: 'unidade_id'
+    });
   };
-  return estocaveis;
+  return Estocaveis;
 };
