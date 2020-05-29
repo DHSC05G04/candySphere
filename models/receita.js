@@ -37,12 +37,14 @@ module.exports = (sequelize, DataTypes) => {
   Receita.associate = function(models) {
     // Define relação 1:m com ingredientes
     Receita.hasMany(models.Ingrediente, {
-      foreignKey: 'receita_id'
+      foreignKey: 'receita_id',
+      as: 'ingredientes'
     })
 
     // Define relação 1:m com instruções
     Receita.hasMany(models.InstrucoesPreparo, {
-      foreignKey: 'receita_id'
+      foreignKey: 'receita_id',
+      as: 'instrucoes'
     })
 
     // Define relação 1:m com produtos
