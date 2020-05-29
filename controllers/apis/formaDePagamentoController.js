@@ -1,8 +1,23 @@
+const {FormasDePagamento} = require("../../models");
+
 const formasDePagamentosController = {
 
-    index: (req,res)=>{
-        res.send('<h1> formasDePagamentos</h1>')
-    }
+    index: async (req, res) => {
+        const formasDePagamento = await FormasDePagamento.findAll();
+        console.log(formasDePagamento)
+    },
+
+    store: (req, res) => {
+
+    },
+
+    update: (req, res) => {
+
+    },
+
+    delete: (req, res) => {
+
+        }
 }
 
 module.exports =formasDePagamentosController;

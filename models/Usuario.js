@@ -48,11 +48,11 @@ module.exports = (sequelize, DataTypes) => {
         as: 'funcionario'
       })
 
-      // Usuario.hasMany(
-      //   models.Caixa,{
-      //     foreignKey: 'usuario_id',
-      //     as: 'caixa'
-      // })
+      Usuario.hasMany(
+        models.Caixa,{
+          foreignKey: 'usuario_id',
+          as: 'caixa'
+      })
 
   };
   return Usuario;
