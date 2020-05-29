@@ -30,7 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     timestamps: true,
-    paranoid: true
+    paranoid: true,
+    tableName: 'receitas'
   });
 
   Receita.associate = function(models) {
