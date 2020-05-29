@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true
     },
-    instrucao: DataTypes.STRING,
+    instrucao: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     receita_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false
@@ -35,7 +38,8 @@ module.exports = (sequelize, DataTypes) => {
   InstrucoesPreparo.associate = function(models) {
     // associations can be defined here
     InstrucoesPreparo.belongsTo(models.Receita, {
-      foreignKey: 'receita_id'
+      foreignKey: 'receita_id',
+      as: 'origem'
     })
   };
   return InstrucoesPreparo;
