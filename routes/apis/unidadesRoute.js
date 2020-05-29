@@ -9,6 +9,7 @@ router.get('/:id', unidadesController.index);
 router.post('/', unidadesController.create);
 router.put('/', unidadesController.update);
 router.put('/:id', unidadesController.update);
+router.delete('/', unidadesController.delete);
 router.delete('/:id', unidadesController.delete);
 
 module.exports = router;
