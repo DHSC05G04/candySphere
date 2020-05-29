@@ -56,12 +56,14 @@ module.exports = (sequelize, DataTypes) => {
 
     // Define relação 1:1 com tipos
     Estocaveis.belongsTo(models.TiposItens,{
-      foreignKey: 'tipo_id'
+      foreignKey: 'tipo_id',
+      as: 'classe'
     });
 
     // Define relação 1:1 com unidades
     Estocaveis.belongsTo(models.Unidade,{
-      foreignKey: 'unidade_id'
+      foreignKey: 'unidade_id',
+      as: 'unMedida'
     });
   };
   return Estocaveis;
