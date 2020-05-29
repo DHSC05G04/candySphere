@@ -71,13 +71,13 @@ const estocaveisController = {
     },
 
     create: async (req, res) => {
-        const {nome, tipo_id,
+        let {nome, tipo_id,
             quantidade, unidade_id,
             custo_unitario, validade, vendavel} = req.body;
 
         try {
             const result = await sequelize.transaction(async (t) => {
-                const itemCadastrado = await Estocaveis.Create({
+                const itemCadastrado = await Estocaveis.create({
                     nome,
                     tipo_id,
                     quantidade,
