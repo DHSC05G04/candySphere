@@ -1,13 +1,20 @@
 const {
-    Usuario
+    Pedido
 } = require('../../models');
 
 const pedidosController = {
     index: async (req, res) => {
-
+        const pedido = await Pedido.findAll({
+            include:[
+                {
+                association:'cliente',
+                attributes: ['cpf','nome','email',"endereco","telefone",]
+            },
+        ] 
+        })
         try {
-            const user = await Usuario.findAll()
-            return res.status(200).json(user);
+            
+            return res.status(200).json(pedido);
 
         } catch (error) {
             return res.status(400).json(error);
@@ -17,7 +24,19 @@ const pedidosController = {
 
     },
     store: async (req, res) => {
+       
+       try {
+           const pedido = await Pedido.create(req.body)
+           return res.status(201).json(pedido)
+           
+       } catch (error) {
+        return res.status(400).json(error);
+       }
+    },
+
+    update: async (req, res) => {
         const {
+            id,
             entrada,
             entrega,
             total,
@@ -29,37 +48,17 @@ const pedidosController = {
 
         } = req.body
         try {
-            const pedido = await Pedidos.create({
-                entrada,
-                entrega,
-                total,
-                sinal,
-                obervacao,
-                status_id,
-                caixa_id,
-                cliente_id
-            });
-            return res.status(201).json(pedido);
-        } catch (error) {
-            return res.status(400).json(error)
-        }
-    },
-
-    update: async (req, res) => {
-        const {
-            id,
-            estoque_id,
-            receita_id,
-            valor
-        } = req.body
-        try {
-            const pedido = await Pedidos.update({
-                estoque_id,
-                receita_id,
-                valor,
-            }, {
-                where: {
-                    id: id
+            const pedido = await Pedido.update({
+                entrada:entrada,
+                entrega:entrega,
+                total:total,
+                sinal:sinal,
+                obervacao:obervacao,
+                status_id:status_id,
+                caixa_id:caixa_id,
+                cliente_id:cliente_id},{
+                where:{
+                    id:id
                 }
             });
             return res.status(200).json(pedido);
@@ -69,12 +68,12 @@ const pedidosController = {
 
     },
 
-    delete: (req, res) => {
-        const id = req.body.id;
+    delete: async (req, res) => {
+        const id = req.body;
         try {
-            const pedido = Pedidos.destroy({
+            const pedido = await Pedido.destroy({
                 where: {
-                    id
+                    id:id
                 }
             });
             return res.status(200).json(pedido);

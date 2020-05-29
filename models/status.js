@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     tableName: "status"
   });
   Status.associate = function(models) {
-    // associations can be defined here
+    
     Status.hasMany(
-      models.Pedidos,{
+      models.Pedido,{
         foreignKey:'status_id',
         as: 'pedidos'
       }

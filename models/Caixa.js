@@ -57,6 +57,12 @@ module.exports = (sequelize, DataTypes) => {
             as:"terminal"
         })
 
+        Caixa.associate = function(models) {
+            Caixa.hasMany(models.Pedido, {
+              foreignKey: 'caixa_id',
+              as: 'pedido'
+            })
+          };
     }
     return Caixa;
 };
