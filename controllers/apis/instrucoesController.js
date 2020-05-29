@@ -1,43 +1,34 @@
 const { Op } = require('sequelize');
-const { Estocaveis, TiposItens, sequelize } = require('../../models');
 
-const estocaveisController = {
+const { InstrucoesPreparo, sequelize } = require('../../models');
+
+const instrucoesController = {
     index: async (req, res) => {
         if(Object.keys(req.params).length === 0 && Object.keys(req.query).length === 0) {
             try {
-                const estocaveis = await Estocaveis.findAll({
-                    attributes: ['id', 'nome', 'quantidade', 'custo_unitario',
-                        'validade', 'vendavel', 'createdAt', 'updatedAt'],
+                const instrucoes = await InstrucoesPreparo.findAll({
                     include: [{
-                        association: 'classe',
-                        attributes: ['tipo']
-                    },{
-                        association: 'unMedida',
-                        attributes: ['unidade']
+                        association: 'origem',
+                        attributes: ['nome']
                     }]
-                });
+                });;
 
-                return res.status(200).json(estocaveis);                
+                return res.status(200).json(instrucoes);
             } catch (error) {
                 return res.status(400).json(error);
             }
         } else if(Object.keys(req.params).length > 0) {
             try {
-                const estocaveis = await Estocaveis.findAll({
+                const instrucoes = await InstrucoesPreparo.findAll({
                     where: {
                         id: req.params.id
                     },
-                    attributes: ['id', 'nome', 'quantidade', 'custo_unitario',
-                        'validade', 'vendavel', 'createdAt', 'updatedAt'],
                     include: [{
-                        association: 'classe',
-                        attributes: ['tipo']
-                    },{
-                        association: 'unMedida',
-                        attributes: ['unidade']
+                        association: 'origem',
+                        attributes: ['nome']
                     }]
                 });
-                return res.status(200).json(estocaveis);                                
+                return res.status(200).json(instrucoes);
             } catch (error) {
                 return res.status(400).json(error);
             }
@@ -45,23 +36,18 @@ const estocaveisController = {
             const fieldName = Object.keys(req.query)[0]
             const queryValue = req.query[fieldName]
             try {
-                const estocaveis = await Estocaveis.findAll({
+                const instrucoes = await InstrucoesPreparo.findAll({
                     where: {
                         [fieldName]: {
                             [Op.like]: `%${queryValue}%`
                         }
                     },
-                    attributes: ['id', 'nome', 'quantidade', 'custo_unitario',
-                        'validade', 'vendavel', 'createdAt', 'updatedAt'],
                     include: [{
-                        association: 'classe',
-                        attributes: ['tipo']
-                    },{
-                        association: 'unMedida',
-                        attributes: ['unidade']
+                        association: 'origem',
+                        attributes: ['nome']
                     }]
                 });
-                return res.status(200).json(estocaveis);
+                return res.status(200).json(instrucoes);
             } catch (error) {
                 return res.status(400).json(error);                
             }
@@ -73,9 +59,9 @@ const estocaveisController = {
 
         try {
             const result = await sequelize.transaction(async (t) => {
-                const itemCadastrado = await Estocaveis.create(dados, { transaction: t });
+                const instrucaoCadastrada = await InstrucoesPreparo.create(dados, { transaction: t });
 
-                return itemCadastrado;
+                return instrucaoCadastrada;
             });
 
             return res.status(200).json(result);
@@ -94,18 +80,18 @@ const estocaveisController = {
             id = req.body.id;
             dados = req.body;
         } else if(Object.keys(req.query).length === 0) {
-            //Permite alterações enviando id pelo endpoint e informações pelo body [/estocaveis/:id]
+            //Permite alterações enviando id pelo endpoint e informações pelo body [/instrucoes/:id]
             id = req.params.id;
             dados = req.body;
         } else {
-            //Permite alterações enviando id pelo endpoint e informações por query [/estocaveis/:id?unidade=valorAtualizado]
+            //Permite alterações enviando id pelo endpoint e informações por query [/instrucoes/:id?atributo=valorAtualizado]
             id = req.params.id;
             dados = req.query;
         }
 
         try {
             await sequelize.transaction(async (t) => {
-                await Estocaveis.update(dados, {
+                await InstrucoesPreparo.update(dados, {
                     where: {
                         id
                     },
@@ -115,7 +101,7 @@ const estocaveisController = {
                 return;
             })
 
-            const result = await Estocaveis.findByPk(id);
+            const result = await InstrucoesPreparo.findByPk(id);
 
             return res.status(200).json(result);
         } catch (error) {
@@ -130,13 +116,13 @@ const estocaveisController = {
             //Permite deletar enviando id pelo body
             id = req.body.id;
         } else {
-            //Permite deletar enviando id pelo endpoint [/estocaveis/:id]
+            //Permite deletar enviando id pelo endpoint [/instrucoes/:id]
             id = req.params.id;
         }
 
         try {
             await sequelize.transaction(async (t) => {
-                await Estocaveis.destroy({
+                await InstrucoesPreparo.destroy({
                     where: {
                         id
                     },
@@ -146,13 +132,13 @@ const estocaveisController = {
                 return;
             })
 
-            const result = await Estocaveis.findByPk(id, {paranoid:false});
+            const result = await InstrucoesPreparo.findByPk(id, {paranoid:false});
 
             return res.status(200).json(result);
         } catch (error) {
             return res.status(400).json(error);
         };
     }
-};
+}
 
-module.exports = estocaveisController;
+module.exports = instrucoesController;

@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Estocaveis = sequelize.define('estocaveis', {
+  const Estocaveis = sequelize.define('Estocaveis', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    custo_unitario: DataTypes.DECIMAL,
+    custo_unitario: DataTypes.DECIMAL(11,2),
     validade: DataTypes.DATE,
     vendavel: DataTypes.BOOLEAN,
     createdAt: {
@@ -56,12 +56,14 @@ module.exports = (sequelize, DataTypes) => {
 
     // Define relação 1:1 com tipos
     Estocaveis.belongsTo(models.TiposItens,{
-      foreignKey: 'tipo_id'
+      foreignKey: 'tipo_id',
+      as: 'classe'
     });
 
     // Define relação 1:1 com unidades
     Estocaveis.belongsTo(models.Unidade,{
-      foreignKey: 'unidade_id'
+      foreignKey: 'unidade_id',
+      as: 'unMedida'
     });
   };
   return Estocaveis;

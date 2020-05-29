@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Produto = sequelize.define('produto', {
+  const Produto = sequelize.define('Produto', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     estoque_id: DataTypes.INTEGER.UNSIGNED,
     receita_id: DataTypes.INTEGER.UNSIGNED,
-    valor: DataTypes.DECIMAL,
+    valor: DataTypes.DECIMAL(11,2),
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -31,14 +31,16 @@ module.exports = (sequelize, DataTypes) => {
   });
   Produto.associate = function(models) {
     // associations can be defined here
-    // Produto.belongsTo(models.Receita, {
-    //   foreignKey: 'receita_id'
-    // })
+    Produto.belongsTo(models.Receita, {
+      foreignKey: 'receita_id',
+      as: 'fabricado'
+    })
 
     // associations can be defined here
-    // Produto.belongsTo(models.Estocaveis, {
-    //   foreignKey: 'estoque_id'
-    // })
+    Produto.belongsTo(models.Estocaveis, {
+      foreignKey: 'estoque_id',
+      as: 'revendido'
+    })
   };
   return Produto;
 };

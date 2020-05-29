@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Receita = sequelize.define('receita', {
+  const Receita = sequelize.define('Receita', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
@@ -15,13 +15,15 @@ module.exports = (sequelize, DataTypes) => {
     tempo_preparo: DataTypes.INTEGER,
     rendimento: DataTypes.INTEGER,
     foto: DataTypes.STRING,
-    created_at: {
+    createdAt: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      field: 'created_at'
     },
-    updated_at: {
+    updatedAt: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      field: 'updated_at'
     },
     deletedAt: {
       type: DataTypes.DATE,
@@ -30,24 +32,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     timestamps: true,
-    paranoid: true
+    paranoid: true,
+    tableName: 'receitas'
   });
 
   Receita.associate = function(models) {
     // Define relação 1:m com ingredientes
-    // Receita.hasMany(models.Ingrediente, {
-    //   foreignKey: 'receita_id'
-    // })
+    Receita.hasMany(models.Ingrediente, {
+      foreignKey: 'receita_id',
+      as: 'ingredientes'
+    })
 
     // Define relação 1:m com instruções
-    // Receita.hasMany(models.InstrucoesPreparo, {
-    //   foreignKey: 'receita_id'
-    // })
+    Receita.hasMany(models.InstrucoesPreparo, {
+      foreignKey: 'receita_id',
+      as: 'instrucoes'
+    })
 
     // Define relação 1:m com produtos
-    // Receita.hasMany(models.Produto, {
-    //   foreignKey: 'receita_id'
-    // })
+    Receita.hasMany(models.Produto, {
+      foreignKey: 'receita_id'
+    })
   };
   return Receita;
 };
