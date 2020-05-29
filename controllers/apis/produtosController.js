@@ -8,18 +8,11 @@ const produtosController = {
             try {
                 const produtos = await Produto.findAll({
                     include: [{
-                        association: 'instrucoes',
-                        attributes: ['instrucao']
+                        association: 'fabricado',
+                        attributes: ['nome']
                     },{
-                        association: 'ingredientes',
-                        attributes: ['quantidade'],
-                        include: [{
-                            association: 'componente',
-                            attributes: ['nome']
-                        },{
-                            association: 'unidade',
-                            attributes: ['unidade']
-                        }]
+                        association: 'revendido',
+                        attributes: ['nome']
                     }]
                 });
 
@@ -34,18 +27,11 @@ const produtosController = {
                         id: req.params.id
                     },
                     include: [{
-                        association: 'instrucoes',
-                        attributes: ['instrucao']
+                        association: 'fabricado',
+                        attributes: ['nome']
                     },{
-                        association: 'ingredientes',
-                        attributes: ['quantidade'],
-                        include: [{
-                            association: 'componente',
-                            attributes: ['nome']
-                        },{
-                            association: 'unidade',
-                            attributes: ['unidade']
-                        }]
+                        association: 'revendido',
+                        attributes: ['nome']
                     }]
                 });
                 return res.status(200).json(produtos);
@@ -63,18 +49,11 @@ const produtosController = {
                         }
                     },
                     include: [{
-                        association: 'instrucoes',
-                        attributes: ['instrucao']
+                        association: 'fabricado',
+                        attributes: ['nome']
                     },{
-                        association: 'ingredientes',
-                        attributes: ['quantidade'],
-                        include: [{
-                            association: 'componente',
-                            attributes: ['nome']
-                        },{
-                            association: 'unidade',
-                            attributes: ['unidade']
-                        }]
+                        association: 'revendido',
+                        attributes: ['nome']
                     }]
                 });
                 return res.status(200).json(produtos);
