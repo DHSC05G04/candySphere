@@ -37,11 +37,11 @@ module.exports = (sequelize, DataTypes) => {
   });
   UnidadesPorTipo.associate = function(models) {
     // associations can be defined here
-    UnidadesPorTipo.hasMany(models.Unidade, {
+    UnidadesPorTipo.belongsTo(models.Unidade, {
       foreignKey: 'unidade_id'
     })
 
-    UnidadesPorTipo.hasMany(models.TiposItens, {
+    UnidadesPorTipo.belongsTo(models.TiposItens, {
       foreignKey: 'tipo_id'
     })
   };
