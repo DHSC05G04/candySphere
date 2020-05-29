@@ -1,23 +1,22 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Cliente = sequelize.define('Cliente', {
+  const FormasDePagamento = sequelize.define('FormasDePagamento', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
-      autoIncrement: true,
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true
     },
-    cpf: {
+    descricao: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    nome: {
-      type: DataTypes.STRING,
+    taxa: {
+      type: DataTypes.DECIMAL(10,4),
       allowNull: false
     },
-    email: DataTypes.STRING,
-    endereco: DataTypes.STRING,
-    telefone: DataTypes.STRING,
+    ativo: DataTypes.INTEGER,
+    
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -32,18 +31,21 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: true,
       field: 'deleted_at'      
-    }
+    },
   }, {
-    timestamps: true,
     paranoid: true,
-    tableName: 'clientes'
+    tableName: 'formas_pagamento',
+    timestamps: true
+
   });
-  
-  Cliente.associate = function(models) {
-    Cliente.hasMany(models.Pedido, {
-      foreignKey: 'cliente_id',
-      as: 'pedido'
-    })
+  FormasDePagamento.associate = function(models) {
+   
+    //   Usuario.hasMany(
+    //     models.Caixa,{
+    //       foreignKey: 'usuario_id',
+    //       as: 'caixa'
+    //   })
+
   };
-  return Cliente;
+  return FormasDePagamento;
 };
