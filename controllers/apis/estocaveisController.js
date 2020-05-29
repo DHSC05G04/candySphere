@@ -17,8 +17,6 @@ const estocaveisController = {
                     }]
                 });
 
-
-
                 return res.status(200).json(estocaveis);                
             } catch (error) {
                 return res.status(400).json(error);
@@ -72,8 +70,6 @@ const estocaveisController = {
 
     create: async (req, res) => {
         let dados = req.body;
-        dados.createdAt = new Date();
-        dados.updatedAt = new Date();
 
         try {
             const result = await sequelize.transaction(async (t) => {
