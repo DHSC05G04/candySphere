@@ -1,24 +1,21 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Pedido = sequelize.define('Pedido', {
+  const Recebimento = sequelize.define('Recebimento', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       primaryKey: true,
       allowNull: false,
       autoIncrement: true
     },
-    entrada: {
-      type: DataTypes.DATE,
+    valor: {
+      type: DataTypes.DECIMAL,
       allowNull: false
     },
-    entrega: {
-      type: DataTypes.DATE,
+    aprovado: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
-    total: DataTypes.DECIMAL,
-    sinal: DataTypes.DECIMAL,
-    obervacao: DataTypes.STRING,
-    status_id: {
+    pedido_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
@@ -26,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
-    cliente_id: {
+    forma_pagamento_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
@@ -47,36 +44,31 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     paranoid: true,
-    tableName: 'pedidos',
+    tableName: 'recebimentos',
     timestamps:true
 
   });
-  Pedido.associate = function(models) {
+
+  Recebimento.associate = function(models) {
     // Relacao 1:1 com tbl Usuario. Um usuario precisa ser funcionario
-    Pedido.belongsTo(
-      models.Status,{
-        foreignKey:'status_id',
-        as: 'status'
+   
+    Recebimento.belongsTo(
+      models.Pedido,{
+        foreignKey:'pedido_id',
+        as: 'pedido'
       }),
-    Pedido.belongsTo(
+
+    Recebimento.belongsTo(
       models.Caixa,{
         foreignKey:'caixa_id',
         as: 'caixa'
-      }),
+      })
       
-      Pedido.belongsTo(
-        models.Cliente,{
-          foreignKey:'cliente_id',
-          as: 'cliente'
-        }),
-      Pedido.hasMany(
-        models.Recebimento,{
-          foreignKey:'pedido_id',
-          as: 'pedido'
+      Recebimento.belongsTo(
+        models.FormasDePagamento,{
+          foreignKey:'forma_pagamento_id',
+          as: 'forma_pagamento'
         })
-
-   
-
-  };
-  return Pedido;
+    } 
+  return Recebimento;
 };
