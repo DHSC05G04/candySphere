@@ -186,7 +186,8 @@ footer ul {
 }
 #loginBody *, *:before, *:after { 
     margin:10px;
-    /* padding:0px; */
+    padding:0px;
+    /* font-family: Arial,sans-serif; */
 }
 
  /* remove a linha dos links */
@@ -271,7 +272,7 @@ form button:hover {
     background-color: var(--color5);
     color: var(--color1);
     cursor: pointer;
-    border: 2px solid var(--color2);
+    border: 1px solid var(--color2);
 }
 
 #msgLogin {
@@ -282,6 +283,7 @@ form button:hover {
     text-transform: uppercase;
     width: -moz-available;
     height: 40px;
+    border: 1px solid var(--color2);
 }
 
 /*Configurações do corpo*/
@@ -931,7 +933,10 @@ right: 0px;
 padding: 0px;
 margin: 0px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> tentando layout
 #form-cliente{
     background-color: var(--color1);
     width:100%;
