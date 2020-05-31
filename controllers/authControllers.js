@@ -189,6 +189,7 @@ const authController = {
 >>>>>>> Mensagem de login na index
     index: (req,res) => {
         console.log('REQ.SESSION:'+req.session.user)
+        console.log('SESSION_FULL' + JSON.stringify(req.session, null, 2) )
         if (req.session.user === undefined ||   req.session==''){
             console.log('Sessao nao iniciada')
             let tabActive = {homeAct: "active",
@@ -232,9 +233,13 @@ const authController = {
             // }
             if (login != nome_usuario || !bcrypt.compareSync(senha,senhaHash)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
 =======
                 return res.status(400).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
+>>>>>>> Mensagem de login na index
+=======
+                return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
 >>>>>>> Mensagem de login na index
             }
 
