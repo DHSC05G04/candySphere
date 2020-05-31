@@ -275,7 +275,6 @@ form button:hover {
     border: 1px solid var(--color2);
 }
 
-<<<<<<< HEAD
 #msgLogin {
     color: var(--color2);
     font-size: 0.9em;
@@ -287,8 +286,6 @@ form button:hover {
     border: 1px solid var(--color2);
 }
 
-=======
->>>>>>> tentando layout
 /*Configurações do corpo*/
 main {
     display: flex;
