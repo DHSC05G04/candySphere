@@ -13,6 +13,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express', tabs: tabActive });
 });
 
+router.get('/index2', function(req, res, next) {
+  res.render('index2');
+});
+
 router.post('/', function(req, res) {
   res.redirect('/home');
 });
