@@ -31,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     timestamps: true,
-    paranoid: true
+    paranoid: true,
+    tableName: 'ingredientes'
   });
 
   Ingrediente.associate = function(models) {
