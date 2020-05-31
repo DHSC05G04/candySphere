@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const config = {
-    database: 'candySphere',
+    database: process.env.DB_NAME || 'candySphere',
     host: process.env.DB_HOST || 'localhost',
     port: parseInt(process.env.DB_PORT) || 3306,
     dialect: 'mysql',
