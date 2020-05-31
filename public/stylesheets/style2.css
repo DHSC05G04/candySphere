@@ -276,14 +276,12 @@ form button:hover {
 
 #msgLogin {
     color: var(--color2);
-    font-family: "roboto";
     font-size: 0.9em;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     width: -moz-available;
     height: 40px;
-}
 }
 
 /*Configurações do corpo*/

@@ -5,6 +5,7 @@ const authController = {
    
     index: (req,res) => {
         console.log('REQ.SESSION:'+req.session.user)
+        console.log('SESSION_FULL' + JSON.stringify(req.session, null, 2) )
         if (req.session.user === undefined ||   req.session==''){
             console.log('Sessao nao iniciada')
             let tabActive = {homeAct: "active",
@@ -47,7 +48,7 @@ const authController = {
             //     return res.status(400).send('<h1 style="background-color: red;" >usuario ou senha invalido<h1>')
             // }
             if (login != nome_usuario || !bcrypt.compareSync(senha,senhaHash)) {
-                return res.status(400).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
+                return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
             }
 
             req.session.user = {
