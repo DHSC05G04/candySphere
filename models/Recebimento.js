@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: true,
       field: 'deleted_at'
+       
     },
   }, {
     paranoid: true,
@@ -75,3 +76,6 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Recebimento;
 };
+  
+
+  
