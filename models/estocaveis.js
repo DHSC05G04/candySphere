@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: true,
     paranoid: true,
-    freezeTableName: true
+    tableName: 'estocaveis'
   });
   Estocaveis.associate = function(models) {
     // Define relação 1:m com ingredientes
