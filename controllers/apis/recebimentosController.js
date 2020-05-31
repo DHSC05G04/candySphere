@@ -23,6 +23,7 @@ const recebimentosControllers = {
             
         ] 
         });
+        
            return res.status(200).json(recebimento);
        } catch (error) {
 
