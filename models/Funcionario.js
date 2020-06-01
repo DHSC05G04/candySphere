@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Funcionario.associate = function(models) {
     // Relacao 1:1 com tbl Usuario. Um usuario precisa ser funcionario
-    Funcionario.belongsTo(models.Usuario,{
+    Funcionario.hasOne(models.Usuario,{
         foreignKey: 'funcionario_id',
         as: 'usuario'
       }

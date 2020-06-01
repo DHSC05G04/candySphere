@@ -1,38 +1,58 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Tipos_itens = sequelize.define('Tipos_itens',
+  const TiposItens = sequelize.define('TiposItens',
    {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         unique: true,
     },
-    tipos_itens_id: {
-        type: DataTypes.INTEGER,
-        alowNull: false,
+    tipo: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
-    unidades_id:{
-        type: DataTypes.INTEGER,
-        alowNull: false,
+    createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        field: 'created_at',
+        default: new Date()
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        field: 'updated_at',
+        default: new Date()
+    },
+    deletedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+        field: 'deleted_at',
     }
   }, {
-    timestamps: false,
+    timestamps: true,
+    paranoid: true,
     tableName: "tipos_itens"
   });
 
-  Tipos_itens.associate = function(models) {
-    // associations can be defined here
-    // Tipos_itens.hasMany(
-    //   models.Unidades,{
-    //     foreignKey:'id',
-    //     as: 'unidades'
-    //   }
-    // )
+  TiposItens.associate = function(models) {
+    //Definindo relação m:n entre unidades e tipo
+    TiposItens.belongsToMany(
+      models.Unidade,{
+        through: 'unidades_por_tipos',
+        foreignKey:'tipo_id',        
+        otherKey: 'unidade_id'
+      }
+    );
+
+    // Definindo relação 1:n entre tipos e estocaveis
+    TiposItens.hasOne(models.Estocaveis,{
+      foreignKey: 'tipo_id'
+    })
     
   };
   
-  return Tipos_itens;
+  return TiposItens;
 
 };

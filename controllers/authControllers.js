@@ -1,13 +1,11 @@
-const {
-    Usuario
-} = require('../models')
+const { Usuario } = require('../models')
 const bcrypt = require("bcrypt");
 
 const authController = {
-
-    
+   
     index: (req,res) => {
         console.log('REQ.SESSION:'+req.session.user)
+        console.log('SESSION_FULL' + JSON.stringify(req.session, null, 2) )
         if (req.session.user === undefined ||   req.session==''){
             console.log('Sessao nao iniciada')
             let tabActive = {homeAct: "active",
@@ -42,14 +40,16 @@ const authController = {
             const senhaHash = usuario.dataValues.senha
             const acesso = usuario.dataValues.acesso
 
-            if (login != nome_usuario) {
-                return res.status(400).send('<h1 style="background-color: red;" >usuario ou senha invalido<h1>')
-            }
+            // if (login != nome_usuario) {
+            //     return res.status(400).send('<h1 style="background-color: red;" >usuario ou senha invalido<h1>')
+            // }
 
-            if (!bcrypt.compareSync(senha,senhaHash)) {
-                return res.status(400).send('<h1 style="background-color: red;" >usuario ou senha invalido<h1>')
+            // if (!bcrypt.compareSync(senha,senhaHash)) {
+            //     return res.status(400).send('<h1 style="background-color: red;" >usuario ou senha invalido<h1>')
+            // }
+            if (login != nome_usuario || !bcrypt.compareSync(senha,senhaHash)) {
+                return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
             }
-
 
             req.session.user = {
                 id: id,
@@ -59,7 +59,7 @@ const authController = {
             console.log(req.session.user)
             res.redirect('/home')
         } else {
-            return res.status(400).send('<h1 style="background-color: red;" >Usuário nulo<h1>')            
+            return res.status(400).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
         }
 
     }

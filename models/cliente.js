@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       allowNull: false
     },
-    cpf: DataTypes.STRING,
+    cpf: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     nome: {
       type: DataTypes.STRING,
       allowNull: false
@@ -30,9 +33,17 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       field: 'deleted_at'      
     }
-  }, {});
+  }, {
+    timestamps: true,
+    paranoid: true,
+    tableName: 'clientes'
+  });
+  
   Cliente.associate = function(models) {
-    // associations can be defined here
+    Cliente.hasMany(models.Pedido, {
+      foreignKey: 'cliente_id',
+      as: 'pedido'
+    })
   };
   return Cliente;
 };

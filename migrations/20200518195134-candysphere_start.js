@@ -38,9 +38,9 @@ module.exports = {
           allowNull: false,
         },
         taxa: {
-          type: Sequelize.DECIMAL,
+          type: Sequelize.DECIMAL(10,4),
           allowNull: false,
-          default: 0.00
+          default: 0.0000
         },
         ativo: {
           type: Sequelize.BOOLEAN,
