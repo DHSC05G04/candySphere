@@ -17,13 +17,11 @@ const recebimentosControllers = {
             },
                 {
                 association:'forma_pagamento',
-             
-               
+                    
             },
             
         ] 
         });
-        
            return res.status(200).json(recebimento);
        } catch (error) {
 
@@ -81,4 +79,4 @@ const recebimentosControllers = {
     },
 }
 
-module.exports =recebimentosControllers
+module.exports = recebimentosControllers
