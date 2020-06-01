@@ -48,11 +48,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'receita_id',
       as: 'instrucoes'
     })
-
-    // Define relação 1:m com produtos
-    Receita.hasMany(models.Produto, {
-      foreignKey: 'receita_id'
-    })
   };
   return Receita;
 };
