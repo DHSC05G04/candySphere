@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: true,
       field: 'deleted_at'
-       
+
     },
   }, {
     paranoid: true,
@@ -66,16 +66,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'forma_pagamento_id',
         as: 'forma_pagamento'
       })
-      Recebimento.hasMany(
-        models.ContaMovimento, {
-          foreignKey: 'recebimentos_id',
-          as: 'recebimento'
-        })
-     
-
+    Recebimento.hasMany(
+      models.ContaMovimento, {
+        foreignKey: 'recebimentos_id',
+        as: 'recebimento'
+      })
   };
   return Recebimento;
 };
-  
-
-  
