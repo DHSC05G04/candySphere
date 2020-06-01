@@ -11,9 +11,10 @@ Criar um arquivo `.env` na raiz do seu projeto com o conteúdo abaixo.
 
 ```txt
 PORT=3000
-DB_HOST=localhost
+DB_NAME=databaseName
+DB_HOST=databaseHost
 DB_PORT=3306
-DB_USER=root
+DB_USER=userName
 DB_PASSWORD=suaSenhaAqui
 ```
 
