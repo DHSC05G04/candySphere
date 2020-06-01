@@ -33,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
         timestamps: true,
-        paranoid: true
+        paranoid: true,
+        tableName: 'unidades'
     });
 
     Unidade.associate = function(models) {
