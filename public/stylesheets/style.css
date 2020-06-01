@@ -189,14 +189,14 @@ footer ul {
     align-items: center;
     width: 95vw;
     height: 95vh;
-    margin: 0;
-    padding: 0;
+    margin: 5px auto 5px auto;
+    padding: 5px;
     background-image: url('/images/brigadeiro.png');
     background-size: cover;
     border-radius: 60px;
 }
 
-form {
+#form-login {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -255,6 +255,16 @@ form button:hover {
     color: var(--color1);
     cursor: pointer;
     border: 1px solid var(--color2);
+}
+
+#msgLogin {
+    color: var(--color2);
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    width: -moz-available;
+    height: 40px;
 }
 
 /*Configurações do corpo*/
