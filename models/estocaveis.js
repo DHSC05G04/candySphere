@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     custo_unitario: DataTypes.DECIMAL(11,2),
     validade: DataTypes.DATE,
     vendavel: DataTypes.BOOLEAN,
+    foto: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,

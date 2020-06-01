@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     estoque_id: DataTypes.INTEGER.UNSIGNED,
-    receita_id: DataTypes.INTEGER.UNSIGNED,
     valor: DataTypes.DECIMAL(11,2),
     createdAt: {
       type: DataTypes.DATE,
@@ -31,12 +30,6 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'produtos'
   });
   Produto.associate = function(models) {
-    // associations can be defined here
-    Produto.belongsTo(models.Receita, {
-      foreignKey: 'receita_id',
-      as: 'fabricado'
-    })
-
     // associations can be defined here
     Produto.belongsTo(models.Estocaveis, {
       foreignKey: 'estoque_id',
