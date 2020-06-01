@@ -10,11 +10,11 @@
         <main id="administracao">
             <% produtos.forEach(produto => { %>
                 <a href="/admin/produtos" class="adminCardContainer produtos">
-                    <section class="foto" style="background-image: url(<%= produto.imagem %>); background-size: cover;">
+                    <section class="foto" style="background-image: url(<%= produto.itemEstoque.foto %>); background-size: cover;">
                     </section>
                     <section class="description">
-                        <h3><%= produto.nome %></h3>
-                        <p><%= produto.descricao %></p>
+                        <h3><%= produto.itemEstoque.nome %></h3>
+                        <!-- <p>Variável com descrição do produto</p> -->
                         <p class="valor">R$ <%= produto.valor %></p>
                         <p class="material-icons addCart">shopping_cart</p>
                     </section>
