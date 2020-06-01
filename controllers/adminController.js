@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const fetch = require('node-fetch');
 
 const adminController = {
     index: (req, res, next) => {
@@ -39,7 +40,7 @@ const adminController = {
 
         res.render('admin/estoque', { title: 'Express', tabs: tabActive, estoque,usuario:req.session.user });
     },
-    indexReceitas: (req, res, next) => {
+    indexReceitas: async (req, res, next) => {
         let tabActive = {homeAct: "inactive",
                         adminAct: "active",
                         financeiroAct: "inactive",
@@ -47,9 +48,11 @@ const adminController = {
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
 
-        const receitas = JSON.parse(
-                        fs.readFileSync(
-                        path.join('database', 'receitas.json')));
+        const receitasAPI = await fetch('http://candyspheredev.herokuapp.com/api/v0/receitas');
+
+        const receitas = await receitasAPI.json();
+
+        console.log(receitas);
 
         res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas,usuario:req.session.user });
     }
