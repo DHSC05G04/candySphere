@@ -2,6 +2,8 @@ const path = require('path');
 const fs = require('fs');
 const fetch = require('node-fetch');
 
+const API_BASE = 'http://candyspheredev.herokuapp.com/api/v0';
+
 const adminController = {
     index: (req, res, next) => {
         let tabActive = {homeAct: "inactive",
@@ -26,7 +28,7 @@ const adminController = {
 
         res.render('admin/produtos', { title: 'Express', tabs: tabActive , produtos,usuario:req.session.user});
     },
-    indexEstoque: (req, res, next) => {
+    indexEstoque: async (req, res, next) => {
         let tabActive = {homeAct: "inactive",
                         adminAct: "active",
                         financeiroAct: "inactive",
@@ -34,11 +36,17 @@ const adminController = {
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
 
-    const estoque = JSON.parse(
-        fs.readFileSync(
-        path.join('database', 'estoque.json')));
+        try {
 
-        res.render('admin/estoque', { title: 'Express', tabs: tabActive, estoque,usuario:req.session.user });
+            const estoqueAPI = await fetch(`${API_BASE}/estocaveis`);
+            const estoque = await estoqueAPI.json();
+
+            return res.render('admin/estoque', { title: 'Express', tabs: tabActive, estoque,usuario:req.session.user });
+            
+        } catch (error) {
+            return res.send(error)            
+        };
+        
     },
     indexReceitas: async (req, res, next) => {
         let tabActive = {homeAct: "inactive",
@@ -48,13 +56,17 @@ const adminController = {
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
 
-        const receitasAPI = await fetch('http://candyspheredev.herokuapp.com/api/v0/receitas');
+        try {
+            const receitasAPI = await fetch(`${API_BASE}/receitas`);
+            const receitas = await receitasAPI.json();
+    
+            return res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas,usuario:req.session.user });
+            
+        } catch (error) {
+            return res.send(error);            
+        };
 
-        const receitas = await receitasAPI.json();
 
-        console.log(receitas);
-
-        res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas,usuario:req.session.user });
     }
 };
 

@@ -15,22 +15,19 @@
                         <th>Quantidade</th>
                         <th>Custo</th>
                         <th>Vendável?</th>
-                        <th>Valor</th>
                         <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% estoque.forEach(item => {%>
                     <tr>
-                        <td><%= item.Nome %></td>
-                        <td><%= item.Qtd.Valor%> <%= item.Qtd.Unidade %></td>
-                        <td class="center"><%= item.Custo %></td>
-                        <% if(item.Vendavel) { %>
+                        <td><%= item.nome %></td>
+                        <td><%= item.quantidade %> <%= item.unMedida.unidade %></td>
+                        <td class="center"><%= item.custo_unitario %></td>
+                        <% if(item.vendavel) { %>
                             <td class="center"><input type="checkbox" checked disabled></td>
-                            <td class="center"><%= item.Valor %></td>
                         <% } else { %>
                             <td class="center"><input type="checkbox" disabled></td>
-                            <td class="center">****</td>
                         <% }; %>
                         <td><a class="btn-editar" href=""><span class="material-icons">edit</span></a>
                             <a class="btn-deletar" href=""><span class="material-icons">delete</span></a>
