@@ -40,11 +40,18 @@ module.exports = (sequelize, DataTypes) => {
   });
   FormasDePagamento.associate = function(models) {
    
-    //   Usuario.hasMany(
-    //     models.Caixa,{
-    //       foreignKey: 'usuario_id',
-    //       as: 'caixa'
-    //   })
+    FormasDePagamento.hasMany(
+      models.Pagamento,{
+        foreignKey:'formas_pagamento_id',
+        as: 'pagamento'
+      }
+    )
+    // FormasDePagamento.hasMany(
+    //   models.Recebimento,{
+    //     foreignKey:'formas_pagamento_id',
+    //     as: 'recebimento'
+    //   }
+    // )
 
   };
   return FormasDePagamento;

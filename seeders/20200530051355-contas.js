@@ -11,6 +11,7 @@ module.exports = {
         usuarios_id:1,
         created_at:new Date(),
         updated_at:new Date(),
+        descricao:"Conta de Luz"
       },
         {
         id:2,  
@@ -19,6 +20,7 @@ module.exports = {
         usuarios_id:2,
         created_at:new Date(),
         updated_at:new Date(),
+        descricao:"Folha de Pagamento"
       },
         {
         id:3,  
@@ -27,6 +29,7 @@ module.exports = {
         usuarios_id:3,
         created_at:new Date(),
         updated_at:new Date(),
+        descricao:"Fornecedor de Farinha"
       },
         {
         id:4,  
@@ -35,6 +38,7 @@ module.exports = {
         usuarios_id:1,
         created_at:new Date(),
         updated_at:new Date(),
+        descricao:"Fornecedor de Bebida"
       },
     ], {});
    

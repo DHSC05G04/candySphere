@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     aprovado: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false
     },
     pedido_id: {
@@ -40,35 +40,42 @@ module.exports = (sequelize, DataTypes) => {
     deletedAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      field: 'deleted_at'      
+      field: 'deleted_at'
+       
     },
   }, {
     paranoid: true,
     tableName: 'recebimentos',
-    timestamps:true
+    timestamps: true
 
   });
-
-  Recebimento.associate = function(models) {
+  Recebimento.associate = function (models) {
     // Relacao 1:1 com tbl Usuario. Um usuario precisa ser funcionario
-   
     Recebimento.belongsTo(
-      models.Pedido,{
-        foreignKey:'pedido_id',
+      models.Pedido, {
+        foreignKey: 'pedido_id',
         as: 'pedido'
-      }),
-
+      })
     Recebimento.belongsTo(
-      models.Caixa,{
-        foreignKey:'caixa_id',
+      models.Caixa, {
+        foreignKey: 'caixa_id',
         as: 'caixa'
       })
-      
-      Recebimento.belongsTo(
-        models.FormasDePagamento,{
-          foreignKey:'forma_pagamento_id',
-          as: 'forma_pagamento'
+    Recebimento.belongsTo(
+      models.FormasDePagamento, {
+        foreignKey: 'forma_pagamento_id',
+        as: 'forma_pagamento'
+      })
+      Recebimento.hasMany(
+        models.ContaMovimento, {
+          foreignKey: 'recebimentos_id',
+          as: 'recebimento'
         })
-    } 
+     
+
+  };
   return Recebimento;
 };
+  
+
+  
