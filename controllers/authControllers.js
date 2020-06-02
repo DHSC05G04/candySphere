@@ -3,6 +3,193 @@ const bcrypt = require("bcrypt");
 
 const authController = {
    
+<<<<<<< HEAD
+<<<<<<< HEAD
+    index: (req,res) => {
+        console.log('REQ.SESSION:'+req.session.user)
+        console.log('SESSION_FULL' + JSON.stringify(req.session, null, 2) )
+        if (req.session.user === undefined ||   req.session==''){
+            console.log('Sessao nao iniciada')
+            let tabActive = {homeAct: "active",
+                  adminAct: "inactive",
+                  financeiroAct: "inactive",
+                  clientesAct: "inactive",
+                  funcionariosAct: "inactive",
+                  pdvAct: "inactive"};
+            res.render('index', { title: 'Express', tabs: tabActive });
+        } else {
+            console.log('Sessao OK')
+            console.log(req.session.user)
+            res.redirect('/home')
+        }
+    },
+
+
+    
+    index: (req,res) => {
+        console.log('REQ.SESSION:'+req.session.user)
+        if (req.session.user === undefined ||   req.session==''){
+            console.log('Sessao nao iniciada')
+            let tabActive = {homeAct: "active",
+                  adminAct: "inactive",
+                  financeiroAct: "inactive",
+                  clientesAct: "inactive",
+                  funcionariosAct: "inactive",
+                  pdvAct: "inactive"};
+            res.render('index', { title: 'Express', tabs: tabActive });
+        } else {
+            console.log('Sessao OK')
+            console.log(req.session.user)
+            res.redirect('/home')
+        }
+    },
+
+
+    
+    index: (req,res) => {
+        console.log('REQ.SESSION:'+req.session.user)
+        if (req.session.user === undefined ||   req.session==''){
+            console.log('Sessao nao iniciada')
+            let tabActive = {homeAct: "active",
+                  adminAct: "inactive",
+                  financeiroAct: "inactive",
+                  clientesAct: "inactive",
+                  funcionariosAct: "inactive",
+                  pdvAct: "inactive"};
+            res.render('index', { title: 'Express', tabs: tabActive });
+        } else {
+            console.log('Sessao OK')
+            console.log(req.session.user)
+            res.redirect('/home')
+        }
+    },
+
+
+    
+    index: (req,res) => {
+        console.log('REQ.SESSION:'+req.session.user)
+        if (req.session.user === undefined ||   req.session==''){
+            console.log('Sessao nao iniciada')
+            let tabActive = {homeAct: "active",
+                  adminAct: "inactive",
+                  financeiroAct: "inactive",
+                  clientesAct: "inactive",
+                  funcionariosAct: "inactive",
+                  pdvAct: "inactive"};
+            res.render('index', { title: 'Express', tabs: tabActive });
+        } else {
+            console.log('Sessao OK')
+            console.log(req.session.user)
+            res.redirect('/home')
+        }
+    },
+
+
+    
+    index: (req,res) => {
+        console.log('REQ.SESSION:'+req.session.user)
+        if (req.session.user === undefined ||   req.session==''){
+            console.log('Sessao nao iniciada')
+            let tabActive = {homeAct: "active",
+                  adminAct: "inactive",
+                  financeiroAct: "inactive",
+                  clientesAct: "inactive",
+                  funcionariosAct: "inactive",
+                  pdvAct: "inactive"};
+            res.render('index', { title: 'Express', tabs: tabActive });
+        } else {
+            console.log('Sessao OK')
+            console.log(req.session.user)
+            res.redirect('/home')
+        }
+    },
+
+
+    
+    index: (req,res) => {
+        console.log('REQ.SESSION:'+req.session.user)
+        if (req.session.user === undefined ||   req.session==''){
+            console.log('Sessao nao iniciada')
+            let tabActive = {homeAct: "active",
+                  adminAct: "inactive",
+                  financeiroAct: "inactive",
+                  clientesAct: "inactive",
+                  funcionariosAct: "inactive",
+                  pdvAct: "inactive"};
+            res.render('index', { title: 'Express', tabs: tabActive });
+        } else {
+            console.log('Sessao OK')
+            console.log(req.session.user)
+            res.redirect('/home')
+        }
+    },
+
+
+    
+    index: (req,res) => {
+        console.log('REQ.SESSION:'+req.session.user)
+        if (req.session.user === undefined ||   req.session==''){
+            console.log('Sessao nao iniciada')
+            let tabActive = {homeAct: "active",
+                  adminAct: "inactive",
+                  financeiroAct: "inactive",
+                  clientesAct: "inactive",
+                  funcionariosAct: "inactive",
+                  pdvAct: "inactive"};
+            res.render('index', { title: 'Express', tabs: tabActive });
+        } else {
+            console.log('Sessao OK')
+            console.log(req.session.user)
+            res.redirect('/home')
+        }
+    },
+
+
+    
+    index: (req,res) => {
+        console.log('REQ.SESSION:'+req.session.user)
+        if (req.session.user === undefined ||   req.session==''){
+            console.log('Sessao nao iniciada')
+            let tabActive = {homeAct: "active",
+                  adminAct: "inactive",
+                  financeiroAct: "inactive",
+                  clientesAct: "inactive",
+                  funcionariosAct: "inactive",
+                  pdvAct: "inactive"};
+            res.render('index', { title: 'Express', tabs: tabActive });
+        } else {
+            console.log('Sessao OK')
+            console.log(req.session.user)
+            res.redirect('/home')
+        }
+    },
+
+
+    
+    index: (req,res) => {
+        console.log('REQ.SESSION:'+req.session.user)
+        if (req.session.user === undefined ||   req.session==''){
+            console.log('Sessao nao iniciada')
+            let tabActive = {homeAct: "active",
+                  adminAct: "inactive",
+                  financeiroAct: "inactive",
+                  clientesAct: "inactive",
+                  funcionariosAct: "inactive",
+                  pdvAct: "inactive"};
+            res.render('index', { title: 'Express', tabs: tabActive });
+        } else {
+            console.log('Sessao OK')
+            console.log(req.session.user)
+            res.redirect('/home')
+        }
+    },
+
+
+    
+=======
+>>>>>>> Mensagem de login na index
+=======
+>>>>>>> 109664e1c2c522e37b95444e14f9af22d03c0143
     index: (req,res) => {
         console.log('REQ.SESSION:'+req.session.user)
         console.log('SESSION_FULL' + JSON.stringify(req.session, null, 2) )
@@ -48,7 +235,19 @@ const authController = {
             //     return res.status(400).send('<h1 style="background-color: red;" >usuario ou senha invalido<h1>')
             // }
             if (login != nome_usuario || !bcrypt.compareSync(senha,senhaHash)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
                 return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
+=======
+                return res.status(400).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
+>>>>>>> Mensagem de login na index
+=======
+                return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
+>>>>>>> Mensagem de login na index
+=======
+                return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
+>>>>>>> 109664e1c2c522e37b95444e14f9af22d03c0143
             }
 
             req.session.user = {
