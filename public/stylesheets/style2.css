@@ -282,24 +282,8 @@ form button:hover {
     text-transform: uppercase;
     width: -moz-available;
     height: 40px;
+    /* border: 1px solid var(--color2); */
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-#msgLogin {
-    color: var(--color2);
-    font-size: 0.9em;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    width: -moz-available;
-    height: 40px;
-    border: 1px solid var(--color2);
-}
-=======
->>>>>>> Mensagem de login na index
-=======
->>>>>>> 109664e1c2c522e37b95444e14f9af22d03c0143
 
 /*Configurações do corpo*/
 main {
