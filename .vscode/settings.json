@@ -3,5 +3,7 @@
     "files.exclude": {
         "**/.git": true,
         "**/.gitkeep": true
-    }
+    },
+
+    "http.proxy": "http://proxy.santanderbr.corp"
 }
