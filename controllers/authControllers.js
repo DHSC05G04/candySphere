@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const authController = {
    
 <<<<<<< HEAD
+<<<<<<< HEAD
     index: (req,res) => {
         console.log('REQ.SESSION:'+req.session.user)
         console.log('SESSION_FULL' + JSON.stringify(req.session, null, 2) )
@@ -187,6 +188,8 @@ const authController = {
     
 =======
 >>>>>>> Mensagem de login na index
+=======
+>>>>>>> 109664e1c2c522e37b95444e14f9af22d03c0143
     index: (req,res) => {
         console.log('REQ.SESSION:'+req.session.user)
         console.log('SESSION_FULL' + JSON.stringify(req.session, null, 2) )
@@ -234,6 +237,7 @@ const authController = {
             if (login != nome_usuario || !bcrypt.compareSync(senha,senhaHash)) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
 =======
                 return res.status(400).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
@@ -241,6 +245,9 @@ const authController = {
 =======
                 return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
 >>>>>>> Mensagem de login na index
+=======
+                return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
+>>>>>>> 109664e1c2c522e37b95444e14f9af22d03c0143
             }
 
             req.session.user = {
