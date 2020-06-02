@@ -24,12 +24,12 @@
                         <td class="nome-campo">
                             <div id="foto-perfil">
                                 <img src="/images/IMG_20180411_111301015~3.jpg" alt="">
-                                <div id="nome-funcionario"> Alessandro Barbosa Vitorio</div>
+                                <div id="nome-funcionario"> <span id="nome"></span> </div>
                             </div>
                             <div class="funcionarios-dados">
                                 <label class="label-funcionario" for=""><b>Contatos</b></label>
-                                <div><b>Email: </b> asovitorio@gmail.com</div>
-                                <div><b>Telefone: </b>(11) 95496-5202</div>
+                                <div><b>Email: </b> <span id="email"></span></div>
+                                <div><b>Telefone: </b><span id="telefone"></span></div>
                             </div>
                             <div class="funcionarios-dados">
                                 <label class="label-funcionario" for=""><b>Endereço</b></label>
@@ -82,6 +82,19 @@
     <%- include('../partials/scripts') %>
 
     <script>
+        const nome = document.getElementById('nome')
+        const email = document.getElementById('email')
+        const telefone = document.getElementById('telefone')
+    async function  getFuncionario(){
+        const resposta = await fetch("http://localhost:3000/api/v0/funcionarios/1");
+        const funcionario = await resposta.json()
+        nome.innerHTML = funcionario[0].nome
+        email.innerHTML = funcionario[0].email
+        telefone.innerHTML = funcionario[0].telefone
+        console.log(funcionario[0].nome)
+
+    }
+        
         function iniciaModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.add('mostrar');
@@ -96,6 +109,8 @@
             iniciaModal('modal-cliente');
 
         });
+
+        getFuncionario()
     </script>
 
 </body>
