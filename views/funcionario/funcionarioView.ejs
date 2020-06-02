@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('../partials/head') %>
+
+<body>
+
+    <%- include('../partials/header') %>
+
+    <main id="funcionarios">
+
+        <section id="tabela-corpo">
+
+
+            <table id="tabela-funcionario">
+                <thead>
+                    <tr>
+                        <th id="titulo-card-ver-funcionario"><span
+                                class="material-icons">account_box</span></a><span>Funcionario</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="nome-campo">
+                            <div id="foto-perfil">
+                                <img src="/images/IMG_20180411_111301015~3.jpg" alt="">
+                                <div id="nome-funcionario"> Alessandro Barbosa Vitorio</div>
+                            </div>
+                            <div class="funcionarios-dados">
+                                <label class="label-funcionario" for=""><b>Contatos</b></label>
+                                <div><b>Email: </b> asovitorio@gmail.com</div>
+                                <div><b>Telefone: </b>(11) 95496-5202</div>
+                            </div>
+                            <div class="funcionarios-dados">
+                                <label class="label-funcionario" for=""><b>Endereço</b></label>
+                                <div><b>Logradouro: </b> Rua Silvio Galicho <b>Nº: </b>27</div>
+                                <div><b>CEP: </b>05797-440</div>
+                                <div><b>Bairro: </b>Jd Ipê</div>
+                                <div><b>Cidade: </b>São Paulo <b>UF: </b>SP </div>
+                            </div>
+                            <div class="funcionarios-dados">
+                                <label class="label-funcionario" for=""><b>Dados Funcionais</b></label>
+                                <div><b>Cargo: </b>Desenvolvedor de Sistema</div>
+                                <div><b>Salário: </b>R$ 20.000,00</div>
+                                <div><b>Data de Admisão: </b>22/01/2020</div>
+                                <div><b>Usuario do Sistema: </b>Sim</div>
+                            </div>
+                        </td>
+
+
+                </tbody>
+            </table>
+            <div class="add-cliente"> <a id="btn-add" href="#"><span class="material-icons">add_circle</span></a></div>
+        </section>
+
+    </main>
+<br>
+    <div id="modal-cliente" class="modal-container">
+        <div id="conteudo-modal">
+            <form id="form-cliente" action="">
+                <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
+                <h1>Cadastro de funcionários</h1>
+                <div id="label-cliente"><label for="nome-cliente">Nome</label></div>
+                <input type="text" id="nome-cliente" class="input-cadastro" name="nome-cliente"
+                    placeholder="Digite o nome do funcionário">
+                <div id="label-cliente"><label for="nome-cliente">Email</label></div>
+                <input type="text" id="nome-cliente" class="input-cadastro" name="email-cliente"
+                    placeholder="Digite o Email">
+                <div id="label-cliente"><label for="nome-cliente">Telefone</label></div>
+                <input type="text" id="nome-cliente" class="input-cadastro" name="tel-cliente"
+                    placeholder="Digite o telefone">
+                <div id="label-cliente"><label for="nome-cliente">Endereço</label></div>
+                <input type="text" id="nome-cliente" class="input-cadastro" name="end-cliente"
+                    placeholder="Digite o Endereço">
+                <input type="submit" class="btn-cliente" value="Salvar">
+            </form>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>
+
+    <%- include('../partials/scripts') %>
+
+    <script>
+        function iniciaModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('mostrar');
+            modal.addEventListener('click', (e) => {
+                if (e.target.id == 'fechar-tudo') {
+                    modal.classList.remove('mostrar');
+                }
+            });
+        }
+        const btnClienteAdd = document.querySelector('.add-cliente');
+        btnClienteAdd.addEventListener('click', () => {
+            iniciaModal('modal-cliente');
+
+        });
+    </script>
+
+</body>
+
+</html>
