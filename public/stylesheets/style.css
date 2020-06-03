@@ -349,6 +349,16 @@ main {
     color: var(--color2)
 }
 
+.adminCardContainer.produtos .formProdutos {
+    display: block;
+    min-width: 0px;
+    width: 100%;
+    height: auto;
+    background-color: inherit;
+    padding: 0;
+    margin: 0;
+}
+
 .adminCardContainer.produtos .addCart {
     margin: 5px;
     padding: .25em;
@@ -361,6 +371,21 @@ main {
 .adminCardContainer.produtos .addCart:hover {
     color: var(--color2);
     background-color: var(--color5);
+    cursor: pointer;
+}
+
+#carrinhoCompras {
+    position: fixed;
+    right: 10%;
+    top: 22%;
+    background-color: var(--color2);
+    color: var(--color5);
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 20px;
+}
+
+#carrinhoCompras:hover {
     cursor: pointer;
 }
 
