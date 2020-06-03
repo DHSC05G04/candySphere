@@ -8,7 +8,7 @@
         <%- include('../partials/header') %>
 
         <main id="administracao">
-            <% produtos.forEach((produto, index) => { %>
+            <% produtos.forEach((produto) => { %>
                 <div class="adminCardContainer produtos">
                     <section class="foto" style="background-image: url(<%= produto.itemEstoque.foto %>); background-size: cover;">
                     </section>
@@ -16,13 +16,15 @@
                         <h3><%= produto.itemEstoque.nome %></h3>
                         <!-- <p>Variável com descrição do produto</p> -->
                         <p class="valor">R$ <%= produto.valor %></p>
-                        <p id=<%= `Button-${index}` %> class="material-icons addCart" onClick=<%= `addToCart(${index})` %>>shopping_cart</p>
+                        <p id=<%= `Button-${produto.id}` %> class="material-icons addCart" onClick=<%= `addToCart(${produto.id})` %>>shopping_cart</p>
                     </section>
                 </div>                                
             <% }); %>
 
             <p id="carrinhoCompras" class="material-icons addCart" onClick=iniciaModal(modalCarrinho)>shopping_basket</p>
         </main>
+
+        <%- include('../partials/footer') %>
 
         <div id="modalCarrinho" class="modal-container">
             <div id="conteudo-modal">
@@ -44,9 +46,7 @@
             </div>
         </div>
 
-        <%- include('../partials/footer') %>
 
-        <%- include('../partials/scripts') %>
 
         <script type="text/javascript">
             function addToCart(productId) {
@@ -79,20 +79,25 @@
 
             const tabelaCompras = document.getElementById('listaCompras')
             const produtosCarrinho = JSON.parse(sessionStorage.carrinho);
+            console.log(produtosCarrinho)
             const API_BASE = 'http://candyspheredev.herokuapp.com/api/v0/produtos'
 
             produtosCarrinho.forEach(async produto => {
                 const dados = await fetch(`${API_BASE}/${produto.id}`)
+                const dadosObject = await dados.json()
+                console.log(dadosObject)
                 tabelaCompras.innerHTML += `
                     <tr>
-                        <td>${dados.itemEstoque.nome}</td>
+                        <td>${dadosObject[0].itemEstoque.nome}</td>
                         <td>${produto.qtd}</td>
-                        <td>${dados.valor}</td>
+                        <td>${dadosObject[0].valor}</td>
                     </tr>
                 `
             })
 
         </script> 
+
+        <%- include('../partials/scripts') %>
 
     </body>
 
