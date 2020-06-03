@@ -8,11 +8,8 @@ const produtosController = {
             try {
                 const produtos = await Produto.findAll({
                     include: [{
-                        association: 'fabricado',
-                        attributes: ['nome']
-                    },{
-                        association: 'revendido',
-                        attributes: ['nome']
+                        association: 'itemEstoque',
+                        attributes: ['nome', 'foto']
                     }]
                 });
 
@@ -27,11 +24,8 @@ const produtosController = {
                         id: req.params.id
                     },
                     include: [{
-                        association: 'fabricado',
-                        attributes: ['nome']
-                    },{
-                        association: 'revendido',
-                        attributes: ['nome']
+                        association: 'itemEstoque',
+                        attributes: ['nome', 'foto']
                     }]
                 });
                 return res.status(200).json(produtos);
@@ -49,11 +43,8 @@ const produtosController = {
                         }
                     },
                     include: [{
-                        association: 'fabricado',
-                        attributes: ['nome']
-                    },{
-                        association: 'revendido',
-                        attributes: ['nome']
+                        association: 'itemEstoque',
+                        attributes: ['nome', 'foto']
                     }]
                 });
                 return res.status(200).json(produtos);

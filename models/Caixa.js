@@ -46,23 +46,25 @@ module.exports = (sequelize, DataTypes) => {
     });
     Caixa.associate = (models) => {
         // Relacao 1:1 com tbl Caixa. Um Caixa precisa ser funcionario
-        Caixa.belongsTo(models.Usuario,{
-            foreignKey:"usuario_id",
-            as:"usuario"
-        }),
-   
-        // Relacao 1:1 com tbl Caixa. Um Caixa precisa ser Terminal
-        Caixa.belongsTo(models.Terminal,{
-            foreignKey:"terminal_id",
-            as:"terminal"
-        })
+        Caixa.belongsTo(models.Usuario, {
+                foreignKey: "usuario_id",
+                as: "usuario"
+            }),
 
-        Caixa.associate = function(models) {
-            Caixa.hasMany(models.Pedido, {
-              foreignKey: 'caixa_id',
-              as: 'pedido'
+            // Relacao 1:1 com tbl Caixa. Um Caixa precisa ser Terminal
+            Caixa.belongsTo(models.Terminal, {
+                foreignKey: "terminal_id",
+                as: "terminal"
             })
-          };
+        Caixa.hasMany(models.Pedido, {
+            foreignKey: 'caixa_id',
+            as: 'pedido'
+        })
+        Caixa.hasMany(models.Recebimento, {
+            foreignKey: 'caixa_id',
+            as: 'recebimento'
+        })
     }
+
     return Caixa;
 };

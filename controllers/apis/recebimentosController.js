@@ -17,8 +17,7 @@ const recebimentosControllers = {
             },
                 {
                 association:'forma_pagamento',
-             
-               
+                    
             },
             
         ] 
@@ -80,4 +79,4 @@ const recebimentosControllers = {
     },
 }
 
-module.exports =recebimentosControllers
+module.exports = recebimentosControllers
