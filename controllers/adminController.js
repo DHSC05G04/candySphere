@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const fetch = require('node-fetch');
 
-const API_BASE = 'http://candyspheredev.herokuapp.com/api/v0';
+const API_BASE = 'https://candysphere.herokuapp.com/api/v0';
 
 const adminController = {
     index: (req, res) => {
