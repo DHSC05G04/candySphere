@@ -271,7 +271,7 @@ form button:hover {
     background-color: var(--color5);
     color: var(--color1);
     cursor: pointer;
-    border: 2px solid var(--color2);
+    border: 1px solid var(--color2);
 }
 
 #msgLogin {
