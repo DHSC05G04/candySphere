@@ -182,7 +182,19 @@ footer ul {
     justify-content: center;
     align-items: center;
 }
+#loginBody *, *:before, *:after { 
+    margin:10px;
+    /* padding:0px; */
+}
 
+ /* remove a linha dos links */
+#loginBody a{
+text-decoration: none;
+}
+/* esconde as ancoras da tela */
+#loginBody a.links{
+    display: none;
+    }
 .form-container {
     display: flex;
     justify-content: center;

@@ -205,15 +205,15 @@ display: none;
     align-items: center;
     width: 95vw;
     height: 95vh;
-    margin: 0;
-    padding: 0;
+    margin: 5px auto 5px auto;
+    padding: 5px;
     background-image: url('/images/brigadeiro.png');
     background-size: cover;
     border-radius: 60px;
     position: relative;
 }
 
-form {
+#form-login {
     display: flex;
     flex-direction: column;
     align-items: center;

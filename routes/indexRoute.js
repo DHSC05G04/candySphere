@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
                   clientesAct: "inactive",
                   funcionariosAct: "inactive",
                   pdvAct: "inactive"};
-  res.render('index', { title: 'Express', tabs: tabActive });
+  res.render('index2', {tabs: tabActive });
 });
 
 router.get('/index2', function(req, res, next) {
