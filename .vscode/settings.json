@@ -1,9 +1,9 @@
 {
-    "liveServer.settings.multiRootWorkspaceName": "candySphere",
     "files.exclude": {
         "**/.git": true,
-        "**/.gitkeep": true
+        "**/.gitkeep": true,
+        "**/node_modules": true
     },
 
-    "http.proxy": "http://proxy.santanderbr.corp"
+    // "http.proxy": "http://proxy.santanderbr.corp"
 }
