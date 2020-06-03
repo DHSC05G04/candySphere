@@ -9,7 +9,8 @@ const clienteController = {
             financeiroAct: "inactive",
             clientesAct: "active",
             funcionariosAct: "inactive",
-            pdvAct: "inactive"
+            pdvAct: "inactive",
+            
         };
 
         const dataCliente = JSON.parse(
@@ -18,7 +19,8 @@ const clienteController = {
                 res.render('clientes/listar', {
             title: 'Express',
             tabs: tabActive,
-            clientes: dataCliente
+            clientes: dataCliente,
+            usuario:req.session.user
         });
     }
 

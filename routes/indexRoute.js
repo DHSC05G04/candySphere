@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const authControllers =require('../controllers/authControllers')
 
 /* GET index page. */
 router.get('/', function(req, res, next) {
@@ -15,5 +16,19 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
   res.redirect('/home');
 });
+
+router.post("/logar",authControllers.store)
+router.get("/logout",(req,res) => {
+
+  req.session.user = {
+    id: "",
+    login: "",
+    acesso:'',
+}
+console.log(req.session.user)
+res.redirect('/')
+
+
+})
 
 module.exports = router;

@@ -228,10 +228,13 @@ form label {
 form input {
     max-width: 300px;
     width: 90%;
+    height: 40px;
     background-color: var(--color4);
     border: none;
     border-radius: 5px;
     color: var(--color1);
+    text-align: center;
+    font-size: 20px;
 }
 
 form button {
@@ -244,6 +247,7 @@ form button {
     border: none;
     border-radius: 10px;
     border: 1px solid var(--color2);
+    margin-bottom: 20px;
 }
 
 form button:hover {
@@ -345,6 +349,16 @@ main {
     color: var(--color2)
 }
 
+.adminCardContainer.produtos .formProdutos {
+    display: block;
+    min-width: 0px;
+    width: 100%;
+    height: auto;
+    background-color: inherit;
+    padding: 0;
+    margin: 0;
+}
+
 .adminCardContainer.produtos .addCart {
     margin: 5px;
     padding: .25em;
@@ -357,6 +371,21 @@ main {
 .adminCardContainer.produtos .addCart:hover {
     color: var(--color2);
     background-color: var(--color5);
+    cursor: pointer;
+}
+
+#carrinhoCompras {
+    position: fixed;
+    right: 10%;
+    top: 22%;
+    background-color: var(--color2);
+    color: var(--color5);
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 20px;
+}
+
+#carrinhoCompras:hover {
     cursor: pointer;
 }
 
@@ -413,40 +442,40 @@ main {
 
 div.add-estoque {
     position: fixed;
-    top:85%;
+    top: 85%;
     z-index: 1000;
 }
 
-div.add-estoque span{
+div.add-estoque span {
     font-size: 50px;
-    text-shadow: 0px 3px  7px black;
+    text-shadow: 0px 3px 7px black;
     color: var(--color2);
 }
-      
-div.add-estoque a:hover{
-   background-color: var(--color2);
-   border-radius: 50px;
-   transition: all .3s linear;
+
+div.add-estoque a:hover {
+    background-color: var(--color2);
+    border-radius: 50px;
+    transition: all .3s linear;
 }
-   
-div.add-estoque a span:hover{
+
+div.add-estoque a span:hover {
     text-shadow: none;
     color: var(--color5);
 }
 
-#form-estoque *{
+#form-estoque * {
     padding: 0px;
     margin: 0px;
 }
 
 #form-estoque {
     background-color: var(--color1);
-    width:100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     height: 60vh;
     border: 5px solid var(--color5);
-    box-shadow: 0px 0px 0px 8px var(--color1) ;
+    box-shadow: 0px 0px 0px 8px var(--color1);
 }
 
 #form-estoque h1 {
@@ -467,8 +496,8 @@ div.add-estoque a span:hover{
     border: 1px solid var(--color5);
     color: var(--color5);
     font-size: 20px;
-    max-width: 100%;   
-    display: block;    
+    max-width: 100%;
+    display: block;
 }
 
 /* ###### FINANCEIRO ######### */
@@ -727,9 +756,9 @@ main#financeiro section #graficos .grafico-vendas-radar {
 
 section#tabela-corpo {
     width: -webkit-fill-available;
-    height:100vh;
+    height: 100vh;
     margin: 0 auto;
-   }
+}
 
 section#tabela-corpo h2 {
     color: var(--color5);
@@ -748,7 +777,8 @@ section#tabela-corpo table#tabela-cliente tbody {
 }
 
 
-section#tabela-corpo table#tabela-cliente, td {
+section#tabela-corpo table#tabela-cliente,
+td {
     border-collapse: collapse;
     border: 1px solid var(--color4);
 }
@@ -764,10 +794,11 @@ section#tabela-corpo table#tabela-cliente tr th {
 
 }
 
+
 section#tabela-corpo table#tabela-cliente tbody tr:hover {
     background-color: var(--color3);
     transition: .4s;
-      
+
 }
 
 
@@ -786,54 +817,58 @@ section#tabela-corpo table#tabela-cliente tr td.nome-campo,
 section#tabela-corpo table#tabela-cliente tr td.email-campo {
     text-align: left;
     padding-left: 10px;
-   
-}
-
-section#tabela-corpo table#tabela-cliente tr td a.btn-acao :hover{
-  
-       color: var(--color2);
-     transition: .5s;
-
 
 }
-section#tabela-corpo div.add-cliente{
-   display: flex;
-   justify-content: center;
-  
-   
 
-  
-}
-section#tabela-corpo div.add-cliente a {
- position: fixed;
- top:75%;
-  z-index: 1000;
- 
- 
-}
-section#tabela-corpo div.add-cliente a span{
-    font-size: 50px;
-   text-shadow: 0px 3px  7px black;
+section#tabela-corpo table#tabela-cliente tr td a.btn-acao :hover {
+
     color: var(--color2);
-   
-}
-   
-div.add-cliente a  :hover{
-background-color: var(--color2);
+    transition: .5s;
 
-border-radius: 50px;
-transition: all .3s linear;
+
 }
 
-section#tabela-corpo div.add-cliente a span:hover{
+section#tabela-corpo div.add-cliente {
+    display: flex;
+    justify-content: center;
+
+
+
+
+}
+
+section#tabela-corpo div.add-cliente a {
+    position: fixed;
+    top: 75%;
+    z-index: 1000;
+
+
+}
+
+section#tabela-corpo div.add-cliente a span {
+    font-size: 50px;
+    text-shadow: 0px 3px 7px black;
+    color: var(--color2);
+
+}
+
+div.add-cliente a :hover {
+    background-color: var(--color2);
+
+    border-radius: 50px;
+    transition: all .3s linear;
+}
+
+section#tabela-corpo div.add-cliente a span:hover {
     text-shadow: none;
     color: var(--color5);
 }
-section#tabela-corpo table#tabela-cliente tr td.email-campo{
-  text-align: left;
+
+section#tabela-corpo table#tabela-cliente tr td.email-campo {
+    text-align: left;
 }
 
-.modal-container{
+.modal-container {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.637);
@@ -847,92 +882,107 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo{
 
 }
 
-.mostrar{
+.mostrar {
     display: flex;
 }
 
 /* Inicio do Cadastro Modal */
 #conteudo-modal {
     width: 60%;
-   text-align: end;
-  
+    text-align: end;
+    display: flex;
+    justify-content: center;
+
 }
-@keyframes conteudo-modal{
-    from{
+
+@keyframes conteudo-modal {
+    from {
         opacity: 0px;
-        transform: translate3d(0,-100px,0);
+        transform: translate3d(0, -100px, 0);
     }
-    to{
+
+    to {
         opacity: 1;
-        transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
     }
 
 }
-.mostrar  #conteudo-modal{
-    animation:conteudo-modal 1s ;
+
+.mostrar #conteudo-modal {
+    animation: conteudo-modal 1s;
 }
-.btn-fechar{
-  
-   position: relative;
+
+.btn-fechar {
+
+    position: relative;
     width: 100%;
-   
-    
-}
-.fechar-modal{
-width: 30px;
-height: 30px;
-display: block;
-font-size: 20px;
-background-color: var(--color2);
-border-radius: 30px;
-border: 2px solid var(--color5);
-box-shadow: 0px 0px 0px 3px var(--color2);
-color: var(--color5);
-z-index: 2000;
-position: absolute;
-top: -10px;
-right: 0px;
+
 
 }
-#form-cliente *{
-padding: 0px;
-margin: 0px;
+
+.fechar-modal {
+    width: 30px;
+    height: 30px;
+    display: block;
+    font-size: 20px;
+    background-color: var(--color2);
+    border-radius: 30px;
+    border: 2px solid var(--color5);
+    box-shadow: 0px 0px 0px 3px var(--color2);
+    color: var(--color5);
+    z-index: 2000;
+    position: absolute;
+    top: -10px;
+    right: 0px;
+
 }
-#form-cliente{
+
+#form-cliente * {
+    padding: 0px;
+    margin: 0px;
+}
+
+#form-cliente {
     background-color: var(--color1);
-    width:100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     height: 60vh;
     border: 5px solid var(--color5);
-    box-shadow: 0px 0px 0px 8px var(--color1) ;
-   
-    }
-    #form-cliente h1{
-        color: var(--color5);
-       
-    }
-  #form-cliente label{
-        color: var(--color5);
-        text-align: left;
-           }
-        #label-cliente{
-        width: 90%;
-        display: block;
-        text-align: left;
-    }
-    #form-cliente input{
-        margin-bottom: 20px;
-        height: 50px;
-    }
-    #form-cliente #nome-cliente {
-        background-color: var(--color1);
-        border: 1px solid var(--color5);
-        color: var(--color5);
-        font-size: 20px;
-       max-width: 100%;   
-       display: block;    
-    }
+    box-shadow: 0px 0px 0px 8px var(--color1);
+
+}
+
+#form-cliente h1 {
+    color: var(--color5);
+
+}
+
+#form-cliente label {
+    color: var(--color5);
+    text-align: left;
+}
+
+#label-cliente {
+    width: 90%;
+    display: block;
+    text-align: left;
+}
+
+#form-cliente input {
+    margin-bottom: 20px;
+    height: 50px;
+}
+
+#form-cliente #nome-cliente {
+    background-color: var(--color1);
+    border: 1px solid var(--color5);
+    color: var(--color5);
+    font-size: 20px;
+    max-width: 100%;
+    display: block;
+}
+
 /* fim da css clientes */
 
 @media screen and (max-width: 800px) {
@@ -947,8 +997,8 @@ margin: 0px;
         border: 2px solid var(--color2);
         border-radius: 10px;
     }
-    
-    header label#icone-sanduiche:hover{
+
+    header label#icone-sanduiche:hover {
         color: var(--color5);
         background-color: var(--color2);
         cursor: pointer;
@@ -965,7 +1015,7 @@ margin: 0px;
     }
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 800px) {
     header li:nth-child(3) {
         border-radius: 0 1.25em 0 0;
     }
@@ -1026,7 +1076,105 @@ margin: 0px;
 }
 
 @media(max-width: 520px) {
-    th.email-head, td.email-campo{
-     display: none;
+
+    th.email-head,
+    td.email-campo {
+        display: none;
     }
-  }
+}
+
+/*Inicio Configuração Ver Funcionário */
+section#tabela-corpo table#tabela-funcionario {
+    background-color: var(--color1);
+    color: var(--color5);
+    width: 70%;
+    margin: 20px auto;
+}
+
+section#tabela-corpo table#tabela-funcionario tbody {
+    overflow: auto;
+}
+
+
+section#tabela-corpo table#tabela-funcionario,
+td {
+    border-collapse: collapse;
+    border: 1px solid var(--color4);
+}
+
+section#tabela-corpo table#tabela-funcionario tr th {
+    text-align: center;
+    color: var(--color5);
+    display: fixed;
+    background-color: var(--color2);
+    height: 35px;
+    border-collapse: collapse;
+    border: 1px solid var(--color4);
+}
+
+#titulo-card-ver-funcionario {
+    display: flex;
+    align-items: center;
+}
+
+#titulo-card-ver-funcionario span {
+    font-size: 25px;
+
+
+}
+
+#titulo-card-ver-funcionario .material-icons {
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+#foto-perfil img {
+    width: 90px;
+    height:90px;
+    display: inline-block;
+    box-shadow: 0px 0px 0px 5px var(--color5);
+    border-radius: 120px;
+    border: 3px solid var(--color2);
+}
+
+#foto-perfil {
+    margin: 15px 35px;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--color5);
+}
+#nome-funcionario{
+text-align: center;
+margin-top: 15px;
+font-size: 20px;
+width: 100%;
+font-weight: bolder;
+}
+#dados-pessoal-label{
+    border: 1px solid var(--color5);
+}
+.funcionarios-dados{
+    margin: 25px 35px;
+    border:1px solid var(--color5) ;
+    padding: 10px;
+    position: relative;
+    border-radius: 10px;
+}
+.label-funcionario{
+    position: absolute;
+    top: -10px;
+    background-color: var(--color5);
+    border-radius: 5px;
+    color: var(--color1);
+  margin-left:10px ;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.funcionarios-dados div{
+    margin-top: 10px;
+}
+/*Fim Configuração Ver Funcionário */

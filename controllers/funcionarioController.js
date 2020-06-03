@@ -18,9 +18,30 @@ const funcionarioController = {
                 res.render('funcionarios', {
             title: 'Express',
             tabs: tabActive,
-            funcionarios: dataFuncionario
+            funcionarios: dataFuncionario,
+            usuario:req.session.user
         });
-    }
+    },
+    verFuncionario: (req, res, next) => {
+        let tabActive = {
+            homeAct: "inactive",
+            adminAct: "inactive",
+            financeiroAct: "inactive",
+            clientesAct: "inactive",
+            funcionariosAct: "active",
+            pdvAct: "inactive"
+        };
+
+        const dataFuncionario = JSON.parse(
+            fs.readFileSync(
+                path.join('database', 'funcionarios.json')));
+                res.render('funcionario/funcionarioView', {
+            title: 'Express',
+            tabs: tabActive,
+            funcionarios: dataFuncionario,
+            usuario:req.session.user
+        });
+    },
 
 }
 

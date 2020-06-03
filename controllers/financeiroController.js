@@ -14,7 +14,7 @@ const financeiroController = {
                               fs.readFileSync(
                               path.join('database','financeiro.json')));
       
-        res.render('financeiro', { title: 'Express', tabs: tabActive, dataFinanceiro,tipoGrafico:"home"});
+        res.render('financeiro', { title: 'Express', tabs: tabActive, dataFinanceiro,tipoGrafico:"home",usuario:req.session.user});
       },
       relatorio: (req,res) =>{
        let {relatorio} = req.query;
@@ -29,9 +29,9 @@ const dataFinanceiro = JSON.parse(
               fs.readFileSync(
               path.join('database','financeiro.json')));
                 if(relatorio == 'financeiro'){
-                  res.render('financeiro', { title: 'Express', tabs: tabActive, dataFinanceiro,tipoGrafico:"receita-despesa"});
+                  res.render('financeiro', { title: 'Express', tabs: tabActive, dataFinanceiro,tipoGrafico:"receita-despesa",usuario:req.session.user});
                 }else if(relatorio == 'vendas'){
-                  res.render('financeiro', { title: 'Express', tabs: tabActive, dataFinanceiro,tipoGrafico:"vendas"});
+                  res.render('financeiro', { title: 'Express', tabs: tabActive, dataFinanceiro,tipoGrafico:"vendas",usuario:req.session.user});
                 }
 
         

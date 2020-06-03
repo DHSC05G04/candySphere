@@ -10,7 +10,7 @@
         <main id="administracao">
             <% receitas.forEach(receita => { %>
                 <a href="/admin/produtos" class="adminCardContainer">
-                    <section class="foto" style="background-image: url(<%= receita.imagem %>); background-size: cover;">
+                    <section class="foto" style="background-image: url(<%= receita.foto %>); background-size: cover;">
                     </section>
                     <section class="description">
                         <h3><%= receita.nome %></h3>
