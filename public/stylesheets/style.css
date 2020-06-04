@@ -241,10 +241,10 @@ form input {
     max-width: 300px;
     width: 90%;
     height: 40px;
-    background-color: var(--color4);
+    background-color: var(--color1);
     border: none;
     border-radius: 5px;
-    color: var(--color1);
+    color: var(--color4);
     text-align: center;
     font-size: 20px;
 }
