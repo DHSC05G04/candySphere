@@ -5,5 +5,4 @@
         "**/node_modules": true
     },
 
-    // "http.proxy": "http://proxy.santanderbr.corp"
 }
