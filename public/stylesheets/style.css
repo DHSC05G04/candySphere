@@ -806,30 +806,22 @@ section#tabela-corpo table#tabela-cliente tr td a.btn-acao :hover {
 section#tabela-corpo div.add-cliente {
     display: flex;
     justify-content: center;
-
-
-
-
 }
 
 section#tabela-corpo div.add-cliente a {
     position: fixed;
     top: 75%;
     z-index: 1000;
-
-
 }
 
 section#tabela-corpo div.add-cliente a span {
     font-size: 50px;
     text-shadow: 0px 3px 7px black;
     color: var(--color2);
-
 }
 
 div.add-cliente a :hover {
     background-color: var(--color2);
-
     border-radius: 50px;
     transition: all .3s linear;
 }
@@ -839,8 +831,60 @@ section#tabela-corpo div.add-cliente a span:hover {
     color: var(--color5);
 }
 
+section#tabela-corpo div.add-funcionario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+section#tabela-corpo div.add-funcionario a {
+    
+    top: 75%;
+    
+}
+
+section#tabela-corpo div.add-funcionario a span {
+    font-size: 40px;
+    text-shadow: 0px 3px 7px black;
+    color: var(--color1);
+    margin: 0px;
+    padding: 0;
+
+}
+section#tabela-corpo div.add-funcionario a i {
+    text-shadow: 0px 3px 7px black;
+    color: var(--color1);
+    margin: 0px;
+    padding: 0;
+
+}
+
+div.add-funcionario a :hover {
+    background-color: var(--color1);
+    border-radius: 1000px;
+    transition: all .3s linear;
+    padding: 5px;
+}
+
+section#tabela-corpo div.add-funcionario a span:hover {
+    text-shadow: none;
+    color: var(--color5);
+}
+section#tabela-corpo div.add-funcionario a i:hover {
+    text-shadow: none;
+    color: var(--color5);
+    height: 37px;
+}
+
 section#tabela-corpo table#tabela-cliente tr td.email-campo {
     text-align: left;
+}
+
+#usuario {
+    background-color: var(--color5);
+    width: 10px;
+    height: 20px;
 }
 
 .modal-container {
@@ -949,13 +993,19 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
     height: 50px;
 }
 
-#form-cliente #nome-cliente {
+#form-cliente .input-cadastro{
     background-color: var(--color1);
     border: 1px solid var(--color5);
     color: var(--color5);
     font-size: 20px;
     max-width: 100%;
     display: block;
+}
+#form-cliente select{
+    width: 90%;
+    height: 50px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 /* fim da css clientes */
@@ -1105,7 +1155,7 @@ section#tabela-corpo table#tabela-funcionario tr th {
 
 #foto-perfil img {
     width: 90px;
-    height:90px;
+    height: 90px;
     display: inline-block;
     box-shadow: 0px 0px 0px 5px var(--color5);
     border-radius: 120px;
@@ -1114,42 +1164,74 @@ section#tabela-corpo table#tabela-funcionario tr th {
 
 #foto-perfil {
     margin: 15px 35px;
-   
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid var(--color5);
 }
-#nome-funcionario{
-text-align: center;
-margin-top: 15px;
-font-size: 20px;
-width: 100%;
-font-weight: bolder;
+
+#nome-funcionario {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+    width: 100%;
+    font-weight: bolder;
 }
-#dados-pessoal-label{
+
+#dados-pessoal-label {
     border: 1px solid var(--color5);
 }
-.funcionarios-dados{
+
+.funcionarios-dados {
     margin: 25px 35px;
-    border:1px solid var(--color5) ;
+    border: 1px solid var(--color5);
     padding: 10px;
     position: relative;
     border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
 }
-.label-funcionario{
+
+.label-funcionario {
     position: absolute;
     top: -10px;
     background-color: var(--color5);
     border-radius: 5px;
     color: var(--color1);
-  margin-left:10px ;
+    margin-left: 10px;
     text-align: center;
     padding-left: 5px;
     padding-right: 5px;
+
 }
-.funcionarios-dados div{
+#card-usuario{
+    margin-right: 10px;
+    border: 1px solid var(--color5);
+    width: 100px;
+    height:100px ;
+    text-align: center;
+    background-color: var(--color5);
+    border: 2px solid var(--color1);
+    box-shadow: 0px 0px 0px 5px var(--color5);
+    border-radius: 300px;
+    }
+#card-usuario span{
+color: var(--color1);
+margin-top: 8px;
+    display: inline-block;
+}
+
+.funcionarios-dados div {
     margin-top: 10px;
+    
 }
+#acesso{
+    text-align: center;
+    text-align-last: center;
+}
+
 /*Fim Configuração Ver Funcionário */

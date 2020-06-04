@@ -15,64 +15,108 @@
             <table id="tabela-funcionario">
                 <thead>
                     <tr>
-                        <th id="titulo-card-ver-funcionario"><span
-                                class="material-icons">account_box</span></a><span>Funcionario</span></th>
+                        <th id="titulo-card-ver-funcionario"><i class='fas fa-id-card-alt' style='font-size:30px; margin-left: 20px; margin-right: 20px;'></i></a><span> Funcionario</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="nome-campo">
                             <div id="foto-perfil">
-                                <img src="/images/IMG_20180411_111301015~3.jpg" alt="">
-                                <div id="nome-funcionario"> <span id="nome"></span> </div>
+                                <div style="width: 90px;"> <img src="/images/<%= funcionarios[0].avatar%> " width="100%"
+                                        alt=""></div>
+                                <div id="nome-funcionario"> <span id="nome"><%=funcionarios[0].nome%></span> </div>
                             </div>
                             <div class="funcionarios-dados">
-                                <label class="label-funcionario" for=""><b>Contatos</b></label>
-                                <div><b>Email: </b> <span id="email"></span></div>
-                                <div><b>Telefone: </b><span id="telefone"></span></div>
+                                <div>
+                                    <label class="label-funcionario" for=""><b>Contatos</b></label>
+                                    <div><b>Email: </b> <span id="email"><%=funcionarios[0].email %></span></div>
+                                    <div><b>Telefone: </b><span id="telefone"><%=funcionarios[0].telefone%></span></div>
+                                </div>
                             </div>
                             <div class="funcionarios-dados">
-                                <label class="label-funcionario" for=""><b>Endereço</b></label>
-                                <div><b>Logradouro: </b> Rua Silvio Galicho <b>Nº: </b>27</div>
-                                <div><b>CEP: </b>05797-440</div>
-                                <div><b>Bairro: </b>Jd Ipê</div>
-                                <div><b>Cidade: </b>São Paulo <b>UF: </b>SP </div>
+                                <div>
+                                    <label class="label-funcionario" for=""><b>Endereço</b></label>
+                                    <div><b>Logradouro: </b> Rua Silvio Galicho <b>Nº: </b>27</div>
+                                    <div><b>CEP: </b>05797-440</div>
+                                    <div><b>Bairro: </b>Jd Ipê</div>
+                                    <div><b>Cidade: </b>São Paulo <b>UF: </b>SP </div>
+                                </div>
                             </div>
                             <div class="funcionarios-dados">
-                                <label class="label-funcionario" for=""><b>Dados Funcionais</b></label>
-                                <div><b>Cargo: </b>Desenvolvedor de Sistema</div>
-                                <div><b>Salário: </b>R$ 20.000,00</div>
-                                <div><b>Data de Admisão: </b>22/01/2020</div>
-                                <div><b>Usuario do Sistema: </b>Sim</div>
+                                <div>
+                                    <label class="label-funcionario" for=""><b>Dados Funcionais</b></label>
+                                    <div><b>Cargo: </b>Desenvolvedor de Sistema</div>
+                                    <div><b>Salário:R$ </b><%=funcionarios[0].salario%></div>
+                                    <div><b>Data de Admisão: </b><%=funcionarios[0].createdAt%></div>
+                                    <%  if(usuarioCadastrado.length <=0){ %>
+                                    <div><b>Usuario do Sistema: </b>Não Cadastado</div>
+                                    <%    }else{ %>
+                                    <div><b>Usuario do Sistema: </b><%=usuarioCadastrado[0].nome_usuario%> <br>
+                                        <b>acesso: </b> <%=usuarioCadastrado[0].acesso==1?"ADM":"USER"%> </div>
+                                    <%  } %>
+
+
+
+                                </div>
+
+                                <%  if(usuarioCadastrado.length <=0){ %>
+                                <div id="card-usuario">
+                                    <span> Cadastro <br> Usuario</span>
+                                    <div class="add-funcionario"> <a id="btn-add" href="#"><span
+                                                class="material-icons">person_add_alt_1</span></a></div>
+                                </div>
                             </div>
+                            <%    }else{ %>
+                                <div style="display: flex;flex-wrap: wrap;">
+                            <div id="card-usuario">
+                                <span> Editar <br> Usuario</span>
+                                <div class="add-funcionario"> <a id="btn-edit" href="#"><i class='fas fa-user-edit'
+                                            style='font-size:30px '></i></a></div>
+                            </div>
+                            <div id="card-usuario">
+                                <span> Excluir <br> Usuario</span>
+                                <div class="add-funcionario"> <a id="btn-excluir" href="#"><i class='fas fa-trash'
+                                            style='font-size:30px '></i></a></div>
+                            </div>
+                          
+                        </div>
+                            <%  } %>
+
+                            </div>
+
                         </td>
 
 
                 </tbody>
             </table>
-            <div class="add-cliente"> <a id="btn-add" href="#"><span class="material-icons">add_circle</span></a></div>
+
         </section>
 
     </main>
-<br>
-    <div id="modal-cliente" class="modal-container">
+    <br>
+    <div id="modal-usuario" class="modal-container">
         <div id="conteudo-modal">
-            <form id="form-cliente" action="">
-                <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
-                <h1>Cadastro de funcionários</h1>
-                <div id="label-cliente"><label for="nome-cliente">Nome</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="nome-cliente"
-                    placeholder="Digite o nome do funcionário">
-                <div id="label-cliente"><label for="nome-cliente">Email</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="email-cliente"
-                    placeholder="Digite o Email">
-                <div id="label-cliente"><label for="nome-cliente">Telefone</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="tel-cliente"
-                    placeholder="Digite o telefone">
-                <div id="label-cliente"><label for="nome-cliente">Endereço</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="end-cliente"
-                    placeholder="Digite o Endereço">
-                <input type="submit" class="btn-cliente" value="Salvar">
+
+            <form id="form-cliente" method="POST" action="<%=usuarioCadastrado.length <=0?"cadastrar":"atualizar"%>" name="form-usuario" style="position: relative;">
+                <h1 id="titulo">Cadastro de Usuário</h1>
+                <button id="fechar-tudo" class="fechar-modal">x</button>
+                <input type="hidden" id="id" name="id" value="<%=funcionarios[0].id%> ">
+                <div id="label-cliente"><label for="nome-cliente">Nome de Usuário</label></div>
+                <input type="text" id="nome-usuario" class="input-cadastro" name="nome"
+                    placeholder="Digite o nome de Usuario">
+                <div id="label-cliente"><label for="nome-cliente">Privilégio</label></div>
+                <select type="select" id="acesso" class="input-cadastro" name="nivel">
+                    <option value="" disabled selected>Escolha o nível de acesso</option>
+                    <option value="1">ADM</option>
+                    <option value="2">USER</option>
+                </select>
+                <div id="label-cliente"><label id="nova-senha" for="nome-cliente">Senha</label></div>
+                <input type="password" id="senha" class="input-cadastro" name="senha"
+                    placeholder="Digite uma senha">
+                <div id="label-cliente"><label for="nome-cliente">Cofirme a senha</label></div>
+                <input type="password" id="conf-senha" class="input-cadastro" name="conf-senha"
+                    placeholder="Confirme a senha">
+                <input type="submit" id="input-usuario" onclick="validacao()" class="btn-cliente" value="Salvar">
             </form>
         </div>
     </div>
@@ -82,37 +126,50 @@
     <%- include('../partials/scripts') %>
 
     <script>
-        const nome = document.getElementById('nome')
-        const email = document.getElementById('email')
-        const telefone = document.getElementById('telefone')
-    async function  getFuncionario(){
-        const resposta = await fetch("http://localhost:3000/api/v0/funcionarios/1");
-        const funcionario = await resposta.json()
-        nome.innerHTML = funcionario[0].nome
-        email.innerHTML = funcionario[0].email
-        telefone.innerHTML = funcionario[0].telefone
-        console.log(funcionario[0].nome)
-
-    }
-        
         function iniciaModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.add('mostrar');
             modal.addEventListener('click', (e) => {
                 if (e.target.id == 'fechar-tudo') {
+                    e.preventDefault();
                     modal.classList.remove('mostrar');
                 }
             });
         }
-        const btnClienteAdd = document.querySelector('.add-cliente');
-        btnClienteAdd.addEventListener('click', () => {
-            iniciaModal('modal-cliente');
+        const btnUsuarioAdd = document.querySelector('#btn-add');
+       
+        
+        btnUsuarioAdd.addEventListener('click', () => {
 
+            iniciaModal('modal-usuario');
         });
 
-        getFuncionario()
+     
     </script>
+  '<%if(usuarioCadastrado.length >0){%>'
+    <script>
+ const btnUsuarioEdit = document.querySelector('#btn-edit');
+ const id = document.querySelector('#id');
+ const titulo = document.querySelector('#titulo');
+ const usuario = document.querySelector('#nome-usuario');
+ const acesso = document.querySelector('#acesso');
+ const senha = document.querySelector('#nova-senha');
+ const inputUsuario = document.querySelector('#input-usuario');
 
+ btnUsuarioEdit.addEventListener('click', () => {
+   
+   inputUsuario.value = "Atualizar"
+    titulo.textContent = "Atualizar Usuário"
+    senha.textContent="Nova Senha"
+    usuario.value = '<%=usuarioCadastrado[0].nome_usuario%>'
+    acesso.value = '<%=usuarioCadastrado[0].acesso%>'
+           iniciaModal('modal-usuario');
+          
+        });
+
+
+    </script>
+  '<%}%>'
 </body>
 
 </html>
