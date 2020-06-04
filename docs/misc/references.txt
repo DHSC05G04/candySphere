@@ -1,0 +1,12 @@
+https://medium.com/quick-code/handling-authentication-and-authorization-with-node-7f9548fedde8
+
+https://dev.to/dpashutskii/what-are-the-good-practices-to-node-js-web-app-authentication-and-authorization-11o2
+
+https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/developer/developer_tools/getting-started-with-gitflow.html
+
+https://expressjs.com/pt-br/advanced/best-practice-security.html
+
+https://www.reddit.com/r/node/comments/dx2g93/what_are_the_good_practices_to_nodejs_web_app/f7n437l/
+
+https://developer.okta.com/blog/2019/10/03/painless-node-authentication
+
