@@ -21,6 +21,7 @@
                 </thead>
                 <tbody>
 
+<<<<<<< HEAD
                     <% funcionarios.forEach((elemento,i) => {%>
                     <tr>
                         <td class="nome-campo"><a
@@ -75,6 +76,66 @@
                 <input type="text" id="salario" class="input-cadastro" name="salario" placeholder="Digite o Sálario">
                 <input type="submit" class="btn-cliente" value="Salvar">
             </form>
+=======
+            <section id="tabela-corpo">
+
+
+                <table id="tabela-cliente">
+                    <thead>
+                        <tr>
+    
+                            <th>Nome</th>
+                            <th class="email-head">Email</th>
+                            <th>Celular</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% funcionarios.forEach(elemento => {%>
+    
+    
+                        <tr>
+                            <td class="nome-campo"><a href="/funcionarios/verFuncionario/<%=elemento.id%>"><%= elemento.nome%> </a></td>
+                            <td class="email-campo"><a href="/funcionarios/verFuncionario/<%=elemento.id%>"><%= elemento.email%></a></td>
+                            <td><a href="/funcionarios/verFuncionario/<%=elemento.id%>"><%= elemento.telefone%></a</td> <td>
+                                    <a class="btn-acao" href=""><span class="material-icons">
+                                            edit
+                                        </span></a>
+                                    <a class="btn-acao" href=""><span class="material-icons">
+                                            delete
+                                        </span></a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+                <div class="add-cliente"> <a  id="btn-add" href="#"><span
+                            class="material-icons">add_circle</span></a></div>
+            </section>
+            
+        </main>
+
+        <div id="modal-cliente" class="modal-container">
+            <div id="conteudo-modal">
+                    <form id="form-cliente" action="">
+                    <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
+                    <h1>Cadastro de funcionários</h1>
+                    <div id="label-cliente"><label for="nome-cliente">Nome</label></div>
+                    <input type="text" id="nome-cliente" class="input-cadastro" name="nome-cliente"
+                        placeholder="Digite o nome do funcionário">
+                    <div id="label-cliente"><label for="nome-cliente">Email</label></div>
+                    <input type="text" id="nome-cliente" class="input-cadastro" name="email-cliente"
+                        placeholder="Digite o Email">
+                    <div id="label-cliente"><label for="nome-cliente">Telefone</label></div>
+                    <input type="text" id="nome-cliente" class="input-cadastro" name="tel-cliente"
+                        placeholder="Digite o telefone">
+                    <div id="label-cliente"><label for="nome-cliente">Endereço</label></div>
+                    <input type="text" id="nome-cliente" class="input-cadastro" name="end-cliente"
+                        placeholder="Digite o Endereço">
+                    <input type="submit" class="btn-cliente" value="Salvar">
+                </form>
+            </div>
+>>>>>>> 48194b8e6f3390f2ad49367dc48fd0bd60a5cf0d
         </div>
     </div>
     <%- include('./partials/footer') %>

@@ -21,6 +21,7 @@ var storage = multer.diskStorage({
 var upload = multer({
     storage: storage
 })
+<<<<<<< HEAD
 
 
 /* GET funcionarios page. */
@@ -34,5 +35,8 @@ router.get('/atualizar/:id', funcionarioController.modal)
 
 
 
+=======
+router.get('/verFuncionario/:id',funcionarioController.verFuncionario)
+>>>>>>> 48194b8e6f3390f2ad49367dc48fd0bd60a5cf0d
 
 module.exports = router;
