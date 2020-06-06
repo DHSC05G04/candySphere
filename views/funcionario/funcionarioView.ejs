@@ -15,7 +15,6 @@
             <table id="tabela-funcionario">
                 <thead>
                     <tr>
-<<<<<<< HEAD
                         <th id="titulo-card-ver-funcionario">
                             <div><i class='fas fa-id-card-alt' style='font-size:30px;'></i></a><span>
                                     Funcionario</span></div>
@@ -40,41 +39,26 @@
                                 <%  } %>
                             </div> -->
                         </th>
-=======
-                        <th id="titulo-card-ver-funcionario"><i class='fas fa-id-card-alt' style='font-size:30px; margin-left: 20px; margin-right: 20px;'></i></a><span> Funcionario</span></th>
->>>>>>> 48194b8e6f3390f2ad49367dc48fd0bd60a5cf0d
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="nome-campo">
                             <div id="foto-perfil">
-<<<<<<< HEAD
                                 <div style="width: 90px;"> <img src="/images/avatar/<%= funcionarios[0].avatar%> "
                                         width="100%" alt=""></div>
-=======
-                                <div style="width: 90px;"> <img src="/images/<%= funcionarios[0].avatar%> " width="100%"
-                                        alt=""></div>
->>>>>>> 48194b8e6f3390f2ad49367dc48fd0bd60a5cf0d
                                 <div id="nome-funcionario"> <span id="nome"><%=funcionarios[0].nome%></span> </div>
                             </div>
                             <div class="funcionarios-dados">
                                 <div>
-<<<<<<< HEAD
                                     <label class="label-funcionario" for=""><b>Dados Cadastrais</b></label>
                                     <div><b>Email: </b> <span id="email"><%=funcionarios[0].email %></span></div>
                                     <div><b>Telefone: </b><span id="telefone"><%=funcionarios[0].telefone%></span></div>
                                     <div><b>Logradouro: </b><%=funcionarios[0].endereco%></div>
-=======
-                                    <label class="label-funcionario" for=""><b>Contatos</b></label>
-                                    <div><b>Email: </b> <span id="email"><%=funcionarios[0].email %></span></div>
-                                    <div><b>Telefone: </b><span id="telefone"><%=funcionarios[0].telefone%></span></div>
->>>>>>> 48194b8e6f3390f2ad49367dc48fd0bd60a5cf0d
                                 </div>
                             </div>
                             <div class="funcionarios-dados">
                                 <div>
-<<<<<<< HEAD
                                     <label class="label-funcionario" for=""><b>Dados Funcionais</b></label>
                                     <div><b>Cargo: </b> - </div>
                                     <div><b>Salário:R$ </b><%=funcionarios[0].salario%></div>
@@ -121,81 +105,24 @@
                                 </div>
                             </div>
                             <%  } %>
-=======
-                                    <label class="label-funcionario" for=""><b>Endereço</b></label>
-                                    <div><b>Logradouro: </b> Rua Silvio Galicho <b>Nº: </b>27</div>
-                                    <div><b>CEP: </b>05797-440</div>
-                                    <div><b>Bairro: </b>Jd Ipê</div>
-                                    <div><b>Cidade: </b>São Paulo <b>UF: </b>SP </div>
-                                </div>
-                            </div>
-                            <div class="funcionarios-dados">
-                                <div>
-                                    <label class="label-funcionario" for=""><b>Dados Funcionais</b></label>
-                                    <div><b>Cargo: </b>Desenvolvedor de Sistema</div>
-                                    <div><b>Salário:R$ </b><%=funcionarios[0].salario%></div>
-                                    <div><b>Data de Admisão: </b><%=funcionarios[0].createdAt%></div>
-                                    <%  if(usuarioCadastrado.length <=0){ %>
-                                    <div><b>Usuario do Sistema: </b>Não Cadastado</div>
-                                    <%    }else{ %>
-                                    <div><b>Usuario do Sistema: </b><%=usuarioCadastrado[0].nome_usuario%> <br>
-                                        <b>acesso: </b> <%=usuarioCadastrado[0].acesso==1?"ADM":"USER"%> </div>
-                                    <%  } %>
-
-
-
-                                </div>
-
-                                <%  if(usuarioCadastrado.length <=0){ %>
-                                <div id="card-usuario">
-                                    <span> Cadastro <br> Usuario</span>
-                                    <div class="add-funcionario"> <a id="btn-add" href="#"><span
-                                                class="material-icons">person_add_alt_1</span></a></div>
-                                </div>
->>>>>>> 48194b8e6f3390f2ad49367dc48fd0bd60a5cf0d
-                            </div>
-                            <%    }else{ %>
-                                <div style="display: flex;flex-wrap: wrap;">
-                            <div id="card-usuario">
-                                <span> Editar <br> Usuario</span>
-                                <div class="add-funcionario"> <a id="btn-edit" href="#"><i class='fas fa-user-edit'
-                                            style='font-size:30px '></i></a></div>
-                            </div>
-                            <div id="card-usuario">
-                                <span> Excluir <br> Usuario</span>
-                                <div class="add-funcionario"> <a id="btn-excluir" href="#"><i class='fas fa-trash'
-                                            style='font-size:30px '></i></a></div>
                             </div>
                           
-                        </div>
-                            <%  } %>
-
                             </div>
 
                         </td>
                 </tbody>
             </table>
-<<<<<<< HEAD
-=======
-
->>>>>>> 48194b8e6f3390f2ad49367dc48fd0bd60a5cf0d
         </section>
     </main>
     <br>
     <div id="modal-usuario" class="modal-container">
         <div id="conteudo-modal">
 
-<<<<<<< HEAD
             <form id="form-cliente" method="POST" action="/<%=usuarioCadastrado.length <=0?"cadastrar":"atualizar"%>"
                 name="form-usuario" style="position: relative;">
                 <h1 id="titulo">Cadastro de Usuário</h1>
                 <button id="fechar-tudo" class="fechar-modal">x</button>
 
-=======
-            <form id="form-cliente" method="POST" action="<%=usuarioCadastrado.length <=0?"cadastrar":"atualizar"%>" name="form-usuario" style="position: relative;">
-                <h1 id="titulo">Cadastro de Usuário</h1>
-                <button id="fechar-tudo" class="fechar-modal">x</button>
->>>>>>> 48194b8e6f3390f2ad49367dc48fd0bd60a5cf0d
                 <input type="hidden" id="id" name="id" value="<%=funcionarios[0].id%> ">
                 <div id="label-cliente"><label for="nome-cliente">Nome de Usuário</label></div>
                 <input type="text" id="nome-usuario" class="input-cadastro" name="nome"
@@ -207,21 +134,12 @@
                     <option value="2">USER</option>
                 </select>
                 <div id="label-cliente"><label id="nova-senha" for="nome-cliente">Senha</label></div>
-<<<<<<< HEAD
                 <input type="password" id="senha" class="input-cadastro" value="<%=funcionarios[0].email%>" name="senha"
                     placeholder="Digite uma senha">
 
 
                 <input type="submit" id="input-usuario" onclick="validacao()" class="btn-cliente" value="Salvar">
 
-=======
-                <input type="password" id="senha" class="input-cadastro" name="senha"
-                    placeholder="Digite uma senha">
-                <div id="label-cliente"><label for="nome-cliente">Cofirme a senha</label></div>
-                <input type="password" id="conf-senha" class="input-cadastro" name="conf-senha"
-                    placeholder="Confirme a senha">
-                <input type="submit" id="input-usuario" onclick="validacao()" class="btn-cliente" value="Salvar">
->>>>>>> 48194b8e6f3390f2ad49367dc48fd0bd60a5cf0d
             </form>
         </div>
     </div>
@@ -243,7 +161,6 @@
             });
         }
         const btnUsuarioAdd = document.querySelector('#btn-add');
-<<<<<<< HEAD
 
 
         btnUsuarioAdd.addEventListener('click', () => {
@@ -273,41 +190,6 @@
         });
     </script>
     '<%}%>'
-=======
-       
-        
-        btnUsuarioAdd.addEventListener('click', () => {
-
-            iniciaModal('modal-usuario');
-        });
-
-     
-    </script>
-  '<%if(usuarioCadastrado.length >0){%>'
-    <script>
- const btnUsuarioEdit = document.querySelector('#btn-edit');
- const id = document.querySelector('#id');
- const titulo = document.querySelector('#titulo');
- const usuario = document.querySelector('#nome-usuario');
- const acesso = document.querySelector('#acesso');
- const senha = document.querySelector('#nova-senha');
- const inputUsuario = document.querySelector('#input-usuario');
-
- btnUsuarioEdit.addEventListener('click', () => {
-   
-   inputUsuario.value = "Atualizar"
-    titulo.textContent = "Atualizar Usuário"
-    senha.textContent="Nova Senha"
-    usuario.value = '<%=usuarioCadastrado[0].nome_usuario%>'
-    acesso.value = '<%=usuarioCadastrado[0].acesso%>'
-           iniciaModal('modal-usuario');
-          
-        });
-
-
-    </script>
-  '<%}%>'
->>>>>>> 48194b8e6f3390f2ad49367dc48fd0bd60a5cf0d
 </body>
 
 </html>
