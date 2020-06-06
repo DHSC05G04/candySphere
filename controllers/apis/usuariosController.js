@@ -9,7 +9,7 @@ const usuariosController = {
                 const usuarios = await Usuario.findAll({
                     include: [{
                         association: 'funcionario',
-                        attributes: ['nome', 'email', 'avatar']
+                        attributes: ["id",'nome', 'email', 'avatar','telefone']
                     }]
                 });
     
