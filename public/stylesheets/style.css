@@ -937,7 +937,7 @@ section#tabela-corpo div.add-funcionario a {
 }
 
 section#tabela-corpo div.add-funcionario a span {
-    font-size: 40px;
+    font-size: 22px;
     text-shadow: 0px 3px 7px black;
     color: var(--color1);
     margin: 0px;
@@ -953,7 +953,7 @@ section#tabela-corpo div.add-funcionario a i {
 }
 
 div.add-funcionario a :hover {
-    background-color: var(--color1);
+    /* background-color: var(--color1); */
     border-radius: 1000px;
     transition: all .3s linear;
     padding: 5px;
@@ -966,7 +966,7 @@ section#tabela-corpo div.add-funcionario a span:hover {
 section#tabela-corpo div.add-funcionario a i:hover {
     text-shadow: none;
     color: var(--color5);
-    height: 37px;
+  
 }
 
 section#tabela-corpo table#tabela-cliente tr td.email-campo {

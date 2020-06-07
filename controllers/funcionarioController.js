@@ -236,6 +236,7 @@ const funcionarioController = {
         }
     },
     delete: async(req,res)=>{
+
         try {
             const func = await fetch(`${API_BASE}/funcionarios`, {
                 method: "delete",

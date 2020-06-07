@@ -16,7 +16,7 @@
                         <th class="email-head">Email</th>
                         <th>Celular</th>
                         <th>Ação</th>
-                        <th>Usuario</th>
+                        <th>Acesso</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,7 +32,8 @@
                                         class="material-icons">
                                         edit
                                     </span></a>
-                                <a class="btn-acao" href="/funcionarios/<%=elemento.id%>"><span class="material-icons">
+                                <a class="btn-acao delete-funcionario" id="delete-funcionario"
+                                    href="<%=elemento.id%>"><span class="material-icons">
                                         delete
                                     </span></a>
                         </td>
@@ -41,12 +42,9 @@
                         <%}else if(elemento.acesso===2){%>
                         <td>USER</td>
                         <%}else{%>
-                        <td> NÃO </td>
+                        <td> - </td>
                         <%}%>
-                          
-                              
-                         
-                    </tr>
+                              </tr>
                     <% }); %>
                 </tbody>
             </table>
@@ -60,18 +58,18 @@
                 <input id="id" name="id" type="hidden" value="">
                 <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
                 <h1 id="titulo">Cadastro de Funcionários</h1>
-                <div id="label-cliente"><label for="nome-cliente">Nome</label></div>
+                <div id="label-cliente"><label for="nome-cliente" id="label-nome">Nome</label></div>
                 <input type="text" id="nome" class="input-cadastro" name="nome"
                     placeholder="Digite o nome do funcionário">
-                <div id="label-cliente"><label for="nome-cliente">Email</label></div>
+                <div id="label-cliente"><label for="nome-cliente" id="label-email">Email</label></div>
                 <input type="text" id="email" class="input-cadastro" name="email" placeholder="Digite o Email">
-                <div id="label-cliente"><label for="label-file">Foto de Perfil</label></div>
+                <div id="label-cliente"><label for="label-file" id="label-foto">Foto de Perfil</label></div>
                 <input type="file" id="avatar-input" class="input-cadastro" name="avatar" placeholder="Digite o Email">
-                <div id="label-cliente"><label for="nome-cliente">Telefone</label></div>
+                <div id="label-cliente"><label for="nome-cliente" id="label-telefone">Telefone</label></div>
                 <input type="text" id="telefone" class="input-cadastro" name="telefone" placeholder="Digite o telefone">
-                <div id="label-cliente"><label for="nome-cliente">Endereço</label></div>
+                <div id="label-cliente"><label for="nome-cliente" id="label-endereco">Endereço</label></div>
                 <input type="text" id="endereco" class="input-cadastro" name="endereco" placeholder="Digite o Endereço">
-                <div id="label-cliente"><label for="nome-cliente">Sálario</label></div>
+                <div id="label-cliente"><label for="nome-cliente" id="label-salario">Sálario</label></div>
                 <input type="text" id="salario" class="input-cadastro" name="salario" placeholder="Digite o Sálario">
                 <input type="submit" class="btn-cliente" value="Salvar">
             </form>
@@ -93,6 +91,7 @@
         const btnClienteAdd = document.querySelector('.add-cliente');
 
         btnClienteAdd.addEventListener('click', () => {
+
             const titulo = document.querySelector('#titulo');
             const nome = document.querySelector('#nome');
             const email = document.querySelector('#email');
@@ -111,6 +110,50 @@
             submit.value = "Salvar"
             iniciaModal('modal-cliente');
         });
+        const del = document.getElementsByClassName('delete-funcionario');
+        console.log(del)
+        for (let i = 0; i < del.length; i++) {
+
+            del[i].addEventListener('click', (e) => {
+                e.preventDefault()
+                const titulo = document.querySelector('#titulo');
+                const id = document.querySelector('#id');
+                const nome = document.querySelector('#nome');
+                const labelNome = document.querySelector('#label-nome');
+                const email = document.querySelector('#email');
+                const labelEmail = document.querySelector('#label-email');
+                const labelFoto = document.querySelector('#label-foto');
+                const labelTelefone = document.querySelector('#label-telefone');
+                const labelEndereco = document.querySelector('#label-endereco');
+                const labelSalario = document.querySelector('#label-salario');
+                const telefone = document.querySelector('#telefone');
+                const endereco = document.querySelector('#endereco');
+                const salario = document.querySelector('#salario');
+                const submit = document.querySelector('.btn-cliente');
+                const form = document.querySelector('#form-cliente');
+                const label = document.querySelector('.label');
+                const avatar = document.querySelector('#avatar-input');
+                form.action = `/funcionarios/${del[i].attributes.href.value}/?_method=DELETE`
+                titulo.innerHTML = "Deletar Funcionário"
+                submit.value = "Deletar"
+                id.value = del[i].attributes.href.value
+                console.log(id)
+                labelNome.style.display = 'none'
+                labelEmail.style.display = 'none'
+                labelFoto.style.display = 'none'
+                labelTelefone.style.display = 'none'
+                labelEndereco.style.display = 'none'
+                labelSalario.innerHTML = '<br><h3>Tem certeza que vai deletar o funcionario?</h3><br>'
+                nome.style.display = 'none'
+                email.style.display = 'none'
+                telefone.style.display = 'none'
+                endereco.style.display = 'none'
+                salario.style.display = 'none'
+                avatar.style.display = 'none'
+                iniciaModal('modal-cliente');
+
+            })
+        }
     </script>
     <% if(funcionarioUnico!=""){%>
     <script>
@@ -136,6 +179,9 @@
         console.log('<%=funcionarioUnico[0].nome%>')
     </script>
     <% } %>
+
+
+
     <!-- // '<%//funcionarioUnico[0].telefone%>' -->
 
 
