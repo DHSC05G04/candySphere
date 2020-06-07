@@ -992,6 +992,23 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
     z-index: 2000;
 
 }
+#btn-modal{
+    display: flex;
+   justify-content: flex-end;
+   width: 90%;
+}
+#btn-modal input{
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+    }
+    #btn-modal input:hover{
+        background-color: var(--color2);
+        color: var(--color5);
+        transition: all .4s linear ;
+    }
 
 .mostrar {
     display: flex;

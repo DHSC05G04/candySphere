@@ -4,14 +4,9 @@
 <%- include('../partials/head') %>
 
 <body>
-
     <%- include('../partials/header') %>
-
     <main id="funcionarios">
-
         <section id="tabela-corpo">
-
-
             <table id="tabela-funcionario">
                 <thead>
                     <tr>
@@ -74,41 +69,39 @@
                                         <div><b>Usuario do Sistema: </b>Não Cadastado</div>
                                         <%    }else{ %>
                                         <div><b>Nome do Usuario: </b><%=usuarioCadastrado[0].nome_usuario%></div>
-                                            <% if(usuarioCadastrado[0].acesso == 1){%> 
+                                        <% if(usuarioCadastrado[0].acesso == 1){%>
                                         <div><b>acesso: </b> ADM </div>
-                                            <% }else if(usuarioCadastrado[0].acesso==2){ %> 
-                                                <div><b>acesso: </b> USER </div>
-                                            <%}%>
+                                        <% }else if(usuarioCadastrado[0].acesso==2){ %>
+                                        <div><b>acesso: </b> USER </div>
+                                        <%}%>
 
                                         <div><b>Data de Incio:
                                             </b><%=moment(usuarioCadastrado[0].createdAt).format("DD/MM/YYYY")%>
-                                        </div>
-                                        <%  } %>
                                     </div>
-                                    <%  if(usuarioCadastrado.length <=0){ %>
-                                    <div id="card-usuario">
-                                        <div class="add-funcionario"> <a id="btn-add" href="#"><span
-                                                    class="material-icons btn-edicao">person_add_alt_1</span></a></div>
-                                    </div>
+                                    <%  } %>
                                 </div>
-                                <%    }else{ %>
-                                <div style="display: flex;flex-wrap: wrap;">
-                                    <div id="card-usuario">
-                                        <div class="add-funcionario"> <a id="btn-edit" href="#"><i
-                                                    class='fas fa-user-edit btn-edicao'></i></a></div>
-                                    </div>
-                                    <div id="card-usuario">
-                                        <div class="add-funcionario"> <a id="btn-excluir"
-                                                href="/usuarios/delete/<%=usuarioCadastrado[0].id%>"><i
-                                                    class='fas fa-trash btn-edicao'></i></a></div>
-                                    </div>
+                                <%  if(usuarioCadastrado.length <=0){ %>
+                                <div id="card-usuario">
+                                    <div class="add-funcionario"> <a id="btn-add" href="#"><span
+                                                class="material-icons btn-edicao">person_add_alt_1</span></a></div>
                                 </div>
+                            </div>
+                            <%    }else{ %>
+                            <div style="display: flex;flex-wrap: wrap;">
+                                <div id="card-usuario">
+                                    <div class="add-funcionario"> <a id="btn-edit" href="#"><i
+                                                class='fas fa-user-edit btn-edicao'></i></a></div>
+                                </div>
+                                <div id="card-usuario">
+                                    <div class="add-funcionario"> <a id="btn-excluir"
+                                            href="/usuarios/delete/<%=usuarioCadastrado[0].id%>"><i
+                                                class='fas fa-trash btn-edicao'></i></a></div>
+                                </div>
+                            </div>
                             </div>
                             <%  } %>
                             </div>
-                          
                             </div>
-
                         </td>
                 </tbody>
             </table>
@@ -117,17 +110,15 @@
     <br>
     <div id="modal-usuario" class="modal-container">
         <div id="conteudo-modal">
-
-            <form id="form-cliente" method="POST" action="/<%=usuarioCadastrado.length <=0?"cadastrar":"atualizar"%>"
+            <form id="form-cliente" method="POST" action="/<%=usuarioCadastrado.length <=0?"funcionarios":"atualizar"%>"
                 name="form-usuario" style="position: relative;">
                 <h1 id="titulo">Cadastro de Usuário</h1>
                 <button id="fechar-tudo" class="fechar-modal">x</button>
-
                 <input type="hidden" id="id" name="id" value="<%=funcionarios[0].id%> ">
                 <div id="label-cliente"><label for="nome-cliente">Nome de Usuário</label></div>
                 <input type="text" id="nome-usuario" class="input-cadastro" name="nome"
-                    placeholder="Digite o nome de Usuario">
-                <div id="label-cliente"><label for="nome-cliente">Privilégio</label></div>
+                    placeholder="Digite o nome de Usuario" value="<%=funcionarios[0].email%>">
+                <div id="label-cliente"><label id="label-acesso" for="nome-cliente">Privilégio</label></div>
                 <select type="select" id="acesso" class="input-cadastro" name="nivel">
                     <option value="" disabled selected>Escolha o nível de acesso</option>
                     <option value="1">ADM</option>
@@ -136,24 +127,17 @@
                 <div id="label-cliente"><label id="nova-senha" for="nome-cliente">Senha</label></div>
                 <input type="password" id="senha" class="input-cadastro" value="<%=funcionarios[0].email%>" name="senha"
                     placeholder="Digite uma senha">
-
-
                 <input type="submit" id="input-usuario" onclick="validacao()" class="btn-cliente" value="Salvar">
-
             </form>
         </div>
     </div>
-
     <%- include('../partials/footer') %>
-
     <%- include('../partials/scripts') %>
-
     <script>
         function iniciaModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.add('mostrar');
             modal.addEventListener('click', (e) => {
-
                 if (e.target.id == 'fechar-tudo') {
                     e.preventDefault();
                     modal.classList.remove('mostrar');
@@ -161,12 +145,30 @@
             });
         }
         const btnUsuarioAdd = document.querySelector('#btn-add');
-
-
         btnUsuarioAdd.addEventListener('click', () => {
-
             iniciaModal('modal-usuario');
         });
+    </script>
+    <script>
+       
+        
+        const submit = document.querySelector("#input-usuario")
+        const labelAcesso = document.querySelector("#label-acesso")
+       
+        submit.addEventListener('click', (e) => {
+            const acesso = document.querySelector("#acesso")
+            const teste = acesso.value
+            const form = document.querySelector('#form-cliente');
+            form.action = "/funcionarios"
+            if(teste == ""|teste==undefined){
+                e.preventDefault()
+                acesso.style.border = "2px solid red"
+              labelAcesso.style.color = "red"
+              labelAcesso.innerHTML='Privilégio - escolha o nível de acesso'
+            }
+                
+          
+        })
     </script>
     '<%if(usuarioCadastrado.length >0){%>'
     <script>
@@ -177,16 +179,13 @@
         const acesso = document.querySelector('#acesso');
         const senha = document.querySelector('#nova-senha');
         const inputUsuario = document.querySelector('#input-usuario');
-
         btnUsuarioEdit.addEventListener('click', () => {
-
             inputUsuario.value = "Atualizar"
             titulo.textContent = "Atualizar Usuário"
             senha.textContent = "Nova Senha"
             usuario.value = '<%=usuarioCadastrado[0].nome_usuario%>'
             acesso.value = '<%=usuarioCadastrado[0].acesso%>'
             iniciaModal('modal-usuario');
-
         });
     </script>
     '<%}%>'
