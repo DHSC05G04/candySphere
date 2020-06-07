@@ -80,7 +80,7 @@
             const tabelaCompras = document.getElementById('listaCompras')
             const produtosCarrinho = JSON.parse(sessionStorage.carrinho);
             console.log(produtosCarrinho)
-            const API_BASE = 'https://candyspheredev.herokuapp.com/api/v0/produtos'
+            const API_BASE = 'https://candysphere.herokuapp.com/api/v0/produtos'
 
             produtosCarrinho.forEach(async produto => {
                 const dados = await fetch(`${API_BASE}/${produto.id}`)
