@@ -68,7 +68,7 @@
                                         <%  if(usuarioCadastrado.length <=0){ %>
                                         <div><b>Usuario do Sistema: </b>Não Cadastado</div>
                                         <%    }else{ %>
-                                        <div><b>Nome do Usuario: </b><%=usuarioCadastrado[0].nome_usuario%></div>
+                                        <div><b>Usuario: </b><%=usuarioCadastrado[0].nome_usuario%></div>
                                         <% if(usuarioCadastrado[0].acesso == 1){%>
                                         <div><b>acesso: </b> ADM </div>
                                         <% }else if(usuarioCadastrado[0].acesso==2){ %>
@@ -82,7 +82,7 @@
                                 </div>
                                 <%  if(usuarioCadastrado.length <=0){ %>
                                 <div id="card-usuario">
-                                    <div class="add-funcionario"> <a id="btn-add" href="#"><span
+                                    <div class="add-funcionario"> <a id="btn-add" href="/usuarios"><span
                                                 class="material-icons btn-edicao">person_add_alt_1</span></a></div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
     <br>
     <div id="modal-usuario" class="modal-container">
         <div id="conteudo-modal">
-            <form id="form-cliente" method="POST" action="/<%=usuarioCadastrado.length <=0?"funcionarios":"atualizar"%>"
+            <form id="form-cliente" class="form-usuario" method="POST" action="/usuarios"
                 name="form-usuario" style="position: relative;">
                 <h1 id="titulo">Cadastro de Usuário</h1>
                 <button id="fechar-tudo" class="fechar-modal">x</button>
@@ -127,10 +127,11 @@
                 <div id="label-cliente"><label id="nova-senha" for="nome-cliente">Senha</label></div>
                 <input type="password" id="senha" class="input-cadastro" value="<%=funcionarios[0].email%>" name="senha"
                     placeholder="Digite uma senha">
-                <input type="submit" id="input-usuario" onclick="validacao()" class="btn-cliente" value="Salvar">
+                <input type="submit" id="input-usuario" onclick="" class="btn-cliente btn-submit" value="Salvar">
             </form>
         </div>
     </div>
+   
     <%- include('../partials/footer') %>
     <%- include('../partials/scripts') %>
     <script>
@@ -145,28 +146,31 @@
             });
         }
         const btnUsuarioAdd = document.querySelector('#btn-add');
-        btnUsuarioAdd.addEventListener('click', () => {
+        btnUsuarioAdd.addEventListener('click', (e) => {
+         e.preventDefault()
             iniciaModal('modal-usuario');
         });
     </script>
     <script>
        
         
-        const submit = document.querySelector("#input-usuario")
+        const submit = document.querySelector(".btn-submit")
         const labelAcesso = document.querySelector("#label-acesso")
+        const form = document.querySelector('#input-usuario');
        
         submit.addEventListener('click', (e) => {
+          
             const acesso = document.querySelector("#acesso")
-            const teste = acesso.value
-            const form = document.querySelector('#form-cliente');
-            form.action = "/funcionarios"
-            if(teste == ""|teste==undefined){
+            const opt = acesso.value
+            form.action = '/usuarios'
+                if(opt == ""|opt==undefined){
                 e.preventDefault()
                 acesso.style.border = "2px solid red"
               labelAcesso.style.color = "red"
               labelAcesso.innerHTML='Privilégio - escolha o nível de acesso'
+
             }
-                
+               
           
         })
     </script>

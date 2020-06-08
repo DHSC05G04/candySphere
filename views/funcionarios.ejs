@@ -48,7 +48,7 @@
                     <% }); %>
                 </tbody>
             </table>
-            <div class="add-cliente"> <a id="btn-add" href="/funcionarios"><span class="material-icons">add_circle</span></a></div>
+            <div class="add-cliente btn-funcionario"> <a id="btn-add" href="/funcionarios"><span class="material-icons">add_circle</span></a></div>
         </section>
     </main>
     <div id="modal-cliente" class="modal-container">
@@ -109,10 +109,15 @@
                     }
             });
         }
-        const btnClienteAdd = document.querySelector('.add-cliente');
-            btnClienteAdd.addEventListener('click', (e) => {
-            e.preventDefault() 
-            const titulo = document.querySelector('#titulo');
+
+
+        const btnClienteAdd = document.querySelector('#btn-add');
+           btnClienteAdd.addEventListener('click',(e)=>{
+          
+
+            '<% if(funcionarioUnico!=""){%>'
+            e.preventDefault()
+                 const titulo = document.querySelector('#titulo');
             const nome = document.querySelector('#nome');
             const email = document.querySelector('#email');
             const telefone = document.querySelector('#telefone');
@@ -127,11 +132,36 @@
             telefone.value = "";
             endereco.value = "";
             salario.value = "";
-            submit.value = "Salvar"
-            iniciaModal('modal-cliente');
+           submit.value = "Salvar"
+            iniciaModal('modal-cliente')
+            '<%}else{%>'
+            e.preventDefault()
+            iniciaModal('modal-cliente')
+            '<%}%>'
 
-
-        });
+        })
+        //     btnClienteAdd.addEventListener('click', (e) => {
+        //     e.preventDefault() 
+        //     const titulo = document.querySelector('#titulo');
+        //     const nome = document.querySelector('#nome');
+        //     const email = document.querySelector('#email');
+        //     const telefone = document.querySelector('#telefone');
+        //     const endereco = document.querySelector('#endereco');
+        //     const salario = document.querySelector('#salario');
+        //     const submit = document.querySelector('.btn-cliente');
+        //     titulo.innerHTML = "Cadastro de Funcionário"
+        //     const formDel = document.querySelector('#form-cliente');
+        //     form.action = "/funcionarios"
+        //     nome.value = "";
+        //     email.value = "";
+        //     telefone.value = "";
+        //     endereco.value = "";
+        //     salario.value = "";
+        //     alert("teste")
+        //     submit.value = "Salvar"
+        //     iniciaModal('modal-cliente');
+        // });
+        
         const del = document.getElementsByClassName('delete-funcionario');
         console.log(del)
         for (let i = 0; i < del.length; i++) {
