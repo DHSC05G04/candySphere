@@ -11,7 +11,10 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     return queryInterface.addColumn(
       'produtos',
-      'receita_id'
+      'receita_id',
+      {
+        type: Sequelize.INTEGER.UNSIGNED
+      }
     )
   }
 };

@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
     validade: DataTypes.DATE,
     vendavel: DataTypes.BOOLEAN,
     foto: DataTypes.STRING,
+    receita_id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: true
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -65,6 +69,11 @@ module.exports = (sequelize, DataTypes) => {
     Estocaveis.belongsTo(models.Unidade,{
       foreignKey: 'unidade_id',
       as: 'unMedida'
+    });
+
+    Estocaveis.belongsTo(models.Receita,{
+      foreignKey: 'receita_id',
+      as: 'produzido'
     });
   };
   return Estocaveis;
