@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 
-const { Receita, sequelize } = require('../../models');
+const { Receita, Estocaveis, sequelize } = require('../../models');
 
 const receitasController = {
     index: async (req, res) => {
@@ -91,7 +91,24 @@ const receitasController = {
             const result = await sequelize.transaction(async (t) => {
                 const receitaCadastrada = await Receita.create(dados, { transaction: t });
 
-                return receitaCadastrada;
+                const estocavelCadastrado = await Estocaveis.create({
+                    nome: dados.nome,
+                    tipo_id: 1,
+                    unidade_id: 1,
+                    quantidade: 0,
+                    receita_id: receitaCadastrada.dataValues.id
+                }, { transaction: t });
+
+                const receita = {
+                    id: receitaCadastrada.dataValues.id,
+                    nome: estocavelCadastrado.dataValues.nome,
+                    descricao: receitaCadastrada.dataValues.descricao,
+                    tempo_preparo: receitaCadastrada.dataValues.tempo_preparo,
+                    rendimento: receitaCadastrada.dataValues.rendimento,
+                    foto: receitaCadastrada.dataValues.foto,
+                }
+
+                return receita;
             });
 
             return res.status(200).json(result);
@@ -121,6 +138,17 @@ const receitasController = {
 
         try {
             await sequelize.transaction(async (t) => {
+                if ("nome" in dados) {
+                    await Estocaveis.update({
+                        nome: dados.nome
+                    }, {
+                        where: {
+                            receita_id: id
+                        },
+                        transaction: t
+                    })
+                }
+
                 await Receita.update(dados, {
                     where: {
                         id
@@ -152,6 +180,13 @@ const receitasController = {
 
         try {
             await sequelize.transaction(async (t) => {
+                await Estocaveis.destroy({
+                    where: {
+                        receita_id: id
+                    },
+                    transaction: t
+                })
+
                 await Receita.destroy({
                     where: {
                         id
