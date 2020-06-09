@@ -49,7 +49,6 @@ module.exports = (sequelize, DataTypes) => {
     paranoid: true,
     tableName: 'pedidos',
     timestamps:true
-
   });
   Pedido.associate = function(models) {
     // Relacao 1:1 com tbl Usuario. Um usuario precisa ser funcionario
@@ -74,9 +73,6 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey:'pedido_id',
           as: 'pedido'
         })
-
-   
-
   };
   return Pedido;
 };

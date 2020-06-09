@@ -72,7 +72,7 @@ module.exports = (sequelize, DataTypes) => {
       Usuario.belongsTo(
         models.NivelAcesso,{
         foreignKey: 'acesso',
-        as: 'nivel_acesso',
+        as: 'nivel_acesso'
       })
 
   };
