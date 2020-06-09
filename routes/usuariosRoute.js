@@ -3,8 +3,11 @@ var router = express.Router();
 const usuarioController = require('../controllers/usuarioControllers')
 
 
-router.post('/',(usuarioController.store))
+
 router.get('/',(usuarioController.index))
+router.post('/',(usuarioController.store))
+router.put('/',(usuarioController.update))
+router.delete('/',(usuarioController.delete))
 
 
 
