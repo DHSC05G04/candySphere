@@ -873,10 +873,55 @@ div.add-cliente a :hover {
     transition: all .3s linear;
 }
 
-section#tabela-corpo div.add-cliente a span:hover {
+/* section#tabela-corpo div.add-cliente a span:hover {
+    text-shadow: none;
+    color: var(--color5);
+} */
+
+section#tabela-corpo div.add-funcionario {
+   
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 15px;
+}
+
+
+
+section#tabela-corpo div.add-funcionario a span {
+    font-size: 20px;
+    text-shadow: 0px 3px 7px black;
+    color: var(--color1);
+    margin: 0px;
+    padding: 0;
+
+}
+section#tabela-corpo div.add-funcionario a i {
+    text-shadow: 0px 3px 7px black;
+    color: var(--color1);
+    margin: 0px;
+    padding: 0;
+    font-size: 15px;
+
+}
+
+/* div.add-funcionario a :hover {
+    background-color: var(--color1);
+    border-radius: 1000px;
+    transition: all .3s linear;
+    padding: 5px;
+} */
+
+/* section#tabela-corpo div.add-funcionario a span:hover {
     text-shadow: none;
     color: var(--color5);
 }
+section#tabela-corpo div.add-funcionario a i:hover {
+    text-shadow: none;
+    color: var(--color5);
+    height: 37px;
+} */
 
 section#tabela-corpo div.add-funcionario {
     display: flex;
@@ -892,7 +937,7 @@ section#tabela-corpo div.add-funcionario a {
 }
 
 section#tabela-corpo div.add-funcionario a span {
-    font-size: 40px;
+    font-size: 22px;
     text-shadow: 0px 3px 7px black;
     color: var(--color1);
     margin: 0px;
@@ -908,7 +953,7 @@ section#tabela-corpo div.add-funcionario a i {
 }
 
 div.add-funcionario a :hover {
-    background-color: var(--color1);
+    /* background-color: var(--color1); */
     border-radius: 1000px;
     transition: all .3s linear;
     padding: 5px;
@@ -921,7 +966,7 @@ section#tabela-corpo div.add-funcionario a span:hover {
 section#tabela-corpo div.add-funcionario a i:hover {
     text-shadow: none;
     color: var(--color5);
-    height: 37px;
+  
 }
 
 section#tabela-corpo table#tabela-cliente tr td.email-campo {
@@ -947,6 +992,23 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
     z-index: 2000;
 
 }
+#btn-modal{
+    display: flex;
+   justify-content: flex-end;
+   width: 90%;
+}
+#btn-modal input{
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+    }
+    #btn-modal input:hover{
+        background-color: var(--color2);
+        color: var(--color5);
+        transition: all .4s linear ;
+    }
 
 .mostrar {
     display: flex;
@@ -987,10 +1049,10 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
 }
 
 .fechar-modal {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     display: block;
-    font-size: 20px;
+    font-size: 10px;
     background-color: var(--color2);
     border-radius: 30px;
     border: 2px solid var(--color5);
@@ -1012,11 +1074,12 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
     background-color: var(--color1);
     width: 100%;
     display: flex;
-    justify-content: center;
-    height: 60vh;
+    justify-content: space-around;
+    height:auto;
     border: 5px solid var(--color5);
     box-shadow: 0px 0px 0px 8px var(--color1);
-
+    flex-direction: column;
+    align-items: center;
 }
 
 #form-cliente h1 {
@@ -1037,7 +1100,7 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
 
 #form-cliente input {
     margin-bottom: 20px;
-    height: 50px;
+    height: 30px;
 }
 
 #form-cliente .input-cadastro{
@@ -1050,7 +1113,7 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
 }
 #form-cliente select{
     width: 90%;
-    height: 50px;
+    height: 30px;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -1159,8 +1222,16 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
 section#tabela-corpo table#tabela-funcionario {
     background-color: var(--color1);
     color: var(--color5);
-    width: 70%;
+    width: 40%;
     margin: 20px auto;
+}
+@media(max-width:600px){
+    section#tabela-corpo table#tabela-funcionario {
+        background-color: var(--color1);
+        color: var(--color5);
+        width: 90%;
+        margin: 20px auto;
+    }
 }
 
 section#tabela-corpo table#tabela-funcionario tbody {
@@ -1187,6 +1258,12 @@ section#tabela-corpo table#tabela-funcionario tr th {
 #titulo-card-ver-funcionario {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+   
 }
 
 #titulo-card-ver-funcionario span {
@@ -1197,7 +1274,7 @@ section#tabela-corpo table#tabela-funcionario tr th {
 
 #titulo-card-ver-funcionario .material-icons {
     font-size: 30px;
-    margin-left: 20px;
+   
 }
 
 #foto-perfil img {
@@ -1249,27 +1326,35 @@ section#tabela-corpo table#tabela-funcionario tr th {
     background-color: var(--color5);
     border-radius: 5px;
     color: var(--color1);
-    margin-left: 10px;
+    
     text-align: center;
     padding-left: 5px;
     padding-right: 5px;
 
 }
 #card-usuario{
-    margin-right: 10px;
+   
+    margin-left: 20px;
     border: 1px solid var(--color5);
-    width: 100px;
-    height:100px ;
+    width: 25px;
+    height:25px ;
     text-align: center;
     background-color: var(--color5);
     border: 2px solid var(--color1);
     box-shadow: 0px 0px 0px 5px var(--color5);
     border-radius: 300px;
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    }
+    #card-usuario:hover{
+      border: 2px solid var(--color5);
+      box-shadow: 0px 0px 0px 5px var(--color2);
+      background-color: var(--color2);
     }
 #card-usuario span{
 color: var(--color1);
-margin-top: 8px;
-    display: inline-block;
+margin-top: 18px;
 }
 
 .funcionarios-dados div {
@@ -1279,6 +1364,27 @@ margin-top: 8px;
 #acesso{
     text-align: center;
     text-align-last: center;
+}
+
+#card-usuario .add-funcionario {
+    margin-top: 15px;
+}
+#usuario-dados{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+s
+#label-file{
+    width: 90%;
+    height: 30px;
+    text-align: center;
+    border: 1px solid var(--color5);
+    margin-bottom: 20px;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 /*Fim Configuração Ver Funcionário */
