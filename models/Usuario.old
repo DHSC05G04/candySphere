@@ -15,26 +15,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    acesso: {
-      type: DataTypes.INTEGER,
-      default: 0
-    }, // changed
+    acesso: DataTypes.INTEGER,
     funcionario_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
-    'last_login': {
-      type: DataTypes.DATE,
-      allow_nul: true,
-    }, // added
-    status: {
-      type: DataTypes.ENUM('active', 'inactive'),
-      defaultValue: 'active'
-    }, // added
-    'change_password': {
-      type: DataTypes.ENUM('active', 'inactive'),
-      defaultValue: 'active'
-    }, // added
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -63,17 +48,12 @@ module.exports = (sequelize, DataTypes) => {
         as: 'funcionario'
       })
 
-      // Usuario.hasMany(
-      //   models.Caixa,{
-      //     foreignKey: 'usuario_id',
-      //     as: 'caixa'
-      // })
-
-      Usuario.belongsTo(
-        models.NivelAcesso,{
-        foreignKey: 'acesso',
-        as: 'nivel_acesso',
+      Usuario.hasMany(
+        models.Caixa,{
+          foreignKey: 'usuario_id',
+          as: 'caixa'
       })
+
 
   };
   return Usuario;
