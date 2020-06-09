@@ -10,3 +10,19 @@ https://www.reddit.com/r/node/comments/dx2g93/what_are_the_good_practices_to_nod
 
 https://developer.okta.com/blog/2019/10/03/painless-node-authentication
 
+https://www.luiztools.com.br/post/autenticacao-json-web-token-jwt-em-nodejs/
+
+https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow
+
+https://danielkummer.github.io/git-flow-cheatsheet/index.pt_BR.html
+
+
+---
+- VMWARE by Ale
+---
+
+https://medium.com/@engalexandremarques/vmware-orchestrator-beginners-guide-part-1-introduction-4eff47d88b5c
+
+https://medium.com/@engalexandremarques/vmware-orchestrator-beginners-guide-part-2-workflows-2ae3a2b44f2a
+
+
