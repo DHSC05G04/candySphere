@@ -35,3 +35,7 @@ const config = {
 
 module.exports = config;
 ```
+
+## Documentação da API
+
+A documentação da API criada para este projeto pode ser encontrada no link: [Candy Sphere API Doc](https://app.swaggerhub.com/apis-docs/rastapf/candy-sphere/0.1.0)
