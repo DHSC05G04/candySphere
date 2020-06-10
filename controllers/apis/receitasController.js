@@ -227,6 +227,13 @@ const receitasController = {
                     transaction: t
                 })
 
+                await InstrucoesPreparo.destroy({
+                    where: {
+                        receita_id: id
+                    },
+                    transaction: t
+                })
+
                 await Receita.destroy({
                     where: {
                         id
