@@ -9,11 +9,11 @@
 
         <main id="administracao">
             <% receitas.forEach(receita => { %>
-                <a href="/admin/produtos" class="adminCardContainer">
+                <a href=<%= `/admin/receitas/${receita.id}` %> class="adminCardContainer">
                     <section class="foto" style="background-image: url(<%= receita.foto %>); background-size: cover;">
                     </section>
                     <section class="description">
-                        <h3><%= receita.nome %></h3>
+                        <h3><%= receita.fabricado.nome %></h3>
                         <p><%= receita.descricao %></p>
                     </section>
                 </a>                                

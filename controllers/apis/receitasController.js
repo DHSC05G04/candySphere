@@ -20,6 +20,9 @@ const receitasController = {
                             association: 'unidade',
                             attributes: ['unidade']
                         }]
+                    },{
+                        association: 'fabricado',
+                        attributes: ['nome']
                     }]
                 });
 
@@ -46,6 +49,9 @@ const receitasController = {
                             association: 'unidade',
                             attributes: ['unidade']
                         }]
+                    },{
+                        association: 'fabricado',
+                        attributes: ['nome']
                     }]
                 });
                 return res.status(200).json(receitas);
@@ -75,6 +81,9 @@ const receitasController = {
                             association: 'unidade',
                             attributes: ['unidade']
                         }]
+                    },{
+                        association: 'fabricado',
+                        attributes: ['nome']
                     }]
                 });
                 return res.status(200).json(receitas);

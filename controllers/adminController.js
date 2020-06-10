@@ -50,26 +50,6 @@ const adminController = {
             return res.send(error)            
         };
         
-    },
-    indexReceitas: async (req, res) => {
-        let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
-                        financeiroAct: "inactive",
-                        clientesAct: "inactive",
-                        funcionariosAct: "inactive",
-                        pdvAct: "inactive"};
-
-        try {
-            const receitasAPI = await fetch(`${API_BASE}/receitas`);
-            const receitas = await receitasAPI.json();
-    
-            return res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas,usuario:req.session.user });
-            
-        } catch (error) {
-            return res.send(error);            
-        };
-
-
     }
 };
 
