@@ -57,7 +57,7 @@ create: async (req, res) => {
             return funcionarioCadastrado;
         });
 
-        return res.status(200).json(result);
+        return res.status(201).json(result);
 
     } catch (error) {
         return res.status(400).json(error);
