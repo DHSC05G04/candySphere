@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 
-const { Receita, Estocaveis, sequelize } = require('../../models');
+const { Receita, Estocaveis, InstrucoesPreparo, sequelize } = require('../../models');
 
 const receitasController = {
     index: async (req, res) => {
@@ -9,7 +9,7 @@ const receitasController = {
                 const receitas = await Receita.findAll({
                     include: [{
                         association: 'instrucoes',
-                        attributes: ['instrucao']
+                        attributes: ['id', 'instrucao']
                     },{
                         association: 'ingredientes',
                         attributes: ['quantidade'],
@@ -38,7 +38,7 @@ const receitasController = {
                     },
                     include: [{
                         association: 'instrucoes',
-                        attributes: ['instrucao']
+                        attributes: ['id', 'instrucao']
                     },{
                         association: 'ingredientes',
                         attributes: ['quantidade'],
@@ -70,7 +70,7 @@ const receitasController = {
                     },
                     include: [{
                         association: 'instrucoes',
-                        attributes: ['instrucao']
+                        attributes: ['id', 'instrucao']
                     },{
                         association: 'ingredientes',
                         attributes: ['quantidade'],
@@ -156,6 +156,19 @@ const receitasController = {
                         },
                         transaction: t
                     })
+                }
+
+                if ("instrucoes" in dados) {
+                    await dados.instrucoes.forEach(async (dado) => {
+                        await InstrucoesPreparo.update({
+                            instrucao: dado.instrucao
+                        }, {
+                            where: {
+                                id: dado.id
+                            },
+                            transaction: t
+                        })
+                    })                                        
                 }
 
                 await Receita.update(dados, {

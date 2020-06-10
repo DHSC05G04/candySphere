@@ -33,22 +33,31 @@ function editarReceitas() {
             </section>
         </form>
     `
-    /*
+    
 
     // const ingredientes = document.getElementById('infoIngredientes')
-    // const instrucoes = document.getElementById('infoInstrucoes')
+    const instrucoes = document.getElementById('infoInstrucoes')
 
     // dadosReceita.ingredientes.forEach(ingrediente => {
     //     ingredientes.innerHTML += `
     //         <p>${ingrediente.quantidade} ${ingrediente.unidade.unidade} ${ingrediente.componente.nome}</p>
     //     `        
-    })
+    //})
 
     dadosReceita.instrucoes.forEach((instrucao, index) => {
         instrucoes.innerHTML += `
-            <p>${index+1}. ${instrucao.instrucao}</p>
+            <p><label>Instrução ${index+1}: </label><input type="text" maxlimit="3000" name="instrucoes[${index}][instrucao]">
+            <input type="text" maxlimit="3000" name="instrucoes[${index}][id]" value=${instrucao.id} hidden>
+            </p>
         `
-    }) */
+    })
+
+    /*
+    <p><label>Instrução 1: </label><input type="text" maxlimit="3000" name="instrucoes[0][instrucao]"></p>
+                        <p><label>Instrução 2: </label><input type="text" maxlimit="3000" name="instrucoes[1][instrucao]"></p>
+                        <p><label>Instrução 1: </label><input type="text" maxlimit="3000" name="instrucoes[0][id]" value=1 hidden></p>
+                        <p><label>Instrução 2: </label><input type="text" maxlimit="3000" name="instrucoes[1][id]" value=2 hidden></p> 
+    */
 
     const formulario = document.getElementById('Receita')
     formulario.addEventListener('submit', () => {
