@@ -108,6 +108,15 @@ const receitasController = {
                     receita_id: receitaCadastrada.dataValues.id
                 }, { transaction: t });
 
+                if ("instrucoes" in dados) {
+                    dados.instrucoes.forEach(async (dado) => {
+                        await InstrucoesPreparo.create({
+                            instrucao: dado.instrucao,
+                            receita_id: receitaCadastrada.dataValues.id
+                        })
+                    })
+                }
+
                 const receita = {
                     id: receitaCadastrada.dataValues.id,
                     nome: estocavelCadastrado.dataValues.nome,
@@ -160,14 +169,23 @@ const receitasController = {
 
                 if ("instrucoes" in dados) {
                     await dados.instrucoes.forEach(async (dado) => {
-                        await InstrucoesPreparo.update({
-                            instrucao: dado.instrucao
-                        }, {
-                            where: {
-                                id: dado.id
-                            },
-                            transaction: t
-                        })
+                        if("id" in dado) {
+                            await InstrucoesPreparo.update({
+                                instrucao: dado.instrucao
+                            }, {
+                                where: {
+                                    id: dado.id
+                                },
+                                transaction: t
+                            })
+                        } else {
+                            await InstrucoesPreparo.create({
+                                instrucao: dado.instrucao
+                            }, {
+                                transaction: t
+                            })
+                        }
+                        
                     })                                        
                 }
 
