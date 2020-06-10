@@ -32,7 +32,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: true,
       field: 'deleted_at'      
-    }
+    },
+    numero: DataTypes.STRING,
+    complemento: DataTypes.STRING,
+    bairro: DataTypes.STRING,
+    cep: DataTypes.STRING,
+    cidade: DataTypes.STRING,
+    uf: DataTypes.STRING,
+      
   }, {
     timestamps: true,
     paranoid: true,

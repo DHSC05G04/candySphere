@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <%- include('../partials/head') %>
 
 <body>
-
     <%- include('../partials/header') %>
-
     <main id="clientes">
-
         <section id="tabela-corpo">
-
-
             <table id="tabela-cliente">
                 <thead>
                     <tr>
-
                         <th>Nome</th>
                         <th class="email-head">Email</th>
                         <th>Celular</th>
@@ -24,12 +17,10 @@
                 </thead>
                 <tbody>
                     <% clientes.forEach(elemento => {%>
-
-
                     <tr>
                         <td class="nome-campo"><a href=""><%= elemento.nome%> </a></td>
                         <td class="email-campo"><a href=""><%= elemento.email%></a></td>
-                        <td><a href=""><%= elemento.celular%></a</td> <td>
+                        <td><a href=""><%= elemento.telefone%></a</td> <td>
                                 <a class="btn-acao" href=""><span class="material-icons">
                                         edit
                                     </span></a>
@@ -41,53 +32,151 @@
                     <% }); %>
                 </tbody>
             </table>
-            <div class="add-cliente"> <a  id="btn-add" href="#"><span
-                        class="material-icons">add_circle</span></a></div>
+            <div class="add-cliente"> <a id="btn-add" href=""><span class="material-icons">add_circle</span></a></div>
         </section>
-
     </main>
-
     <%- include('../partials/footer') %>
     <div id="modal-cliente" class="modal-container">
         <div id="conteudo-modal">
-                <form id="form-cliente" action="">
+            <form id="form-cliente" method="POST" action="/clientes">
                 <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
                 <h1>Cadastro de cliente</h1>
                 <div id="label-cliente"><label for="nome-cliente">Nome</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="nome-cliente"
+                <input type="text" id="nome" class="input-cadastro" name="nome"
                     placeholder="Digite o nome do cliente">
+                <div id="label-cliente"><label for="nome-cliente">CPF</label></div>
+                <input type="text" id="cpf" class="input-cadastro" name="cpf"
+                    placeholder="Digite o CPF do cliente">
                 <div id="label-cliente"><label for="nome-cliente">Email</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="email-cliente"
-                    placeholder="Digite o Email">
+                <input type="text" id="email" class="input-cadastro" name="email" placeholder="Digite o Email">
                 <div id="label-cliente"><label for="nome-cliente">Telefone</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="tel-cliente"
+                <input type="text" id="telefone" class="input-cadastro" name="telefone"
                     placeholder="Digite o telefone">
-                <div id="label-cliente"><label for="nome-cliente">Endereço</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="end-cliente"
-                    placeholder="Digite  Endereço">
-                <input type="submit" class="btn-cliente" value="Salvar">
+
+                <div id="label-cliente" class="lougradouro">
+                    <div class="dados-end-pai">
+                        <div class="dados-numero" style="width: 30%;">
+                            <label id="labelCep" for="nome-cliente">CEP</label>
+                            <input type="text" id="cep" class="input-cadastro" name="cep"
+                                placeholder="Ex:05797440">
+                        </div>
+                        <div class="dados-complemento" style="width: 20%;">
+
+                            <input type="submit" id="input-cep" class="btn-cliente" value="Buscar">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="label-cliente" class="lougradouro">
+                    <div>
+                        <label for="nome-cliente">Lougradouro</label>
+                        <input type="text" id="lougradouro" class="input-cadastro" name="endereco"
+                            placeholder="Digite o Lougradouro">
+                    </div>
+                </div>
+                <div id="label-cliente" class="lougradouro">
+                    <div class="dados-end-pai">
+                        <div class="dados-numero" style="width: 30%;">
+                            <label for="nome-cliente">Nº</label>
+                            <input type="text" id="numero" class="input-cadastro" name="numero"
+                                placeholder="Nº">
+                        </div>
+                        <div class="dados-complemento" style="width: 70%;">
+                            <label for="nome-cliente">Complemento</label>
+                            <input type="text" id="complemento" class="input-cadastro" name="complemento"
+                                placeholder="Complemento">
+                        </div>
+                    </div>
+                </div>
+                <div id="label-cliente" class="lougradouro">
+                    <div class="dados-end-pai">
+                        <div class="dados-numero" style="width: 40%;">
+                            <label for="nome-cliente">Bairro</label>
+                            <input type="text" id="bairro" class="input-cadastro" name="bairro"
+                                placeholder="Bairro">
+                        </div>
+                        <div class="dados-complemento" style="width: 40%;">
+                            <label for="nome-cliente">Cidade</label>
+                            <input type="text" id="cidade" class="input-cadastro" name="cidade"
+                                placeholder="Cidade">
+                        </div>
+                        <div class="dados-complemento" style="width: 20%;">
+                            <label for="nome-cliente">UF</label>
+                            <input type="text" id="uf" class="input-cadastro" name="uf" placeholder="UF">
+                        </div>
+                    </div>
+                </div>
+                <input id="btn-submit" type="submit" class="btn-cliente" value="Salvar">
             </form>
         </div>
     </div>
     <%- include('../partials/scripts') %>
+    <script>
+        function iniciaModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('mostrar');
+            modal.addEventListener('click', (e) => {
+                if (e.target.id == 'fechar-tudo') {
+                    modal.classList.remove('mostrar');
+                }
+            });
+        }
+        const btnClienteAdd = document.querySelector('.add-cliente');
 
-<script>
-    function iniciaModal(modalId){
-        const modal = document.getElementById(modalId);
-        modal.classList.add('mostrar');
-        modal.addEventListener('click',(e)=>{
-           if(e.target.id =='fechar-tudo'){
-            modal.classList.remove('mostrar');
-           }
+        btnClienteAdd.addEventListener('click', (e) => {
+            e.preventDefault();
+            nome.value = ""
+            iniciaModal('modal-cliente');
         });
-    }
-    const btnClienteAdd = document.querySelector('.add-cliente');
-    btnClienteAdd.addEventListener('click',()=>{
-        iniciaModal('modal-cliente');
-       
-    });
-    
-</script>
+
+    </script>
+
+
+    <script>
+        const inputCep = document.querySelector('#input-cep');
+        const lougradouro = document.querySelector('#lougradouro');
+        const numero = document.querySelector('#numero');
+        const complemento = document.querySelector('#complemento');
+        const bairro = document.querySelector('#bairro');
+        const cidade = document.querySelector('#cidade');
+        const uf = document.querySelector('#uf');
+        const cep = document.querySelector('#cep');
+        const labelCep = document.querySelector('#labelCep');
+        const btnCliente = document.querySelector('#btn-submit');
+        const form = document.querySelector('#form-cliente');
+
+        async function buscarCep(cep) {
+            const apiCep = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+            const resposta = await apiCep.json();
+            return resposta
+       }
+        inputCep.addEventListener('click', async (e) => {
+         
+            if (cep.value != "") {
+                e.preventDefault();
+                labelCep.style.color = 'var(--color5)'
+                labelCep.textContent="Cep"
+                cep.style.border ="1px solid var(--color5)"
+                const cepData = await buscarCep(cep.value)
+                console.log(cepData)
+                cep.value = cepData.cep
+                lougradouro.value = cepData.logradouro
+                bairro.value = cepData.bairro
+                cidade.value = cepData.localidade
+                uf.value = cepData.uf
+            }else{
+                e.preventDefault();
+                labelCep.style.color = 'red'
+                labelCep.textContent="Digite um cep"
+                cep.style.border ="2px solid red"
+            }
+            })
+            btnCliente.addEventListener('click',(e)=>{
+                form.action = "/clientes"
+               form.submit()
+            })
+
+    </script>
 </body>
 
 </html>
