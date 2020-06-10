@@ -2,7 +2,6 @@ const API_BASE = 'http://localhost:3000/api/v0'
 const receitaView = document.getElementById('receitaView')
 
 function editarReceitas() {
-    console.log(receitaView)
     receitaView.innerHTML = `
         <form action="/admin/receitas/${dadosReceita.id}?_method=put" id="Receita" method="POST" enctype="multipart/form-data">
             <section class="itemViewHeader">
@@ -12,14 +11,14 @@ function editarReceitas() {
                 <div class="itemViewDesc">
                     <img src=${dadosReceita.foto}  style="width:120px">
                     <input type="file" name="foto">
-                    <h3><label>Nome: </label><input type="text" maxlimit="3000" name="nome" value=${dadosReceita.fabricado.nome}></h3>
+                    <h3><label>Nome: </label><input type="text" maxlimit="3000" name="nome" placeholder=${dadosReceita.fabricado.nome}></h3>
                 </div>
                 <div class="itemViewBody">
                     <div class="receitaInfo">
                         <h4 class="sectionDivider">Informações</h4>
-                        <p><label>Descrição: </label><input type="text" maxlimit="3000" name="descricao" value=${dadosReceita.descricao}></p>
-                        <p><b>Tempo de preparo: </b><input type="number" name="tempo_preparo" value=${dadosReceita.tempo_preparo}></p>
-                        <p><b>Rendimento: </b><input type="number" name="rendimento" value=${dadosReceita.rendimento}></p>
+                        <p><label>Descrição: </label><input type="text" maxlimit="3000" name="descricao" placeholder=${dadosReceita.descricao}></p>
+                        <p><b>Tempo de preparo: </b><input type="number" name="tempo_preparo" placeholder=${dadosReceita.tempo_preparo}></p>
+                        <p><b>Rendimento: </b><input type="number" name="rendimento" placeholder=${dadosReceita.rendimento}></p>
                     </div>
                     <div id="infoIngredientes" class="receitaInfo">
                         <h4 class="sectionDivider">Ingredientes</h4>
@@ -50,6 +49,16 @@ function editarReceitas() {
             <p>${index+1}. ${instrucao.instrucao}</p>
         `
     }) */
+
+    const formulario = document.getElementById('Receita')
+    formulario.addEventListener('submit', () => {
+        const inputs = Array.from(formulario.elements)
+        inputs.forEach(element => {
+        if(element.value == '') {
+            element.disabled = true
+        }
+    })
+    }, false)
 }
 
 function retornarReceitas() {
