@@ -19,6 +19,7 @@ const usuariosRoute = require('./routes/usuariosRoute');
 //API routes
 const tiposAPIRouter = require('./routes/apis/tiposRoute');
 const unidadesAPIRouter = require('./routes/apis/unidadesRoute');
+const unidadesPorTipoAPIRouter = require('./routes/apis/unidadesPorTipoRoute');
 const estocaveisAPIRouter = require('./routes/apis/estocaveisRoute');
 const receitasAPIRouter = require('./routes/apis/receitasRoute');
 const ingredientesAPIRouter = require('./routes/apis/ingredientesRoute');
@@ -68,6 +69,7 @@ app.use('/usuarios',usuariosRoute);
 //API paths
 app.use('/api/v0/tipos', tiposAPIRouter);
 app.use('/api/v0/unidades', unidadesAPIRouter);
+app.use('/api/v0/unidadesportipo', unidadesPorTipoAPIRouter);
 app.use('/api/v0/estocaveis', estocaveisAPIRouter);
 app.use('/api/v0/receitas', receitasAPIRouter);
 app.use('/api/v0/ingredientes', ingredientesAPIRouter);
