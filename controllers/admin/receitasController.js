@@ -51,10 +51,12 @@ const receitasController = {
     },
 
     update: async (req, res) => {
-        const foto = req.files
+        const [foto] = req.files
         let dados = req.body
+        console.log('*'.repeat(60))
+        console.log(foto)
         if(foto != undefined) {
-            dados.foto = foto.filename
+            dados.foto = `/images/receitas/${foto.filename}`
         }
         const {id} = req.params
 

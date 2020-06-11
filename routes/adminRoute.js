@@ -1,5 +1,6 @@
 const express = require('express');
-const multer = require('multer')
+const multer = require('multer');
+const path = require('path');
 
 const adminController = require('../controllers/adminController');
 const receitasController = require('../controllers/admin/receitasController');
@@ -28,6 +29,6 @@ router.get('/estoque', adminController.indexEstoque);
 
 router.get('/receitas', receitasController.index);
 router.get('/receitas/:id', receitasController.indexById);
-router.put('/receitas/:id', upload.single(), receitasController.update);
+router.put('/receitas/:id', upload.any(), receitasController.update);
 
 module.exports = router;
