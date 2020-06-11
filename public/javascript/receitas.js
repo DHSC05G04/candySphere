@@ -41,9 +41,9 @@ function editarReceitas() {
     dadosReceita.ingredientes.forEach(async (ingrediente, index) => {
         ingredientes.innerHTML += `
             <input class="dataInput" type="number" name="ingredientes[${index}][id]" value="${ingrediente.id}" hidden>
-            <p>Quantidade: <input class="dataInput" type="number" name="ingredientes[${index}][quantidade]"> 
-            Unidade: <input class="dataInput number" list="unidades${index}" name="ingredientes[${index}][unidade][unidade]"><datalist id="unidades${index}"></datalist>
-            Ingrediente: <input list="ingredientes${index}" class="dataListComponent dataInput" name="ingredientes[${index}][componente][nome]"><datalist id="ingredientes${index}"></datalist></p>
+            <p>Quantidade: <input class="dataInput" type="number" placeholder="${ingrediente.quantidade}" name="ingredientes[${index}][quantidade]"> 
+            Unidade: <input class="dataInput number" list="unidades${index}" placeholder="${ingrediente.unidade.unidade}" name="ingredientes[${index}][unidade][unidade]"><datalist id="unidades${index}"></datalist>
+            Ingrediente: <input list="ingredientes${index}" class="dataListComponent dataInput" placeholder="${ingrediente.componente.nome}" name="ingredientes[${index}][componente][nome]"><datalist id="ingredientes${index}"></datalist></p>
         `
     
         const listaUnidadesAPI = await fetch(`${API_BASE}/unidadesportipo?tipo_id=${ingrediente.componente.tipo_id}`)
@@ -67,7 +67,7 @@ function editarReceitas() {
 
     dadosReceita.instrucoes.forEach((instrucao, index) => {
         instrucoes.innerHTML += `
-            <p><b>Instrução ${index+1}: </b><input class="dataInput" type="text" maxlimit="3000" name="instrucoes[${index}][instrucao]">
+            <p><b>Instrução ${index+1}: </b><textarea class="dataInput" placeholder="${instrucao.instrucao}" name="instrucoes[${index}][instrucao]"></textarea>
             <input class="dataInput" type="text" maxlimit="3000" name="instrucoes[${index}][id]" value=${instrucao.id} hidden>
             </p>
         `

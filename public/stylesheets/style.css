@@ -423,7 +423,7 @@ main {
 
 /* Configuração ad tela de visualização de receitas */
 #Receita {
-    width: 50vw;
+    width: 60vw;
     height: 70vh;
     display: flex;
     flex-direction: column;
@@ -476,6 +476,8 @@ main {
     text-transform: capitalize;
     font-size: 1.25em;
     margin-bottom: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .sectionDivider {
@@ -503,6 +505,7 @@ main {
     display: flex;
     align-items: center;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .receitaInfo p.dataInput[type="text"] {
@@ -524,10 +527,29 @@ main {
 .dataInput[type="file"] {
     width: 80%;
     font-size: smaller;
+    margin-top: 5px;
 }
 
 .dataInput[type="number"] {
     width: 4em;
+}
+
+.dataInput[type="text"] {
+    flex: 1;
+}
+
+.dataListComponent {
+    flex: 1;
+}
+
+textarea {
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+
+#Receita label {
+    min-width: initial;
+    width: auto;
 }
 
 .itemViewFooter {
