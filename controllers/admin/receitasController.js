@@ -58,14 +58,6 @@ const receitasController = {
         }
         const {id} = req.params
 
-        console.log(dados)
-        console.log(dados.instrucoes)
-        console.log(dados.ingredientes)
-        console.log(dados.ingredientes[0])
-
-        const teste = JSON.stringify(dados)
-        console.log(JSON.parse(teste))
-
         try {
             const result = await fetch(`${API_BASE}/receitas/${id}`, {
                 method: 'put',
