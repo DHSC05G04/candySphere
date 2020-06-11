@@ -3,17 +3,18 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.removeColumn(
-      'produtos',
-      'receita_id'
+      'receitas',
+      'nome'
     )
   },
 
   down: (queryInterface, Sequelize) => {
     return queryInterface.addColumn(
-      'produtos',
-      'receita_id',
+      'receitas',
+      'nome',
       {
-        type: Sequelize.INTEGER.UNSIGNED
+        type: Sequelize.STRING,
+        allowNull: false
       }
     )
   }

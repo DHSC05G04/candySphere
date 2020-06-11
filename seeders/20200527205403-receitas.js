@@ -6,7 +6,6 @@ module.exports = {
     [
       {
         id: 1,
-        nome: 'Brigadeiro',
         descricao: 'Docinho de leite condensado e chocolate em pó, coberto com chocolate granulado',
         tempo_preparo: 40,
         rendimento: 40,
@@ -16,7 +15,6 @@ module.exports = {
       },
       {
         id: 2,
-        nome: 'Docinho de leite',
         descricao: 'Docinho de leite em pó e leite de coco',
         tempo_preparo: 30,
         rendimento: 30,

@@ -26,8 +26,6 @@ const unidadesController = {
             const fieldName = Object.keys(req.query)[0]
             const queryValue = req.query[fieldName]
             try {
-                console.log(req.query)
-                console.log(req.query.unidade)
                 const unidades = await Unidade.findAll({
                     where: {
                         [fieldName]: {

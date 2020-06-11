@@ -1,42 +1,39 @@
 const { Op } = require('sequelize');
 
-const { InstrucoesPreparo, sequelize } = require('../../models');
+const { UnidadesPorTipo, sequelize } = require('../../models');
 
-const instrucoesController = {
+const unidadesPorTipoController = {
     index: async (req, res) => {
         if(Object.keys(req.params).length === 0 && Object.keys(req.query).length === 0) {
             try {
-                const instrucoes = await InstrucoesPreparo.findAll({
+                const unPorTipo = await UnidadesPorTipo.findAll({
                     include: [{
-                        association: 'origem',
-                        attributes: ['id'],
-                        include: [{
-                            association: 'fabricado',
-                            attributes: ['nome']
-                        }]
+                        association: 'categoria',
+                        attributes: ['id', 'tipo']
+                    },{
+                        association: 'medida',
+                        attributes: ['id', 'unidade']
                     }]
-                });;
-
-                return res.status(200).json(instrucoes);
+                });
+                return res.status(200).json(unPorTipo);                
             } catch (error) {
                 return res.status(400).json(error);
             }
         } else if(Object.keys(req.params).length > 0) {
             try {
-                const instrucoes = await InstrucoesPreparo.findAll({
+                const unPorTipo = await UnidadesPorTipo.findAll({
                     where: {
                         id: req.params.id
                     },
                     include: [{
-                        association: 'origem',
-                        attributes: ['id'],
-                        include: [{
-                            association: 'fabricado',
-                            attributes: ['nome']
-                        }]
+                        association: 'categoria',
+                        attributes: ['id', 'tipo']
+                    },{
+                        association: 'medida',
+                        attributes: ['id', 'unidade']
                     }]
                 });
-                return res.status(200).json(instrucoes);
+                return res.status(200).json(unPorTipo);                                
             } catch (error) {
                 return res.status(400).json(error);
             }
@@ -44,22 +41,21 @@ const instrucoesController = {
             const fieldName = Object.keys(req.query)[0]
             const queryValue = req.query[fieldName]
             try {
-                const instrucoes = await InstrucoesPreparo.findAll({
+                const unPorTipo = await UnidadesPorTipo.findAll({
                     where: {
                         [fieldName]: {
                             [Op.like]: `%${queryValue}%`
                         }
                     },
                     include: [{
-                        association: 'origem',
-                        attributes: ['id'],
-                        include: [{
-                            association: 'fabricado',
-                            attributes: ['nome']
-                        }]
+                        association: 'categoria',
+                        attributes: ['id', 'tipo']
+                    },{
+                        association: 'medida',
+                        attributes: ['id', 'unidade']
                     }]
                 });
-                return res.status(200).json(instrucoes);
+                return res.status(200).json(unPorTipo);
             } catch (error) {
                 return res.status(400).json(error);                
             }
@@ -67,13 +63,19 @@ const instrucoesController = {
     },
 
     create: async (req, res) => {
-        let dados = req.body;
+        const dados = req.body;
 
         try {
             const result = await sequelize.transaction(async (t) => {
-                const instrucaoCadastrada = await InstrucoesPreparo.create(dados, { transaction: t });
+                const [unPorTipoCadastrada, created] = await UnidadesPorTipo.findOrCreate({
+                    where: {
+                        tipo_id: dados.tipo_id,
+                        unidade_id: dados.unidade_id
+                    },
+                    transaction: t
+                });
 
-                return instrucaoCadastrada;
+                return [unPorTipoCadastrada, created];
             });
 
             return res.status(200).json(result);
@@ -92,18 +94,18 @@ const instrucoesController = {
             id = req.body.id;
             dados = req.body;
         } else if(Object.keys(req.query).length === 0) {
-            //Permite alterações enviando id pelo endpoint e informações pelo body [/instrucoes/:id]
+            //Permite alterações enviando id pelo endpoint e informações pelo body [/unidadesportipo/:id]
             id = req.params.id;
             dados = req.body;
         } else {
-            //Permite alterações enviando id pelo endpoint e informações por query [/instrucoes/:id?atributo=valorAtualizado]
+            //Permite alterações enviando id pelo endpoint e informações por query [/unidadesportipo/:id?param=valorAtualizado]
             id = req.params.id;
             dados = req.query;
         }
 
         try {
             await sequelize.transaction(async (t) => {
-                await InstrucoesPreparo.update(dados, {
+                await UnidadesPorTipo.update(dados, {
                     where: {
                         id
                     },
@@ -113,7 +115,7 @@ const instrucoesController = {
                 return;
             })
 
-            const result = await InstrucoesPreparo.findByPk(id);
+            const result = await UnidadesPorTipo.findByPk(id);
 
             return res.status(200).json(result);
         } catch (error) {
@@ -128,13 +130,13 @@ const instrucoesController = {
             //Permite deletar enviando id pelo body
             id = req.body.id;
         } else {
-            //Permite deletar enviando id pelo endpoint [/instrucoes/:id]
+            //Permite deletar enviando id pelo endpoint [/unidades/:id]
             id = req.params.id;
         }
 
         try {
             await sequelize.transaction(async (t) => {
-                await InstrucoesPreparo.destroy({
+                await UnidadesPorTipo.destroy({
                     where: {
                         id
                     },
@@ -144,7 +146,7 @@ const instrucoesController = {
                 return;
             })
 
-            const result = await InstrucoesPreparo.findByPk(id, {paranoid:false});
+            const result = await UnidadesPorTipo.findByPk(id, {paranoid:false});
 
             return res.status(200).json(result);
         } catch (error) {
@@ -153,4 +155,4 @@ const instrucoesController = {
     }
 }
 
-module.exports = instrucoesController;
+module.exports = unidadesPorTipoController;

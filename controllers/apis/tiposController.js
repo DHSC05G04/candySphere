@@ -26,8 +26,6 @@ const tiposController = {
             const fieldName = Object.keys(req.query)[0]
             const queryValue = req.query[fieldName]
             try {
-                console.log(req.query)
-                console.log(req.query.tipo)
                 const tipos = await TiposItens.findAll({
                     where: {
                         [fieldName]: {
