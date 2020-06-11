@@ -35,14 +35,35 @@ function editarReceitas() {
     `
     
 
-    // const ingredientes = document.getElementById('infoIngredientes')
+    const ingredientes = document.getElementById('infoIngredientes')
     const instrucoes = document.getElementById('infoInstrucoes')
 
-    // dadosReceita.ingredientes.forEach(ingrediente => {
-    //     ingredientes.innerHTML += `
-    //         <p>${ingrediente.quantidade} ${ingrediente.unidade.unidade} ${ingrediente.componente.nome}</p>
-    //     `        
-    //})
+    dadosReceita.ingredientes.forEach(async (ingrediente, index) => {
+        ingredientes.innerHTML += `
+            <input type="number" name="ingredientes[${index}][id]" value="${ingrediente.id}" hidden>
+            <p>Quantidade: <input type="number" name="ingredientes[${index}][quantidade]"> 
+            Unidade: <input list="unidades${index}" name="ingredientes[${index}][unidade][unidade]"><datalist id="unidades${index}"></datalist>
+            Ingrediente: <input list="ingredientes${index}" class="dataListComponent" name="ingredientes[${index}][componente][nome]"><datalist id="ingredientes${index}"></datalist></p>
+        `
+    
+        const listaUnidadesAPI = await fetch(`${API_BASE}/unidadesportipo?tipo_id=${ingrediente.componente.tipo_id}`)
+        const listaUnidades = await listaUnidadesAPI.json()
+        const unList = document.getElementById("unidades" + index)
+        listaUnidades.forEach(un => {
+            unList.innerHTML += `
+                <option value="${un.medida.unidade}">
+            `
+        })
+
+        const listaIngredientesAPI = await fetch(`${API_BASE}/estocaveis`)
+        const listaIngredientes = await listaIngredientesAPI.json()
+        const ingList = document.getElementById("ingredientes" + index)
+        listaIngredientes.forEach(ing => {
+            ingList.innerHTML += `
+                <option value="${ing.nome} id: ${ing.id}">
+            `
+        })
+    })
 
     dadosReceita.instrucoes.forEach((instrucao, index) => {
         instrucoes.innerHTML += `
@@ -52,21 +73,31 @@ function editarReceitas() {
         `
     })
 
-    /*
-    <p><label>Instrução 1: </label><input type="text" maxlimit="3000" name="instrucoes[0][instrucao]"></p>
-                        <p><label>Instrução 2: </label><input type="text" maxlimit="3000" name="instrucoes[1][instrucao]"></p>
-                        <p><label>Instrução 1: </label><input type="text" maxlimit="3000" name="instrucoes[0][id]" value=1 hidden></p>
-                        <p><label>Instrução 2: </label><input type="text" maxlimit="3000" name="instrucoes[1][id]" value=2 hidden></p> 
-    */
-
     const formulario = document.getElementById('Receita')
-    formulario.addEventListener('submit', () => {
+    formulario.addEventListener('submit', (form) => {
+        form.preventDefault()
+        const ingredientesLists = document.getElementsByClassName('dataListComponent')
+        for (i = 0; i < ingredientesLists.length; i++) {
+            const [,itemIndex] = ingredientesLists[i].getAttribute('list').split('ingredientes')
+            const [nome, id] = ingredientesLists[i].value.split(" id: ")
+            ingredientesLists[i].value = nome
+
+            const ingredienteId = document.createElement('input')
+            ingredienteId.type = 'text'
+            ingredienteId.name = `ingredientes[${itemIndex}][componente][id]`
+            ingredienteId.value = id
+
+            formulario.appendChild(ingredienteId)
+        }
+
         const inputs = Array.from(formulario.elements)
         inputs.forEach(element => {
-        if(element.value == '') {
+        if((element.value == '' || element.value == undefined) && element.type != 'submit') {
             element.disabled = true
         }
     })
+
+    formulario.submit()
     }, false)
 }
 

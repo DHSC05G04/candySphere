@@ -60,6 +60,8 @@ const receitasController = {
 
         console.log(dados)
         console.log(dados.instrucoes)
+        console.log(dados.ingredientes)
+        console.log(dados.ingredientes[0])
 
         const teste = JSON.stringify(dados)
         console.log(JSON.parse(teste))

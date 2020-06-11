@@ -1,6 +1,9 @@
+const fetch = require('node-fetch');
 const { Op } = require('sequelize');
 
-const { Receita, Estocaveis, InstrucoesPreparo, sequelize } = require('../../models');
+const API_BASE = 'http://localhost:3000/api/v0';
+
+const { Receita, Estocaveis, InstrucoesPreparo, Ingrediente, sequelize } = require('../../models');
 
 const receitasController = {
     index: async (req, res) => {
@@ -12,13 +15,13 @@ const receitasController = {
                         attributes: ['id', 'instrucao']
                     },{
                         association: 'ingredientes',
-                        attributes: ['quantidade'],
+                        attributes: ['id', 'quantidade'],
                         include: [{
                             association: 'componente',
-                            attributes: ['nome']
+                            attributes: ['id', 'tipo_id', 'nome']
                         },{
                             association: 'unidade',
-                            attributes: ['unidade']
+                            attributes: ['id', 'unidade']
                         }]
                     },{
                         association: 'fabricado',
@@ -41,13 +44,13 @@ const receitasController = {
                         attributes: ['id', 'instrucao']
                     },{
                         association: 'ingredientes',
-                        attributes: ['quantidade'],
+                        attributes: ['id', 'quantidade'],
                         include: [{
                             association: 'componente',
-                            attributes: ['nome']
+                            attributes: ['id', 'tipo_id', 'nome']
                         },{
                             association: 'unidade',
-                            attributes: ['unidade']
+                            attributes: ['id', 'unidade']
                         }]
                     },{
                         association: 'fabricado',
@@ -73,13 +76,13 @@ const receitasController = {
                         attributes: ['id', 'instrucao']
                     },{
                         association: 'ingredientes',
-                        attributes: ['quantidade'],
+                        attributes: ['id', 'quantidade'],
                         include: [{
                             association: 'componente',
-                            attributes: ['nome']
+                            attributes: ['id', 'tipo_id', 'nome']
                         },{
                             association: 'unidade',
-                            attributes: ['unidade']
+                            attributes: ['id', 'unidade']
                         }]
                     },{
                         association: 'fabricado',
@@ -169,7 +172,7 @@ const receitasController = {
 
                 if ("instrucoes" in dados) {
                     await dados.instrucoes.forEach(async (dado) => {
-                        if("id" in dado) {
+                        if(("id" in dado) && ("instrucao" in dado)) {
                             await InstrucoesPreparo.update({
                                 instrucao: dado.instrucao
                             }, {
@@ -178,15 +181,39 @@ const receitasController = {
                                 },
                                 transaction: t
                             })
-                        } else {
+                        } else if("instrucao" in dado){
                             await InstrucoesPreparo.create({
                                 instrucao: dado.instrucao
                             }, {
                                 transaction: t
                             })
+                        }                        
+                    })                                        
+                }
+
+                if ("ingredientes" in dados) {
+                    await dados.ingredientes.forEach(async (ing) => {
+                        if("unidade" in ing) {
+                            const unidadeAPI = await fetch(`${API_BASE}/unidades?unidade=${ing.unidade.unidade}`)
+                            const [unidade] = await unidadeAPI.json()
+
+                            await fetch(`${API_BASE}/ingredientes/${ing.id}?unidade_id=${unidade.id}`, {
+                                method: 'put'
+                            })
+                        }
+
+                        if("componente" in ing) {
+                            await fetch(`${API_BASE}/ingredientes/${ing.id}?estoque_id=${ing.componente.id}`, {
+                                method: 'put'
+                            })
                         }
                         
-                    })                                        
+                        if("quantidade" in ing) {
+                            await fetch(`${API_BASE}/ingredientes/${ing.id}?quantidade=${ing.quantidade}`, {
+                                method: 'put'
+                            })
+                        }
+                    })
                 }
 
                 await Receita.update(dados, {
