@@ -8,11 +8,11 @@
     <main id="receitaView">
         <article id="Receita">
             <section class="itemViewHeader">
-                <span class="material-icons">menu_book</span><span>Receita</span>                
+                <span class="material-icons">menu_book</span><h2>Receita<h2>                
             </section>
-            <section class="itemViewBody">
+            <section class="itemViewMain">
                 <div class="itemViewDesc">
-                    <img src=<%= receita.foto %>  style="width:120px">
+                    <img src=<%= receita.foto %>>
                     <h3><%= receita.fabricado.nome %></h3>
                 </div>
                 <div class="itemViewBody">
@@ -62,6 +62,7 @@
         </div>
     </div>
 
+    <%- include('../partials/footer') %>
     <%- include('../partials/scripts') %>
     <script>
         const dadosReceita = <%- JSON.stringify(receita) %>;

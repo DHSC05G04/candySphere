@@ -421,6 +421,142 @@ main {
     background-color: var(--color2);
 }
 
+/* Configuração ad tela de visualização de receitas */
+#Receita {
+    width: 50vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    background-color: var(--color1);
+}
+
+#Receita * {
+    color: var(--color5);
+}
+
+.itemViewHeader {
+    height: 10%;
+    background-color: var(--color2);
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--color5);
+}
+
+.itemViewHeader * {
+    margin-left: 20px;
+}
+
+.itemViewHeader span{
+    font-size: 2.5em;
+}
+
+.itemViewMain {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin: 10px 0 10px 20px;
+}
+
+.itemViewDesc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    border-bottom: 1px solid var(--color5);
+}
+
+.itemViewDesc img {
+    width: 50%;
+    border: 3px solid var(--color5);
+    border-radius: 30px;
+}
+
+.itemViewDesc h3 {
+    text-transform: capitalize;
+    font-size: 1.25em;
+    margin-bottom: 0;
+}
+
+.sectionDivider {
+    background-color: var(--color5);
+    color: var(--color1) !important;
+    margin: 0 0 0 10px;
+    padding: 5px;
+    border-radius: 5px;
+    position: relative;
+    top: -25px;
+    text-transform: capitalize;
+}
+
+.receitaInfo {
+    border: 1px solid var(--color5);
+    border-radius: 10px;
+    margin: 30px 20px 30px 0;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.receitaInfo p {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.receitaInfo p.dataInput[type="text"] {
+    flex-grow: 1;
+}
+
+.dataInput {
+    max-width: initial;
+    height: auto;
+    padding: 10px;
+    background-color: var(--color2);
+    font-size: 1em;
+}
+
+.number {
+    max-width: 8em;
+}
+
+.dataInput[type="file"] {
+    width: 80%;
+    font-size: smaller;
+}
+
+.dataInput[type="number"] {
+    width: 4em;
+}
+
+.itemViewFooter {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    padding: 20px;
+    border-top: 1px solid var(--color5);
+    box-shadow: 0 -2px 5px var(--color5);
+}
+
+.itemViewFooter button {
+    margin: 0 15px;
+    padding: 5px;
+    font-size: 2.5em;
+    background-color: var(--color5);
+    color: var(--color1) !important;
+    border: 2px solid var(--color1);
+    box-shadow: 0 0 0 5px var(--color5);
+    border-radius: 1.25em;
+}
+
+.itemViewFooter button:hover {
+    background-color: var(--color2);
+    color: var(--color5) !important;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2);
+}
+
 /* Configuração da tela de estoque */
 
 #administracaoEstoque {

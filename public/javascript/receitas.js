@@ -5,20 +5,20 @@ function editarReceitas() {
     receitaView.innerHTML = `
         <form action="/admin/receitas/${dadosReceita.id}?_method=put" id="Receita" method="POST" enctype="multipart/form-data">
             <section class="itemViewHeader">
-                <span class="material-icons">menu_book</span><span>Receita</span>                
+                <span class="material-icons">menu_book</span><h2>Receita<h2>                
             </section>
-            <section class="itemViewBody">
+            <section class="itemViewMain">
                 <div class="itemViewDesc">
-                    <img src=${dadosReceita.foto}  style="width:120px">
-                    <input type="file" name="foto">
-                    <h3><label>Nome: </label><input type="text" maxlimit="3000" name="nome" placeholder=${dadosReceita.fabricado.nome}></h3>
+                    <img src=${dadosReceita.foto}>
+                    <input class="dataInput" type="file" name="foto">
+                    <h3><label>Nome: </label><input class="dataInput" type="text" maxlimit="3000" name="nome" placeholder=${dadosReceita.fabricado.nome}></h3>
                 </div>
                 <div class="itemViewBody">
                     <div class="receitaInfo">
                         <h4 class="sectionDivider">Informações</h4>
-                        <p><label>Descrição: </label><input type="text" maxlimit="3000" name="descricao" placeholder=${dadosReceita.descricao}></p>
-                        <p><b>Tempo de preparo: </b><input type="number" name="tempo_preparo" placeholder=${dadosReceita.tempo_preparo}></p>
-                        <p><b>Rendimento: </b><input type="number" name="rendimento" placeholder=${dadosReceita.rendimento}></p>
+                        <p><b>Descrição: </b><input class="dataInput" type="text" maxlimit="3000" name="descricao" placeholder=${dadosReceita.descricao}></p>
+                        <p><b>Tempo de preparo: </b><input class="dataInput" type="number" name="tempo_preparo" placeholder=${dadosReceita.tempo_preparo}></p>
+                        <p><b>Rendimento: </b><input class="dataInput" type="number" name="rendimento" placeholder=${dadosReceita.rendimento}></p>
                     </div>
                     <div id="infoIngredientes" class="receitaInfo">
                         <h4 class="sectionDivider">Ingredientes</h4>
@@ -40,10 +40,10 @@ function editarReceitas() {
 
     dadosReceita.ingredientes.forEach(async (ingrediente, index) => {
         ingredientes.innerHTML += `
-            <input type="number" name="ingredientes[${index}][id]" value="${ingrediente.id}" hidden>
-            <p>Quantidade: <input type="number" name="ingredientes[${index}][quantidade]"> 
-            Unidade: <input list="unidades${index}" name="ingredientes[${index}][unidade][unidade]"><datalist id="unidades${index}"></datalist>
-            Ingrediente: <input list="ingredientes${index}" class="dataListComponent" name="ingredientes[${index}][componente][nome]"><datalist id="ingredientes${index}"></datalist></p>
+            <input class="dataInput" type="number" name="ingredientes[${index}][id]" value="${ingrediente.id}" hidden>
+            <p>Quantidade: <input class="dataInput" type="number" name="ingredientes[${index}][quantidade]"> 
+            Unidade: <input class="dataInput number" list="unidades${index}" name="ingredientes[${index}][unidade][unidade]"><datalist id="unidades${index}"></datalist>
+            Ingrediente: <input list="ingredientes${index}" class="dataListComponent dataInput" name="ingredientes[${index}][componente][nome]"><datalist id="ingredientes${index}"></datalist></p>
         `
     
         const listaUnidadesAPI = await fetch(`${API_BASE}/unidadesportipo?tipo_id=${ingrediente.componente.tipo_id}`)
@@ -67,8 +67,8 @@ function editarReceitas() {
 
     dadosReceita.instrucoes.forEach((instrucao, index) => {
         instrucoes.innerHTML += `
-            <p><label>Instrução ${index+1}: </label><input type="text" maxlimit="3000" name="instrucoes[${index}][instrucao]">
-            <input type="text" maxlimit="3000" name="instrucoes[${index}][id]" value=${instrucao.id} hidden>
+            <p><b>Instrução ${index+1}: </b><input class="dataInput" type="text" maxlimit="3000" name="instrucoes[${index}][instrucao]">
+            <input class="dataInput" type="text" maxlimit="3000" name="instrucoes[${index}][id]" value=${instrucao.id} hidden>
             </p>
         `
     })
@@ -105,11 +105,11 @@ function retornarReceitas() {
     receitaView.innerHTML = `
         <article id="Receita">
             <section class="itemViewHeader">
-                <span class="material-icons">menu_book</span><span>Receita</span>                
+                <span class="material-icons">menu_book</span><h2>Receita<h2>                
             </section>
-            <section class="itemViewBody">
+            <section class="itemViewMain">
                 <div class="itemViewDesc">
-                    <img src=${dadosReceita.foto}  style="width:120px">
+                    <img src=${dadosReceita.foto}>
                     <h3>${dadosReceita.fabricado.nome}</h3>
                 </div>
                 <div class="itemViewBody">
