@@ -4,6 +4,7 @@ const path = require('path');
 
 const adminController = require('../controllers/adminController');
 const receitasController = require('../controllers/admin/receitasController');
+const estoqueController = require('../controllers/admin/estoqueController');
 
 const router = express.Router();
 
@@ -25,7 +26,8 @@ router.get('/', adminController.index);
 
 router.get('/produtos', adminController.indexProdutos);
 
-router.get('/estoque', adminController.indexEstoque);
+router.get('/estoque', estoqueController.index);
+router.get('/estoque/:id', estoqueController.indexById);
 
 router.get('/receitas', receitasController.index);
 router.get('/receitas/:id', receitasController.indexById);

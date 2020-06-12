@@ -6,7 +6,7 @@
 <body>
     <%- include('../partials/header') %>
     <main id="receitaView">
-        <article id="Receita">
+        <article id="Visualizacao">
             <section class="itemViewHeader">
                 <span class="material-icons">menu_book</span><h2>Receita<h2>
             </section>
@@ -16,19 +16,19 @@
                     <h3><%= receita.fabricado.nome %></h3>
                 </div>
                 <div class="itemViewBody">
-                    <div class="receitaInfo">
+                    <div class="itemInfo">
                         <h4 class="sectionDivider">Informações</h4>
                         <p><%= receita.descricao %></p>
                         <p><b>Tempo de preparo: </b><%= receita.tempo_preparo %></p>
                         <p><b>Rendimento: </b><%= receita.rendimento %></p>
                     </div>
-                    <div id="infoIngredientes" class="receitaInfo">
+                    <div id="infoIngredientes" class="itemInfo">
                         <h4 class="sectionDivider">Ingredientes</h4>
                         <% receita.ingredientes.forEach(ingrediente => { %>
                             <p><%= `${ingrediente.quantidade} ${ingrediente.unidade.unidade} ${ingrediente.componente.nome}` %></p>
                         <% }) %>
                     </div>
-                    <div id="infoInstrucoes" class="receitaInfo">
+                    <div id="infoInstrucoes" class="itemInfo">
                         <h4 class="sectionDivider">Instruções de preparo</h4>
                         <% receita.instrucoes.forEach((instrucao, index) => { %>
                             <p><%= `${index+1}. ${instrucao.instrucao}` %></p>

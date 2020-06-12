@@ -3,7 +3,7 @@ const receitaView = document.getElementById('receitaView')
 
 function editarReceitas() {
     receitaView.innerHTML = `
-        <form action="/admin/receitas/${dadosReceita.id}?_method=put" id="Receita" method="POST" enctype="multipart/form-data">
+        <form action="/admin/receitas/${dadosReceita.id}?_method=put" id="Visualizacao" method="POST" enctype="multipart/form-data">
             <section class="itemViewHeader">
                 <span class="material-icons">menu_book</span><h2>Receita<h2>
             </section>
@@ -14,23 +14,23 @@ function editarReceitas() {
                     <h3><label>Nome: </label><input class="dataInput" type="text" maxlimit="3000" name="nome" placeholder="${dadosReceita.fabricado.nome}"></h3>
                 </div>
                 <div class="itemViewBody">
-                    <div class="receitaInfo">
+                    <div class="itemInfo">
                         <h4 class="sectionDivider">Informações</h4>
                         <p><b>Descrição: </b><input class="dataInput" type="text" maxlimit="3000" name="descricao" placeholder="${dadosReceita.descricao}"></p>
                         <p><b>Tempo de preparo: </b><input class="dataInput" type="number" name="tempo_preparo" placeholder="${dadosReceita.tempo_preparo}"></p>
                         <p><b>Rendimento: </b><input class="dataInput" type="number" name="rendimento" placeholder="${dadosReceita.rendimento}"></p>
                     </div>
-                    <div id="infoIngredientes" class="receitaInfo">
+                    <div id="infoIngredientes" class="itemInfo">
                         <h4 class="sectionDivider">Ingredientes</h4>
                     </div>
-                    <div id="infoInstrucoes" class="receitaInfo">
+                    <div id="infoInstrucoes" class="itemInfo">
                         <h4 class="sectionDivider">Instruções de preparo</h4>
                     </div>
                 </div>
             </section>
             <section class="itemViewFooter">
                 <button type="submit" class="material-icons">save</button>
-                <button class="material-icons" onclick="retornarReceitas()">clear</button>
+                <button type="button" class="material-icons" onclick="retornarReceitas()">clear</button>
             </section>
         </form>
     `
@@ -104,7 +104,7 @@ function editarReceitas() {
 
 function retornarReceitas() {
     receitaView.innerHTML = `
-        <article id="Receita">
+        <article id="Visualizacao">
             <section class="itemViewHeader">
                     <span class="material-icons">menu_book</span><h2>Receita<h2>
             </section>
@@ -114,16 +114,16 @@ function retornarReceitas() {
                     <h3>${dadosReceita.fabricado.nome}</h3>
                 </div>
                 <div class="itemViewBody">
-                    <div class="receitaInfo">
+                    <div class="itemInfo">
                         <h4 class="sectionDivider">Informações</h4>
                         <p>${dadosReceita.descricao}</p>
                         <p><b>Tempo de preparo: </b>${dadosReceita.tempo_preparo}</p>
                         <p><b>Rendimento: </b>${dadosReceita.rendimento}</p>
                     </div>
-                    <div id="infoIngredientes" class="receitaInfo">
+                    <div id="infoIngredientes" class="itemInfo">
                         <h4 class="sectionDivider">Ingredientes</h4>
                     </div>
-                    <div id="infoInstrucoes" class="receitaInfo">
+                    <div id="infoInstrucoes" class="itemInfo">
                         <h4 class="sectionDivider">Instruções de preparo</h4>
                     </div>
                 </div>

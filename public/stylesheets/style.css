@@ -343,6 +343,7 @@ main {
 
 .adminCardContainer section.logo .material-icons {
     font-size: 5em;
+    color: var(--color5);
 }
 
 .adminCardContainer section.description {
@@ -388,9 +389,10 @@ main {
 
 .adminCardFooter button:hover {
     background-color: var(--color2);
-    color: var(--color5) !important;
+    color: var(--color5);
     border: 2px solid var(--color5);
     box-shadow: 0 0 0 5px var(--color2);
+    transition: .5s;
 }
 
 /* Configuração cards de produtos*/
@@ -461,8 +463,8 @@ main {
     background-color: var(--color2);
 }
 
-/* Configuração ad tela de visualização de receitas */
-#Receita {
+/* Configuração da tela de visualização de receitas */
+#Visualizacao {
     width: 60vw;
     height: 65vh;
     display: flex;
@@ -471,7 +473,7 @@ main {
     background-color: var(--color1);
 }
 
-#Receita * {
+#Visualizacao * {
     color: var(--color5);
 }
 
@@ -555,7 +557,7 @@ main {
     text-transform: capitalize;
 }
 
-.receitaInfo {
+.itemInfo {
     border: 1px solid var(--color5);
     border-radius: 10px;
     margin: 30px 20px 30px 0;
@@ -565,14 +567,14 @@ main {
     flex-direction: column;
 }
 
-.receitaInfo p {
+.itemInfo p {
     display: flex;
     align-items: center;
     width: 100%;
     flex-wrap: wrap;
 }
 
-.receitaInfo p.dataInput[type="text"] {
+.itemInfo p.dataInput[type="text"] {
     flex-grow: 1;
 }
 
@@ -611,7 +613,7 @@ textarea {
     flex-basis: 100%;
 }
 
-#Receita label {
+#Visualizacao label {
     min-width: initial;
     width: auto;
 }
@@ -641,6 +643,7 @@ textarea {
     color: var(--color5) !important;
     border: 2px solid var(--color5);
     box-shadow: 0 0 0 5px var(--color2);
+    transition: .5s;
 }
 
 /* Configuração da tela de estoque */
@@ -742,6 +745,11 @@ div.add-estoque a span:hover {
     font-size: 20px;
     max-width: 100%;
     display: block;
+}
+
+a.btn.material-icons:hover {
+    color: var(--color2);
+    transition: .5s;
 }
 
 /* ###### FINANCEIRO ######### */

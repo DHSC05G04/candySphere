@@ -8,7 +8,7 @@
         <%- include('../partials/header') %>
 
         <main id="administracao">
-            <a href="/admin/produtos" class="adminCardContainer">
+            <section class="adminCardContainer">
                 <section class="logo">
                     <span class="material-icons">shopping_cart</span>
                 </section>
@@ -16,8 +16,11 @@
                     <h3>Produtos</h3>
                     <p>Visualização de produtos disponíveis para vendas e inclusão dos mesmos no carrinho de compras</p>
                 </section>
-            </a>
-            <a href="/admin/estoque" class="adminCardContainer">
+                <section class="adminCardFooter">
+                    <button class="material-icons" onclick="window.location.href='<%= `/admin/produtos` %>'">remove_red_eye</button>
+                </section>
+            </section>
+            <section class="adminCardContainer">
                 <section class="logo">
                     <span class="material-icons">list_alt</span>
                 </section>
@@ -25,8 +28,11 @@
                     <h3>Estoque</h3>
                     <p>Controle e administração do estoque</p>
                 </section>
-            </a>
-            <a href="/admin/receitas" class="adminCardContainer">
+                <section class="adminCardFooter">
+                    <button class="material-icons" onclick="window.location.href='<%= `/admin/estoque` %>'">remove_red_eye</button>
+                </section>
+            </section>
+            <section class="adminCardContainer">
                 <section class="logo">
                     <span class="material-icons">menu_book</span>
                 </section>
@@ -34,7 +40,10 @@
                     <h3>Receitas</h3>
                     <p>Lista de receitas cadastradas no sistema</p>
                 </section>
-            </a>
+                <section class="adminCardFooter">
+                    <button class="material-icons" onclick="window.location.href='<%= `/admin/receitas` %>'">remove_red_eye</button>
+                </section>
+            </section>
         </main>
 
         <%- include('../partials/footer') %>
