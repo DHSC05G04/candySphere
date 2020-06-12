@@ -8,7 +8,7 @@
     <main id="receitaView">
         <article id="Receita">
             <section class="itemViewHeader">
-                <span class="material-icons">menu_book</span><h2>Receita<h2>                
+                <span class="material-icons">menu_book</span><h2>Receita<h2>
             </section>
             <section class="itemViewMain">
                 <div class="itemViewDesc">
@@ -37,7 +37,9 @@
                 </div>
             </section>
             <section class="itemViewFooter">
-                <button class="material-icons" onclick="editarReceitas()">create</button><button class="material-icons">delete</button>
+                <button class="material-icons" onclick="editarReceitas()">create</button>
+                <button class="material-icons" onclick="excluirReceita(<%= receita.id %>)">delete</button>
+                <button class="material-icons" onclick="sairReceita()">arrow_back</button>
             </section>
         </article>
     </main>

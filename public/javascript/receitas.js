@@ -5,20 +5,20 @@ function editarReceitas() {
     receitaView.innerHTML = `
         <form action="/admin/receitas/${dadosReceita.id}?_method=put" id="Receita" method="POST" enctype="multipart/form-data">
             <section class="itemViewHeader">
-                <span class="material-icons">menu_book</span><h2>Receita<h2>                
+                <span class="material-icons">menu_book</span><h2>Receita<h2>
             </section>
             <section class="itemViewMain">
                 <div class="itemViewDesc">
                     <img src=${dadosReceita.foto}>
                     <input class="dataInput" type="file" name="foto">
-                    <h3><label>Nome: </label><input class="dataInput" type="text" maxlimit="3000" name="nome" placeholder=${dadosReceita.fabricado.nome}></h3>
+                    <h3><label>Nome: </label><input class="dataInput" type="text" maxlimit="3000" name="nome" placeholder="${dadosReceita.fabricado.nome}"></h3>
                 </div>
                 <div class="itemViewBody">
                     <div class="receitaInfo">
                         <h4 class="sectionDivider">Informações</h4>
-                        <p><b>Descrição: </b><input class="dataInput" type="text" maxlimit="3000" name="descricao" placeholder=${dadosReceita.descricao}></p>
-                        <p><b>Tempo de preparo: </b><input class="dataInput" type="number" name="tempo_preparo" placeholder=${dadosReceita.tempo_preparo}></p>
-                        <p><b>Rendimento: </b><input class="dataInput" type="number" name="rendimento" placeholder=${dadosReceita.rendimento}></p>
+                        <p><b>Descrição: </b><input class="dataInput" type="text" maxlimit="3000" name="descricao" placeholder="${dadosReceita.descricao}"></p>
+                        <p><b>Tempo de preparo: </b><input class="dataInput" type="number" name="tempo_preparo" placeholder="${dadosReceita.tempo_preparo}"></p>
+                        <p><b>Rendimento: </b><input class="dataInput" type="number" name="rendimento" placeholder="${dadosReceita.rendimento}"></p>
                     </div>
                     <div id="infoIngredientes" class="receitaInfo">
                         <h4 class="sectionDivider">Ingredientes</h4>
@@ -29,7 +29,8 @@ function editarReceitas() {
                 </div>
             </section>
             <section class="itemViewFooter">
-                <button type="submit" class="material-icons">save</button><button class="material-icons" onclick="retornarReceitas()">clear</button>
+                <button type="submit" class="material-icons">save</button>
+                <button class="material-icons" onclick="retornarReceitas()">clear</button>
             </section>
         </form>
     `
@@ -43,7 +44,7 @@ function editarReceitas() {
             <input class="dataInput" type="number" name="ingredientes[${index}][id]" value="${ingrediente.id}" hidden>
             <p>Quantidade: <input class="dataInput" type="number" placeholder="${ingrediente.quantidade}" name="ingredientes[${index}][quantidade]"> 
             Unidade: <input class="dataInput number" list="unidades${index}" placeholder="${ingrediente.unidade.unidade}" name="ingredientes[${index}][unidade][unidade]"><datalist id="unidades${index}"></datalist>
-            Ingrediente: <input list="ingredientes${index}" class="dataListComponent dataInput" placeholder="${ingrediente.componente.nome}" name="ingredientes[${index}][componente][nome]"><datalist id="ingredientes${index}"></datalist></p>
+            Ingrediente: <input list="ingredientes${index}" class="dataListComponent dataInput" placeholder="${ingrediente.componente.nome}" name="ingredientes[${index}][componente][nome]" disabled><datalist id="ingredientes${index}"></datalist></p>
         `
     
         const listaUnidadesAPI = await fetch(`${API_BASE}/unidadesportipo?tipo_id=${ingrediente.componente.tipo_id}`)
@@ -105,7 +106,7 @@ function retornarReceitas() {
     receitaView.innerHTML = `
         <article id="Receita">
             <section class="itemViewHeader">
-                <span class="material-icons">menu_book</span><h2>Receita<h2>                
+                    <span class="material-icons">menu_book</span><h2>Receita<h2>
             </section>
             <section class="itemViewMain">
                 <div class="itemViewDesc">
@@ -128,7 +129,9 @@ function retornarReceitas() {
                 </div>
             </section>
             <section class="itemViewFooter">
-                <button class="material-icons" onclick="editarReceitas()">create</button><button class="material-icons">delete</button>
+                <button class="material-icons" onclick="editarReceitas()">create</button>
+                <button class="material-icons" onclick="excluirReceita(${dadosReceita.id})">delete</button>
+                <button class="material-icons" onclick="sairReceita()">arrow_back</button>
             </section>
         </article>
     `
@@ -147,4 +150,15 @@ function retornarReceitas() {
             <p>${index+1}. ${instrucao.instrucao}</p>
         `
     })
+}
+
+function sairReceita() {
+    return window.location.href = 'http://localhost:3000/admin/receitas';
+}
+
+async function excluirReceita(id) {
+    await fetch(`${API_BASE}/receitas/${id}`, {
+        method: 'delete'
+    })
+    return window.location.href = 'http://localhost:3000/admin/receitas';    
 }

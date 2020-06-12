@@ -439,17 +439,41 @@ main {
     height: 10%;
     background-color: var(--color2);
     display: flex;
+    /* justify-content: space-between; */
     align-items: center;
     border-bottom: 2px solid var(--color5);
 }
 
 .itemViewHeader * {
+    /* display: flex;
+    align-items: center; */
     margin-left: 20px;
+    /* margin-right: 10px; */
 }
 
 .itemViewHeader span{
     font-size: 2.5em;
 }
+
+/*
+.itemViewHeader button {
+    margin: 0 .5em;
+    padding: 5px;
+    font-size: .8em;
+    background-color: var(--color5);
+    color: var(--color1) !important;
+    border: 2px solid var(--color1);
+    box-shadow: 0 0 0 5px var(--color5);
+    border-radius: 1.25em;
+}
+
+.itemViewHeader button:hover {
+    background-color: var(--color2);
+    color: var(--color5) !important;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2);
+}
+*/
 
 .itemViewMain {
     display: flex;
