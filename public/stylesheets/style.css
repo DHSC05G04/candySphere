@@ -750,6 +750,7 @@ div.add-estoque a span:hover {
 a.btn.material-icons:hover {
     color: var(--color2);
     transition: .5s;
+    cursor: pointer;
 }
 
 /* ###### FINANCEIRO ######### */

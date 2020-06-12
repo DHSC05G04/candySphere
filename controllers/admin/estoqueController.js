@@ -48,7 +48,36 @@ const estoqueController = {
     },
 
     update: async (req, res) => {
+        let tabActive = {homeAct: "inactive",
+                        adminAct: "active",
+                        financeiroAct: "inactive",
+                        clientesAct: "inactive",
+                        funcionariosAct: "inactive",
+                        pdvAct: "inactive"};
         
+        const [foto] = req.files
+        let dados = req.body
+        
+        if(foto != undefined) {
+            dados.foto = `/images/produtos/${foto.filename}`
+        }
+        const {id} = req.params
+
+        try {
+            const result = await fetch(`${API_BASE}/estocaveis/${id}`, {
+                method: 'put',
+                body: JSON.stringify(dados),
+                headers: {
+                    'Content-Type': 'application/json' 
+                }
+            })
+
+            return res.redirect(`/admin/estoque`);
+            
+        } catch (error) {
+            return res.status(400).json(error)
+            
+        }
     }
 }
 

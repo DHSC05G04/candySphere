@@ -21,19 +21,31 @@
                         <p><b>Nome: </b><input class="dataInput" type="text" maxlimit="3000" name="nome" placeholder="<%= estoque.nome %>"></p>
                         <p><b>Tipo: </b><input class="dataListComponent dataInput number" id="inputTipo" list="tipos" placeholder="<%= estoque.classe.tipo %>" name="tipo_id"><datalist id="tipos"></datalist></p>
                         <p><b>Quantidade: </b><input class="dataInput" type="number" placeholder="<%= estoque.quantidade %>" name="quantidade"><b> Unidade: </b><input class="dataListComponent dataInput number" list="unidades" placeholder="<%= estoque.unMedida.unidade %>" name="unidade_id"><datalist id="unidades"></datalist></p>
-                        <p><b>Custo unitário: </b>R$ <input class="dataInput" type="number" placeholder="<%= estoque.custo_unitario %>" name="custo_unitario"></p>
+                        <p><b>Custo unitário: </b>R$ <input class="dataInput" type="number" placeholder="<%= estoque.custo_unitario %>" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" name="custo_unitario"></p>
                         <p><b>Produto final?: </b>
                             <% if(estoque.vendavel) { %>
-                                <input id="vendavel" type="checkbox" name="vendavel" checked>                                
+                                <select name="vendavel" id="vendavel">
+                                    <option value="true" selected>Sim</option>
+                                    <option value="false">Não</option>
+                                  </select>                                
                             <% } else { %>
-                                <input id="vendavel" type="checkbox" name="vendavel">
+                                <select name="vendavel" id="vendavel">
+                                    <option value="true">Sim</option>
+                                    <option value="false" selected>Não</option>
+                                  </select>
                             <% } %>
                         </p>
                         <p><b>Fabricado?: </b>
                             <% if(estoque.receita_id != null) { %>
-                                <input type="checkbox" name="fabricado" checked disabled>                                
+                                <select name="fabricado" disabled>
+                                    <option value="true" selected>Sim</option>
+                                    <option value="false">Não</option>
+                                  </select>                                
                             <% } else { %>
-                                <input type="checkbox" name="fabricado" disabled>
+                                <select name="fabricado" disabled>
+                                    <option value="true">Sim</option>
+                                    <option value="false" selected>Não</option>
+                                  </select>    
                             <% } %>
                         </p>
                     </div>

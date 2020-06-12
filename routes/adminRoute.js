@@ -28,7 +28,7 @@ router.get('/produtos', adminController.indexProdutos);
 
 router.get('/estoque', estoqueController.index);
 router.get('/estoque/:id', estoqueController.indexById);
-router.put('/estoque/:id', estoqueController.update);
+router.put('/estoque/:id', upload.any(), estoqueController.update);
 
 router.get('/receitas', receitasController.index);
 router.get('/receitas/:id', receitasController.indexById);
