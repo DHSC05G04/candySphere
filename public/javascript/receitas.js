@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api/v0'
+const API_BASE = 'http://10.0.0.100:3000/api/v0'
 const receitaView = document.getElementById('receitaView')
 
 function editarReceitas() {
@@ -153,12 +153,21 @@ function retornarReceitas() {
 }
 
 function sairReceita() {
-    return window.location.href = 'http://localhost:3000/admin/receitas';
+    //return window.location.href = 'http://10.0.0.100:3000/admin/receitas';
+    return window.history.back();
 }
 
 async function excluirReceita(id) {
+    const locationRef = window.location.href.split('/')
+
     await fetch(`${API_BASE}/receitas/${id}`, {
         method: 'delete'
     })
-    return window.location.href = 'http://localhost:3000/admin/receitas';    
+    
+    if(locationRef[locationRef.length-1] != 'receitas') {
+        return window.location.replace(document.referrer);
+    } else {
+        return window.location.reload();
+    }
+    //return window.location.href = 'http://10.0.0.100:3000/admin/receitas';    
 }

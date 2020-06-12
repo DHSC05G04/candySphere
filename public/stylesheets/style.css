@@ -329,6 +329,7 @@ main {
     width: 300px;
     height: 320px;
     border: 1px solid var(--color2);
+    border-radius: 3em;
 }
 
 .adminCardContainer section.logo {
@@ -338,9 +339,10 @@ main {
     width: 100%;
     height: 120px;
     background-color: var(--color2);
+    border-radius: 3em 3em 0 0;
 }
 
-.adminCardContainer .material-icons {
+.adminCardContainer section.logo .material-icons {
     font-size: 5em;
 }
 
@@ -351,6 +353,45 @@ main {
     padding: 10px;
     color: var(--color5);
     background-color: var(--color1);
+    overflow-y: auto;
+}
+
+.adminCardContainer section.description p {
+    margin: 0;
+}
+
+.adminCardContainer section.description h3 {
+    margin: 8px 0;
+}
+
+.adminCardFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5em;
+    background-color: var(--color1);
+    border-top: 1 solid var(--color5);
+    box-shadow: 0 -2px 5px var(--color5);
+    border-radius: 0 0 3em 3em;
+}
+
+.adminCardFooter button {
+    margin: 0 15px;
+    padding: 5px;
+    font-size: 2em;
+    background-color: var(--color5);
+    color: var(--color1);
+    border: 2px solid var(--color1);
+    box-shadow: 0 0 0 5px var(--color5);
+    border-radius: 1.25em;    
+}
+
+.adminCardFooter button:hover {
+    background-color: var(--color2);
+    color: var(--color5) !important;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2);
 }
 
 /* Configuração cards de produtos*/

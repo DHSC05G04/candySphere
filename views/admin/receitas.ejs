@@ -9,21 +9,24 @@
 
         <main id="administracao">
             <% receitas.forEach(receita => { %>
-                <a href=<%= `/admin/receitas/${receita.id}` %> class="adminCardContainer">
-                    <section class="foto" style="background-image: url(<%= receita.foto %>); background-size: cover;">
+                <section class="adminCardContainer">
+                    <section class="logo" style="background-image: url(<%= receita.foto %>); background-size: cover;">
                     </section>
                     <section class="description">
                         <h3><%= receita.fabricado.nome %></h3>
                         <p><%= receita.descricao %></p>
                     </section>
-                </a>                                
+                    <section class="adminCardFooter">
+                        <button class="material-icons" onclick="window.location.href='<%= `/admin/receitas/${receita.id}` %>'">remove_red_eye</button>
+                        <button class="material-icons" onclick="excluirReceita(<%= receita.id %>)">delete</button>
+                    </section>
+                </section>                                
             <% }); %>
         </main>
 
         <%- include('../partials/footer') %>
 
-        <%- include('../partials/scripts') %>
-
+        <script src="/javascript/receitas.js"></script>
     </body>
 
 </html>
