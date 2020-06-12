@@ -7,7 +7,7 @@ const estocaveisController = {
             try {
                 const estocaveis = await Estocaveis.findAll({
                     attributes: ['id', 'nome', 'quantidade', 'custo_unitario',
-                        'validade', 'vendavel', 'receita_id', 'createdAt', 'updatedAt'],
+                        'validade', 'vendavel', 'receita_id', 'foto', 'createdAt', 'updatedAt'],
                     include: [{
                         association: 'classe',
                         attributes: ['tipo']
@@ -28,7 +28,7 @@ const estocaveisController = {
                         id: req.params.id
                     },
                     attributes: ['id', 'nome', 'quantidade', 'custo_unitario',
-                        'validade', 'vendavel', 'createdAt', 'updatedAt'],
+                    'validade', 'vendavel', 'receita_id', 'foto', 'createdAt', 'updatedAt'],
                     include: [{
                         association: 'classe',
                         attributes: ['tipo']
@@ -52,7 +52,7 @@ const estocaveisController = {
                         }
                     },
                     attributes: ['id', 'nome', 'quantidade', 'custo_unitario',
-                        'validade', 'vendavel', 'createdAt', 'updatedAt'],
+                    'validade', 'vendavel', 'receita_id', 'foto', 'createdAt', 'updatedAt'],
                     include: [{
                         association: 'classe',
                         attributes: ['tipo']

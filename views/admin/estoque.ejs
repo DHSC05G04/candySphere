@@ -29,8 +29,8 @@
                         <% } else { %>
                             <td class="center"><input type="checkbox" disabled></td>
                         <% }; %>
-                        <td><a class="btn-editar" href=""><span class="material-icons">edit</span></a>
-                            <a class="btn-deletar" href=""><span class="material-icons">delete</span></a>
+                        <td><a class="btn-editar btn material-icons" href="/admin/estoque/<%= item.id %>">edit</a>
+                            <a class="btn-deletar btn material-icons" onclick="excluirItem(<%= item.id %>)">delete</a>
                         </td>
                     </tr>
                     <% }); %>
@@ -81,6 +81,7 @@
             });
         </script>
 
+        <script src="/javascript/estoque.js"></script>
     </body>
 
 </html>
