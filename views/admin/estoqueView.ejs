@@ -19,21 +19,21 @@
                     <div class="itemInfo">
                         <h4 class="sectionDivider">Informações</h4>
                         <p><b>Nome: </b><input class="dataInput" type="text" maxlimit="3000" name="nome" placeholder="<%= estoque.nome %>"></p>
-                        <p><b>Tipo: </b><%= estoque.classe.tipo %></p>
-                        <p><b>Quantidade: </b><input class="dataInput" type="number" placeholder="<%= estoque.quantidade %>" name="quantidade"><b>Unidade: </b><%= estoque.unMedida.unidade %></p>
+                        <p><b>Tipo: </b><input class="dataListComponent dataInput number" id="inputTipo" list="tipos" placeholder="<%= estoque.classe.tipo %>" name="tipo_id"><datalist id="tipos"></datalist></p>
+                        <p><b>Quantidade: </b><input class="dataInput" type="number" placeholder="<%= estoque.quantidade %>" name="quantidade"><b> Unidade: </b><input class="dataListComponent dataInput number" list="unidades" placeholder="<%= estoque.unMedida.unidade %>" name="unidade_id"><datalist id="unidades"></datalist></p>
                         <p><b>Custo unitário: </b>R$ <input class="dataInput" type="number" placeholder="<%= estoque.custo_unitario %>" name="custo_unitario"></p>
                         <p><b>Produto final?: </b>
                             <% if(estoque.vendavel) { %>
-                                <input type="checkbox" name="vendavel" checked>                                
+                                <input id="vendavel" type="checkbox" name="vendavel" checked>                                
                             <% } else { %>
-                                <input type="checkbox" name="vendavel">
+                                <input id="vendavel" type="checkbox" name="vendavel">
                             <% } %>
                         </p>
                         <p><b>Fabricado?: </b>
                             <% if(estoque.receita_id != null) { %>
-                                <input type="checkbox" name="vendavel" checked disabled>                                
+                                <input type="checkbox" name="fabricado" checked disabled>                                
                             <% } else { %>
-                                <input type="checkbox" name="vendavel" disabled>
+                                <input type="checkbox" name="fabricado" disabled>
                             <% } %>
                         </p>
                     </div>

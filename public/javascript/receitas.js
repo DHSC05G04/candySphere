@@ -93,7 +93,7 @@ function editarReceitas() {
 
         const inputs = Array.from(formulario.elements)
         inputs.forEach(element => {
-        if((element.value == '' || element.value == undefined) && element.type != 'submit') {
+        if((element.value == '' || element.value == undefined || element.value == 'undefined') && element.type != 'submit') {
             element.disabled = true
         }
     })

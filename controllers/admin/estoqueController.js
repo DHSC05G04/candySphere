@@ -45,6 +45,10 @@ const estoqueController = {
         } catch (error) {
             return res.send(error);            
         };
+    },
+
+    update: async (req, res) => {
+        
     }
 }
 
