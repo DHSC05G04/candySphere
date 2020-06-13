@@ -6,7 +6,7 @@ const listaUnidades = document.getElementById('unidades')
 const formulario = document.getElementById('Visualizacao')
 const vendavel = document.getElementById('vendavel')
 
-window.onload = async function() {
+window.addEventListener('load', async function() {
     const tiposAPI = await fetch(`${API_BASE}/tipos`)
     const tipos = await tiposAPI.json()
 
@@ -18,7 +18,7 @@ window.onload = async function() {
 
     atualizaUnidades(dadosEstoque.tipo_id)
     return
-}
+}) 
 
 inputTipos.addEventListener('change', async function () {
     const [,novoTipoId] = inputTipos.value.split(' id: ')
@@ -26,25 +26,6 @@ inputTipos.addEventListener('change', async function () {
     atualizaUnidades(novoTipoId)
     return
 })
-
-formulario.addEventListener('submit', function (event) {
-    event.preventDefault()
-    const dataLists = document.getElementsByClassName('dataListComponent')
-    for (i = 0; i < dataLists.length; i++) {
-        const [, id] = dataLists[i].value.split(" id: ")
-        dataLists[i].value = id
-    }
-
-    const inputs = Array.from(formulario.elements)
-    inputs.forEach(element => {
-        if((element.value == '' || element.value == 'undefined' || element.value == undefined) &&
-            element.type != 'submit' && element.type != 'button') {
-            element.disabled = true
-        }
-    })
-
-    return formulario.submit()
-}, false)
 
 async function atualizaUnidades(idTipo) {
     const unidadesAPI = await fetch(`${API_BASE}/unidadesportipo?tipo_id=${idTipo}`)
@@ -76,3 +57,22 @@ async function excluirItem(id) {
         return window.location.reload();
     }
 }
+
+formulario.addEventListener('submit', function (event) {
+    event.preventDefault()
+    const dataLists = document.getElementsByClassName('dataListComponent')
+    for (i = 0; i < dataLists.length; i++) {
+        const [, id] = dataLists[i].value.split(" id: ")
+        dataLists[i].value = id
+    }
+
+    const inputs = Array.from(formulario.elements)
+    inputs.forEach(element => {
+        if((element.value == '' || element.value == 'undefined' || element.value == undefined) &&
+            element.type != 'submit' && element.type != 'button') {
+            element.disabled = true
+        }
+    })
+
+    return formulario.submit()
+}, false)

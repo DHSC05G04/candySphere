@@ -3,25 +3,29 @@ const estoqueView = document.getElementById('estoqueView')
 const listaTipos = document.getElementById('tipos')
 const inputTipos = document.getElementById('inputTipo')
 const listaUnidades = document.getElementById('unidades')
+const inputUnidade = document.getElementById('inputUnidade')
 const formulario = document.getElementById('Visualizacao')
 const vendavel = document.getElementById('vendavel')
 
-window.onload = async function() {
-    console.log('Carreguei')
+window.addEventListener('load', async function () {
     const tiposAPI = await fetch(`${API_BASE}/tipos`)
     const tipos = await tiposAPI.json()
-    
-    console.log(tipos)
 
-    tipos.forEach(tipo => {
-        listaTipos.innerHTML += `
-            <option value="${tipo.tipo} id: ${tipo.id}">
-        `        
-    });
+    tipos.forEach((tipo, index) => {
+        if(index == 0) {
+         listaTipos.innerHTML = `
+             <option value="${tipo.tipo} id: ${tipo.id}">
+         `           
+        } else {
+         listaTipos.innerHTML += `
+             <option value="${tipo.tipo} id: ${tipo.id}">
+         `           
+        }
+    })
 
-    atualizaUnidades()
+    await atualizaUnidades()
     return
-}
+})
 
 inputTipos.addEventListener('change', async function () {
     const [,novoTipoId] = inputTipos.value.split(' id: ')
@@ -29,6 +33,25 @@ inputTipos.addEventListener('change', async function () {
     atualizaUnidades(novoTipoId)
     return
 })
+
+async function atualizaUnidades(idTipo) {
+    const unidadesAPI = await fetch(`${API_BASE}/unidadesportipo?tipo_id=${idTipo}`)
+    const unidades = await unidadesAPI.json()
+
+    inputUnidade.value=''
+    
+    unidades.forEach((unidade, index) => {
+        if(index == 0) {
+            return listaUnidades.innerHTML = `
+                <option value="${unidade.medida.unidade} id: ${unidade.medida.id}">
+            `
+        } else {
+            return listaUnidades.innerHTML += `
+                <option value="${unidade.medida.unidade} id: ${unidade.medida.id}">
+            `
+        }
+    })
+}
 
 formulario.addEventListener('submit', function (event) {
     event.preventDefault()
@@ -48,34 +71,3 @@ formulario.addEventListener('submit', function (event) {
 
     return formulario.submit()
 }, false)
-
-async function atualizaUnidades(idTipo) {
-    const unidadesAPI = await fetch(`${API_BASE}/unidadesportipo?tipo_id=${idTipo}`)
-    const unidades = await unidadesAPI.json()
-    
-    unidades.forEach((unidade, index) => {
-        if(index == 0) {
-            return listaUnidades.innerHTML = `
-                <option value="${unidade.medida.unidade} id: ${unidade.medida.id}">
-            `
-        } else {
-            return listaUnidades.innerHTML += `
-                <option value="${unidade.medida.unidade} id: ${unidade.medida.id}">
-            `
-        }
-    })
-}
-
-async function excluirItem(id) {
-    const locationRef = window.location.href.split('/')
-
-    await fetch(`${API_BASE}/estocaveis/${id}`, {
-        method: 'delete'
-    })
-    
-    if(locationRef[locationRef.length-1] != 'estoque') {
-        return window.location.replace(document.referrer);
-    } else {
-        return window.location.reload();
-    }
-}

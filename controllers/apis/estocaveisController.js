@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Estocaveis, TiposItens, sequelize } = require('../../models');
+const { Estocaveis, TiposItens, Produto, sequelize } = require('../../models');
 
 const estocaveisController = {
     index: async (req, res) => {
@@ -73,10 +73,27 @@ const estocaveisController = {
 
         try {
             const result = await sequelize.transaction(async (t) => {
-                const itemCadastrado = await Estocaveis.create(dados, { transaction: t });
+                const itemCadastradoAPI = await Estocaveis.create(dados, { transaction: t });
+                const checkProduto = await itemCadastradoAPI.dataValues
+                console.log('*'.repeat(60))
+                console.log(checkProduto)
 
-                return itemCadastrado;
-            });
+                if(checkProduto.vendavel == true) {
+                    const dadosProduto = {
+                        estoque_id: checkProduto.id,
+                        valor: checkProduto.custo_unitario
+                    }
+                    const produtoCadastrado = await Produto.findOrCreate({
+                        where: {
+                            estoque_id: dadosProduto.estoque_id,
+                        },
+                        defaults: dadosProduto,
+                        transaction: t
+                    })
+                }
+
+                return itemCadastradoAPI;
+                })
 
             return res.status(200).json(result);
 

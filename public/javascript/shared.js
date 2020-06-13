@@ -1,4 +1,4 @@
-window.onload = updateNav
+window.addEventListener('load', updateNav)
 
 window.addEventListener('resize', updateNav)
 
