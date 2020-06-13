@@ -88,6 +88,19 @@ const estoqueController = {
                         pdvAct: "inactive"};
 
             return res.render('admin/criarEstoque', { title: 'Express', tabs: tabActive, usuario:req.session.user });
+    },
+    store: async (req, res) => {
+        const dados = req.body
+        
+        await fetch(`${API_BASE}/estocaveis`, {
+            method: 'post',
+            body: JSON.stringify(dados),
+            headers: {
+                'Content-Type': 'application/json' 
+            }            
+        })
+
+        return res.redirect('/admin/estoque')
     }
 }
 
