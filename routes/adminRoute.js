@@ -45,6 +45,7 @@ router.get('/produtos', produtosController.index);
 router.get('/vendas', vendasController.index)
 
 router.get('/estoque', estoqueController.index);
+router.get('/estoque/criar', uploadProduto.any(), estoqueController.create);
 router.get('/estoque/:id', estoqueController.indexById);
 router.put('/estoque/:id', uploadProduto.any(), estoqueController.update);
 
