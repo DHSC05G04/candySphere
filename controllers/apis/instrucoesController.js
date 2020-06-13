@@ -9,7 +9,11 @@ const instrucoesController = {
                 const instrucoes = await InstrucoesPreparo.findAll({
                     include: [{
                         association: 'origem',
-                        attributes: ['nome']
+                        attributes: ['id'],
+                        include: [{
+                            association: 'fabricado',
+                            attributes: ['nome']
+                        }]
                     }]
                 });;
 
@@ -25,7 +29,11 @@ const instrucoesController = {
                     },
                     include: [{
                         association: 'origem',
-                        attributes: ['nome']
+                        attributes: ['id'],
+                        include: [{
+                            association: 'fabricado',
+                            attributes: ['nome']
+                        }]
                     }]
                 });
                 return res.status(200).json(instrucoes);
@@ -44,7 +52,11 @@ const instrucoesController = {
                     },
                     include: [{
                         association: 'origem',
-                        attributes: ['nome']
+                        attributes: ['id'],
+                        include: [{
+                            association: 'fabricado',
+                            attributes: ['nome']
+                        }]
                     }]
                 });
                 return res.status(200).json(instrucoes);

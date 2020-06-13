@@ -8,97 +8,37 @@
         <%- include('../partials/header') %>
 
         <main id="administracao">
-            <% produtos.forEach((produto) => { %>
-                <div class="adminCardContainer produtos">
-                    <section class="foto" style="background-image: url(<%= produto.itemEstoque.foto %>); background-size: cover;">
+            <article id="Visualizacao" class="produto">
+                <section class="itemViewHeader">
+                    <span class="material-icons">receipt</span>
+                    <h2>Operações / Produtos</h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewBody produto">
+                        <% produtos.forEach((produto) => { %>
+                            <form action="/produtos/<%= produto.id %>?_method=put" id="FormProduto" method="POST" class="adminCardContainer produtos">
+                                <section class="foto" style="background-image: url(<%= produto.itemEstoque.foto %>); background-size: cover;">
+                                </section>
+                                <section class="description">
+                                    <h3><%= produto.itemEstoque.nome %></h3>
+                                    <p class="valor">R$ <%= produto.valor %></p>
+                                </section>
+                                <section class="adminCardFooter">
+                                    <button type="button" class="material-icons" >create</button>
+                                </section>
+                            </form>                                
+                        <% }); %>
                     </section>
-                    <section class="description">
-                        <h3><%= produto.itemEstoque.nome %></h3>
-                        <!-- <p>Variável com descrição do produto</p> -->
-                        <p class="valor">R$ <%= produto.valor %></p>
-                        <p id=<%= `Button-${produto.id}` %> class="material-icons addCart" onClick=<%= `addToCart(${produto.id})` %>>shopping_cart</p>
-                    </section>
-                </div>                                
-            <% }); %>
-
-            <p id="carrinhoCompras" class="material-icons addCart" onClick=iniciaModal(modalCarrinho)>shopping_basket</p>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                </section>
+            </article>
         </main>
 
-        <%- include('../partials/footer') %>
+        <%- include('../partials/footer') %> 
 
-        <div id="modalCarrinho" class="modal-container">
-            <div id="conteudo-modal">
-                <form id="form-estoque" action="">
-                    <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
-                    <h1>Carrinho de compras</h1>
-                    <table>
-                        <thead>
-                            <tr>        
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th>Valor</th>
-                            </tr>
-                        </thead>
-                        <tbody id="listaCompras">
-                        </tbody>
-                    <input type="submit" class="btn-cliente" value="Salvar">
-                </form>
-            </div>
-        </div>
-
-
-
-        <script type="text/javascript">
-            function addToCart(productId) {
-                if(!sessionStorage.carrinho) {
-                    return sessionStorage.carrinho = JSON.stringify([{id:productId, qtd: 1}])
-                } else {
-                    let carrinho = JSON.parse(sessionStorage.carrinho)
-                    for(let produto of carrinho) {
-                        if(produto.id == productId) {
-                            produto.qtd++;
-                            return sessionStorage.carrinho = JSON.stringify(carrinho)
-                        }
-                    };
-                    carrinho.push({id:productId, qtd:1})
-                    return sessionStorage.carrinho = JSON.stringify(carrinho)
-                }
-
-            }
-        </script>
-
-        <script>
-            function iniciaModal(modalId){
-                modalId.classList.add('mostrar');
-                modalId.addEventListener('click',(e)=>{
-                if(e.target.id =='fechar-tudo'){
-                    modal.classList.remove('mostrar');
-                };
-                });
-            };
-
-            const tabelaCompras = document.getElementById('listaCompras')
-            const produtosCarrinho = JSON.parse(sessionStorage.carrinho);
-            console.log(produtosCarrinho)
-            const API_BASE = 'https://candysphere.herokuapp.com/api/v0/produtos'
-
-            produtosCarrinho.forEach(async produto => {
-                const dados = await fetch(`${API_BASE}/${produto.id}`)
-                const dadosObject = await dados.json()
-                console.log(dadosObject)
-                tabelaCompras.innerHTML += `
-                    <tr>
-                        <td>${dadosObject[0].itemEstoque.nome}</td>
-                        <td>${produto.qtd}</td>
-                        <td>${dadosObject[0].valor}</td>
-                    </tr>
-                `
-            })
-
-        </script> 
-
-        <%- include('../partials/scripts') %>
-
+        <script type="text/javascript" src="/javascript/shared.js"></script>
     </body>
 
 </html>

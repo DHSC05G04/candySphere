@@ -10,13 +10,18 @@ router.get('/', function(req, res, next) {
                   clientesAct: "inactive",
                   funcionariosAct: "inactive",
                   pdvAct: "inactive"};
-  res.render('index', { title: 'Express', tabs: tabActive });
+  res.render('index2', {tabs: tabActive });
+});
+
+router.get('/index2', function(req, res, next) {
+  res.render('index2');
 });
 
 router.post('/', function(req, res) {
   res.redirect('/home');
 });
 
+router.get("/logar",authControllers.index)
 router.post("/logar",authControllers.store)
 router.get("/logout",(req,res) => {
 

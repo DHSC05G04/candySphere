@@ -6,14 +6,14 @@ module.exports = {
     [
       {
         id: 1,
-        receita_id: 1,
+        estoque_id: 1,
         valor: 15.00,
         created_at: new Date(),
         updated_at: new Date()
       },
       {
         id: 2,
-        receita_id: 2,
+        estoque_id: 2,
         valor: 25.00,
         created_at: new Date(),
         updated_at: new Date()

@@ -97,6 +97,7 @@ module.exports = {
         custo_unitario: 10.99,
         validade: new Date(),
         vendavel: 1,
+        receita_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -109,6 +110,7 @@ module.exports = {
         custo_unitario: 3.00,
         validade: new Date(),
         vendavel: 1,
+        receita_id: 2,
         created_at: new Date(),
         updated_at: new Date()
       },

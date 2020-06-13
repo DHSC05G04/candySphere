@@ -5,6 +5,7 @@ module.exports = {
   
       return queryInterface.bulkInsert('pedidos', [
       {
+        id:1,
         entrada:new Date(),
         entrega:new Date(),
         total:580.21,
@@ -17,6 +18,7 @@ module.exports = {
         updated_at: new Date(),
       },
       {
+        id:2,
         entrada:new Date(),
         entrega:new Date(),
         total:1580.21,
@@ -29,18 +31,20 @@ module.exports = {
         updated_at: new Date(),
       },
       {
+        id:3,
         entrada:new Date(),
         entrega:new Date(),
         total:4500.87,
         sinal:2000,
         status_id:2,
-        obervacao:"bolo diete",
+        obervacao:"bolo diet",
         caixa_id:3,
         cliente_id:1,
         created_at: new Date(),
         updated_at: new Date(),
       },
       {
+        id:4,
         entrada:new Date(),
         entrega:new Date(),
         total:580.21,

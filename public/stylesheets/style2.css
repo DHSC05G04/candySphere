@@ -1,0 +1,1067 @@
+/*Inicialização de variáveis e definições globais*/
+:root {
+    --color1: #FCFBE3;
+    --color2: #FBCFCF;
+    --color3: #CDBB99;
+    --color4: #A37E58;
+    --color5: #755C3B;
+    --color5opacity: #755C3B99;
+    --headerHeight: 22vh;
+    --footerHeight: 30px;
+}
+
+body {
+    background-color: var(--color1);
+    margin: 0;
+    font-family: "roboto";
+    font-size: 1em;
+    color: var(--color5);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color5);
+}
+
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none; display: none; 
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none; display: none;
+}  */
+
+/* Configurações do cabeçalho */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 96%;
+    align-self: center;
+    /*height: var(--headerHeight);*/
+    background-color: var(--color5);
+    padding-top: 1%;
+}
+
+#systemTitle {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+}
+
+header #logo {
+    height: 4em;
+    margin-bottom: 10px;
+}
+
+#systemTitle h1 {
+    color: var(--color1);
+    font-size: 1.5em;
+}
+
+#logout {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0px;
+    max-height: 30px;
+    width: 10vw;
+    max-width: 128px;
+    box-sizing: border-box;
+    background-color: var(--color2);
+    border: none;
+    border-radius: 1em;
+    font-size: .8em;
+    font-weight: bold;
+}
+
+#logout:hover {
+    background-color: var(--color5);
+    color: var(--color1);
+    cursor: pointer;
+    border: 1px solid var(--color2);
+}
+
+#logout img {
+    width: 15%;
+}
+
+.BorderDeco {
+    width: 100%;
+    height: 20px;
+    background-color: var(--color2);
+    clip-path: polygon(0% 0%, 0% 100%, 50% 50%, 100% 100%, 100% 0%);
+}
+
+header nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header input {
+    display: none;
+}
+
+header label#icone-sanduiche {
+    display: none;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+header li {
+    margin: 0px;
+    width: 8em;
+    padding: 5px 0px;
+    box-sizing: border-box;
+    background-color: var(--color2);
+    border: 1px solid var(--color5);
+    text-align: center;
+}
+
+header li.active {
+    background-color: var(--color5);
+    border: 1px solid var(--color2);
+    border-bottom: none;
+}
+
+header li.active a {
+    color: var(--color2);
+}
+
+header li:first-child {
+    border-radius: 1.25em 0 0 0;
+}
+
+header li:last-child {
+    border-radius: 0 1.25em 0 0;
+}
+
+/*Configurações do rodapé*/
+footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: var(--footerHeight);
+    background-color: var(--color2);
+}
+
+footer ul {
+    position: absolute;
+    right: 25px;
+    margin: auto 0;
+}
+
+/*Configurações das telas de login e cadastro*/
+#loginBody {
+    justify-content: center;
+    align-items: center;
+    margin:0;
+    padding:0;
+}
+#loginBody *, *:before, *:after { 
+    margin:10px;
+    /* padding:0px; */
+}
+
+ /* remove a linha dos links */
+#loginBody a{
+text-decoration: none;
+}
+
+/* esconde as ancoras da tela */
+#loginBody a.links{
+display: none;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+    height: 95vh;
+    margin: 5px auto 5px auto;
+    padding: 5px;
+    background-image: url('/images/brigadeiro.png');
+    background-size: cover;
+    border-radius: 60px;
+    position: relative;
+}
+
+#form-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+    width: 30vw;
+    height: 400px;
+    background-color: var(--color5opacity);
+    border-radius: 30px;
+}
+
+form img.logo {
+    width: 30%;
+}
+
+form h2 {
+    color: var(--color1);
+    font-size: 1.5em;
+}
+
+form label {
+    min-width: 250px;
+    width: 30vw;
+    margin: 10px;
+    color: var(--color1);
+    text-align: center;
+}
+
+form input {
+    max-width: 300px;
+    width: 90%;
+    height: 40px;
+    background-color: var(--color4);
+    border: none;
+    border-radius: 5px;
+    color: var(--color1);
+    text-align: center;
+    font-size: 20px;
+}
+
+form button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 30px;
+    background-color: var(--color2);
+    color: var(--color5);
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    border: 1px solid var(--color2);
+    margin-bottom: 20px;
+}
+
+form button:hover {
+    background-color: var(--color5);
+    color: var(--color1);
+    cursor: pointer;
+    border: 1px solid var(--color2);
+}
+
+#msgLogin {
+    color: var(--color2);
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    width: -moz-available;
+    height: 40px;
+    /* border: 1px solid var(--color2); */
+}
+
+/*Configurações do corpo*/
+main {
+    display: flex;
+    justify-content: center;
+    width: 96%;
+    align-self: center;
+    flex-grow: 1;
+    background-color: var(--color5);
+    color: var(--color1);
+    overflow-y: auto;
+}
+
+/*Configurações do corpo Home*/
+#home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#home img {
+    height: 30vh;
+}
+
+#home h2 {
+    text-transform: capitalize;
+}
+
+#home p {
+    margin: 0 10%;
+}
+
+/*Configurações do corpo Administração*/
+#administracao {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.adminCardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 30px 10px;
+    width: 300px;
+    height: 320px;
+    border: 1px solid var(--color2);
+}
+
+.adminCardContainer section.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    background-color: var(--color2);
+}
+
+.adminCardContainer .material-icons {
+    font-size: 5em;
+}
+
+.adminCardContainer section.description {
+    box-sizing: border-box;
+    flex-grow: 1;
+    width: 100%;
+    padding: 10px;
+    color: var(--color5);
+    background-color: var(--color1);
+}
+
+/* Configuração cards de produtos*/
+.adminCardContainer.produtos {
+    width: 200px;
+    height: 280px;
+    text-align: center;
+}
+
+.adminCardContainer.produtos .description {
+    padding: 0;
+}
+
+.adminCardContainer.produtos .valor {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--color5);
+    color: var(--color2)
+}
+
+.adminCardContainer.produtos .addCart {
+    margin: 5px;
+    padding: .25em;
+    font-size: 2em;
+    border: 1px solid var(--color2);
+    border-radius: .75em;
+    background-color: var(--color2);
+}
+
+.adminCardContainer.produtos .addCart:hover {
+    color: var(--color2);
+    background-color: var(--color5);
+    cursor: pointer;
+}
+
+/*Configuração cards de receitas */
+.adminCardContainer section.foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    background-color: var(--color2);
+}
+
+/* Configuração da tela de estoque */
+
+#administracaoEstoque {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#administracaoEstoque table {
+    border-collapse: collapse;
+    justify-self: center;
+    margin: 20px 0;
+}
+
+#administracaoEstoque table thead {
+    background-color: var(--color2);
+    color: var(--color5);
+    text-align: center;
+}
+
+#administracaoEstoque th {
+    height: 2.5em;
+    padding: 0 10px;
+    border: 1px solid var(--color5);
+}
+
+#administracaoEstoque table tbody {
+    background-color: var(--color1);
+    color: var(--color5);
+}
+
+#administracaoEstoque table tr:hover {
+    background-color: var(--color3);
+    transition: .4s;
+}
+
+#administracaoEstoque td.center {
+    text-align: center;
+}
+
+div.add-estoque {
+    position: fixed;
+    top:85%;
+    z-index: 1000;
+}
+
+div.add-estoque span{
+    font-size: 50px;
+    text-shadow: 0px 3px  7px black;
+    color: var(--color2);
+}
+      
+div.add-estoque a:hover{
+   background-color: var(--color2);
+   border-radius: 50px;
+   transition: all .3s linear;
+}
+   
+div.add-estoque a span:hover{
+    text-shadow: none;
+    color: var(--color5);
+}
+
+#form-estoque *{
+    padding: 0px;
+    margin: 0px;
+}
+
+#form-estoque {
+    background-color: var(--color1);
+    width:100%;
+    display: flex;
+    justify-content: center;
+    height: 60vh;
+    border: 5px solid var(--color5);
+    box-shadow: 0px 0px 0px 8px var(--color1) ;
+}
+
+#form-estoque h1 {
+    color: var(--color5);
+}
+
+#form-estoque label {
+    color: var(--color5);
+    width: 90%;
+    display: block;
+    text-align: left;
+}
+
+#form-estoque input {
+    margin-bottom: 20px;
+    height: 50px;
+    background-color: var(--color1);
+    border: 1px solid var(--color5);
+    color: var(--color5);
+    font-size: 20px;
+    max-width: 100%;   
+    display: block;    
+}
+
+/* ###### FINANCEIRO ######### */
+
+/* Configuração do menu Lateral */
+
+main#financeiro * {
+    margin-left: 5 px;
+    padding: 0px;
+}
+
+aside#painel {
+    height: 80vh;
+    width: 300px;
+    position: absolute;
+    transition: all .2s linear;
+    left: -250px;
+}
+
+main#financeiro #check {
+    display: none;
+}
+
+main#financeiro label span#icone-sanduiche {
+    cursor: pointer;
+    padding: 25px;
+    position: absolute;
+    left: 25px;
+    z-index: 1;
+}
+
+aside#painel nav {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+}
+
+
+main#financeiro aside#painel nav a div.link {
+    background-color: var(--color2);
+    padding: 20px;
+    font-family: arial;
+    font-size: 12pt;
+    transition: all .2s linear;
+    color: var(--color4);
+    border-bottom: 2px solid var(--color4);
+    opacity: 1;
+    padding-left: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+main#financeiro aside#painel nav a div.link:hover {
+    background-color: var(--color4);
+    color: var(--color2);
+}
+
+main#financeiro nav :hover {
+    background-color: var(--color4);
+    color: var(--color2);
+}
+
+main#financeiro input#check:checked~#painel {
+    transform: translatex(250px);
+    background-color: var(--color5);
+    transition: all .4s linear;
+    opacity: 1;
+    text-align: center;
+    box-shadow: 0px 0px 9px black;
+}
+
+main#financeiro input#check:checked~#painel nav a div.link {
+    background-color: var(--color2);
+}
+
+main#financeiro input#check:checked~#painel nav a div.link:hover {
+    color: var(--color2);
+    background-color: var(--color4);
+}
+
+main#financeiro section {
+    width: 100%;
+    margin-right: 50px;
+}
+
+main#financeiro section #periodo {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+main#financeiro section #cards {
+    height: 100px;
+    display: flex;
+}
+
+form#datas {
+    height: 70px;
+    width: 100%;
+    margin-left: 50px;
+}
+
+form#datas label {
+    font-size: 1em;
+    margin-left: 15px;
+    text-align: right;
+}
+
+form#datas label#btn-label {
+    color: var(--color5);
+}
+
+
+#btn-data:hover {
+    background-color: var(--color5);
+    color: var(--color1);
+    cursor: pointer;
+    border: 1px solid var(--color2);
+}
+
+
+form#datas input {
+    width: 120px;
+    height: 30px;
+    margin-left: 5px;
+    background-color: var(--color2);
+    color: var(--color5);
+    text-align: center;
+    font-weight: bold;
+
+}
+
+section#dash-board div#cards {
+    display: flex;
+    flex-direction: column;
+}
+
+section#dash-board div#cards div.card-container {
+    display: flex;
+    flex-direction: row;
+    /*! width: 90%; */
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+section#dash-board div#cards div.card-main {
+    /* width: 250px; */
+    /* height: 100px; */
+    /* margin-left: 60px; */
+    /* margin-top: 20px; */
+    /* margin-bottom: 10px; */
+    width: 200px;
+    height: 60px;
+    background-color: var(--color1);
+    border-radius: 8px;
+    box-shadow: 0px 2px 3px black;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+section#dash-board div#cards div.card-main div.card-left {
+    width: 60px;
+    height: 60px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px 8px;
+    background-color: var(--color2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color5);
+    margin-right: 5px;
+}
+
+section#dash-board div#cards div.card-main div.card-left span {
+    font-size: 2em;
+}
+
+section#dash-board div#cards div.card-main div.card-dados {
+    /*! margin-left:20px; */
+    color: var(--color5);
+    padding-right: 5px;
+    text-align: left;
+}
+
+section#dash-board div#cards div.card-main div.card-dados div {
+    font-weight: bold;
+}
+
+main#financeiro section #graficos {
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left: 59;
+    margin-right: 48px;
+}
+
+main#financeiro section #graficos .grafico-meio {
+    width: 400px;
+    height: 200px;
+    background-color: var(--color1);
+    border-left: 18px solid var(--color2);
+    box-shadow: 0px 1px 9px black;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+}
+
+main#financeiro section #graficos .grafico-baixo {
+    width: 900px;
+    height: 200px;
+    background-color: var(--color1);
+    border-left: 18px solid var(--color2);
+    box-shadow: 0px 1px 9px black;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+    overflow: visible;
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
+main#financeiro section #graficos .grafico-vendas-meio {
+    width: 400px;
+    height: 200px;
+    background-color: var(--color1);
+    border-left: 18px solid var(--color2);
+    box-shadow: 0px 1px 9px black;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+}
+
+main#financeiro section #graficos .grafico-vendas-radar {
+    width: 600px;
+    height: 300px;
+    background-color: var(--color1);
+    border-left: 18px solid var(--color2);
+    box-shadow: 0px 1px 9px black;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* ############### Inicio do Clientes ################# */
+
+/*  */
+
+
+
+section#tabela-corpo {
+    width: -webkit-fill-available;
+    height:100vh;
+    margin: 0 auto;
+   }
+
+section#tabela-corpo h2 {
+    color: var(--color5);
+    text-align: center;
+}
+
+section#tabela-corpo table#tabela-cliente {
+    background-color: var(--color1);
+    color: var(--color5);
+    width: 70%;
+    margin: 20px auto;
+}
+
+section#tabela-corpo table#tabela-cliente tbody {
+    overflow: auto;
+}
+
+
+section#tabela-corpo table#tabela-cliente, td {
+    border-collapse: collapse;
+    border: 1px solid var(--color4);
+}
+
+section#tabela-corpo table#tabela-cliente tr th {
+    text-align: center;
+    color: var(--color5);
+    display: fixed;
+    background-color: var(--color2);
+    height: 35px;
+    border-collapse: collapse;
+    border: 1px solid var(--color4);
+
+}
+
+section#tabela-corpo table#tabela-cliente tbody tr:hover {
+    background-color: var(--color3);
+    transition: .4s;
+      
+}
+
+
+section#tabela-corpo table#tabela-cliente tr td {
+    text-align: center;
+    height: 35px;
+
+
+}
+
+section#tabela-corpo table#tabela-cliente tr td span.profile {
+    font-size: 40px;
+}
+
+section#tabela-corpo table#tabela-cliente tr td.nome-campo,
+section#tabela-corpo table#tabela-cliente tr td.email-campo {
+    text-align: left;
+    padding-left: 10px;
+   
+}
+
+section#tabela-corpo table#tabela-cliente tr td a.btn-acao :hover{
+  
+       color: var(--color2);
+     transition: .5s;
+
+
+}
+section#tabela-corpo div.add-cliente{
+   display: flex;
+   justify-content: center;
+  
+   
+
+  
+}
+section#tabela-corpo div.add-cliente a {
+ position: fixed;
+ top:75%;
+  z-index: 1000;
+ 
+ 
+}
+section#tabela-corpo div.add-cliente a span{
+    font-size: 50px;
+   text-shadow: 0px 3px  7px black;
+    color: var(--color2);
+   
+}
+   
+div.add-cliente a  :hover{
+background-color: var(--color2);
+
+border-radius: 50px;
+transition: all .3s linear;
+}
+
+section#tabela-corpo div.add-cliente a span:hover{
+    text-shadow: none;
+    color: var(--color5);
+}
+section#tabela-corpo table#tabela-cliente tr td.email-campo{
+  text-align: left;
+}
+
+.modal-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.637);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+
+}
+
+.mostrar{
+    display: flex;
+}
+
+/* Inicio do Cadastro Modal */
+#conteudo-modal {
+    width: 60%;
+   text-align: end;
+   display: flex;
+    justify-content: center;
+  
+}
+@keyframes conteudo-modal{
+    from{
+        opacity: 0px;
+        transform: translate3d(0,-100px,0);
+    }
+    to{
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+
+}
+.mostrar  #conteudo-modal{
+    animation:conteudo-modal 1s ;
+}
+.btn-fechar{
+  
+   position: relative;
+    width: 100%;
+   
+    
+}
+.fechar-modal{
+width: 30px;
+height: 30px;
+display: block;
+font-size: 20px;
+background-color: var(--color2);
+border-radius: 30px;
+border: 2px solid var(--color5);
+box-shadow: 0px 0px 0px 3px var(--color2);
+color: var(--color5);
+z-index: 2000;
+position: absolute;
+top: -10px;
+right: 0px;
+
+}
+#form-cliente *{
+padding: 0px;
+margin: 0px;
+}
+
+#form-cliente{
+    background-color: var(--color1);
+    width:100%;
+    display: flex;
+    justify-content: center;
+    height: 60vh;
+    border: 5px solid var(--color5);
+    box-shadow: 0px 0px 0px 8px var(--color1) ;
+   
+    }
+    #form-cliente h1{
+        color: var(--color5);
+       
+    }
+  #form-cliente label{
+        color: var(--color5);
+        text-align: left;
+           }
+        #label-cliente{
+        width: 90%;
+        display: block;
+        text-align: left;
+    }
+    #form-cliente input{
+        margin-bottom: 20px;
+        height: 50px;
+    }
+    #form-cliente #nome-cliente {
+        background-color: var(--color1);
+        border: 1px solid var(--color5);
+        color: var(--color5);
+        font-size: 20px;
+       max-width: 100%;   
+       display: block;    
+    }
+/* fim da css clientes */
+
+@media screen and (max-width: 800px) {
+    body {
+        font-size: 12px;
+    }
+
+    header label#icone-sanduiche {
+        display: inline-block;
+        font-size: 2.5em;
+        color: var(--color2);
+        border: 2px solid var(--color2);
+        border-radius: 10px;
+    }
+    
+    header label#icone-sanduiche:hover{
+        color: var(--color5);
+        background-color: var(--color2);
+        cursor: pointer;
+    }
+
+    header ul {
+        height: 0;
+        width: 65%;
+        transition: height 2s linear;
+    }
+
+    header input#menu:checked~#mainNav {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 800px){
+    header li:nth-child(3) {
+        border-radius: 0 1.25em 0 0;
+    }
+
+    header li:nth-last-child(2) {
+        border-radius: 0 0 0 1.25em;
+    }
+
+    header li:last-child {
+        border-radius: 0 0 1.25em 0;
+    }
+
+    header li:nth-child(2) {
+        border-radius: 0 0 0 0;
+    }
+}
+
+/* Max-width para transição sem alterar font-size: 615px */
+
+@media screen and (max-width: 461px) {
+    header li:nth-child(2) {
+        border-radius: 0 1.25em 0 0;
+    }
+
+    header li:nth-last-child(2) {
+        border-radius: 0 0 1.25em 0;
+    }
+
+    header li:nth-last-child(3) {
+        border-radius: 0 0 0 1.25em;
+    }
+
+    header li:last-child {
+        border-radius: 0 0 1.25em 1.25em;
+    }
+}
+
+@media screen and (max-width: 307px) {
+    header li:first-child {
+        border-radius: 1.25em 1.25em 0 0;
+    }
+
+    header li:nth-child(2) {
+        border-radius: 0 0 0 0;
+    }
+
+    header li:nth-child(3) {
+        border-radius: 0 0 0 0;
+    }
+
+    header li:nth-child(4) {
+        border-radius: 0 0 0 0;
+    }
+
+    header li:last-child {
+        border-radius: 0 0 1.25em 1.25em;
+    }
+}
+
+@media(max-width: 520px) {
+    th.email-head, td.email-campo{
+     display: none;
+    }
+  }
