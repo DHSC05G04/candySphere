@@ -7,9 +7,10 @@ const formulario = document.getElementById('Visualizacao')
 const vendavel = document.getElementById('vendavel')
 
 window.onload = async function() {
+    console.log('Carreguei')
     const tiposAPI = await fetch(`${API_BASE}/tipos`)
     const tipos = await tiposAPI.json()
-
+    
     console.log(tipos)
 
     tipos.forEach(tipo => {
