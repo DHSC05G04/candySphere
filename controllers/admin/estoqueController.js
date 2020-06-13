@@ -78,6 +78,16 @@ const estoqueController = {
             return res.status(400).json(error)
             
         }
+    },
+    create: async (req, res) => {
+        let tabActive = {homeAct: "inactive",
+                        adminAct: "active",
+                        financeiroAct: "inactive",
+                        clientesAct: "inactive",
+                        funcionariosAct: "inactive",
+                        pdvAct: "inactive"};
+
+            return res.render('admin/criarEstoque', { title: 'Express', tabs: tabActive, usuario:req.session.user });
     }
 }
 
