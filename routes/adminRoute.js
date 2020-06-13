@@ -19,8 +19,23 @@ var storage = multer.diskStorage({
         cb(null, Date.now() + "." + file.originalname.split('.').pop())
     }
 })
+
+var storageProdutos = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join('public', 'images', 'produtos'))
+    },
+    filename: function (req, file, cb) {
+
+        cb(null, Date.now() + "." + file.originalname.split('.').pop())
+    }
+})
+
 var upload = multer({
     storage: storage
+})
+
+var uploadProduto = multer({
+    storage: storageProdutos
 })
 
 /* GET admin page. */
@@ -31,7 +46,7 @@ router.get('/vendas', vendasController.index)
 
 router.get('/estoque', estoqueController.index);
 router.get('/estoque/:id', estoqueController.indexById);
-router.put('/estoque/:id', upload.any(), estoqueController.update);
+router.put('/estoque/:id', uploadProduto.any(), estoqueController.update);
 
 router.get('/receitas', receitasController.index);
 router.get('/receitas/:id', receitasController.indexById);
