@@ -131,7 +131,7 @@ function retornarReceitas() {
             <section class="itemViewFooter">
                 <button class="material-icons" onclick="editarReceitas()">create</button>
                 <button class="material-icons" onclick="excluirReceita(${dadosReceita.id})">delete</button>
-                <button class="material-icons" onclick="sairReceita()">arrow_back</button>
+                <button class="material-icons" onclick="retornar()">arrow_back</button>
             </section>
         </article>
     `

@@ -62,6 +62,7 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100vw;
+    max-width: 1150px;
 }
 
 header #logo {
@@ -167,11 +168,12 @@ header li:last-child {
 /*Configurações do rodapé*/
 footer {
     display: flex;
+    align-self: center;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-bottom: 0;
-    width: 100vw;
+    width: var(--contentWidth);
     height: var(--footerHeight);
     background-color: var(--color2);
 }
@@ -291,7 +293,7 @@ main {
     width: var(--contentWidth);
     align-self: center;
     flex-grow: 1;
-    background-color: var(--color5);
+    background-color: var(--color4);
     color: var(--color1);
     overflow-y: auto;
 }
@@ -409,6 +411,7 @@ main {
     margin-top: 15px;
     background-color: var(--color1);
     z-index: 2;
+    border-radius: 1em;
 }
 
 #Visualizacao * {
@@ -422,6 +425,7 @@ main {
     /* justify-content: space-between; */
     align-items: center;
     border-bottom: 2px solid var(--color5);
+    border-radius: 1em 1em 0 0;
 }
 
 .itemViewHeader * {
@@ -459,7 +463,8 @@ main {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    margin: 10px 0 10px 20px;
+    padding-bottom: 15px;
+    margin: 10px 0 0 20px;
 }
 
 .itemViewDesc {
@@ -563,6 +568,8 @@ textarea {
     padding: 15px;
     border-top: 1px solid var(--color5);
     box-shadow: 0 -2px 5px var(--color5);
+    background-color: var(--color2);
+    border-radius: 0 0 1em 1em;
 }
 
 .itemViewFooter button {
@@ -616,36 +623,14 @@ textarea {
     color: var(--color5);
 }
 
+/*
 #administracaoEstoque table tr:hover {
     background-color: var(--color3);
     transition: .4s;
-}
+}*/
 
 #administracaoEstoque td.center {
     text-align: center;
-}
-
-div.add-estoque {
-    position: fixed;
-    top: 85%;
-    z-index: 1000;
-}
-
-div.add-estoque span {
-    font-size: 50px;
-    text-shadow: 0px 3px 7px black;
-    color: var(--color2);
-}
-
-div.add-estoque a:hover {
-    background-color: var(--color2);
-    border-radius: 50px;
-    transition: all .3s linear;
-}
-
-div.add-estoque a span:hover {
-    text-shadow: none;
-    color: var(--color5);
 }
 
 #form-estoque * {
@@ -700,6 +685,7 @@ a.btn.material-icons:hover {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    overflow-x: hidden;
 }
 
 .adminCardContainer.produtos {
