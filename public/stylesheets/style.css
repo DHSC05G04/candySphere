@@ -381,7 +381,7 @@ main {
     padding: 5px;
     font-size: 2em;
     background-color: var(--color5);
-    color: var(--color1);
+    color: var(--color1) !important;
     border: 2px solid var(--color1);
     box-shadow: 0 0 0 5px var(--color5);
     border-radius: 1.25em;    
@@ -393,64 +393,6 @@ main {
     border: 2px solid var(--color5);
     box-shadow: 0 0 0 5px var(--color2);
     transition: .5s;
-}
-
-/* Configuração cards de produtos*/
-.adminCardContainer.produtos {
-    width: 200px;
-    height: 280px;
-    text-align: center;
-}
-
-.adminCardContainer.produtos .description {
-    padding: 0;
-}
-
-.adminCardContainer.produtos .valor {
-    width: 100%;
-    padding: 10px 0;
-    background-color: var(--color5);
-    color: var(--color2)
-}
-
-.adminCardContainer.produtos .formProdutos {
-    display: block;
-    min-width: 0px;
-    width: 100%;
-    height: auto;
-    background-color: inherit;
-    padding: 0;
-    margin: 0;
-}
-
-.adminCardContainer.produtos .addCart {
-    margin: 5px;
-    padding: .25em;
-    font-size: 2em;
-    border: 1px solid var(--color2);
-    border-radius: .75em;
-    background-color: var(--color2);
-}
-
-.adminCardContainer.produtos .addCart:hover {
-    color: var(--color2);
-    background-color: var(--color5);
-    cursor: pointer;
-}
-
-#carrinhoCompras {
-    position: fixed;
-    right: 10%;
-    top: 22%;
-    background-color: var(--color2);
-    color: var(--color5);
-    padding: 10px;
-    font-size: 30px;
-    border-radius: 20px;
-}
-
-#carrinhoCompras:hover {
-    cursor: pointer;
 }
 
 /*Configuração cards de receitas */
@@ -752,6 +694,53 @@ a.btn.material-icons:hover {
     transition: .5s;
     cursor: pointer;
 }
+
+/* Configuração cards de produtos*/
+#Visualizacao.produto {
+    width: 80vw;
+}
+
+.itemViewBody.produto {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.adminCardContainer.produtos {
+    width: 14em;
+    height: 300px;
+    text-align: center;
+}
+
+.adminCardContainer.produtos .foto {
+    border-radius: 3em 3em 0 0;
+}
+
+.adminCardContainer.produtos.formProdutos {
+    display: block;
+    min-width: 0px;
+    width: 100%;
+    height: auto;
+    background-color: inherit;
+    padding: 0;
+    margin: 0;
+}
+/*
+#carrinhoCompras {
+    position: fixed;
+    right: 10%;
+    top: 22%;
+    background-color: var(--color2);
+    color: var(--color5);
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 20px;
+}
+
+#carrinhoCompras:hover {
+    cursor: pointer;
+}
+*/
 
 /* ###### FINANCEIRO ######### */
 

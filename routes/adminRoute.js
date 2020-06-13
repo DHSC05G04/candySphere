@@ -5,6 +5,8 @@ const path = require('path');
 const adminController = require('../controllers/adminController');
 const receitasController = require('../controllers/admin/receitasController');
 const estoqueController = require('../controllers/admin/estoqueController');
+const produtosController = require('../controllers/admin/produtosController');
+const vendasController = require('../controllers/admin/vendasController');
 
 const router = express.Router();
 
@@ -24,7 +26,8 @@ var upload = multer({
 /* GET admin page. */
 router.get('/', adminController.index);
 
-router.get('/produtos', adminController.indexProdutos);
+router.get('/produtos', produtosController.index);
+router.get('/vendas', vendasController.index)
 
 router.get('/estoque', estoqueController.index);
 router.get('/estoque/:id', estoqueController.indexById);
