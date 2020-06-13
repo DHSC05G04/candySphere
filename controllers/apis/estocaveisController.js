@@ -129,6 +129,28 @@ const estocaveisController = {
                     transaction: t
                 });
 
+                if('vendavel' in dados) {
+                    if(dados.vendavel == 'true') {
+                        const dadosProduto = {
+                            estoque_id: id,
+                            valor: dados.custo_unitario
+                        }
+                        await Produto.findOrCreate({
+                            where: {
+                                estoque_id: id,
+                            },
+                            defaults: dadosProduto,
+                            transaction: t
+                        })                        
+                    } else {
+                        await Produto.destroy({
+                            where: {
+                                estoque_id: id
+                            },
+                            transaction: t       
+                    })}
+                }
+
                 return;
             })
 
