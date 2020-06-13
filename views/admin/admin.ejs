@@ -8,58 +8,68 @@
         <%- include('../partials/header') %>
 
         <main id="administracao">
-            <section class="adminCardContainer">
-                <section class="logo">
-                    <span class="material-icons">receipt</span>
+            <article id="Visualizacao">
+                <section class="itemViewHeader">
+                    <span class="material-icons">dashboard</span><h2>Operações<h2>
                 </section>
-                <section class="description">
-                    <h3>Produtos</h3>
-                    <p>Visualização de produtos disponíveis para venda e edição de valores</p>
+                <section class="itemViewMain">
+                    <section class="itemViewBody produto">
+                        <section class="adminCardContainer">
+                            <section class="logo">
+                                <span class="material-icons">receipt</span>
+                            </section>
+                            <section class="description">
+                                <h3>Produtos</h3>
+                                <p>Visualização de produtos disponíveis para venda e edição de valores</p>
+                            </section>
+                            <section class="adminCardFooter">
+                                <button class="material-icons" onclick="window.location.href='<%= `/admin/produtos` %>'">remove_red_eye</button>
+                            </section>
+                        </section>
+                        <section class="adminCardContainer">
+                            <section class="logo">
+                                <span class="material-icons">shopping_cart</span>
+                            </section>
+                            <section class="description">
+                                <h3>PDV</h3>
+                                <p>Ponto de venda dos produtos disponíveis</p>
+                            </section>
+                            <section class="adminCardFooter">
+                                <button class="material-icons" onclick="window.location.href='<%= `/admin/vendas` %>'">remove_red_eye</button>
+                            </section>
+                        </section>
+                        <section class="adminCardContainer">
+                            <section class="logo">
+                                <span class="material-icons">list_alt</span>
+                            </section>
+                            <section class="description">
+                                <h3>Estoque</h3>
+                                <p>Controle e administração do estoque</p>
+                            </section>
+                            <section class="adminCardFooter">
+                                <button class="material-icons" onclick="window.location.href='<%= `/admin/estoque` %>'">remove_red_eye</button>
+                            </section>
+                        </section>
+                        <section class="adminCardContainer">
+                            <section class="logo">
+                                <span class="material-icons">menu_book</span>
+                            </section>
+                            <section class="description">
+                                <h3>Receitas</h3>
+                                <p>Lista de receitas cadastradas no sistema</p>
+                            </section>
+                            <section class="adminCardFooter">
+                                <button class="material-icons" onclick="window.location.href='<%= `/admin/receitas` %>'">remove_red_eye</button>
+                            </section>
+                        </section>
+                    </section>
                 </section>
-                <section class="adminCardFooter">
-                    <button class="material-icons" onclick="window.location.href='<%= `/admin/produtos` %>'">remove_red_eye</button>
-                </section>
-            </section>
-            <section class="adminCardContainer">
-                <section class="logo">
-                    <span class="material-icons">shopping_cart</span>
-                </section>
-                <section class="description">
-                    <h3>PDV</h3>
-                    <p>Ponto de venda dos produtos disponíveis</p>
-                </section>
-                <section class="adminCardFooter">
-                    <button class="material-icons" onclick="window.location.href='<%= `/admin/vendas` %>'">remove_red_eye</button>
-                </section>
-            </section>
-            <section class="adminCardContainer">
-                <section class="logo">
-                    <span class="material-icons">list_alt</span>
-                </section>
-                <section class="description">
-                    <h3>Estoque</h3>
-                    <p>Controle e administração do estoque</p>
-                </section>
-                <section class="adminCardFooter">
-                    <button class="material-icons" onclick="window.location.href='<%= `/admin/estoque` %>'">remove_red_eye</button>
-                </section>
-            </section>
-            <section class="adminCardContainer">
-                <section class="logo">
-                    <span class="material-icons">menu_book</span>
-                </section>
-                <section class="description">
-                    <h3>Receitas</h3>
-                    <p>Lista de receitas cadastradas no sistema</p>
-                </section>
-                <section class="adminCardFooter">
-                    <button class="material-icons" onclick="window.location.href='<%= `/admin/receitas` %>'">remove_red_eye</button>
-                </section>
-            </section>
+            </article>
         </main>
 
         <%- include('../partials/footer') %>
 
+        <script type="text/javascript" src="/javascript/shared.js"></script>
     </body>
 
 </html>
