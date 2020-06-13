@@ -1,4 +1,4 @@
-const API_BASE = 'http://10.0.0.100:3000/api/v0'
+const API_BASE = 'http://localhost:3000/api/v0'
 const receitaView = document.getElementById('receitaView')
 
 function editarReceitas() {
@@ -163,6 +163,5 @@ async function excluirReceita(id) {
         return window.location.replace(document.referrer);
     } else {
         return window.location.reload();
-    }
-    //return window.location.href = 'http://10.0.0.100:3000/admin/receitas';    
+    }   
 }
