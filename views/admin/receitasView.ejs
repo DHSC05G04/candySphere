@@ -39,7 +39,7 @@
             <section class="itemViewFooter">
                 <button class="material-icons" onclick="editarReceitas()">create</button>
                 <button class="material-icons" onclick="excluirReceita(<%= receita.id %>)">delete</button>
-                <button class="material-icons" onclick="sairReceita()">arrow_back</button>
+                <button class="material-icons" onclick="retornar()">arrow_back</button>
             </section>
         </article>
     </main>
@@ -69,6 +69,7 @@
         const dadosReceita = <%- JSON.stringify(receita) %>;
     </script>
     <script src="/javascript/receitas.js"></script>
+    <script type="text/javascript" src="/javascript/shared.js"></script>
 </body>
 
 </html>

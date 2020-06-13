@@ -54,7 +54,7 @@
             <section class="itemViewFooter">
                 <button type="submit" class="material-icons">save</button>
                 <button type="button" class="material-icons" onclick="excluirItem(<%= estoque.id %>)">delete</button>
-                <button type="button" class="material-icons" onclick="sairEstoque()">arrow_back</button>
+                <button type="button" class="material-icons" onclick="retornar()">arrow_back</button>
             </section>
         </form>
     </main>
@@ -84,6 +84,7 @@
         const dadosEstoque = <%- JSON.stringify(estoque) %>;
     </script>
     <script src="/javascript/estoque.js"></script>
+    <script type="text/javascript" src="/javascript/shared.js"></script>
 </body>
 
 </html>

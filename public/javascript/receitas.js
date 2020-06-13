@@ -152,11 +152,6 @@ function retornarReceitas() {
     })
 }
 
-function sairReceita() {
-    //return window.location.href = 'http://10.0.0.100:3000/admin/receitas';
-    return window.history.back();
-}
-
 async function excluirReceita(id) {
     const locationRef = window.location.href.split('/')
 

@@ -63,11 +63,6 @@ async function atualizaUnidades(idTipo) {
     })
 }
 
-function sairEstoque() {
-    //return window.location.href = 'http://10.0.0.100:3000/admin/receitas';
-    return window.location.replace(document.referrer);
-}
-
 async function excluirItem(id) {
     const locationRef = window.location.href.split('/')
 
