@@ -21,10 +21,10 @@
                                 </section>
                                 <section class="description">
                                     <h3><%= produto.itemEstoque.nome %></h3>
-                                    <p class="valor">R$ <%= produto.valor %></p>
+                                    <p id="valorProduto-<%= produto.id %>" class="valor">R$ <%= produto.valor %></p>
                                 </section>
-                                <section class="adminCardFooter">
-                                    <button type="button" class="material-icons" >create</button>
+                                <section id="prodBtn-<%= produto.id %>" class="adminCardFooter">
+                                    <button type="button" class="material-icons" onClick="editarValor(<%= produto.id %>)">create</button>
                                 </section>
                             </form>                                
                         <% }); %>
@@ -38,6 +38,10 @@
 
         <%- include('../partials/footer') %> 
 
+        <script>
+            const dadosProdutos = <%- JSON.stringify(produtos) %>;
+        </script>
+        <script type="text/javascript" src="/javascript/produto.js"></script>
         <script type="text/javascript" src="/javascript/shared.js"></script>
     </body>
 
