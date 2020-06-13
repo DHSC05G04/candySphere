@@ -90,7 +90,12 @@ const estoqueController = {
             return res.render('admin/criarEstoque', { title: 'Express', tabs: tabActive, usuario:req.session.user });
     },
     store: async (req, res) => {
-        const dados = req.body
+        const [foto] = req.files
+        let dados = req.body
+        
+        if(foto != undefined) {
+            dados.foto = `/images/produtos/${foto.filename}`
+        }
         
         await fetch(`${API_BASE}/estocaveis`, {
             method: 'post',
