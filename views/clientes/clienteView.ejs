@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+    <main id="funcionarios">
+        <section id="tabela-corpo">
+            <table id="tabela-funcionario">
+                <thead>
+                    <tr>
+                        <th id="titulo-card-ver-funcionario">
+                            <div><i class='fas fa-user-friends' style='font-size:30px;'></i></a><span>
+                                    Clientes</span></div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="nome-campo">
+                            <div id="foto-perfil">
+                                <div id="nome-funcionario"> <span id="nome"><%=clienteUnico[0].nome%></span> </div>
+                            </div>
+                            <div class="funcionarios-dados">
+                                <div>
+                                    <label class="label-funcionario" for=""><b>Dados Cadastrais</b></label>
+                                    <div><b>Email: </b> <span id="email"><%=clienteUnico[0].email%></span></div>
+                                    <div><b>Telefone: </b><span id="telefone"><%=clienteUnico[0].telefone%></span></div>
+                                    <div><b>Logradouro: </b><%=clienteUnico[0].endereco%><b> - Nº</b> <%=clienteUnico[0].numero%></div>
+                                    <div><b>Complemento: </b><%=clienteUnico[0].complemento%> </div>
+                                    <div><b>Bairro: </b><%=clienteUnico[0].bairro%> - <b> CEP: </b><%=clienteUnico[0].cep%></div>
+                                    <div><b>Cidade: </b><%=clienteUnico[0].cidade%> - <b> UF: </b><%=clienteUnico[0].uf%></div>
+                                </div>
+                            </div>
+                            <div class="funcionarios-dados">
+                                <div>
+                                    <label class="label-funcionario" for=""><b>Relação  </b></label>
+                                    <div><b>Ultima Compra: </b> 25/03/2019 - R$ 2.350,12 </div>
+                                    <div><b>Média :R$ </b>R$ 1.800,21</div>
+                                    <div><b>Cliente desde: </b><%=moment(clienteUnico[0].created_at).format("D/M/Y")%></div>
+                                </div>
+                            </div>
+                        </td>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %></form>

@@ -70,7 +70,32 @@ const clienteController = {
             tabs: tabActive,
             clientes: dataCliente,
             usuario: req.session.user,
-            clienteUnico
+            clienteUnico,
+            
+        });
+    },
+    view: async (req, res) => {
+        let tabActive = {
+            homeAct: "inactive",
+            adminAct: "inactive",
+            financeiroAct: "inactive",
+            clientesAct: "active",
+            funcionariosAct: "inactive",
+            pdvAct: "inactive",
+        };
+
+        const {
+            id
+        } = req.params
+        const cliente = await fetch(`${API_BASE}/clientes/${id}`)
+        const clienteUnico = await cliente.json();
+        console.log(clienteUnico)
+        res.render('clientes/clienteView', {
+            title: 'Express',
+            tabs: tabActive,
+            usuario: req.session.user,
+            clienteUnico,
+            moment
         });
     },
     update: async (req,res)=>{

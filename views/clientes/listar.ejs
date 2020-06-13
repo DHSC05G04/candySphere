@@ -20,9 +20,9 @@
 
                     <% clientes.forEach(elemento => {%>
                     <tr>
-                        <td class="nome-campo"><a href=""><%= elemento.nome%> </a></td>
-                        <td class="email-campo"><a href=""><%= elemento.email%></a></td>
-                        <td><a href=""><%= elemento.telefone%></a</td> <td>
+                        <td class="nome-campo"><a href="/clientes/ver/<%= elemento.id %>"><%= elemento.nome%> </a></td>
+                        <td class="email-campo"><a href="/clientes/ver/<%= elemento.id %>"><%= elemento.email%></a></td>
+                        <td><a href="/clientes/ver/<%= elemento.id %>"><%= elemento.telefone%></a</td> <td>
                                 <a class="btn-acao atualizar" href="/clientes/<%= elemento.id%>"><span
                                         class="material-icons">
                                         edit
