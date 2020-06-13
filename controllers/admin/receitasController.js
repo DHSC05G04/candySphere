@@ -59,19 +59,17 @@ const receitasController = {
         const {id} = req.params
 
         try {
-            const result = await fetch(`${API_BASE}/receitas/${id}`, {
+            await fetch(`${API_BASE}/receitas/${id}`, {
                 method: 'put',
                 body: JSON.stringify(dados),
                 headers: {
                     'Content-Type': 'application/json' 
                 }
             })
-
-            return res.redirect(`/admin/receitas/${id}`);
+            return res.redirect(`/admin/receitas`);
             
         } catch (error) {
             return res.status(400).json(error)
-            
         }
         
 
