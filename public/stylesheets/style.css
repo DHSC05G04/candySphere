@@ -1442,6 +1442,9 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
 }
 
 @media screen and (max-width: 800px) {
+    .modal {
+        width: 95%
+    }
     header li:nth-child(3) {
         border-radius: 0 1.25em 0 0;
     }
