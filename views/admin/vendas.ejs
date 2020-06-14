@@ -39,25 +39,32 @@
 
         <%- include('../partials/footer') %>
 
-        <div id="modalCarrinho" class="modal-container">
-            <div id="conteudo-modal">
-                <form id="form-estoque" action="">
-                    <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
-                    <h1>Carrinho de compras</h1>
-                    <table>
-                        <thead>
-                            <tr>        
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th>Valor</th>
-                            </tr>
-                        </thead>
-                        <tbody id="listaCompras">
-                        </tbody>
-                    <input type="submit" class="btn-cliente" value="Salvar">
-                </form>
-            </div>
-        </div>
+        <section id="modalCarrinho" class="modal-container">
+            <section class="modal">
+                <section class="conteudoModal">
+                    <section class="modalHeader">
+                        <button id="fechar-tudo" class="fecharModal">x</button>
+                        <h2>Carrinho de Compras</h1>
+                    </section>
+                    <section class="modalMain">
+                        <table id="compras">
+                            <thead>
+                                <tr>        
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaCompras">
+                            </tbody>
+                        </table>
+                    </section>
+                    <section class="modalFooter">
+                        <button type="button"><span class="material-icons">shopping_cart</span>Checkout</button>
+                    </section>
+                </section>
+            </section>
+        </section>
 
         <script type="text/javascript" src="/javascript/vendas.js"></script>
         <script type="text/javascript" src="/javascript/shared.js"></script>

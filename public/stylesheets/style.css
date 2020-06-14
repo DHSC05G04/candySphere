@@ -572,7 +572,7 @@ textarea {
     border-radius: 0 0 1em 1em;
 }
 
-.itemViewFooter button {
+.itemViewFooter button, .modalFooter button {
     margin: 0 15px;
     padding: 5px;
     font-size: 2em;
@@ -583,7 +583,7 @@ textarea {
     border-radius: 1.25em;
 }
 
-.itemViewFooter button:hover {
+.itemViewFooter button:hover, .modalFooter button:hover {
     background-color: var(--color2);
     color: var(--color5) !important;
     border: 2px solid var(--color5);
@@ -604,6 +604,7 @@ textarea {
     border-collapse: collapse;
     justify-self: center;
     margin: 20px 0;
+    box-shadow: 0 0 8px black;
 }
 
 #administracaoEstoque table thead {
@@ -631,43 +632,6 @@ textarea {
 
 #administracaoEstoque td.center {
     text-align: center;
-}
-
-#form-estoque * {
-    padding: 0px;
-    margin: 0px;
-}
-
-#form-estoque {
-    background-color: var(--color1);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    height: 60vh;
-    border: 5px solid var(--color5);
-    box-shadow: 0px 0px 0px 8px var(--color1);
-}
-
-#form-estoque h1 {
-    color: var(--color5);
-}
-
-#form-estoque label {
-    color: var(--color5);
-    width: 90%;
-    display: block;
-    text-align: left;
-}
-
-#form-estoque input {
-    margin-bottom: 20px;
-    height: 50px;
-    background-color: var(--color1);
-    border: 1px solid var(--color5);
-    color: var(--color5);
-    font-size: 20px;
-    max-width: 100%;
-    display: block;
 }
 
 a.btn.material-icons:hover {
@@ -707,22 +671,102 @@ a.btn.material-icons:hover {
     padding: 0;
     margin: 0;
 }
-/*
-#carrinhoCompras {
-    position: fixed;
-    right: 10%;
-    top: 22%;
-    background-color: var(--color2);
-    color: var(--color5);
-    padding: 10px;
-    font-size: 30px;
-    border-radius: 20px;
+
+/* Configurações PDV */
+.modal {
+    width: 60%;
+    max-height: 80%;
+    overflow-y: auto;
+    padding: 8px;
+    display: flex;
+    background-color: var(--color1);
 }
 
-#carrinhoCompras:hover {
-    cursor: pointer;
+.conteudoModal {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    border: 5px solid var(--color5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-*/
+
+.modalHeader {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalHeader h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.fecharModal {
+    align-self: flex-end;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    background-color: var(--color2);
+    border-radius: 30px;
+    border: 2px solid var(--color5);
+    box-shadow: 0px 0px 0px 3px var(--color2);
+    color: var(--color5);
+    z-index: 2000;
+}
+
+.fecharModal:hover {
+    background-color: var(--color5);
+    color: var(--color1);
+    cursor: pointer;
+    border: 1px solid var(--color2);
+}
+
+.modalMain {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#compras {
+    min-width: 80%;
+    border-collapse: collapse;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 8px black;
+    text-align: center;
+}
+
+#compras th {
+    background-color: var(--color2);
+    padding: 10px;
+    border: 1px solid var(--color5);
+}
+
+#compras td {
+    padding: 5px;
+}
+
+#compras input {
+    color: var(--color5);
+    background-color: var(--color1);
+    border: 1px solid var(--color5);
+    width: 5em;
+    text-align: center;
+    font-size: 1em;
+    border-radius: .25em;
+}
+
+.modalFooter button {
+    padding: 10px;
+    margin: 15px;
+}
 
 /* ###### FINANCEIRO ######### */
 
