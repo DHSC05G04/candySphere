@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <%- include('../partials/head') %>
+
+    <body>
+
+        <%- include('../partials/header') %>
+
+        <main id="administracao">
+            <article id="Visualizacao" class="produto">
+                <section class="itemViewHeader">
+                    <span class="material-icons">shopping_cart</span>
+                    <h2>Operações / PDV / Concluir Venda</h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewDesc">
+                        <h3>Pedido</h3>
+                    </section>
+                    <section class="itemViewBody">
+                        <section class="itemInfo center">
+                            <h4 class="sectionDivider">Pedido</h4>
+                            <table id="compras">
+                                <thead>
+                                    <tr>        
+                                        <th>Produto</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listaCompras">
+                                    <% produtos.forEach(produto => { %>
+                                        <tr class="itensCarrinho">
+                                            <td><%= produto.nome %></td>
+                                            <td><%= produto.qtd %></td>
+                                            <td><%= produto.valor %></td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section class="itemInfo">
+                            <h4 class="sectionDivider">Cliente</h4>
+                        </section>
+                    </section>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick=iniciaModal(modalCarrinho)>save</button>
+                    <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                </section>
+            </article>
+        </main>
+
+        <%- include('../partials/footer') %>
+
+        <script type="text/javascript" src="/javascript/vendas.js"></script>
+        <script type="text/javascript" src="/javascript/shared.js"></script>
+    </body>
+
+</html>

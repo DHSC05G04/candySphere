@@ -43,6 +43,8 @@ router.get('/', adminController.index);
 
 router.get('/produtos', produtosController.index);
 router.get('/vendas', vendasController.index)
+router.post('/vendas', vendasController.indexConcluir)
+router.post('/vendas/concluir', vendasController.indexConcluir)
 
 router.get('/estoque', estoqueController.index);
 router.get('/estoque/criar', estoqueController.create);

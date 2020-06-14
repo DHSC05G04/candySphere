@@ -50,3 +50,47 @@ function iniciaModal(modalId){
         };
     });
 };
+
+async function checkout() {
+    const carrinhoFinal = []
+    const carrinhoCompras = document.getElementsByClassName('itensCarrinho')
+    const formCart = document.createElement('form')
+
+    formCart.method = 'POST'
+    formCart.action = '/admin/vendas'
+    
+    for(i = 0; i < carrinhoCompras.length; i++) {
+        const itemId = document.createElement('input')
+        const itemNome = document.createElement('input')
+        const itemQtd = document.createElement('input')
+        const itemValor = document.createElement('input')
+
+        itemId.name = `id[]`
+        itemNome.name = `nome[]`
+        itemQtd.name = `qtd[]`
+        itemValor.name = `valor[]`
+
+        itemId.setAttribute('hidden', 'true')
+        itemNome.setAttribute('hidden', 'true')
+        itemQtd.setAttribute('hidden', 'true')
+        itemValor.setAttribute('hidden', 'true')
+
+        const itemInfo = carrinhoCompras[i].children
+
+        itemId.value = carrinhoCompras[i].id
+        itemNome.value = itemInfo[0].innerText
+        itemQtd.value = itemInfo[1].firstChild.value
+        itemValor.value = itemInfo[2].innerText
+
+        formCart.appendChild(itemId)
+        formCart.appendChild(itemNome)
+        formCart.appendChild(itemQtd)
+        formCart.appendChild(itemValor)
+    }
+
+    formCart.enctype = 'application/json'
+
+    document.body.appendChild(formCart)
+
+    return formCart.submit()
+}
