@@ -75,8 +75,6 @@ const estocaveisController = {
             const result = await sequelize.transaction(async (t) => {
                 const itemCadastradoAPI = await Estocaveis.create(dados, { transaction: t });
                 const checkProduto = await itemCadastradoAPI.dataValues
-                console.log('*'.repeat(60))
-                console.log(checkProduto)
 
                 if(checkProduto.vendavel == true) {
                     const dadosProduto = {
