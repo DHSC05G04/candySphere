@@ -97,6 +97,7 @@ async function checkout() {
 
 window.addEventListener('load', async () => {
     const clientsList = document.getElementById('clientes')
+    const formasPagamentoList = document.getElementById('pagamento')
 
     if(clientsList != undefined || clientsList != null) {
         const listaAPI = await fetch(`${API}/clientes`)
@@ -110,6 +111,23 @@ window.addEventListener('load', async () => {
             } else {
                 clientsList.innerHTML += `
                     <option value="${cliente.nome} CPF: ${cliente.cpf}">
+                `
+            }
+        })
+    }
+
+    if(formasPagamentoList != undefined || formasPagamentoList != null) {
+        const pagamentosAPI = await fetch(`${API}/forma-de-pagamento`)
+        const pagamentos = await pagamentosAPI.json()
+
+        pagamentos.forEach((formPag, index) => {
+            if(index == 0) {
+                formasPagamentoList.innerHTML = `
+                    <option value="${formPag.descricao} id: ${formPag.id}">
+                `
+            } else if(formPag.ativo == 1) {
+                formasPagamentoList.innerHTML += `
+                    <option value="${formPag.descricao} id: ${formPag.id}">
                 `
             }
         })
