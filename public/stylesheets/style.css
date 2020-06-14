@@ -8,6 +8,7 @@
     --color5opacity: #755C3B99;
     --headerHeight: 22vh;
     --footerHeight: 30px;
+    --contentWidth: 96%;
 }
 
 body {
@@ -49,7 +50,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    width: 96%;
+    width: var(--contentWidth);
     align-self: center;
     /*height: var(--headerHeight);*/
     background-color: var(--color5);
@@ -58,14 +59,14 @@ header {
 
 #systemTitle {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100vw;
 }
 
 header #logo {
     height: 4em;
-    margin-bottom: 10px;
+    margin-left: calc(100% - var(--contentWidth));
 }
 
 #systemTitle h1 {
@@ -87,6 +88,7 @@ header #logo {
     border-radius: 1em;
     font-size: .8em;
     font-weight: bold;
+    margin-right: calc(100% - var(--contentWidth));
 }
 
 #logout:hover {
@@ -135,19 +137,23 @@ header li {
     width: 8em;
     padding: 5px 0px;
     box-sizing: border-box;
-    background-color: var(--color2);
-    border: 1px solid var(--color5);
+    background-color: var(--color5);
+    border: 1px solid var(--color2);
     text-align: center;
 }
 
+header li a {
+    color: var(--color2);
+}
+
 header li.active {
-    background-color: var(--color5);
-    border: 1px solid var(--color2);
+    background-color: var(--color2);
+    border: 1px solid var(--color5);
     border-bottom: none;
 }
 
 header li.active a {
-    color: var(--color2);
+    color: var(--color5);
 }
 
 header li:first-child {
@@ -164,8 +170,7 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    position: fixed;
-    bottom: 0;
+    margin-bottom: 0;
     width: 100vw;
     height: var(--footerHeight);
     background-color: var(--color2);
@@ -283,7 +288,7 @@ form button:hover {
 main {
     display: flex;
     justify-content: center;
-    width: 96%;
+    width: var(--contentWidth);
     align-self: center;
     flex-grow: 1;
     background-color: var(--color5);
@@ -292,15 +297,8 @@ main {
 }
 
 /*Configurações do corpo Home*/
-#home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 #home img {
-    height: 30vh;
+    height: 30%;
 }
 
 #home h2 {
@@ -312,13 +310,6 @@ main {
 }
 
 /*Configurações do corpo Administração*/
-#administracao {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
 .adminCardContainer {
     display: flex;
     flex-direction: column;
@@ -326,9 +317,11 @@ main {
     align-items: center;
     box-sizing: border-box;
     margin: 30px 10px;
-    width: 300px;
+    width: 18.75em;
     height: 320px;
-    border: 1px solid var(--color2);
+    border: 2px solid var(--color5);
+    border-radius: 3em;
+    box-shadow: 2px 2px 5px var(--color4);
 }
 
 .adminCardContainer section.logo {
@@ -338,10 +331,12 @@ main {
     width: 100%;
     height: 120px;
     background-color: var(--color2);
+    border-radius: 3em 3em 0 0;
 }
 
-.adminCardContainer .material-icons {
+.adminCardContainer section.logo .material-icons {
     font-size: 5em;
+    color: var(--color5);
 }
 
 .adminCardContainer section.description {
@@ -351,64 +346,46 @@ main {
     padding: 10px;
     color: var(--color5);
     background-color: var(--color1);
+    overflow-y: auto;
 }
 
-/* Configuração cards de produtos*/
-.adminCardContainer.produtos {
-    width: 200px;
-    height: 280px;
-    text-align: center;
-}
-
-.adminCardContainer.produtos .description {
-    padding: 0;
-}
-
-.adminCardContainer.produtos .valor {
-    width: 100%;
-    padding: 10px 0;
-    background-color: var(--color5);
-    color: var(--color2)
-}
-
-.adminCardContainer.produtos .formProdutos {
-    display: block;
-    min-width: 0px;
-    width: 100%;
-    height: auto;
-    background-color: inherit;
-    padding: 0;
+.adminCardContainer section.description p {
     margin: 0;
 }
 
-.adminCardContainer.produtos .addCart {
-    margin: 5px;
-    padding: .25em;
-    font-size: 2em;
-    border: 1px solid var(--color2);
-    border-radius: .75em;
+.adminCardContainer section.description h3 {
+    margin: 8px 0;
+}
+
+.adminCardFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5em;
     background-color: var(--color2);
+    border-top: 1 solid var(--color5);
+    box-shadow: 0 -2px 5px var(--color5);
+    border-radius: 0 0 3em 3em;
 }
 
-.adminCardContainer.produtos .addCart:hover {
-    color: var(--color2);
+.adminCardFooter button {
+    margin: 0 15px;
+    padding: 5px;
+    font-size: 2em;
     background-color: var(--color5);
-    cursor: pointer;
+    color: var(--color1) !important;
+    border: 2px solid var(--color1);
+    box-shadow: 0 0 0 5px var(--color5);
+    border-radius: 1.25em;    
 }
 
-#carrinhoCompras {
-    position: fixed;
-    right: 10%;
-    top: 22%;
+.adminCardFooter button:hover {
     background-color: var(--color2);
     color: var(--color5);
-    padding: 10px;
-    font-size: 30px;
-    border-radius: 20px;
-}
-
-#carrinhoCompras:hover {
-    cursor: pointer;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2);
+    transition: .5s;
 }
 
 /*Configuração cards de receitas */
@@ -419,6 +396,192 @@ main {
     width: 100%;
     height: 120px;
     background-color: var(--color2);
+}
+
+/* Configuração da tela de visualização de receitas */
+#Visualizacao {
+    align-self: flex-start;
+    width: 95%;
+    max-width: 1000px;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    background-color: var(--color1);
+    z-index: 2;
+}
+
+#Visualizacao * {
+    color: var(--color5);
+}
+
+.itemViewHeader {
+    height: 10%;
+    background-color: var(--color2);
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    border-bottom: 2px solid var(--color5);
+}
+
+.itemViewHeader * {
+    /* display: flex;
+    align-items: center; */
+    margin-left: 20px;
+    /* margin-right: 10px; */
+}
+
+.itemViewHeader span{
+    font-size: 2.5em;
+}
+
+/*
+.itemViewHeader button {
+    margin: 0 .5em;
+    padding: 5px;
+    font-size: .8em;
+    background-color: var(--color5);
+    color: var(--color1) !important;
+    border: 2px solid var(--color1);
+    box-shadow: 0 0 0 5px var(--color5);
+    border-radius: 1.25em;
+}
+
+.itemViewHeader button:hover {
+    background-color: var(--color2);
+    color: var(--color5) !important;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2);
+}
+*/
+
+.itemViewMain {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin: 10px 0 10px 20px;
+}
+
+.itemViewDesc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    border-bottom: 1px solid var(--color5);
+}
+
+.itemViewDesc img {
+    width: 50%;
+    border: 3px solid var(--color5);
+    border-radius: 30px;
+}
+
+.itemViewDesc h3 {
+    text-transform: capitalize;
+    font-size: 1.25em;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.sectionDivider {
+    background-color: var(--color5);
+    color: var(--color1) !important;
+    margin: 0 0 0 10px;
+    padding: 5px;
+    border-radius: 5px;
+    position: relative;
+    top: -25px;
+    text-transform: capitalize;
+}
+
+.itemInfo {
+    border: 1px solid var(--color5);
+    border-radius: 10px;
+    margin: 30px 20px 30px 0;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.itemInfo p {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.itemInfo p.dataInput[type="text"] {
+    flex-grow: 1;
+}
+
+.dataInput {
+    max-width: initial;
+    height: auto;
+    padding: 10px;
+    background-color: var(--color2);
+    font-size: 1em;
+}
+
+.number {
+    max-width: 8em;
+}
+
+.dataInput[type="file"] {
+    width: 80%;
+    font-size: smaller;
+    margin-top: 5px;
+}
+
+.dataInput[type="number"] {
+    width: 4em;
+}
+
+.dataInput[type="text"] {
+    flex: 1;
+}
+
+.dataListComponent {
+    flex: 1;
+}
+
+textarea {
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+
+#Visualizacao label {
+    min-width: initial;
+    width: auto;
+}
+
+.itemViewFooter {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 0 0;
+    padding: 15px;
+    border-top: 1px solid var(--color5);
+    box-shadow: 0 -2px 5px var(--color5);
+}
+
+.itemViewFooter button {
+    margin: 0 15px;
+    padding: 5px;
+    font-size: 2em;
+    background-color: var(--color5);
+    color: var(--color1) !important;
+    border: 2px solid var(--color1);
+    box-shadow: 0 0 0 5px var(--color5);
+    border-radius: 1.25em;
+}
+
+.itemViewFooter button:hover {
+    background-color: var(--color2);
+    color: var(--color5) !important;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2);
+    transition: .5s;
 }
 
 /* Configuração da tela de estoque */
@@ -521,6 +684,59 @@ div.add-estoque a span:hover {
     max-width: 100%;
     display: block;
 }
+
+a.btn.material-icons:hover {
+    color: var(--color2);
+    transition: .5s;
+    cursor: pointer;
+}
+
+/* Configuração cards de produtos*/
+#Visualizacao.produto {
+    width: 80vw;
+}
+
+.itemViewBody.produto {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.adminCardContainer.produtos {
+    width: 14em;
+    height: 300px;
+    text-align: center;
+}
+
+.adminCardContainer.produtos .foto {
+    border-radius: 3em 3em 0 0;
+}
+
+.adminCardContainer.produtos.formProdutos {
+    display: block;
+    min-width: 0px;
+    width: 100%;
+    height: auto;
+    background-color: inherit;
+    padding: 0;
+    margin: 0;
+}
+/*
+#carrinhoCompras {
+    position: fixed;
+    right: 10%;
+    top: 22%;
+    background-color: var(--color2);
+    color: var(--color5);
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 20px;
+}
+
+#carrinhoCompras:hover {
+    cursor: pointer;
+}
+*/
 
 /* ###### FINANCEIRO ######### */
 

@@ -38,11 +38,13 @@ module.exports = (sequelize, DataTypes) => {
   UnidadesPorTipo.associate = function(models) {
     // associations can be defined here
     UnidadesPorTipo.belongsTo(models.Unidade, {
-      foreignKey: 'unidade_id'
+      foreignKey: 'unidade_id',
+      as: 'medida'
     })
 
     UnidadesPorTipo.belongsTo(models.TiposItens, {
-      foreignKey: 'tipo_id'
+      foreignKey: 'tipo_id',
+      as: 'categoria'
     })
   };
   return UnidadesPorTipo;
