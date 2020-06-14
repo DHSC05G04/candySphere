@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api/v0/produtos'
+const API_BASE = `${API}/produtos`
 
 function addToCart(productId) {
     if(!sessionStorage.carrinho) {

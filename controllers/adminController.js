@@ -13,7 +13,7 @@ const adminController = {
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
-        res.render('admin/admin', { title: 'Express', tabs: tabActive,usuario:req.session.user });
+        res.render('admin/admin', { title: 'Express', tabs: tabActive, usuario:req.session.user });
     }
 };
 

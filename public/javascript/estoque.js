@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api/v0'
+const API_BASE = `${API}`
 const estoqueView = document.getElementById('estoqueView')
 const listaTipos = document.getElementById('tipos')
 const inputTipos = document.getElementById('inputTipo')

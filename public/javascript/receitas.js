@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api/v0'
+const API_BASE = `${API}`
 const receitaView = document.getElementById('receitaView')
 
 function editarReceitas() {

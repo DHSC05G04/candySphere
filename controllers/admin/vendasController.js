@@ -16,7 +16,7 @@ const vendasController = {
             const produtosAPI = await fetch(`${API_BASE}/produtos`)
             const produtos = await produtosAPI.json()
 
-            return res.render('admin/vendas', { title: 'Express', tabs: tabActive , produtos,usuario:req.session.user});
+            return res.render('admin/vendas', { title: 'Express', tabs: tabActive , produtos, API_BASE, usuario:req.session.user});
         } catch (error) {
             return res.send(error)
         }
@@ -44,10 +44,8 @@ const vendasController = {
         })
         
         try {
-            // const clientesAPI = await fetch(`${API_BASE}/clientes`)
-            // const clientes = await clientesAPI.json()
 
-            return res.render('admin/vendasFechar', { title: 'Express', tabs: tabActive, produtos, usuario:req.session.user});
+            return res.render('admin/vendasFechar', { title: 'Express', tabs: tabActive, produtos, API_BASE, usuario:req.session.user});
         } catch (error) {
             return res.send(error)
         }

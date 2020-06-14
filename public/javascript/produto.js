@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api/v0'
+const API_BASE = `${API}`
 
 function editarValor(id) {
     const produto = document.getElementById(`valorProduto-${id}`)

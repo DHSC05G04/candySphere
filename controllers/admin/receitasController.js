@@ -16,7 +16,7 @@ const receitasController = {
             const receitasAPI = await fetch(`${API_BASE}/receitas`);
             const receitas = await receitasAPI.json();
     
-            return res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas,usuario:req.session.user });
+            return res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas, API_BASE, usuario:req.session.user });
             
         } catch (error) {
             return res.send(error);            
@@ -38,7 +38,7 @@ const receitasController = {
             const receitasAPI = await fetch(`${API_BASE}/receitas/${id}`);
             const [receita] = await receitasAPI.json();
     
-            return res.render('admin/receitasView', { title: 'Express', tabs: tabActive, receita, usuario:req.session.user });
+            return res.render('admin/receitasView', { title: 'Express', tabs: tabActive, receita, API_BASE, usuario:req.session.user });
             
         } catch (error) {
             return res.send(error);            
@@ -72,8 +72,6 @@ const receitasController = {
         } catch (error) {
             return res.status(400).json(error)
         }
-        
-
     }
 }
 
