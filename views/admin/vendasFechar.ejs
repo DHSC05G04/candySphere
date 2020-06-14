@@ -36,11 +36,18 @@
                                             <td><%= produto.valor %></td>
                                         </tr>
                                     <% }) %>
+                                    <tr>
+                                        <td><b>Total</b></td>
+                                        <td colspan="2"><b><%= produtos.reduce((acc, cur) => acc + (cur.valor * cur.qtd), 0) %></b></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </section>
-                        <section class="itemInfo">
+                        <section class="itemInfo center">
                             <h4 class="sectionDivider">Cliente</h4>
+                            <input list="clientes" class="dataListComponent dataInput large" name="client_id" placeholder="Selecione o cliente">
+                            <datalist id="clientes" class="listaClientes">
+                            </datalist>
                         </section>
                     </section>
                 </section>

@@ -558,6 +558,11 @@ main {
     flex: 1;
 }
 
+.large {
+    min-width: 75%;
+    text-align: center;
+}
+
 textarea {
     flex-grow: 1;
     flex-basis: 100%;

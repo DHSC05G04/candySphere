@@ -15,7 +15,7 @@
                 </section>
                 <section class="itemViewMain">
                     <section class="itemViewBody produto">
-                        <% produtos.forEach((produto) => { %>
+                        <% produtos.forEach((produto, index) => { %>
                             <form action="/produtos/<%= produto.id %>?_method=put" id="FormProduto" method="POST" class="adminCardContainer produtos">
                                 <section class="foto" style="background-image: url(<%= produto.itemEstoque.foto %>); background-size: cover;">
                                 </section>

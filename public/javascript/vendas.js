@@ -94,3 +94,24 @@ async function checkout() {
 
     return formCart.submit()
 }
+
+window.addEventListener('load', async () => {
+    const clientsList = document.getElementById('clientes')
+
+    if(clientsList != undefined || clientsList != null) {
+        const listaAPI = await fetch(`${API}/clientes`)
+        const lista = await listaAPI.json()
+
+        lista.forEach((cliente, index) => {
+            if(index == 0) {
+                clientsList.innerHTML = `
+                    <option value="${cliente.nome} CPF: ${cliente.cpf}">
+                `
+            } else {
+                clientsList.innerHTML += `
+                    <option value="${cliente.nome} CPF: ${cliente.cpf}">
+                `
+            }
+        })
+    }
+})
