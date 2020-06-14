@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Estocaveis, TiposItens, sequelize } = require('../../models');
+const { Estocaveis, TiposItens, Produto, sequelize } = require('../../models');
 
 const estocaveisController = {
     index: async (req, res) => {
@@ -73,10 +73,25 @@ const estocaveisController = {
 
         try {
             const result = await sequelize.transaction(async (t) => {
-                const itemCadastrado = await Estocaveis.create(dados, { transaction: t });
+                const itemCadastradoAPI = await Estocaveis.create(dados, { transaction: t });
+                const checkProduto = await itemCadastradoAPI.dataValues
 
-                return itemCadastrado;
-            });
+                if(checkProduto.vendavel == true) {
+                    const dadosProduto = {
+                        estoque_id: checkProduto.id,
+                        valor: checkProduto.custo_unitario
+                    }
+                    const produtoCadastrado = await Produto.findOrCreate({
+                        where: {
+                            estoque_id: dadosProduto.estoque_id,
+                        },
+                        defaults: dadosProduto,
+                        transaction: t
+                    })
+                }
+
+                return itemCadastradoAPI;
+                })
 
             return res.status(200).json(result);
 
@@ -111,6 +126,28 @@ const estocaveisController = {
                     },
                     transaction: t
                 });
+
+                if('vendavel' in dados) {
+                    if(dados.vendavel == 'true') {
+                        const dadosProduto = {
+                            estoque_id: id,
+                            valor: dados.custo_unitario
+                        }
+                        await Produto.findOrCreate({
+                            where: {
+                                estoque_id: id,
+                            },
+                            defaults: dadosProduto,
+                            transaction: t
+                        })                        
+                    } else {
+                        await Produto.destroy({
+                            where: {
+                                estoque_id: id
+                            },
+                            transaction: t       
+                    })}
+                }
 
                 return;
             })

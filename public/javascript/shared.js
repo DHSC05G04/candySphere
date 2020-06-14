@@ -1,4 +1,4 @@
-window.onload = updateNav
+window.addEventListener('load', updateNav)
 
 window.addEventListener('resize', updateNav)
 
@@ -12,7 +12,6 @@ function updateNav() {
         activeNav.style.borderBottom = 'none'
         activeNav.style.zIndex = '1'
     } else {
-        console.log('Cheguei aqui!!')
         activeNav.removeAttribute('style')
     }
 }

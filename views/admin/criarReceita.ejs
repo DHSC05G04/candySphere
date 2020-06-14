@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('../partials/head') %>
+
+<body>
+    <%- include('../partials/header') %>
+    <main id="receitaView">
+        <form action="/admin/receitas" id="Visualizacao" method="POST" enctype="multipart/form-data">
+            <section class="itemViewHeader">
+                <span class="material-icons">menu_book</span><h2>Operação / Receita<h2>
+            </section>
+            <section class="itemViewMain">
+                <div class="itemViewDesc">
+                    <h3>Selecione uma foto para sua receita:</h3>
+                    <input class="dataInput" type="file" name="foto">
+                    <h3><label>Nome: </label><input class="dataInput" type="text" maxlimit="3000" name="nome" placeholder="Digite o nome de sua receita" required></h3>
+                </div>
+                <div class="itemViewBody">
+                    <div class="itemInfo">
+                        <h4 class="sectionDivider">Informações</h4>
+                        <p><b>Descrição: </b><input class="dataInput" type="text" maxlimit="3000" name="descricao" placeholder="Descreva sua receita"></p>
+                        <p><b>Tempo de preparo: </b><input class="dataInput" type="number" name="tempo_preparo" placeholder="0"></p>
+                        <p><b>Rendimento: </b><input class="dataInput" type="number" name="rendimento" placeholder="0"></p>
+                    </div>
+                    <div id="infoIngredientes" class="itemInfo">
+                        <h4 class="sectionDivider">Ingredientes</h4>
+                        <p>Quantidade: <input class="dataInput" type="number" placeholder="0" name="quantidade"> 
+                        Unidade: <input class="dataInput number" list="unidades" placeholder="unidade" name="unidade"><datalist id="unidades"></datalist>
+                        Ingrediente: <input list="ingredientes" class="dataListComponent dataInput" placeholder="ingrediente" name="ingrediente"><datalist id="ingredientes"></datalist></p>
+                    </div>
+                    <div id="infoInstrucoes" class="itemInfo">
+                        <h4 class="sectionDivider">Instruções de preparo</h4>
+                        <p><textarea class="dataInput" placeholder="Instrucao" name="instrucao"></textarea></p>
+                    </div>
+                </div>
+            </section>
+            <section class="itemViewFooter">
+                <button type="submit" class="material-icons">save</button>
+                <button type="button" class="material-icons" onclick="retornar())">clear</button>
+            </section>
+        </form>
+    </main>
+
+    <%- include('../partials/footer') %>
+    <script>
+        const dadosReceita = <%- JSON.stringify(receita) %>;
+        const API = <%- JSON.stringify(API_BASE) %>
+    </script>
+    <script src="/javascript/receitas.js"></script>
+    <script type="text/javascript" src="/javascript/shared.js"></script>
+</body>
+
+</html>

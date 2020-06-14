@@ -16,6 +16,9 @@ DB_HOST=databaseHost
 DB_PORT=3306
 DB_USER=userName
 DB_PASSWORD=suaSenhaAqui
+EMAIL_USER=emailDoSistema
+EMAIL_SENHA=senhaDoEmail
+API_BASE=APIBaseURL
 ```
 
 O arquivo config/database.js terá o conteudo ajustado para carregar estas variaveis:

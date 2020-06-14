@@ -1,11 +1,11 @@
-const API_BASE = 'http://localhost:3000/api/v0'
+const API_BASE = `${API}`
 const receitaView = document.getElementById('receitaView')
 
 function editarReceitas() {
     receitaView.innerHTML = `
         <form action="/admin/receitas/${dadosReceita.id}?_method=put" id="Visualizacao" method="POST" enctype="multipart/form-data">
             <section class="itemViewHeader">
-                <span class="material-icons">menu_book</span><h2>Receita<h2>
+                <span class="material-icons">menu_book</span><h2>Operação / Receita<h2>
             </section>
             <section class="itemViewMain">
                 <div class="itemViewDesc">
@@ -30,7 +30,7 @@ function editarReceitas() {
             </section>
             <section class="itemViewFooter">
                 <button type="submit" class="material-icons">save</button>
-                <button type="button" class="material-icons" onclick="retornarReceitas()">clear</button>
+                <button type="button" class="material-icons" onclick="retornar()">clear</button>
             </section>
         </form>
     `
@@ -74,7 +74,7 @@ function editarReceitas() {
         `
     })
 
-    const formulario = document.getElementById('Receita')
+    const formulario = document.getElementById('Visualizacao')
     formulario.addEventListener('submit', (form) => {
         form.preventDefault()
         const ingredientesLists = document.getElementsByClassName('dataListComponent')
@@ -106,7 +106,7 @@ function retornarReceitas() {
     receitaView.innerHTML = `
         <article id="Visualizacao">
             <section class="itemViewHeader">
-                    <span class="material-icons">menu_book</span><h2>Receita<h2>
+                    <span class="material-icons">menu_book</span><h2>Operação / Receita<h2>
             </section>
             <section class="itemViewMain">
                 <div class="itemViewDesc">
@@ -131,7 +131,7 @@ function retornarReceitas() {
             <section class="itemViewFooter">
                 <button class="material-icons" onclick="editarReceitas()">create</button>
                 <button class="material-icons" onclick="excluirReceita(${dadosReceita.id})">delete</button>
-                <button class="material-icons" onclick="sairReceita()">arrow_back</button>
+                <button class="material-icons" onclick="retornar()">arrow_back</button>
             </section>
         </article>
     `
