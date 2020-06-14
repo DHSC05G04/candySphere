@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
+require('dotenv').config();
 
-const API_BASE = 'http://localhost:3000/api/v0';
+const API_BASE = process.env.API_BASE;
 
 const receitasController = {
     index: async (req, res) => {

@@ -3,8 +3,9 @@ const path = require('path');
 const fetch = require('node-fetch');
 const moment = require('moment');
 const { post } = require('../routes/clientesRoute');
-//const API_BASE = 'http://candyspheredev.herokuapp.com/api/v0';
-const API_BASE = 'http://localhost:3000/api/v0';
+require('dotenv').config();
+
+const API_BASE = process.env.API_BASE;
 
 const clienteController = {
     index: async (req, res, next) => {
