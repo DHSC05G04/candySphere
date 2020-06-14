@@ -27,7 +27,7 @@
                                         class="material-icons">
                                         edit
                                     </span></a>
-                                <a class="btn-acao deleteCliente" id="delete-cliente" href="<%= elemento.id%>"><span
+                                <a class="btn-acao deleteCliente" id="delete-cliente" nome="<%= elemento.nome%>" href="<%= elemento.id%>"><span
                                         class="material-icons">
                                         delete
                                     </span></a>
@@ -117,6 +117,7 @@
                 <div id="label-cliente"><label for="nome-cliente" id="label-nome">
                         <h3>Tem certeza que vai deletar o Cliente?</h3>
                     </label></div>
+                    <div><h1 class="cliente-deletado"></h1></div>
                 <div id="btn-modal"> <input type="submit" class="btn-cliente" value="Deletar">
                     <input type="submit" id="cancela" class="btn-cliente" value="Cancelar"></div>
 
@@ -317,6 +318,7 @@
 
     <script>
         const del = document.getElementsByClassName('deleteCliente');
+        const clienteDeletado = document.querySelector(".cliente-deletado")
         for (let i = 0; i < del.length; i++) {
             del[i].addEventListener('click', (e) => {
                 e.preventDefault()
@@ -325,6 +327,8 @@
                 const form = document.querySelector('.form-del');
                 form.action = `/clientes/${del[i].attributes.href.value}/?_method=DELETE`
                 id.value = del[i].attributes.href.value
+                clienteDeletado.innerHTML = del[i].attributes.nome.value
+                console.log(del[i])
                 iniciaModal('modal-delete');
             })
 

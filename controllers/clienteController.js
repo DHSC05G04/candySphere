@@ -87,6 +87,7 @@ const clienteController = {
         const {
             id
         } = req.params
+        
         const cliente = await fetch(`${API_BASE}/clientes/${id}`)
         const clienteUnico = await cliente.json();
         console.log(clienteUnico)

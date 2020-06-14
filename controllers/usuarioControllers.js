@@ -5,7 +5,8 @@ const config = require("../configs/database");
 const bcrypt = require("bcrypt");
 const Email = require('../configs/email');
 const fetch = require('node-fetch');
-const API_BASE ='http://candyspheredev.herokuapp.com/api/v0'
+//const API_BASE ='http://candyspheredev.herokuapp.com/api/v0'
+const API_BASE ='http://localhost:3000/api/v0'
 
 require('dotenv').config();
 
