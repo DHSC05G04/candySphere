@@ -1089,6 +1089,39 @@ div.add-cliente a :hover {
     transition: all .3s linear;
 }
 
+.lougradouro{
+    display: flex;
+  
+}
+.lougradouro div{
+    width: auto;
+}
+
+.lougradouro #nome-cliente{
+   width: 100%;
+}
+ #numero-cliente{
+  
+  }
+
+.dados-numero{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+ 
+ 
+    
+}
+.dados-complemento{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+     ;
+    
+}
+.dados-end-pai{
+    display: flex;
+}
 /* section#tabela-corpo div.add-cliente a span:hover {
     text-shadow: none;
     color: var(--color5);
@@ -1315,7 +1348,7 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
 }
 
 #form-cliente input {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     height: 30px;
 }
 
@@ -1333,7 +1366,12 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
     margin-bottom: 10px;
     text-align: center;
 }
-
+#form-cliente input[type=submit]:hover{
+    background-color: var(--color2);
+    color: var(--color5);
+    box-shadow: 0px 0px 8px var(--color5);
+    cursor: pointer;
+}
 /* fim da css clientes */
 
 @media screen and (max-width: 800px) {
