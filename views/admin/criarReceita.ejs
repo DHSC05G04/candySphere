@@ -33,15 +33,15 @@
                     </div>
                     <div id="infoInstrucoes" class="itemInfo">
                         <h4 class="sectionDivider">Instruções de preparo</h4>
-                        <p><button id="addInst" type="button" class="material-icons addRemItem" onclick="retornar()">remove</button><b>Instrução 1:</b>
-                            <textarea class="dataInput" placeholder="Instrução" name="instrucao"></textarea></p>
-                        <button id="addInst" type="button" class="material-icons addRemItem" onclick="retornar()">add</button>
+                        <p id="instCont-0"><button id="remInst-0" type="button" class="material-icons addRemItem">remove</button><b>Instrução:</b>
+                            <textarea class="dataInput" placeholder="Instrução" name="instrucao[]"></textarea></p>
+                        <button id="addInst" type="button" class="material-icons addRemItem">add</button>
                     </div>
                 </div>
             </section>
             <section class="itemViewFooter">
                 <button type="submit" class="material-icons">save</button>
-                <button type="button" class="material-icons" onclick="retornar()">clear</button>
+                <button type="button" class="material-icons" onclick="retornar()">arrow_back</button>
             </section>
         </form>
     </main>

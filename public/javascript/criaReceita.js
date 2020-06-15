@@ -6,6 +6,8 @@ window.addEventListener('load', async function() {
     const ingDataList = document.getElementById('ingredientes-0')
     const ingRemButton = document.getElementById('remIng-0')
     const ingAddButton = document.getElementById('addIng')
+    const instRemButton = document.getElementById('remInst-0')
+    const instAddButton = document.getElementById('addInst')
     const listaIngAPI = await fetch(`${API_BASE}/estocaveis`)
     listaIng = await listaIngAPI.json()
 
@@ -47,6 +49,8 @@ window.addEventListener('load', async function() {
 
     ingRemButton.addEventListener('click', function(event){removeItem(event)})
     ingAddButton.addEventListener('click', function(event){addIngItem(event)})
+    instRemButton.addEventListener('click', function(event){removeItem(event)})
+    instAddButton.addEventListener('click', function(event){addInstItem(event)})
 })
 
 function removeItem(event) {
@@ -122,4 +126,33 @@ function addIngItem(event) {
     })
 
     ingRemButton.addEventListener('click', function(event){removeItem(event)})
+}
+
+function addInstItem(event) {
+    const button = event.target
+    const buttonParent = button.parentNode
+
+    let siblingsCounter = 0
+    for(i = 1 ; i < buttonParent.childNodes.length; i++) {
+        if(buttonParent.childNodes[buttonParent.childNodes.length - i].tagName == "P") {
+            siblingsCounter = buttonParent.childNodes.length - i;
+            break
+        }
+    }
+
+    const [,prevSiblingId] = buttonParent.childNodes[siblingsCounter].id.split('-')
+    const newId = Number(prevSiblingId) + 1
+
+    const newElement = document.createElement('p')
+    newElement.id = `instCont-${newId}`
+    newElement.innerHTML = `
+        <p id="instCont-${newId}"><button id="remInst-${newId}" type="button" class="material-icons addRemItem">remove</button><b>Instrução:</b>
+        <textarea class="dataInput" placeholder="Instrução" name="instrucao[]"></textarea></p>
+    `
+
+    buttonParent.insertBefore(newElement, button)
+
+    const instRemButton = document.getElementById(`remInst-${newId}`)
+
+    instRemButton.addEventListener('click', function(event){removeItem(event)})
 }

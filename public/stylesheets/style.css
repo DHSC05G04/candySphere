@@ -623,7 +623,7 @@ textarea {
     transition: .5s;
 }
 
-#addIng {
+#addIng, #addInst {
     align-self: center;
 }
 
