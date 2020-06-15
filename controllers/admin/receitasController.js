@@ -58,9 +58,88 @@ const receitasController = {
             return res.render('admin/criarReceita', { title: 'Express', tabs: tabActive, API_BASE, usuario:req.session.user });
     },
 
-    store: (req, res) => {
+    store: async (req, res) => {
+        const [foto] = req.files
         const dadosRaw = req.body
-        console.log(dadosRaw)
+        if(foto != undefined) {
+            dadosRaw.foto = `/images/receitas/${foto.filename}`
+        }
+        
+        const dadosReceita = {
+            nome: dadosRaw.nome,
+            descricao: dadosRaw.descricao,
+            tempo_preparo: dadosRaw.tempo_preparo,
+            rendimento: dadosRaw.rendimento,
+            foto: dadosRaw.foto
+        }
+
+        let instrucoes = []
+        if(Array.isArray(dadosRaw.instrucao)) {
+            dadosRaw.instrucao.forEach(element => {
+                const instrucao = {
+                    instrucao: element
+                }
+                instrucoes.push(instrucao)
+            });
+        } else {
+            const instrucao = {
+                instrucao: dadosRaw.instrucao
+            }
+            instrucoes.push(instrucao)
+        }
+
+        let ingredientes = []
+        if(Array.isArray(dadosRaw.ingrediente)){
+            dadosRaw.ingrediente.forEach((element, index) => {
+                const cadIngrediente = {
+                    quantidade: dadosRaw.quantidade[index],
+                    unidade_id: dadosRaw.unidade[index],
+                    estoque_id: element
+                }
+
+                ingredientes.push(cadIngrediente)
+            })
+        } else {
+            const cadIngredientes = {
+                quantidade: dadosRaw.quantidade,
+                unidade_id: dadosRaw.unidade,
+                estoque_id: dadosRaw.ingrediente
+            }
+        }
+
+        const receitaAPI = await fetch(`${API_BASE}/receitas`, {
+            method: 'post',
+            body: JSON.stringify(dadosReceita),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const receita = await receitaAPI.json()
+        const receitaId = receita.id
+
+        instrucoes.forEach(async instrucao => {
+            instrucao.receita_id = receitaId
+            await fetch(`${API_BASE}/instrucoes`, {
+                method: 'post',
+                body: JSON.stringify(instrucao),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        })
+
+        ingredientes.forEach(async ingrediente => {
+            ingrediente.receita_id = receitaId
+            await fetch(`${API_BASE}/ingredientes`, {
+                method: 'post',
+                body: JSON.stringify(ingrediente),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        })
+
+        return res.redirect('/admin/receitas')
     },
 
     update: async (req, res) => {
