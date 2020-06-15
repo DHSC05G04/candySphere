@@ -7,6 +7,7 @@ const session = require("express-session");
 const methodOverride  = require("method-override");
 const passport = require("./configs/passport");
 const flash = require('express-flash');
+const cors = require('cors');
 
 //Front end routes
 const indexRouter = require('./routes/indexRoute');
@@ -46,6 +47,7 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(cors());
 app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(express.json());

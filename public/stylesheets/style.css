@@ -558,9 +558,15 @@ main {
     flex: 1;
 }
 
+.large {
+    min-width: 75%;
+    text-align: center;
+}
+
 textarea {
     flex-grow: 1;
     flex-basis: 100%;
+    margin-top: 8px;
 }
 
 #Visualizacao label {
@@ -596,6 +602,29 @@ textarea {
     border: 2px solid var(--color5);
     box-shadow: 0 0 0 5px var(--color2);
     transition: .5s;
+}
+
+.addRemItem {
+    margin: 0 15px;
+    padding: 5px;
+    font-size: 1em;
+    background-color: var(--color5);
+    color: var(--color1) !important;
+    border: 2px solid var(--color1);
+    box-shadow: 0 0 0 5px var(--color5);
+    border-radius: 1.25em;
+}
+
+.addRemItem:hover {
+    background-color: var(--color2);
+    color: var(--color5) !important;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2);
+    transition: .5s;
+}
+
+#addIng, #addInst {
+    align-self: center;
 }
 
 /* Configuração da tela de estoque */
@@ -773,6 +802,17 @@ a.btn.material-icons:hover {
 .modalFooter button {
     padding: 10px;
     margin: 15px;
+}
+
+#clienteInvalido.PDVError, #pagamentoInvalido.PDVError, #tipoUnError.receitaError {
+    color: red;
+    text-align: center;
+    display: inline-block;
+    width: auto;
+}
+
+#clienteInvalido.PDVError.hidden, #pagamentoInvalido.PDVError.hidden, #tipoUnError.receitaError.hidden {
+    display: none; 
 }
 
 /* ###### FINANCEIRO ######### */

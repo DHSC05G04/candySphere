@@ -18,7 +18,7 @@ const contaMovimentoController = {
                     {
                         model: Pagamento,
                         as: "pagamento",
-                        attributes: ['data_pgto', 'valor', 'obervacao'],
+                        attributes: ['data_pgto', 'valor', 'observacao'],
                     },
                 ]
             })
@@ -39,14 +39,14 @@ const contaMovimentoController = {
             const {
                 data,
                 saldo,
-                obervacao,
+                observacao,
                 recebimentos_id,
                 pagamento_id
             } = req.body
             const contaMovimento = await ContaMovimento.create({
                 data,
                 saldo,
-                obervacao,
+                observacao,
                 recebimentos_id,
                 pagamento_id
             });
@@ -66,14 +66,14 @@ const contaMovimentoController = {
                 id,
                 data,
                 saldo,
-                obervacao,
+                observacao,
                 recebimentos_id,
                 pagamento_id
             } = req.body
             const contaMovimento = await ContaMovimento.update({
                 data,
                 saldo,
-                obervacao,
+                observacao,
                 recebimentos_id,
                 pagamento_id
             }, {

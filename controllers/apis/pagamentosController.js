@@ -9,7 +9,6 @@ const {
 const pagamentosController = {
 
     index: async (req, res) => {
-
         try {
             const pagamento = await Pagamento.findAll({
                 include: [{
@@ -46,7 +45,7 @@ const pagamentosController = {
             const {
                 data_pgto,
                 valor,
-                obervacao,
+                observacao,
                 status_id,
                 conta_id,
                 formas_pagamento_id
@@ -54,7 +53,7 @@ const pagamentosController = {
             const pagamento = await Pagamento.create({
                 data_pgto,
                 valor,
-                obervacao,
+                observacao,
                 status_id,
                 conta_id,
                 formas_pagamento_id
@@ -71,7 +70,7 @@ const pagamentosController = {
                 id,
                 data_pgto,
                 valor,
-                obervacao,
+                observacao,
                 status_id,
                 conta_id,
                 formas_pagamento_id
@@ -79,7 +78,7 @@ const pagamentosController = {
             const pagamento = await Pagamento.update({
                 data_pgto,
                 valor,
-                obervacao,
+                observacao,
                 status_id,
                 conta_id,
                 formas_pagamento_id

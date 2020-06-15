@@ -87,6 +87,7 @@ function editarReceitas() {
             ingredienteId.type = 'text'
             ingredienteId.name = `ingredientes[${itemIndex}][componente][id]`
             ingredienteId.value = id
+            ingredienteId.setAttribute('hidden', 'true')
 
             formulario.appendChild(ingredienteId)
         }
