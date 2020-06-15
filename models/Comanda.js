@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     nota_fiscal: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
      
     pedido_id: {
@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     produto_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
+    },
+    quantidade: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false
     },
     createdAt: {
       type: DataTypes.DATE,
