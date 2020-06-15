@@ -133,3 +133,58 @@ window.addEventListener('load', async () => {
         })
     }
 })
+
+async function salvarPedido() {
+    const formPedido = document.createElement('form')
+    formPedido.action = '/admin/vendas/concluir'
+    formPedido.method = 'POST'
+
+    const cliente = document.getElementById('inputCliente')
+    const pagamento = document.getElementById('inputPagamento')
+    const entrega = document.getElementById('inputEntrega')
+    const observacao = document.getElementById('inputObs')
+
+    let valorTotal = 0
+
+    listaProdutos.forEach(produto => {
+        const produtoId = document.createElement('input')
+        produtoId.name = "produto_id[]"
+        produtoId.value = produto.id
+        produtoId.setAttribute('type', 'hidden')
+        const produtoQtd = document.createElement('input')
+        produtoQtd.name = "quantidade[]"
+        produtoQtd.value = produto.qtd
+        produtoQtd.setAttribute('type', 'hidden')
+
+        formPedido.appendChild(produtoId)
+        formPedido.appendChild(produtoQtd)
+
+        valorTotal += produto.qtd * produto.valor
+    })
+
+    const valor = document.createElement('input')
+    valor.name = 'valor'
+    valor.value = valorTotal
+    valor.pattern = '0.00'
+    valor.step = '0.01'
+    valor.setAttribute('type', 'hidden')
+
+    const [,CPFCliente] = cliente.value.split(' CPF: ')
+    const infoClienteAPI = await fetch(`${API}/clientes?cpf=${CPFCliente}`)
+    const [infoCliente] = await infoClienteAPI.json()
+    cliente.value = infoCliente.id
+
+    const [,idPagamento] = pagamento.value.split(' id: ')
+    pagamento.value = idPagamento
+
+    formPedido.appendChild(valor)
+    formPedido.appendChild(cliente)
+    formPedido.appendChild(pagamento)
+    formPedido.appendChild(entrega)
+    formPedido.appendChild(observacao)
+
+    document.body.appendChild(formPedido)
+
+    sessionStorage.clear()
+    return formPedido.submit()
+}
