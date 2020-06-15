@@ -15,9 +15,22 @@ module.exports = {
       {
         id:2,
         is_admin:false,
-        descricao: 'Caixa'
+        descricao: 'Salão'
       },
-    ], {});
+      {
+        id:3,
+        is_admin:false,
+        descricao: 'RH'
+      },
+      {
+        id:4,
+        is_admin:false,
+        descricao: 'Financeiro'
+      },
+    ], {
+      ignoreDuplicates: true,
+      updateOnDuplicate: false,
+    });
   },
 
   down: (queryInterface, Sequelize) => {

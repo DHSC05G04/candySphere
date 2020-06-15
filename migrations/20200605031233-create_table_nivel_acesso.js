@@ -19,7 +19,6 @@ module.exports = {
         type: Sequelize.STRING(45),
       }
        });
-b 
   },
 
   down: (queryInterface, Sequelize) => {
