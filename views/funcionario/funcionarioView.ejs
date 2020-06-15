@@ -136,8 +136,7 @@
     <!-- Modal Delete -->
     <div id="modal-delete" class="modal-container">
         <div id="conteudo-modal">
-            <form id="form-cliente" class="form-del" method="POST"
-                action="/usuarios?_method=DELETE">
+            <form id="form-cliente" class="form-del" method="POST" action="/usuarios?_method=DELETE">
                 <input id="id-del" name="id" type="hidden" value="">
                 <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
                 <h1 id="titulo"> <span class="material-icons">
@@ -220,11 +219,10 @@
 
         formDel = document.querySelector('.form-del');
         idDelete = document.querySelector('#id-del');
-       
         btnExcluir.addEventListener('click', (e) => {
             e.preventDefault()
-            formDel.action ="/usuarios?_method=DELETE"
-            idDelete.value="<%=usuarioCadastrado[0].id%>"
+            formDel.action = "/usuarios?_method=DELETE"
+            idDelete.value = "<%=usuarioCadastrado[0].id%>"
             iniciaModal('modal-delete')
         })
     </script>

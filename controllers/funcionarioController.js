@@ -2,7 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const moment = require('moment');
-const API_BASE = 'http://candyspheredev.herokuapp.com/api/v0';
+require('dotenv').config();
+
+const API_BASE = process.env.API_BASE;
 const funcionarioController = {
     listarFuncionario: async (req, res, next) => {
         let tabActive = {

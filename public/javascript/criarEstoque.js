@@ -3,22 +3,29 @@ const estoqueView = document.getElementById('estoqueView')
 const listaTipos = document.getElementById('tipos')
 const inputTipos = document.getElementById('inputTipo')
 const listaUnidades = document.getElementById('unidades')
+const inputUnidade = document.getElementById('inputUnidade')
 const formulario = document.getElementById('Visualizacao')
 const vendavel = document.getElementById('vendavel')
 
-window.addEventListener('load', async function() {
+window.addEventListener('load', async function () {
     const tiposAPI = await fetch(`${API_BASE}/tipos`)
     const tipos = await tiposAPI.json()
 
-    tipos.forEach(tipo => {
-        listaTipos.innerHTML += `
-            <option value="${tipo.tipo} id: ${tipo.id}">
-        `        
-    });
+    tipos.forEach((tipo, index) => {
+        if(index == 0) {
+         listaTipos.innerHTML = `
+             <option value="${tipo.tipo} id: ${tipo.id}">
+         `           
+        } else {
+         listaTipos.innerHTML += `
+             <option value="${tipo.tipo} id: ${tipo.id}">
+         `           
+        }
+    })
 
-    atualizaUnidades(dadosEstoque.tipo_id)
+    await atualizaUnidades()
     return
-}) 
+})
 
 inputTipos.addEventListener('change', async function () {
     const [,novoTipoId] = inputTipos.value.split(' id: ')
@@ -30,6 +37,8 @@ inputTipos.addEventListener('change', async function () {
 async function atualizaUnidades(idTipo) {
     const unidadesAPI = await fetch(`${API_BASE}/unidadesportipo?tipo_id=${idTipo}`)
     const unidades = await unidadesAPI.json()
+
+    inputUnidade.value=''
     
     unidades.forEach((unidade, index) => {
         if(index == 0) {
@@ -42,20 +51,6 @@ async function atualizaUnidades(idTipo) {
             `
         }
     })
-}
-
-async function excluirItem(id) {
-    const locationRef = window.location.href.split('/')
-
-    await fetch(`${API_BASE}/estocaveis/${id}`, {
-        method: 'delete'
-    })
-    
-    if(locationRef[locationRef.length-1] != 'estoque') {
-        return window.location.replace(document.referrer);
-    } else {
-        return window.location.reload();
-    }
 }
 
 formulario.addEventListener('submit', function (event) {

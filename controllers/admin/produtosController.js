@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
+require('dotenv').config();
 
-const API_BASE = 'http://localhost:3000/api/v0';
+const API_BASE = process.env.API_BASE;
 
 const produtosController = {
     index: async (req, res) => {
@@ -15,7 +16,7 @@ const produtosController = {
             const produtosAPI = await fetch(`${API_BASE}/produtos`)
             const produtos = await produtosAPI.json()
 
-            return res.render('admin/produtos', { title: 'Express', tabs: tabActive , produtos,usuario:req.session.user});
+            return res.render('admin/produtos', { title: 'Express', tabs: tabActive , produtos, API_BASE, usuario:req.session.user});
         } catch (error) {
             return res.send(error)
         }

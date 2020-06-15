@@ -1,7 +1,8 @@
 const fetch = require('node-fetch');
 const { Op } = require('sequelize');
+require('dotenv').config();
 
-const API_BASE = 'http://localhost:3000/api/v0';
+const API_BASE = process.env.API_BASE;
 
 const { Receita, Estocaveis, InstrucoesPreparo, Ingrediente, sequelize } = require('../../models');
 

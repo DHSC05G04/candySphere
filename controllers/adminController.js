@@ -1,8 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const fetch = require('node-fetch');
+require('dotenv').config();
 
-const API_BASE = 'http://localhost:3000/api/v0';
+const API_BASE = process.env.API_BASE;
 
 const adminController = {
     index: (req, res) => {
@@ -12,7 +13,7 @@ const adminController = {
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
-        res.render('admin/admin', { title: 'Express', tabs: tabActive,usuario:req.session.user });
+        res.render('admin/admin', { title: 'Express', tabs: tabActive, usuario:req.session.user });
     }
 };
 

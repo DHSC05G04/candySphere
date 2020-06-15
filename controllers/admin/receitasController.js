@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
+require('dotenv').config();
 
-const API_BASE = 'http://localhost:3000/api/v0';
+const API_BASE = process.env.API_BASE;
 
 const receitasController = {
     index: async (req, res) => {
@@ -15,7 +16,7 @@ const receitasController = {
             const receitasAPI = await fetch(`${API_BASE}/receitas`);
             const receitas = await receitasAPI.json();
     
-            return res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas,usuario:req.session.user });
+            return res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas, API_BASE, usuario:req.session.user });
             
         } catch (error) {
             return res.send(error);            
@@ -37,7 +38,7 @@ const receitasController = {
             const receitasAPI = await fetch(`${API_BASE}/receitas/${id}`);
             const [receita] = await receitasAPI.json();
     
-            return res.render('admin/receitasView', { title: 'Express', tabs: tabActive, receita, usuario:req.session.user });
+            return res.render('admin/receitasView', { title: 'Express', tabs: tabActive, receita, API_BASE, usuario:req.session.user });
             
         } catch (error) {
             return res.send(error);            
@@ -59,22 +60,18 @@ const receitasController = {
         const {id} = req.params
 
         try {
-            const result = await fetch(`${API_BASE}/receitas/${id}`, {
+            await fetch(`${API_BASE}/receitas/${id}`, {
                 method: 'put',
                 body: JSON.stringify(dados),
                 headers: {
                     'Content-Type': 'application/json' 
                 }
             })
-
-            return res.redirect(`/admin/receitas/${id}`);
+            return res.redirect(`/admin/receitas`);
             
         } catch (error) {
             return res.status(400).json(error)
-            
         }
-        
-
     }
 }
 
