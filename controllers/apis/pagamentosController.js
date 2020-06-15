@@ -9,7 +9,6 @@ const {
 const pagamentosController = {
 
     index: async (req, res) => {
-
         try {
             const pagamento = await Pagamento.findAll({
                 include: [{
