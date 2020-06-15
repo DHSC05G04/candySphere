@@ -804,14 +804,14 @@ a.btn.material-icons:hover {
     margin: 15px;
 }
 
-#clienteInvalido.PDVError, #pagamentoInvalido.PDVError {
+#clienteInvalido.PDVError, #pagamentoInvalido.PDVError, #tipoUnError.receitaError {
     color: red;
     text-align: center;
     display: inline-block;
     width: auto;
 }
 
-#clienteInvalido.PDVError.hidden, #pagamentoInvalido.PDVError.hidden {
+#clienteInvalido.PDVError.hidden, #pagamentoInvalido.PDVError.hidden, #tipoUnError.receitaError.hidden {
     display: none; 
 }
 

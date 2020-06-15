@@ -1,5 +1,6 @@
 const API_BASE = API
 let listaIng = []
+const formulario = document.getElementById('Visualizacao')
 
 window.addEventListener('load', async function() {
     const listaIngredientes = document.getElementById('ing-0')
@@ -53,8 +54,13 @@ window.addEventListener('load', async function() {
     instAddButton.addEventListener('click', function(event){addInstItem(event)})
 })
 
-function removeItem(event) {
-    const button = event.target
+function removeItem(event, element="") {
+    let button
+    if(element == "") {
+        button = event.target
+    } else {
+        button = element
+    }
     const eleToRemove = button.parentNode
     eleToRemove.parentNode.removeChild(eleToRemove)
 }
@@ -78,9 +84,9 @@ function addIngItem(event) {
     newElement.id = `ingCont-${newId}`
     newElement.innerHTML = `
         <button id="remIng-${newId}" type="button" class="material-icons addRemItem remIng-${newId}">remove</button>
-        Quantidade: <input class="dataInput" type="number" placeholder="0" name="quantidade[]"> 
-        Unidade: <input id="unIng-${newId}" class="dataInput number" list="unidades-${newId}" placeholder="Unidade" name="unidade[]"><datalist id="unidades-${newId}"></datalist>
-        Ingrediente: <input id="ing-${newId}" list="ingredientes-${newId}" class="dataListComponent dataInput" placeholder="Ingrediente" name="ingrediente[]"><datalist id="ingredientes-${newId}"></datalist>
+        Quantidade: <input class="dataInput" type="number" placeholder="0" name="quantidade[]" required> 
+        Unidade: <input id="unIng-${newId}" class="dataInput number" list="unidades-${newId}" placeholder="Unidade" name="unidade[]" required><datalist id="unidades-${newId}"></datalist>
+        Ingrediente: <input id="ing-${newId}" list="ingredientes-${newId}" class="dataListComponent dataInput" placeholder="Ingrediente" name="ingrediente[]" required><datalist id="ingredientes-${newId}"></datalist>
     `
 
     buttonParent.insertBefore(newElement, button)
@@ -147,7 +153,7 @@ function addInstItem(event) {
     newElement.id = `instCont-${newId}`
     newElement.innerHTML = `
         <p id="instCont-${newId}"><button id="remInst-${newId}" type="button" class="material-icons addRemItem">remove</button><b>Instrução:</b>
-        <textarea class="dataInput" placeholder="Instrução" name="instrucao[]"></textarea></p>
+        <textarea class="dataInput" placeholder="Instrução" name="instrucao[]" required></textarea></p>
     `
 
     buttonParent.insertBefore(newElement, button)
@@ -155,4 +161,75 @@ function addInstItem(event) {
     const instRemButton = document.getElementById(`remInst-${newId}`)
 
     instRemButton.addEventListener('click', function(event){removeItem(event)})
+}
+
+async function submitValidation() {
+    // Elimina instruções vazias
+    const instrucoes = document.getElementsByTagName('textarea')
+    for(i = 0; i < instrucoes.length; i++) {
+        if(instrucoes.value == '' && instrucoes.value == undefined && instrucoes.value == null &&
+        instrucoes.value == 'undefined' && instrucoes.value == 'null') {
+            removeItem(0, instrucoes[i])
+        }
+    }
+
+    // Elimina ingredientes vazios
+    const ingredientes = document.getElementsByClassName('Ing')
+    for(i = 0; i < ingredientes.length; i++){
+        const ingFilhos = ingredientes[i].children
+        for(j = 0; j < ingFilhos.length; j++){
+            if(ingFilhos[j].tagName == 'INPUT' &&
+            (ingFilhos[j].value != '' && ingFilhos[j].value != undefined && ingFilhos[j].value != 'undefined'
+            && ingFilhos[j].value != null && ingFilhos[j].value != 'null')) {
+                break
+            } else if(j == (ingFilhos.length-1)) {
+                removeItem(0, ingFilhos[0])
+            }
+        }
+    }
+
+    let errors = {}
+
+    // Valida se tipos e unidades batem
+    const unxtipoAPI = await fetch(`${API_BASE}/unidadesportipo`)
+    const unxtipo = await unxtipoAPI.json()
+
+    const listaIngre = document.getElementsByClassName('dataListComponent')
+    for(i = 0; i < listaIngre.length; i++) {
+        const [,elementId] = listaIngre[i].id.split('-')
+        const [,ingId] = listaIngre[i].value.split(' id: ')
+        const eqUn = document.getElementById(`unIng-${elementId}`)
+        const [,unId] = eqUn.value.split(' id: ')
+        const ingredienteVer = listaIng.find(item => item.id == ingId)
+        const tipoValidacao = ingredienteVer.tipo_id
+
+        const valido = unxtipo.find(item => item.tipo_id == tipoValidacao && item.unidade_id == unId)
+        if(valido == undefined) {
+            errors.tipouni = true
+        } else {
+            errors.tipouni = false
+        }
+    }
+
+    if(errors.tipouni == true) {
+        const error = document.getElementById('tipoUnError')
+        error.classList.remove('hidden')
+        return
+    } else {
+        const error = document.getElementById('tipoUnError')
+        error.classList.add('hidden')        
+    }
+
+    for(i = 0; i < listaIngre.length; i++) {
+        const [,ingId] = listaIngre[i].value.split(' id: ')
+        listaIngre[i].value = ingId
+    }
+
+    const listaUn = document.querySelectorAll('.dataInput.number')
+    for(i = 0; i < listaUn.length; i++){
+        const [,unId] = listaUn[i].value.split(' id: ')
+        listaUn[i].value = unId
+    }
+
+    return formulario.submit();
 }

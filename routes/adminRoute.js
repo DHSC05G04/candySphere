@@ -54,7 +54,7 @@ router.put('/estoque/:id', uploadProduto.any(), estoqueController.update);
 
 router.get('/receitas', receitasController.index);
 router.get('/receitas/criar', receitasController.create);
-router.post('/receitas/criar', receitasController.store);
+router.post('/receitas/criar', upload.any(), receitasController.store);
 router.get('/receitas/:id', receitasController.indexById);
 router.put('/receitas/:id', upload.any(), receitasController.update);
 

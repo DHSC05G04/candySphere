@@ -59,7 +59,8 @@ const receitasController = {
     },
 
     store: (req, res) => {
-
+        const dadosRaw = req.body
+        console.log(dadosRaw)
     },
 
     update: async (req, res) => {
