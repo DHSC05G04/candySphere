@@ -11,7 +11,7 @@
             <article id="Visualizacao" class="produto">
                 <section class="itemViewHeader">
                     <span class="material-icons">shopping_cart</span>
-                    <h2>Operações / PDV / Concluir Venda</h2>
+                    <h2>Operações / PDV</h2>
                 </section>
                 <section class="itemViewMain">
                     <section class="itemViewDesc">
@@ -36,16 +36,39 @@
                                             <td><%= produto.valor %></td>
                                         </tr>
                                     <% }) %>
+                                    <tr>
+                                        <td><b>Total</b></td>
+                                        <td colspan="2"><b><%= produtos.reduce((acc, cur) => acc + (cur.valor * cur.qtd), 0) %></b></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </section>
-                        <section class="itemInfo">
+                        <section class="itemInfo center">
                             <h4 class="sectionDivider">Cliente</h4>
+                            <p id="clienteInvalido" class="PDVError hidden">*Selecione um cliente válido</p>
+                            <input id="inputCliente" list="clientes" class="dataListComponent dataInput large" name="cliente_id" placeholder="Selecione o cliente" required>
+                            <datalist id="clientes" class="listaClientes">
+                            </datalist>
+                        </section>
+                        <section class="itemInfo center">
+                            <h4 class="sectionDivider">Forma de pagamento</h4>
+                            <p id="pagamentoInvalido" class="PDVError hidden">*Selecione uma forma de pagamento válida</p>
+                            <input id="inputPagamento" list="pagamento" class="dataListComponent dataInput large" name="forma_pagamento_id" placeholder="Selecione a forma de pagamento" required>
+                            <datalist id="pagamento">
+                            </datalist>
+                        </section>
+                        <section class="itemInfo center">
+                            <h4 class="sectionDivider">Data de Entrega</h4>
+                            <input id="inputEntrega" type="datetime-local" class="dataListComponent dataInput large" name="entrega" placeholder="Selecione a data de entrega" required>
+                        </section>
+                        <section class="itemInfo center">
+                            <h4 class="sectionDivider">Observações</h4>
+                            <textarea id="inputObs" style="text-align: left;" class="dataListComponent dataInput large" rows="8" placeholder="Digite qualquer observação sobre o pedido aqui." name="observacao"></textarea>
                         </section>
                     </section>
                 </section>
                 <section class="itemViewFooter">
-                    <button type="button" class="material-icons" onClick=iniciaModal(modalCarrinho)>save</button>
+                    <button type="button" class="material-icons" onClick=salvarPedido()>save</button>
                     <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
                 </section>
             </article>
@@ -54,7 +77,8 @@
         <%- include('../partials/footer') %>
 
         <script type="text/javascript">
-            const API = <%- JSON.stringify(API_BASE) %>
+            const API = <%- JSON.stringify(API_BASE) %>;
+            const listaProdutos = <%- JSON.stringify(produtos) %>;
         </script>
         <script type="text/javascript" src="/javascript/vendas.js"></script>
         <script type="text/javascript" src="/javascript/shared.js"></script>

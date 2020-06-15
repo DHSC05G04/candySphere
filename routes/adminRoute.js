@@ -44,7 +44,7 @@ router.get('/', adminController.index);
 router.get('/produtos', produtosController.index);
 router.get('/vendas', vendasController.index)
 router.post('/vendas', vendasController.indexConcluir)
-router.post('/vendas/concluir', vendasController.indexConcluir)
+router.post('/vendas/concluir', vendasController.store)
 
 router.get('/estoque', estoqueController.index);
 router.get('/estoque/criar', estoqueController.create);
@@ -53,6 +53,8 @@ router.get('/estoque/:id', estoqueController.indexById);
 router.put('/estoque/:id', uploadProduto.any(), estoqueController.update);
 
 router.get('/receitas', receitasController.index);
+router.get('/receitas/criar', receitasController.create);
+router.post('/receitas/criar', upload.any(), receitasController.store);
 router.get('/receitas/:id', receitasController.indexById);
 router.put('/receitas/:id', upload.any(), receitasController.update);
 

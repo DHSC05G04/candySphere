@@ -31,7 +31,7 @@
                     </section>
                 </section>
                 <section class="itemViewFooter">
-                    <button type="button" class="material-icons" >add</button>
+                    <button type="button" class="material-icons" onClick="window.location.href='/admin/receitas/criar'">add</button>
                     <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
                 </section>
             </article>
@@ -39,6 +39,9 @@
 
         <%- include('../partials/footer') %>
 
+        <script>
+            const API = <%- JSON.stringify(API_BASE) %>;
+        </script>
         <script src="/javascript/receitas.js"></script>
         <script type="text/javascript" src="/javascript/shared.js"></script>
     </body>

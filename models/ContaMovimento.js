@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL,
       allowNull: false
     },
-    obervacao: DataTypes.STRING,
+    observacao: DataTypes.STRING,
     recebimentos_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
