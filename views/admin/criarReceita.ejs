@@ -6,7 +6,7 @@
 <body>
     <%- include('../partials/header') %>
     <main id="receitaView">
-        <form action="/admin/receitas" id="Visualizacao" method="POST" enctype="multipart/form-data">
+        <form action="/admin/receitas/criar" id="Visualizacao" method="POST" enctype="multipart/form-data">
             <section class="itemViewHeader">
                 <span class="material-icons">menu_book</span><h2>Operação / Receita<h2>
             </section>
@@ -24,30 +24,33 @@
                         <p><b>Rendimento: </b><input class="dataInput" type="number" name="rendimento" placeholder="0"></p>
                     </div>
                     <div id="infoIngredientes" class="itemInfo">
-                        <h4 class="sectionDivider">Ingredientes</h4>
-                        <p>Quantidade: <input class="dataInput" type="number" placeholder="0" name="quantidade"> 
-                        Unidade: <input class="dataInput number" list="unidades" placeholder="unidade" name="unidade"><datalist id="unidades"></datalist>
-                        Ingrediente: <input list="ingredientes" class="dataListComponent dataInput" placeholder="ingrediente" name="ingrediente"><datalist id="ingredientes"></datalist></p>
+                        <h4 id="listaIngredientes" class="sectionDivider">Ingredientes</h4>
+                        <p id="ingCont-0" class="Ing"><button id="remIng-0" type="button" class="material-icons addRemItem remIng-0">remove</button>
+                            Quantidade: <input class="dataInput" type="number" placeholder="0" name="quantidade[]"> 
+                            Unidade: <input id="unIng-0" class="dataInput number" list="unidades-0" placeholder="Unidade" name="unidade[]"><datalist id="unidades-0"></datalist>
+                            Ingrediente: <input id="ing-0" list="ingredientes-0" class="dataListComponent dataInput" placeholder="Ingrediente" name="ingrediente[]"><datalist id="ingredientes-0"></datalist></p>
+                        <button id="addIng" type="button" class="material-icons addRemItem">add</button>
                     </div>
                     <div id="infoInstrucoes" class="itemInfo">
                         <h4 class="sectionDivider">Instruções de preparo</h4>
-                        <p><textarea class="dataInput" placeholder="Instrucao" name="instrucao"></textarea></p>
+                        <p><button id="addInst" type="button" class="material-icons addRemItem" onclick="retornar()">remove</button><b>Instrução 1:</b>
+                            <textarea class="dataInput" placeholder="Instrução" name="instrucao"></textarea></p>
+                        <button id="addInst" type="button" class="material-icons addRemItem" onclick="retornar()">add</button>
                     </div>
                 </div>
             </section>
             <section class="itemViewFooter">
                 <button type="submit" class="material-icons">save</button>
-                <button type="button" class="material-icons" onclick="retornar())">clear</button>
+                <button type="button" class="material-icons" onclick="retornar()">clear</button>
             </section>
         </form>
     </main>
 
     <%- include('../partials/footer') %>
     <script>
-        const dadosReceita = <%- JSON.stringify(receita) %>;
         const API = <%- JSON.stringify(API_BASE) %>
     </script>
-    <script src="/javascript/receitas.js"></script>
+    <script src="/javascript/criaReceita.js"></script>
     <script type="text/javascript" src="/javascript/shared.js"></script>
 </body>
 

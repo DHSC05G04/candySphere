@@ -47,6 +47,17 @@ const receitasController = {
 
     },
 
+    create: async (req, res) => {
+        let tabActive = {homeAct: "inactive",
+                        adminAct: "active",
+                        financeiroAct: "inactive",
+                        clientesAct: "inactive",
+                        funcionariosAct: "inactive",
+                        pdvAct: "inactive"};
+    
+            return res.render('admin/criarReceita', { title: 'Express', tabs: tabActive, API_BASE, usuario:req.session.user });
+    },
+
     store: (req, res) => {
 
     },
