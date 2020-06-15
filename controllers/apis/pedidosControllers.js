@@ -41,7 +41,7 @@ const pedidosController = {
             entrega,
             total,
             sinal,
-            obervacao,
+            observacao,
             status_id,
             caixa_id,
             cliente_id
@@ -53,7 +53,7 @@ const pedidosController = {
                 entrega:entrega,
                 total:total,
                 sinal:sinal,
-                obervacao:obervacao,
+                observacao:observacao,
                 status_id:status_id,
                 caixa_id:caixa_id,
                 cliente_id:cliente_id},{

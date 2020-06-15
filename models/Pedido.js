@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     total: DataTypes.DECIMAL,
     sinal: DataTypes.DECIMAL,
-    obervacao: DataTypes.STRING,
+    observacao: DataTypes.STRING,
     status_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
