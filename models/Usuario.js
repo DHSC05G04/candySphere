@@ -23,18 +23,20 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
+    'status':{
+      type: DataTypes.INTEGER.UNSIGNED,
+      defaultValue:1
+    },
+    'change_next_login':{
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
     'last_login': {
       type: DataTypes.DATE,
       allow_nul: true,
     }, // added
-    status: {
-      type: DataTypes.ENUM('active', 'inactive'),
-      defaultValue: 'active'
-    }, // added
-    'change_password': {
-      type: DataTypes.ENUM('active', 'inactive'),
-      defaultValue: 'active'
-    }, // added
+    'reset_token': DataTypes.STRING(32),    // added
+    'reset_token_expires': DataTypes.DATE,  // added
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
