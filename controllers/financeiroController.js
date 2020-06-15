@@ -21,7 +21,8 @@ const financeiroController = {
       tabs: tabActive,
       dataFinanceiro,
       tipoGrafico: "home",
-      usuario: req.session.user
+      usuario: req.session.user,
+      user: req.user
     });
   },
   relatorio: (req, res) => {
@@ -46,7 +47,8 @@ const financeiroController = {
         tabs: tabActive,
         dataFinanceiro,
         tipoGrafico: "receita-despesa",
-        usuario: req.session.user
+        usuario: req.session.user,
+        user: req.user
       });
     } else if (relatorio == 'vendas') {
       res.render('financeiro', {
@@ -54,7 +56,8 @@ const financeiroController = {
         tabs: tabActive,
         dataFinanceiro,
         tipoGrafico: "vendas",
-        usuario: req.session.user
+        usuario: req.session.user,
+        user: req.user
       });
     }
 

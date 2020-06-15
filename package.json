@@ -17,6 +17,7 @@
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-flash": "0.0.2",
     "express-session": "^1.17.1",
     "grpc": "^1.24.3",
     "http-errors": "~1.6.3",

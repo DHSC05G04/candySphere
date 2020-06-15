@@ -50,6 +50,8 @@ const funcionarioController = {
                 funcionarios: dataFuncionario,
                 funcionarioUnico:"",
                 usuario: req.session.user,
+                user: req.user,
+                user: req.user,
                 msg:""
             });
 
@@ -98,6 +100,7 @@ const funcionarioController = {
                 tabs: tabActive,
                 funcionarios: funcionario,
                 usuario: req.session.user,
+                user: req.user,
                 usuarioCadastrado,
                 moment
             });
@@ -187,6 +190,7 @@ const funcionarioController = {
                 funcionarios: dataFuncionario,
                 funcionarioUnico,
                 usuario: req.session.user,
+                user: req.user,
             });
 
         } catch (error) {

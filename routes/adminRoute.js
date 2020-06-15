@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
+const isAuthenticated = require('../middlewares/isAuthenticated');
 
 const adminController = require('../controllers/adminController');
 const receitasController = require('../controllers/admin/receitasController');
@@ -39,6 +40,7 @@ var uploadProduto = multer({
 })
 
 /* GET admin page. */
+router.use(isAuthenticated);
 router.get('/', adminController.index);
 
 router.get('/produtos', produtosController.index);
