@@ -7,10 +7,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true
     },
-    nome: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     descricao: DataTypes.STRING,
     tempo_preparo: DataTypes.INTEGER,
     rendimento: DataTypes.INTEGER,
@@ -47,6 +43,11 @@ module.exports = (sequelize, DataTypes) => {
     Receita.hasMany(models.InstrucoesPreparo, {
       foreignKey: 'receita_id',
       as: 'instrucoes'
+    })
+
+    Receita.hasOne(models.Estocaveis, {
+      foreignKey: 'receita_id',
+      as: 'fabricado'
     })
   };
   return Receita;

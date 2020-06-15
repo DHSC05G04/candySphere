@@ -17,11 +17,15 @@ var storage = multer.diskStorage({
 var upload = multer({
     storage: storage
 })
+
+
 /* GET funcionarios page. */
-router.get('/',funcionarioController.listarFuncionario)
-router.post('/',upload.any(), funcionarioController.store)
-router.put('/',upload.any(), funcionarioController.update)
-router.delete('/:id',funcionarioController.delete)
-router.get('/verFuncionario/:id',funcionarioController.verFuncionario)
-router.get('/atualizar/:id',funcionarioController.modal)
+router.get('/',funcionarioController.listarFuncionario);
+router.post('/',upload.any(), funcionarioController.store);
+router.put('/',upload.any(), funcionarioController.update);
+router.delete('/:id',funcionarioController.delete);
+router.get('/verFuncionario/:id',funcionarioController.verFuncionario);
+router.get('/atualizar/:id',funcionarioController.modal);
+
+
 module.exports = router;

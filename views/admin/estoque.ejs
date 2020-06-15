@@ -8,35 +8,47 @@
         <%- include('../partials/header') %>
 
         <main id="administracaoEstoque">
-            <table id="tabela-estoque">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Quantidade</th>
-                        <th>Custo</th>
-                        <th>Vendável?</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% estoque.forEach(item => {%>
-                    <tr>
-                        <td><%= item.nome %></td>
-                        <td><%= item.quantidade %> <%= item.unMedida.unidade %></td>
-                        <td class="center"><%= item.custo_unitario %></td>
-                        <% if(item.vendavel) { %>
-                            <td class="center"><input type="checkbox" checked disabled></td>
-                        <% } else { %>
-                            <td class="center"><input type="checkbox" disabled></td>
-                        <% }; %>
-                        <td><a class="btn-editar" href=""><span class="material-icons">edit</span></a>
-                            <a class="btn-deletar" href=""><span class="material-icons">delete</span></a>
-                        </td>
-                    </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-            <div class="add-estoque"><a id="btn-add" href="#"><span class="material-icons">add_circle</span></a></div>
+            <article id="Visualizacao">
+                <section class="itemViewHeader">
+                    <span class="material-icons">list_alt</span><h2>Operações / Estoque</h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewBody produto">
+                        <table id="tabela-estoque">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Quantidade</th>
+                                    <th>Custo</th>
+                                    <th>Vendável?</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% estoque.forEach(item => {%>
+                                <tr>
+                                    <td><%= item.nome %></td>
+                                    <td><%= item.quantidade %> <%= item.unMedida.unidade %></td>
+                                    <td class="center"><%= item.custo_unitario %></td>
+                                    <% if(item.vendavel) { %>
+                                        <td class="center"><input type="checkbox" checked disabled></td>
+                                    <% } else { %>
+                                        <td class="center"><input type="checkbox" disabled></td>
+                                    <% }; %>
+                                    <td><a class="btn-editar btn material-icons" href="/admin/estoque/<%= item.id %>">edit</a>
+                                        <a class="btn-deletar btn material-icons" onclick="excluirItem(<%= item.id %>)">delete</a>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" >add</button>
+                    <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                </section>
+            </article>            
         </main>
 
         <div id="modal-estoque" class="modal-container">
@@ -64,8 +76,6 @@
 
         <%- include('../partials/footer') %>
 
-        <%- include('../partials/scripts') %>
-
         <script>
             function iniciaModal(modalId){
                 const modal = document.getElementById(modalId);
@@ -83,6 +93,8 @@
             });
         </script>
 
+        <script src="/javascript/estoque.js"></script>
+        <script type="text/javascript" src="/javascript/shared.js"></script>
     </body>
 
 </html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <%- include('../partials/head') %>
+
+    <body>
+
+        <%- include('../partials/header') %>
+
+        <main id="administracao">
+            <article id="Visualizacao" class="produto">
+                <section class="itemViewHeader">
+                    <span class="material-icons">shopping_cart</span>
+                    <h2>Operações / PDV</h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewBody produto">
+                        <% produtos.forEach((produto) => { %>
+                            <section class="adminCardContainer produtos">
+                                <section class="foto" style="background-image: url(<%= produto.itemEstoque.foto %>); background-size: cover;">
+                                </section>
+                                <section class="description">
+                                    <h3><%= produto.itemEstoque.nome %></h3>
+                                    <p class="valor">R$ <%= produto.valor %></p>
+                                </section>
+                                <section class="adminCardFooter">
+                                    <button type="button" id=<%= `Button-${produto.id}` %> class="btn material-icons addCart" onClick=<%= `addToCart(${produto.id})` %>>add_shopping_cart</button>
+                                </section>
+                            </section>                                
+                        <% }); %>
+                    </section>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick=iniciaModal(modalCarrinho)>shopping_cart</button>
+                    <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                </section>
+            </article>
+        </main>
+
+        <%- include('../partials/footer') %>
+
+        <div id="modalCarrinho" class="modal-container">
+            <div id="conteudo-modal">
+                <form id="form-estoque" action="">
+                    <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
+                    <h1>Carrinho de compras</h1>
+                    <table>
+                        <thead>
+                            <tr>        
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaCompras">
+                        </tbody>
+                    <input type="submit" class="btn-cliente" value="Salvar">
+                </form>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="/javascript/vendas.js"></script>
+        <script type="text/javascript" src="/javascript/shared.js"></script>
+    </body>
+
+</html>
