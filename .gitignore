@@ -107,5 +107,5 @@ dist
 
 ## By LLS
 **/*.code-workspace
-
-public/images/avatar/*
+**/public/images/avatar*
+package-lock.json.old

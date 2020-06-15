@@ -26,6 +26,7 @@ const clienteController = {
             tabs: tabActive,
             clientes: dataCliente,
             usuario: req.session.user,
+            user: req.user,
             clienteUnico: ""
         });
     },
@@ -71,6 +72,7 @@ const clienteController = {
             tabs: tabActive,
             clientes: dataCliente,
             usuario: req.session.user,
+            user: req.user,
             clienteUnico,
             
         });
@@ -96,6 +98,7 @@ const clienteController = {
             title: 'Express',
             tabs: tabActive,
             usuario: req.session.user,
+            user: req.user,
             clienteUnico,
             moment
         });

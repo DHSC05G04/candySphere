@@ -50,7 +50,10 @@ module.exports = {
       },
       
 
-    ], {});
+    ], {
+      ignoreDuplicates: true,
+      updateOnDuplicate: false,
+    });
 
   },
 
