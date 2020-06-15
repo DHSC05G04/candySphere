@@ -135,14 +135,61 @@ window.addEventListener('load', async () => {
 })
 
 async function salvarPedido() {
-    const formPedido = document.createElement('form')
-    formPedido.action = '/admin/vendas/concluir'
-    formPedido.method = 'POST'
-
+    const erroCliente = document.getElementById('clienteInvalido')
+    const erroPagamento = document.getElementById('pagamentoInvalido')
     const cliente = document.getElementById('inputCliente')
     const pagamento = document.getElementById('inputPagamento')
     const entrega = document.getElementById('inputEntrega')
     const observacao = document.getElementById('inputObs')
+
+    let errorCliente = false
+    let errorPagamento = false
+    let info = []
+    
+    if(cliente.value == undefined || cliente.value == null || 
+        cliente.value == 'undefined' || cliente.value == 'null' || cliente.value == '') {
+        erroCliente.classList.remove('hidden')
+        errorCliente = true        
+    } else {
+        const [,CPFCliente] = cliente.value.split(' CPF: ')
+        const infoClienteAPI = await fetch(`${API}/clientes?cpf=${CPFCliente}`)
+        const [infoCliente] = await infoClienteAPI.json()
+        if(infoCliente != undefined) {
+            info.push(infoCliente.id)
+            errorCliente = false
+            erroCliente.classList.add('hidden')
+        } else {
+            erroCliente.classList.remove('hidden')
+            errorCliente = true
+        }        
+    }
+
+    if(pagamento.value == undefined || pagamento.value == null || 
+        pagamento.value == 'undefined' || pagamento.value == 'null' || pagamento.value == '') {
+        erroPagamento.classList.remove('hidden')
+        errorPagamento = true
+    } else {
+        const [,idPagamento] = pagamento.value.split(' id: ')
+        const infoPagamentoAPI = await fetch(`${API}/forma-de-pagamento/${idPagamento}`)
+        const [infoPagamento] = await infoPagamentoAPI.json()
+        if(infoPagamento != undefined) {
+            info.push(idPagamento)
+            errorPagamento = false
+            erroPagamento.classList.add('hidden')
+        } else {
+            erroPagamento.classList.remove('hidden')
+            errorPagamento = true
+        }        
+    }
+
+    if(errorCliente == true || errorPagamento == true) {
+        return
+    }
+
+    const formPedido = document.createElement('form')
+    formPedido.setAttribute('hidden', 'true')
+    formPedido.action = '/admin/vendas/concluir'
+    formPedido.method = 'POST'
 
     let valorTotal = 0
 
@@ -150,11 +197,11 @@ async function salvarPedido() {
         const produtoId = document.createElement('input')
         produtoId.name = "produto_id[]"
         produtoId.value = produto.id
-        produtoId.setAttribute('type', 'hidden')
+        produtoId.setAttribute('hidden', 'true')
         const produtoQtd = document.createElement('input')
         produtoQtd.name = "quantidade[]"
         produtoQtd.value = produto.qtd
-        produtoQtd.setAttribute('type', 'hidden')
+        produtoQtd.setAttribute('hidden', 'true')
 
         formPedido.appendChild(produtoId)
         formPedido.appendChild(produtoQtd)
@@ -167,15 +214,10 @@ async function salvarPedido() {
     valor.value = valorTotal
     valor.pattern = '0.00'
     valor.step = '0.01'
-    valor.setAttribute('type', 'hidden')
+    valor.setAttribute('hidden', 'true')
 
-    const [,CPFCliente] = cliente.value.split(' CPF: ')
-    const infoClienteAPI = await fetch(`${API}/clientes?cpf=${CPFCliente}`)
-    const [infoCliente] = await infoClienteAPI.json()
-    cliente.value = infoCliente.id
-
-    const [,idPagamento] = pagamento.value.split(' id: ')
-    pagamento.value = idPagamento
+    cliente.value = info[0]
+    pagamento.value = info[1]
 
     formPedido.appendChild(valor)
     formPedido.appendChild(cliente)
