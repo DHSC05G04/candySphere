@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     entrega: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     },
     total: DataTypes.DECIMAL,
     sinal: DataTypes.DECIMAL,
