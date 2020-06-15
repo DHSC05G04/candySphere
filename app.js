@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require("morgan");
 const session = require("express-session");
 const methodOverride  = require("method-override");
+const passport = require("./configs/passport");
+const flash = require('express-flash');
 const cors = require('cors');
 
 //Front end routes
@@ -57,6 +59,17 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+
+// Passport Auth
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);

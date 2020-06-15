@@ -3,6 +3,7 @@ var multer = require('multer');
 const path = require('path');
 var router = express.Router();
 const funcionarioController = require('../controllers/funcionarioController');
+const isAuthenticated = require('../middlewares/isAuthenticated');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -20,6 +21,7 @@ var upload = multer({
 
 
 /* GET funcionarios page. */
+router.use(isAuthenticated)
 router.get('/',funcionarioController.listarFuncionario);
 router.post('/',upload.any(), funcionarioController.store);
 router.put('/',upload.any(), funcionarioController.update);

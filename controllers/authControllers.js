@@ -2,7 +2,7 @@ const { Usuario } = require('../models')
 const bcrypt = require("bcrypt");
 
 const authController = {
-   
+  
     index: (req,res) => {
         console.log('REQ.SESSION:'+req.session.user)
         console.log('SESSION_FULL' + JSON.stringify(req.session, null, 2) )

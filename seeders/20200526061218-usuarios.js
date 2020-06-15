@@ -42,7 +42,11 @@ module.exports = {
           created_at: new Date(),
           updated_at: new Date(),
         },
-      ], {}
+      ], {
+        ignoreDuplicates: true,
+        updateOnDuplicate: false,
+        logging:true
+      }
     );
 
   },

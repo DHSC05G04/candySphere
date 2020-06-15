@@ -46,7 +46,11 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date()
       }
-  ], {});
+  ], {
+    ignoreDuplicates: true,
+    updateOnDuplicate: false,
+    logging:true
+  });
 
   return console.log('\x1b[32m%s\x1b[0m', 'Seeds de instruções inserido com sucesso!')
 
