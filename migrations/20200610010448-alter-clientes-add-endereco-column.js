@@ -1,25 +1,43 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-      return Promise.all([
-      queryInterface.addColumn('clientes','numero',Sequelize.STRING),
-      queryInterface.addColumn('clientes','complemento',Sequelize.STRING),
-      queryInterface.addColumn('clientes','bairro',Sequelize.STRING),
-      queryInterface.addColumn('clientes','cep',Sequelize.STRING),
-      queryInterface.addColumn('clientes','cidade',Sequelize.STRING),
-      queryInterface.addColumn('clientes','uf',Sequelize.STRING),
-      ])
+  up: async (queryInterface, Sequelize) => {
+    let transaction = await queryInterface.sequelize.transaction();
+    try {
+      await queryInterface.addColumn('clientes','numero',Sequelize.STRING, { transaction });
+      await queryInterface.addColumn('clientes','complemento',Sequelize.STRING, { transaction });
+      await queryInterface.addColumn('clientes','bairro',Sequelize.STRING, { transaction });
+      await queryInterface.addColumn('clientes','cep',Sequelize.STRING, { transaction });
+      await queryInterface.addColumn('clientes','cidade',Sequelize.STRING, { transaction });
+      await queryInterface.addColumn('clientes','uf',Sequelize.STRING, { transaction });
+      
+      await transaction.commit();
+      return Promise.resolve();
+    } catch (err) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      return Promise.reject(err);
+    }
   },
      
-  down: (queryInterface, Sequelize) => {
-      return Promise.all([
-      queryInterface.removeColumn('clientes','numero'),
-      queryInterface.removeColumn('clientes','complemento'),
-      queryInterface.removeColumn('clientes','bairro'),
-      queryInterface.removeColumn('clientes','cep'),
-      queryInterface.removeColumn('clientes','cidade'),
-      queryInterface.removeColumn('clientes','uf'),
-      ])
+  down: async (queryInterface, Sequelize) => {
+    let transaction = await queryInterface.sequelize.transaction();
+    try {
+      await queryInterface.removeColumn('clientes','numero', { transaction });
+      await queryInterface.removeColumn('clientes','complemento', { transaction });
+      await queryInterface.removeColumn('clientes','bairro', { transaction });
+      await queryInterface.removeColumn('clientes','cep', { transaction });
+      await queryInterface.removeColumn('clientes','cidade', { transaction });
+      await queryInterface.removeColumn('clientes','uf', { transaction });
+      
+      await transaction.commit();
+      return Promise.resolve();
+    } catch (err) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      return Promise.reject(err);
+    }
   }
 };
