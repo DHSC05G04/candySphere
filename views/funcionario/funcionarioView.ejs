@@ -58,6 +58,8 @@
                     </section>                    
                 </section>
                 <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick="window.location.href='/funcionarios/atualizar/<%= funcionarios[0].id%>'">edit</button>
+                    <button type="button" id="delete-funcionario" class="material-icons delete-funcionario" funcId="<%= funcionarios[0].id %>">delete</button>
                     <button class="material-icons" onclick="retornar()">arrow_back</button>
                 </section>
             </article>
@@ -183,6 +185,23 @@
             })
         </script>
         '<%}%>'
+
+        <script>
+            const del = document.getElementsByClassName('delete-funcionario');
+            for (let i = 0; i < del.length; i++) {
+                del[i].addEventListener('click', (e) => {
+                    e.preventDefault()
+                    const id = document.querySelector('#id');
+                    const submit = document.querySelector('.btn-cliente');
+                    const form = document.querySelector('.form-del');
+                    console.log('Cheguei Aqui!!!')
+                    form.action = `/funcionarios/${del[i].attributes.funcId.value}/?_method=DELETE`
+                    id.value = del[i].attributes.funcId.value
+                    console.log(id)
+                    iniciaModal('modal-delete');
+                })
+            }            
+        </script>
 
         <script type="text/javascript" src="/javascript/shared.js"></script>
     </body>
