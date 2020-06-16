@@ -12,4 +12,15 @@ module.exports = {
     }
   )
 },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.changeColumn(
+      'recebimentos',
+      'valor',
+      {
+        type: Sequelize.DECIMAL(10,0),
+        allowNull: true,
+        defaultValue: 0
+      }
+    )
+  }
 }

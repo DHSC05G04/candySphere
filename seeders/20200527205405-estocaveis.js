@@ -98,6 +98,7 @@ module.exports = {
         validade: new Date(),
         vendavel: 1,
         receita_id: 1,
+        foto: '/images/produtos/brigadeiro.png',
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -111,6 +112,7 @@ module.exports = {
         validade: new Date(),
         vendavel: 1,
         receita_id: 2,
+        foto: '/images/produtos/doce_de_leite.png',
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -123,6 +125,7 @@ module.exports = {
         custo_unitario: 8.00,
         validade: new Date(),
         vendavel: 1,
+        foto: '/images/produtos/H2O.png',
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -135,6 +138,7 @@ module.exports = {
         custo_unitario: 3.50,
         validade: new Date(),
         vendavel: 1,
+        foto: '/images/produtos/coca.png',
         created_at: new Date(),
         updated_at: new Date()
       }
