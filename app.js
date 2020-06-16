@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require("morgan");
+const bodyParser = require('body-parser');
 const session = require("express-session");
 const methodOverride  = require("method-override");
 const passport = require("./configs/passport");
@@ -45,9 +46,13 @@ const contaMovimentoAPIRouter = require('./routes/apis/contaMovimentoRoute');
 const app = express();
 
 // view engine setup
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser('343ji43j4n3jn4jk3n'));
+// app.use(express.bodyParser());
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(cors());
 app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(express.json());
@@ -57,25 +62,30 @@ app.use(
     secret: "343ji43j4n3jn4jk3n",
     resave: true,
     saveUninitialized: true,
+    rolling:true,
     cookie:{
-      // secure: true,
-      maxAge:360000
+      secure: false,
+      path: '/',
+      httpOnly: true,
+      maxAge:3600000
     },
   })
 );
 
 // Passport Auth
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
+
 app.use(function(req, res, next) {
   // res.session.user = req.user;
   res.locals.user = req.user;
   next();
 });
+app.use(cors());
 
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+
 app.use('/', indexRouter);
 app.use('/home', homeRouter);
 app.use('/admin', adminRouter);
