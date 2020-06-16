@@ -331,13 +331,13 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 120px;
+    height: 5em;
     background-color: var(--color2);
     border-radius: 3em 3em 0 0;
 }
 
 .adminCardContainer section.logo .material-icons {
-    font-size: 5em;
+    font-size: 4em;
     color: var(--color5);
 }
 
@@ -369,25 +369,6 @@ main {
     border-top: 1 solid var(--color5);
     box-shadow: 0 -2px 5px var(--color5);
     border-radius: 0 0 3em 3em;
-}
-
-.adminCardFooter button {
-    margin: 0 15px;
-    padding: 5px;
-    font-size: 2em;
-    background-color: var(--color5);
-    color: var(--color1) !important;
-    border: 2px solid var(--color1);
-    box-shadow: 0 0 0 5px var(--color5);
-    border-radius: 1.25em;    
-}
-
-.adminCardFooter button:hover {
-    background-color: var(--color2);
-    color: var(--color5);
-    border: 2px solid var(--color5);
-    box-shadow: 0 0 0 5px var(--color2);
-    transition: .5s;
 }
 
 /*Configuração cards de receitas */
@@ -585,22 +566,34 @@ textarea {
     border-radius: 0 0 1em 1em;
 }
 
-.itemViewFooter button, .modalFooter button {
+.itemViewFooter button, .modalFooter button, .adminCardFooter button {
     margin: 0 15px;
     padding: 5px;
     font-size: 2em;
     background-color: var(--color5);
     color: var(--color1) !important;
     border: 2px solid var(--color1);
-    box-shadow: 0 0 0 5px var(--color5);
+    box-shadow: 0 0 0 5px var(--color5),
+                7px 7px 8px rgba(0, 0, 0, .7);
     border-radius: 1.25em;
 }
 
-.itemViewFooter button:hover, .modalFooter button:hover {
+.itemViewFooter button:hover, .modalFooter button:hover, .adminCardFooter button:hover {
     background-color: var(--color2);
     color: var(--color5) !important;
     border: 2px solid var(--color5);
-    box-shadow: 0 0 0 5px var(--color2);
+    box-shadow: 0 0 0 5px var(--color2),
+                7px 7px 8px rgba(0, 0, 0, .7);
+    transition: .5s;
+}
+
+.itemViewFooter button:active, .modalFooter button:active, .adminCardFooter button:active {
+    background-color: var(--color5);
+    color: var(--color2) !important;
+    border: 2px solid var(--color2);
+    box-shadow: 0 0 0 5px var(--color5),
+                inset 5px 5px 7px rgba(0, 0, 0, .7),
+                7px 7px 8px rgba(0, 0, 0, .7);
     transition: .5s;
 }
 
