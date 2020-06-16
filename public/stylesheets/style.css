@@ -189,7 +189,7 @@ footer ul {
     justify-content: center;
     align-items: center;
 }
-#loginBody *, *:before, *:after { 
+#loginBody * { 
     margin:10px;
     /* padding:0px; */
 }
@@ -465,6 +465,14 @@ main {
     border-radius: 30px;
 }
 
+.itemViewDesc.funcionario img {
+    width: 6em;
+    height: 6em;
+    border: 3px solid var(--color5);
+    border-radius: 120px;
+    box-shadow: 0px 0px 0px 5px var(--color5);
+}
+
 .itemViewDesc h3 {
     text-transform: capitalize;
     font-size: 1.25em;
@@ -604,7 +612,8 @@ textarea {
     background-color: var(--color5);
     color: var(--color1) !important;
     border: 2px solid var(--color1);
-    box-shadow: 0 0 0 5px var(--color5);
+    box-shadow: 0 0 0 5px var(--color5),
+        7px 7px 8px rgba(0, 0, 0, .7);
     border-radius: 1.25em;
 }
 
@@ -612,12 +621,29 @@ textarea {
     background-color: var(--color2);
     color: var(--color5) !important;
     border: 2px solid var(--color5);
-    box-shadow: 0 0 0 5px var(--color2);
+    box-shadow: 0 0 0 5px var(--color2),
+        7px 7px 8px rgba(0, 0, 0, .7);
+    transition: .5s;
+}
+
+.addRemItem:active {
+    background-color: var(--color2);
+    color: var(--color5) !important;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2),
+        inset 5px 5px 7px rgba(0, 0, 0, .7),
+        7px 7px 8px rgba(0, 0, 0, .7);
     transition: .5s;
 }
 
 #addIng, #addInst {
     align-self: center;
+}
+
+.infoFooter {
+    justify-self: center;
+    align-self: center;
+    display: flex;
 }
 
 /* Configuração da tela de estoque */
