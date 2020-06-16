@@ -57,16 +57,20 @@ app.use(
     secret: "343ji43j4n3jn4jk3n",
     resave: true,
     saveUninitialized: true,
+    cookie:{
+      // secure: true,
+      maxAge:60000
+    },
   })
 );
-
 
 // Passport Auth
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(function(req, res, next) {
-  res.locals.user = req.session.user;
+  // res.session.user = req.user;
+  res.locals.user = req.user;
   next();
 });
 
