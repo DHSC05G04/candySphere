@@ -19,7 +19,14 @@ const estoqueController = {
             const estoqueAPI = await fetch(`${API_BASE}/estocaveis`);
             const estoque = await estoqueAPI.json();
 
-            return res.render('admin/estoque', { title: 'Express', tabs: tabActive, API_BASE, estoque,usuario:req.session.user });
+            return res.render('admin/estoque', {
+                title: 'Express',
+                tabs: tabActive,
+                API_BASE,
+                estoque,
+                usuario:req.session.user,
+                user:req.user
+            });
             
         } catch (error) {
             return res.send(error)            
@@ -41,7 +48,14 @@ const estoqueController = {
             const estoqueAPI = await fetch(`${API_BASE}/estocaveis/${id}`);
             const [estoque] = await estoqueAPI.json();
     
-            return res.render('admin/estoqueView', { title: 'Express', tabs: tabActive, estoque, API_BASE, usuario:req.session.user });
+            return res.render('admin/estoqueView', {
+                title: 'Express',
+                tabs: tabActive,
+                estoque,
+                API_BASE,
+                usuario:req.session.user,
+                user: req.user
+            });
             
         } catch (error) {
             return res.send(error);            
@@ -88,7 +102,13 @@ const estoqueController = {
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
 
-            return res.render('admin/criarEstoque', { title: 'Express', tabs: tabActive, API_BASE, usuario:req.session.user });
+            return res.render('admin/criarEstoque', {
+                title: 'Express',
+                tabs: tabActive,
+                API_BASE,
+                usuario: req.session.user,
+                user: req.user
+            });
     },
     store: async (req, res) => {
         const [foto] = req.files

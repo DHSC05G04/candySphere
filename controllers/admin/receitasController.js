@@ -16,7 +16,14 @@ const receitasController = {
             const receitasAPI = await fetch(`${API_BASE}/receitas`);
             const receitas = await receitasAPI.json();
     
-            return res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas, API_BASE, usuario:req.session.user });
+            return res.render('admin/receitas', {
+                title: 'Express',
+                tabs: tabActive,
+                receitas,
+                API_BASE,
+                usuario: req.session.user,
+                user: req.user
+            });
             
         } catch (error) {
             return res.send(error);            
@@ -38,7 +45,14 @@ const receitasController = {
             const receitasAPI = await fetch(`${API_BASE}/receitas/${id}`);
             const [receita] = await receitasAPI.json();
     
-            return res.render('admin/receitasView', { title: 'Express', tabs: tabActive, receita, API_BASE, usuario:req.session.user });
+            return res.render('admin/receitasView', {
+                title: 'Express',
+                tabs: tabActive,
+                receita,
+                API_BASE,
+                usuario:req.session.user,
+                user: req.user
+            });
             
         } catch (error) {
             return res.send(error);            
@@ -55,7 +69,13 @@ const receitasController = {
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
     
-            return res.render('admin/criarReceita', { title: 'Express', tabs: tabActive, API_BASE, usuario:req.session.user });
+            return res.render('admin/criarReceita', {
+                title: 'Express',
+                tabs: tabActive,
+                API_BASE,
+                usuario:req.session.user,
+                user: req.user
+            });
     },
 
     store: async (req, res) => {
