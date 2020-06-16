@@ -13,5 +13,18 @@ module.exports = {
       }
     )
 
+  },
+  down: (queryInterface, Sequelize) => {
+
+    return queryInterface.changeColumn(
+      'funcionarios',
+      'salario',
+      {
+        type: Sequelize.DECIMAL(11,0),
+        allowNull: true,
+        defaultValue: 0
+      }
+    )
+
   }
 };
