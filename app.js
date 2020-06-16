@@ -59,7 +59,7 @@ app.use(
     saveUninitialized: true,
     cookie:{
       // secure: true,
-      maxAge:60000
+      maxAge:360000
     },
   })
 );

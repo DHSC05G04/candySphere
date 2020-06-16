@@ -59,10 +59,10 @@ router.get("/logout",(req,res) => {
     login: "",
     acesso:'',
 }
-console.log(req.session.user)
-res.redirect('/')
-
+  console.log(req.session.user)
+  res.redirect('/')
 
 })
+
 
 module.exports = router;

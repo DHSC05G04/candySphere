@@ -9,9 +9,6 @@ require('dotenv').config();
 
 const API_BASE = process.env.API_BASE;
 
-require('dotenv').config();
-
-
 const usuarioControllers = {
     index: (req, res) => {
         res.send("Deu Certo")
@@ -53,7 +50,7 @@ const usuarioControllers = {
                     console.log('Não foi possivel mandar o email: ' + erro );
                 }
             });
-               const user = await fetch(`${API_BASE}/usuarios`, {
+               const user = await fetch(`${API_BASE}/usuarioss`, {
                 method: "post",
                 body: JSON.stringify(post),
                 headers: {
