@@ -9,7 +9,7 @@ const authController = {
         if (req.session.user === undefined ||   req.session==''){
             console.log('Sessao nao iniciada')
             let tabActive = {homeAct: "active",
-                  adminAct: "inactive",
+                  operacaoAct: "inactive",
                   financeiroAct: "inactive",
                   clientesAct: "inactive",
                   funcionariosAct: "inactive",

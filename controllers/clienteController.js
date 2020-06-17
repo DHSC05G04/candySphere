@@ -11,7 +11,7 @@ const clienteController = {
     index: async (req, res, next) => {
         let tabActive = {
             homeAct: "inactive",
-            adminAct: "inactive",
+            operacaoAct: "inactive",
             financeiroAct: "inactive",
             clientesAct: "active",
             funcionariosAct: "inactive",
@@ -52,7 +52,7 @@ const clienteController = {
     show: async (req, res) => {
         let tabActive = {
             homeAct: "inactive",
-            adminAct: "inactive",
+            operacaoAct: "inactive",
             financeiroAct: "inactive",
             clientesAct: "active",
             funcionariosAct: "inactive",
@@ -80,7 +80,7 @@ const clienteController = {
     view: async (req, res) => {
         let tabActive = {
             homeAct: "inactive",
-            adminAct: "inactive",
+            operacaoAct: "inactive",
             financeiroAct: "inactive",
             clientesAct: "active",
             funcionariosAct: "inactive",
