@@ -4,8 +4,6 @@ const bcrypt = require("bcrypt");
 const authController = {
   
     index: (req,res) => {
-        console.log('REQ.SESSION:'+req.session.user)
-        console.log('SESSION_FULL' + JSON.stringify(req.session, null, 2) )
         if (req.session.user === undefined ||   req.session==''){
             console.log('Sessao nao iniciada')
             let tabActive = {homeAct: "active",
@@ -17,23 +15,19 @@ const authController = {
             res.render('index', { title: 'Express', tabs: tabActive });
         } else {
             console.log('Sessao OK')
-            console.log(req.session.user)
             res.redirect('/home')
         }
     },
 
 
     store: async (req, res) => {
-
         const {
             nome_usuario,
             senha
         } = req.body;
-
         const usuario = await Usuario.findOne({
             where: {nome_usuario}
         })
-
         if (usuario) {
             const id = usuario.dataValues.id
             const login = usuario.dataValues.nome_usuario
