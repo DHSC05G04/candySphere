@@ -6,7 +6,7 @@ const passport = require("../configs/passport");
 /* GET index page. */
 router.get('/', function(req, res, next) {
   let tabActive = {homeAct: "active",
-                  adminAct: "inactive",
+                  operacaoAct: "inactive",
                   financeiroAct: "inactive",
                   clientesAct: "inactive",
                   funcionariosAct: "inactive",
@@ -38,7 +38,7 @@ router.post("/logar",
   // res.render('home');
   const tabActive = {
     homeAct: "active",
-    adminAct: "inactive",
+    operacaoAct: "inactive",
     financeiroAct: "inactive",
     clientesAct: "inactive",
     funcionariosAct: "inactive",

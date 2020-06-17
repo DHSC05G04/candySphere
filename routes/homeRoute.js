@@ -8,7 +8,7 @@ router.get('/',isAuthenticated, function(req, res, next) {
   console.log('CB' + req.session.user)
   console.log('CB2' + req.user)
   let tabActive = {homeAct: "active",
-                  adminAct: "inactive",
+                  operacaoAct: "inactive",
                   financeiroAct: "inactive",
                   clientesAct: "inactive",
                   funcionariosAct: "inactive",

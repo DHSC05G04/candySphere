@@ -6,7 +6,7 @@ const API_BASE = process.env.API_BASE;
 const produtosController = {
     index: async (req, res) => {
         let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
+                        operacaoAct: "active",
                         financeiroAct: "inactive",
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
