@@ -189,7 +189,7 @@ footer ul {
     justify-content: center;
     align-items: center;
 }
-#loginBody *, *:before, *:after { 
+#loginBody * { 
     margin:10px;
     /* padding:0px; */
 }
@@ -331,13 +331,13 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 120px;
+    height: 5em;
     background-color: var(--color2);
     border-radius: 3em 3em 0 0;
 }
 
 .adminCardContainer section.logo .material-icons {
-    font-size: 5em;
+    font-size: 4em;
     color: var(--color5);
 }
 
@@ -369,25 +369,6 @@ main {
     border-top: 1 solid var(--color5);
     box-shadow: 0 -2px 5px var(--color5);
     border-radius: 0 0 3em 3em;
-}
-
-.adminCardFooter button {
-    margin: 0 15px;
-    padding: 5px;
-    font-size: 2em;
-    background-color: var(--color5);
-    color: var(--color1) !important;
-    border: 2px solid var(--color1);
-    box-shadow: 0 0 0 5px var(--color5);
-    border-radius: 1.25em;    
-}
-
-.adminCardFooter button:hover {
-    background-color: var(--color2);
-    color: var(--color5);
-    border: 2px solid var(--color5);
-    box-shadow: 0 0 0 5px var(--color2);
-    transition: .5s;
 }
 
 /*Configuração cards de receitas */
@@ -482,6 +463,14 @@ main {
     width: 50%;
     border: 3px solid var(--color5);
     border-radius: 30px;
+}
+
+.itemViewDesc.funcionario img {
+    width: 6em;
+    height: 6em;
+    border: 3px solid var(--color5);
+    border-radius: 120px;
+    box-shadow: 0px 0px 0px 5px var(--color5);
 }
 
 .itemViewDesc h3 {
@@ -585,22 +574,34 @@ textarea {
     border-radius: 0 0 1em 1em;
 }
 
-.itemViewFooter button, .modalFooter button {
+.itemViewFooter button, .modalFooter button, .adminCardFooter button {
     margin: 0 15px;
     padding: 5px;
     font-size: 2em;
     background-color: var(--color5);
     color: var(--color1) !important;
     border: 2px solid var(--color1);
-    box-shadow: 0 0 0 5px var(--color5);
+    box-shadow: 0 0 0 5px var(--color5),
+                7px 7px 8px rgba(0, 0, 0, .7);
     border-radius: 1.25em;
 }
 
-.itemViewFooter button:hover, .modalFooter button:hover {
+.itemViewFooter button:hover, .modalFooter button:hover, .adminCardFooter button:hover {
     background-color: var(--color2);
     color: var(--color5) !important;
     border: 2px solid var(--color5);
-    box-shadow: 0 0 0 5px var(--color2);
+    box-shadow: 0 0 0 5px var(--color2),
+                7px 7px 8px rgba(0, 0, 0, .7);
+    transition: .5s;
+}
+
+.itemViewFooter button:active, .modalFooter button:active, .adminCardFooter button:active {
+    background-color: var(--color5);
+    color: var(--color2) !important;
+    border: 2px solid var(--color2);
+    box-shadow: 0 0 0 5px var(--color5),
+                inset 5px 5px 7px rgba(0, 0, 0, .7),
+                7px 7px 8px rgba(0, 0, 0, .7);
     transition: .5s;
 }
 
@@ -611,7 +612,8 @@ textarea {
     background-color: var(--color5);
     color: var(--color1) !important;
     border: 2px solid var(--color1);
-    box-shadow: 0 0 0 5px var(--color5);
+    box-shadow: 0 0 0 5px var(--color5),
+        7px 7px 8px rgba(0, 0, 0, .7);
     border-radius: 1.25em;
 }
 
@@ -619,12 +621,29 @@ textarea {
     background-color: var(--color2);
     color: var(--color5) !important;
     border: 2px solid var(--color5);
-    box-shadow: 0 0 0 5px var(--color2);
+    box-shadow: 0 0 0 5px var(--color2),
+        7px 7px 8px rgba(0, 0, 0, .7);
+    transition: .5s;
+}
+
+.addRemItem:active {
+    background-color: var(--color2);
+    color: var(--color5) !important;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2),
+        inset 5px 5px 7px rgba(0, 0, 0, .7),
+        7px 7px 8px rgba(0, 0, 0, .7);
     transition: .5s;
 }
 
 #addIng, #addInst {
     align-self: center;
+}
+
+.infoFooter {
+    justify-self: center;
+    align-self: center;
+    display: flex;
 }
 
 /* Configuração da tela de estoque */
@@ -817,116 +836,33 @@ a.btn.material-icons:hover {
 
 /* ###### FINANCEIRO ######### */
 
-/* Configuração do menu Lateral */
-
-main#financeiro * {
-    margin-left: 5 px;
-    padding: 0px;
-}
-
-aside#painel {
-    height: 80vh;
-    width: 300px;
-    position: absolute;
-    transition: all .2s linear;
-    left: -250px;
-}
-
-main#financeiro #check {
-    display: none;
-}
-
-main#financeiro label span#icone-sanduiche {
-    cursor: pointer;
-    padding: 25px;
-    position: absolute;
-    left: 25px;
-    z-index: 1;
-}
-
-aside#painel nav {
-    width: 100%;
-    position: absolute;
-    top: 60px;
-}
-
-
-main#financeiro aside#painel nav a div.link {
-    background-color: var(--color2);
-    padding: 20px;
-    font-family: arial;
-    font-size: 12pt;
-    transition: all .2s linear;
-    color: var(--color4);
-    border-bottom: 2px solid var(--color4);
-    opacity: 1;
-    padding-left: 100px;
+#dash-board {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-}
-
-main#financeiro aside#painel nav a div.link:hover {
-    background-color: var(--color4);
-    color: var(--color2);
-}
-
-main#financeiro nav :hover {
-    background-color: var(--color4);
-    color: var(--color2);
-}
-
-main#financeiro input#check:checked~#painel {
-    transform: translatex(250px);
-    background-color: var(--color5);
-    transition: all .4s linear;
-    opacity: 1;
-    text-align: center;
-    box-shadow: 0px 0px 9px black;
-}
-
-main#financeiro input#check:checked~#painel nav a div.link {
-    background-color: var(--color2);
-}
-
-main#financeiro input#check:checked~#painel nav a div.link:hover {
-    color: var(--color2);
-    background-color: var(--color4);
-}
-
-main#financeiro section {
-    width: 100%;
-    margin-right: 50px;
-}
-
-main#financeiro section #periodo {
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
     align-items: center;
 }
 
-main#financeiro section #cards {
-    height: 100px;
+#dash-board form {
     display: flex;
+    align-items: center;
+    margin: 20px 0;
 }
 
-form#datas {
-    height: 70px;
+#periodo {
     width: 100%;
-    margin-left: 50px;
-}
-
-form#datas label {
-    font-size: 1em;
-    margin-left: 15px;
-    text-align: right;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 form#datas label#btn-label {
     color: var(--color5);
 }
 
+#periodo .input-data {
+    margin-right: 15px;
+}
 
 #btn-data:hover {
     background-color: var(--color5);
@@ -935,10 +871,9 @@ form#datas label#btn-label {
     border: 1px solid var(--color2);
 }
 
-
 form#datas input {
-    width: 120px;
-    height: 30px;
+    width: 7.5em;
+    height: 1.8em;
     margin-left: 5px;
     background-color: var(--color2);
     color: var(--color5);
@@ -947,40 +882,35 @@ form#datas input {
 
 }
 
-section#dash-board div#cards {
+#dash-board #cards {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-section#dash-board div#cards div.card-container {
+#dash-board #cards .card-container {
     display: flex;
     flex-direction: row;
-    /*! width: 90%; */
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex-wrap: wrap;
+    margin-bottom: 15px;
 }
 
 section#dash-board div#cards div.card-main {
-    /* width: 250px; */
-    /* height: 100px; */
-    /* margin-left: 60px; */
-    /* margin-top: 20px; */
-    /* margin-bottom: 10px; */
-    width: 200px;
-    height: 60px;
+    width: 12.5em;
+    height: 3.75em;
     background-color: var(--color1);
     border-radius: 8px;
     box-shadow: 0px 2px 3px black;
     display: flex;
     align-items: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 5px 10px;
 }
 
 
 section#dash-board div#cards div.card-main div.card-left {
-    width: 60px;
-    height: 60px;
+    width: 3.75em;
+    height: 3.75em;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px 8px;
     background-color: var(--color2);
@@ -996,7 +926,6 @@ section#dash-board div#cards div.card-main div.card-left span {
 }
 
 section#dash-board div#cards div.card-main div.card-dados {
-    /*! margin-left:20px; */
     color: var(--color5);
     padding-right: 5px;
     text-align: left;
@@ -1007,59 +936,51 @@ section#dash-board div#cards div.card-main div.card-dados div {
 }
 
 main#financeiro section #graficos {
-
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-left: 59;
-    margin-right: 48px;
+    margin: 0 48px;
 }
 
 main#financeiro section #graficos .grafico-meio {
-    width: 400px;
-    height: 200px;
+    max-width: 100%;
+    width: 25em;
+    height: 12.5em;
     background-color: var(--color1);
-    border-left: 18px solid var(--color2);
-    box-shadow: 0px 1px 9px black;
-    margin-top: 15px;
-    margin-left: 10px;
-    padding-bottom: 10px;
+    border-left: 1.125em solid var(--color2);
+    box-shadow: 0px 1px .6em black;
+    margin: 15px 5px;
 }
 
 main#financeiro section #graficos .grafico-baixo {
-    width: 900px;
-    height: 200px;
+    max-width: 100%;
+    width: 100%;
+    height: 15%;
     background-color: var(--color1);
-    border-left: 18px solid var(--color2);
-    box-shadow: 0px 1px 9px black;
-    margin-top: 15px;
-    margin-left: 10px;
-    padding-bottom: 10px;
-    overflow: visible;
-    margin-bottom: 40px;
+    border-left: 1.125em solid var(--color2);
+    box-shadow: 0px 1px .6em black;
+    margin: 15px 5px;
     padding: 10px;
 }
 
 main#financeiro section #graficos .grafico-vendas-meio {
-    width: 400px;
-    height: 200px;
+    max-width: 100%;
+    width: 25em;
+    height: 12.5em;
     background-color: var(--color1);
-    border-left: 18px solid var(--color2);
-    box-shadow: 0px 1px 9px black;
-    margin-top: 15px;
-    margin-left: 10px;
-    padding-bottom: 10px;
+    border-left: 1.125em solid var(--color2);
+    box-shadow: 0px 1px .5625em black;
+    margin: 15px 10px;
 }
 
 main#financeiro section #graficos .grafico-vendas-radar {
-    width: 600px;
-    height: 300px;
+    max-width: 100%;
+    width: 37.5em;
+    height: 18.75em;
     background-color: var(--color1);
-    border-left: 18px solid var(--color2);
-    box-shadow: 0px 1px 9px black;
-    margin-top: 15px;
-    margin-left: 10px;
-    padding-bottom: 10px;
+    border-left: 1.125em solid var(--color2);
+    box-shadow: 0px 1px .5625em black;
+    margin: 15px 10px;
 }
 
 

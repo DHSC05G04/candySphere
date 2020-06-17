@@ -42,6 +42,7 @@ module.exports = {
     ], {
       ignoreDuplicates: true,
       updateOnDuplicate: false,
+      logging:true
     });
     
   },

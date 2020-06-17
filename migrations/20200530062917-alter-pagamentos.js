@@ -1,5 +1,7 @@
 'use strict';
 
+const { Sequelize } = require("../models");
+
 module.exports = {
  up: (queryInterface, Sequelize) => {
   return queryInterface.changeColumn(
@@ -12,4 +14,15 @@ module.exports = {
     }
   )
 },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.changeColumn(
+      'pagamentos',
+      'valor',
+      {
+        type: Sequelize.DECIMAL(10,0),
+        allowNull: true,
+        defaultValue: 0
+      }
+    )    
+  }
 }

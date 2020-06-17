@@ -8,6 +8,7 @@ const router = express.Router();
 router.use(isAuthenticated)
 /* GET financeiro page. */
 router.get('/', financeiroController.index);
-router.get('/relatorio', financeiroController.relatorio);
+router.get('/vendas', financeiroController.vendas);
+router.get('/receitas', financeiroController.receitas);
 
 module.exports = router;

@@ -16,7 +16,14 @@ const vendasController = {
             const produtosAPI = await fetch(`${API_BASE}/produtos`)
             const produtos = await produtosAPI.json()
 
-            return res.render('admin/vendas', { title: 'Express', tabs: tabActive , produtos, API_BASE, usuario:req.session.user});
+            return res.render('admin/vendas', {
+                 title: 'Express',
+                 tabs: tabActive,
+                 produtos,
+                 API_BASE,
+                 usuario:req.session.user,
+                 user:req.user
+                });
         } catch (error) {
             return res.send(error)
         }
@@ -56,7 +63,14 @@ const vendasController = {
         
         try {
 
-            return res.render('admin/vendasFechar', { title: 'Express', tabs: tabActive, produtos, API_BASE, usuario:req.session.user});
+            return res.render('admin/vendasFechar', {
+                title: 'Express',
+                tabs: tabActive,
+                produtos,
+                API_BASE,
+                usuario:req.session.user,
+                user:req.user
+            });
         } catch (error) {
             return res.send(error)
         }
@@ -70,7 +84,7 @@ const vendasController = {
                 hora_abertura: new Date(),
                 hora_fechamento: new Date(),
                 terminal_id: 1,
-                usuario_id: req.session.user.id
+                usuario_id: req.user.id
             }
 
             const caixaAPI = await fetch(`${API_BASE}/caixas`, {
@@ -94,9 +108,6 @@ const vendasController = {
                 cliente_id: dadosRaw.cliente_id
             }
 
-            console.log('*'.repeat(60))
-            console.log(dadosPedido)
-
             const pedidoAPI = await fetch(`${API_BASE}/pedidos`, {
                 method: 'POST',
                 body: JSON.stringify(dadosPedido),
@@ -106,9 +117,6 @@ const vendasController = {
             })
 
             const pedido = await pedidoAPI.json()
-
-            console.log('*'.repeat(60))
-            console.log(pedido)
 
             const dadosRecebimentoSinal = {
                 valor: Number(dadosPedido.sinal).toFixed(2),

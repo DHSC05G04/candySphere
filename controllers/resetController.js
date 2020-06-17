@@ -68,8 +68,11 @@ const resetController = {
               res.redirect('/resetPassword');
            })},
 
-    resetPassword: (res, res) => {
-        console.log('teste')
+    resetPassword: (req, res) => {
+        // console.log('teste')
+        return res.status(200).render('index2', {msgUser: 'Recurso em desenvolvimento!'})
     }
 
 }
+
+module.exports = resetController;

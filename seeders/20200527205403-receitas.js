@@ -18,7 +18,7 @@ module.exports = {
         descricao: 'Docinho de leite em pó e leite de coco',
         tempo_preparo: 30,
         rendimento: 30,
-        foto: '/images/receitas/doce_de_leite',
+        foto: '/images/receitas/doce_de_leite.png',
         created_at: new Date(),
         updated_at: new Date()
       }

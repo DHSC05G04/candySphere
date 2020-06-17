@@ -12,4 +12,15 @@ module.exports = {
     }
   )
 },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.changeColumn(
+      'conta_movimentos',
+      'saldo',
+      {
+        type: Sequelize.DECIMAL(10,0),
+        allowNull: true,
+        defaultValue: 0
+      }
+    ) 
+  }
 }

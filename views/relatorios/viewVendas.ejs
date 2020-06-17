@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <%- include('../partials/head') %>
+
+    <body>
+
+        <%- include('../partials/header') %>
+
+        <main id="financeiro">
+            <article id="Visualizacao">
+                <section class="itemViewHeader">
+                    <span class="material-icons">local_grocery_store</span><h2>Financeiro / Vendas<h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewBody">
+                        <section id="dash-board">
+                            <form id="datas" action="">
+                                <div id="periodo">
+                                    <div class="input-data">
+                                        <label for="data-inicial">data inicial</label>
+                                        <input type="date" id="data-inicial">
+                                    </div>
+                                    <div class="input-data">
+                                        <label for="data-final">data final</label>
+                                        <input type="date" id="data-final">
+                                    </div>
+                                    <div class="input-data">
+                                        <label id="btn-label" for="data-inicial">.</label>
+                                        <input type="submit" id="btn-data" value="Buscar">
+                                    </div>
+                                </div>
+                            </form>
+                        
+                            <div id="cards">
+                                <div class="card-container">
+                                    <div class="card-main">
+                                        <div class="card-left">
+                                            <span class="material-icons">
+                                                monetization_on
+                                            </span>
+                                        </div>
+                                        <div class="card-dados">
+                                            <div> Total Vendas</div>
+                                            <div>R$ 20.545,33</div>
+                                        </div>
+                                    </div>
+                                    <div class="card-main">
+                                        <div class="card-left">
+                                            <span class="material-icons">
+                                                local_grocery_store
+                                            </span>
+                                        </div>
+                                        <div class="card-dados">
+                                            <div>Qtd. Vendas</div>
+                                            <div>1222</div>
+                                        </div>
+                                    </div>
+                                    <div class="card-main">
+                                        <div class="card-left">
+                                            <span class="material-icons">
+                                                credit_card
+                                            </span>
+                                        </div>
+                                        <div class="card-dados">
+                                            <div>Ticket Médio</div>
+                                            <div>R$ 545,33</div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                        
+                                <div id="graficos">
+                                    <div class="grafico-vendas-meio">
+                                        <canvas id="top-5"></canvas>
+                                    </div>
+                                    <div class="grafico-vendas-radar">
+                                        <canvas id="radar-vendas"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>                    
+                    </section>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                </section>
+            </article>
+        </main>
+    
+        <%- include('../partials/footer') %>
+
+        <%- include('../partials/CDNgraficos') %>
+        
+        <!-- Importa o objeto dataFinanceiro de forma que os scripts seguintes consigam utilizá-lo -->
+        <script>
+            var dbData = <%- JSON.stringify(dataFinanceiro) %>;
+        </script>
+
+        <%- include('../partials/graficosVendas') %>
+        
+        <script type="text/javascript" src="/javascript/shared.js"></script>
+    </body>
+</html>

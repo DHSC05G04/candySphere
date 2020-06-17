@@ -1,0 +1,129 @@
+<!-- Função para pegar core aleatorias -->
+<script> function background(teste){
+    const cores =[];
+    teste.forEach(element => {
+        cores.push(`rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.3)`);
+    });
+    return cores;
+   } </script>
+
+ <!-- Começo do grafico Despesa x Recita -->
+ <script>
+    
+     var dataTeste =dbData[0].data;
+     var cor = background(dataTeste);
+     var ctx = document.getElementById('barra').getContext('2d');
+     var myChart = new Chart(ctx, {
+         type: 'horizontalBar',
+         data: {
+             labels: ['Receita', 'Despesas', 'Lucros'],
+             datasets: [{
+                 label: 'Receita x Despesas',
+                 data: dataTeste,
+                 
+                 backgroundColor: cor,
+                 borderColor: cor,
+                 borderWidth: 1
+             }]
+         },
+         options: {
+             scales: {
+                 yAxes: [{
+                     ticks: {
+                         beginAtZero: true
+                     }
+                 }]
+             }
+         }
+     });
+ </script>
+
+<script>
+    var dataTeste =dbData[1].data;
+    var cor = background(dataTeste);
+    var ctx = document.getElementById('pizza-despesa').getContext('2d');
+    var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: dbData[1].labels,
+        datasets: [{
+            
+            data: dbData[1].data,
+            backgroundColor: cor,
+            borderColor: cor,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        
+    }
+});
+</script>
+ 
+<!-- *********************************************************************
+Gráfico de barras com linhas****************************************** -->
+    
+<script>
+        var dataTeste =dbData[2].data;
+    var cor2 = background(dataTeste);
+    var ctx = document.getElementById('bar-line').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                
+                label: 'Gráfico de barras',
+                data: dbData[2].data,
+                backgroundColor:cor2,
+                borderColor:cor2,
+                borderWidth:1
+            },
+        {
+            
+            type: 'line',
+            label: 'Gráfico de linha',
+            data: dbData[3].data,
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderColor: 'rgba(0,0,255,0.3)'
+                        
+        }
+    ],
+        labels: dbData[2].labels,
+        
+        } 
+        
+    });
+</script>
+<script>
+        var dataTeste =dbData[2].data;
+    var cor2 = background(dataTeste);
+    var ctx = document.getElementById('linha-diario').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            datasets: [
+        {
+            
+            type: 'line',
+            label: 'Receita Diaria',
+            data: dbData[4].data,
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderColor: 'rgba(0,0,255,0.3)'
+                        
+        },
+        {
+            
+            type: 'line',
+            label: 'Meta',
+            data: [180,180,180,180,180,180,180,180,180,180,180,180,180,180],
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderColor: 'rgba(255,0,0,0.3)'
+                        
+        },
+    ],
+        labels: dbData[4].labels,
+        
+        } 
+        
+    });
+</script>
