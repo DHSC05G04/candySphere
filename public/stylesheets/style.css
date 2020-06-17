@@ -63,6 +63,7 @@ header {
     align-items: center;
     width: 100vw;
     max-width: 1150px;
+    margin-bottom: 5px;
 }
 
 header #logo {
@@ -103,15 +104,10 @@ header #logo {
     width: 15%;
 }
 
-.BorderDeco {
-    width: 100%;
-    height: 20px;
-    background-color: var(--color2);
-    clip-path: polygon(0% 0%, 0% 100%, 50% 50%, 100% 100%, 100% 0%);
-}
-
 header nav {
     display: flex;
+    width: 100%;
+    background-color: var(--color4);
     flex-direction: column;
     align-items: center;
 }
@@ -129,7 +125,7 @@ header ul {
     justify-content: center;
     align-items: flex-end;
     flex-wrap: wrap;
-    margin: 10px 0 0 0;
+    margin: 0 0 0 0;
     padding: 0;
 }
 
@@ -386,11 +382,11 @@ main {
     align-self: flex-start;
     width: 95%;
     max-width: 1000px;
-    height: 95%;
+    height: 98%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 5px;
     background-color: var(--color1);
     z-index: 2;
     border-radius: 1em;
