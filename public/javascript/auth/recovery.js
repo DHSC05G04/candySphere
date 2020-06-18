@@ -4,6 +4,8 @@ const formRecovery = document.getElementById('form-login');
 const emailInput = document.getElementById('email');
 const retornoReset = document.getElementById('retornoReset');
 const btnRecovery = document.getElementById('recoverySubmit');
+const baseUrl = window.location.origin;
+
  
 btnRecovery.onclick = function(event){
    
@@ -31,7 +33,7 @@ function recoverPass(userData) {
 
 //    formRecovery.post =('/api/v0/auth/recovery',{
 //         email: email
-    fetch('http://localhost:3000/api/v0/auth/recovery', {
+    fetch(`${baseUrl}/api/v0/auth/recovery`, {
         headers:{
             'Accept': 'application/json',
             'Content-type': 'application/json'
