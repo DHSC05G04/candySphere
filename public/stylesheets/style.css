@@ -350,16 +350,25 @@ main {
 }
 
 /*Configurações do corpo Home*/
-#home img {
-    height: 30%;
-}
-
 #home h2 {
     text-transform: capitalize;
 }
 
-#home p {
-    margin: 0 10%;
+#homeLogo {
+    border: none;
+    width: 10%;
+}
+
+#homeHeader {
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
+}
+
+#homeText {
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
 }
 
 /*Configurações do corpo Administração*/
@@ -760,7 +769,7 @@ a.btn.material-icons:hover {
 
 .adminCardContainer.produtos {
     width: 14em;
-    height: 300px;
+    height: 285px;
     text-align: center;
 }
 
