@@ -38,6 +38,17 @@
         </main>
 
         <%- include('../partials/footer') %>
+        
+        <section id="modalPedido" class="modal-container">
+            <section class="modal">
+                <section class="conteudoModal">
+                    <section class="modalHeader">
+                        <button id="fechar-tudo" class="fecharModal">x</button>
+                        <h2>Pedido realizado com sucesso!</h1>
+                    </section>
+                </section>
+            </section>
+        </section>
 
         <section id="modalCarrinho" class="modal-container">
             <section class="modal">
@@ -70,6 +81,11 @@
             const API = <%- JSON.stringify(API_BASE) %>
         </script>
         <script type="text/javascript" src="/javascript/vendas.js"></script>
+        <% if(pedidoOk != undefined && pedidoOk == true) { %>
+            <script type="text/javascript">
+                iniciaModal('modalPedido')
+            </script>
+        <% } %>
         <script type="text/javascript" src="/javascript/shared.js"></script>
     </body>
 

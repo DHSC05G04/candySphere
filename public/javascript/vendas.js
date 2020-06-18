@@ -17,38 +17,48 @@ function addToCart(productId) {
 }
 
 function iniciaModal(modalId){
-    const tabelaCompras = document.getElementById('listaCompras')
-    const produtosCarrinho = JSON.parse(sessionStorage.carrinho);
+    if (modalId != 'modalPedido') {
+        const tabelaCompras = document.getElementById('listaCompras')
+        const produtosCarrinho = JSON.parse(sessionStorage.carrinho);
 
-    produtosCarrinho.forEach(async (produto, index) => {
-        const dadosAPI = await fetch(`${API_BASE}/${produto.id}`)
-        const dados = await dadosAPI.json()
+        produtosCarrinho.forEach(async (produto, index) => {
+            const dadosAPI = await fetch(`${API_BASE}/${produto.id}`)
+            const dados = await dadosAPI.json()
 
-        if(index == 0) {
-            tabelaCompras.innerHTML = `
-            <tr class="itensCarrinho" id=${produto.id}>
-                <td>${dados[0].itemEstoque.nome}</td>
-                <td><input type="number" pattern="0" step="1" value="${produto.qtd}"></td>
-                <td>${dados[0].valor}</td>
-            </tr>
+            if(index == 0) {
+                tabelaCompras.innerHTML = `
+                <tr class="itensCarrinho" id=${produto.id}>
+                    <td>${dados[0].itemEstoque.nome}</td>
+                    <td><input type="number" pattern="0" step="1" value="${produto.qtd}"></td>
+                    <td>${dados[0].valor}</td>
+                </tr>
+                `
+            } else {
+                tabelaCompras.innerHTML += `
+                <tr class="itensCarrinho" id=${produto.id}>
+                    <td>${dados[0].itemEstoque.nome}</td>
+                    <td><input type="number" pattern="0" step="1" value="${produto.qtd}"></td>
+                    <td>${dados[0].valor}</td>
+                </tr>
             `
-        } else {
-            tabelaCompras.innerHTML += `
-            <tr class="itensCarrinho" id=${produto.id}>
-                <td>${dados[0].itemEstoque.nome}</td>
-                <td><input type="number" pattern="0" step="1" value="${produto.qtd}"></td>
-                <td>${dados[0].valor}</td>
-            </tr>
-        `
-        }
-    })
+            }
+        })
 
-    modalId.classList.add('mostrar');
-    modalId.addEventListener('click',(e)=>{
-        if(e.target.id =='fechar-tudo'){
-            modalId.classList.remove('mostrar');
-        };
-    });
+        modalId.classList.add('mostrar');
+        modalId.addEventListener('click',(e)=>{
+            if(e.target.id =='fechar-tudo'){
+                modalId.classList.remove('mostrar');
+            };
+        });
+    } else {
+        const modalPedido = document.getElementById(modalId)
+        modalPedido.classList.add('mostrar');
+        modalPedido.addEventListener('click',(e)=>{
+            if(e.target.id =='fechar-tudo'){
+                modalPedido.classList.remove('mostrar');
+            };
+        });
+    }
 };
 
 async function checkout() {
