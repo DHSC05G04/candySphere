@@ -5,7 +5,7 @@
     --color3: #CDBB99;
     --color4: #A37E58;
     --color5: #755C3B;
-    --color5opacity: #755C3B99;
+    --color5opacity: #755c3bbf;
     --headerHeight: 22vh;
     --footerHeight: 30px;
     --contentWidth: 96%;
@@ -311,7 +311,7 @@ form button:hover {
 .msgSucesso {
     -webkit-font-smoothing: subpixel-antialiased;
     color: var(--color1);
-    font-size: 1em;
+    font-size: 0.8em;
     text-align: left;
     padding: 5px;
     width: 94%;
@@ -323,7 +323,7 @@ form button:hover {
 .msgErro {
     -webkit-font-smoothing: subpixel-antialiased;
     color: var(--color1);
-    font-size: 1em;
+    font-size: 0.8em;
     text-align: left;
     padding: 5px;
     width: 94%;
