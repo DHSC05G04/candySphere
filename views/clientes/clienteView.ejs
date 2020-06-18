@@ -31,8 +31,8 @@
                     </section>
                 </section>
                 <section class="itemViewFooter">
-                    <button type="button" class="material-icons" onClick="window.location.href='/clientes/<%= clienteUnico[0].id %>'">edit</button>
-                    <button type="button" id="delete-cliente" class="material-icons deleteCliente" clienteId="<%= clienteUnico[0].id %>">delete</button>
+                    <button type="button" id="cliente-edit" class="material-icons">edit</button>
+                    <button type="button" id="delete-cliente" class="material-icons deleteCliente" clienteId="<%= clienteUnico[0].id %>" nome="<%=clienteUnico[0].nome%>">delete</button>
                     <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
                 </section>
             </article>
@@ -138,31 +138,32 @@
                 });
             }
             // formulário
-            const form = document.querySelector('#form-cliente');
-            const titulo = document.querySelector('#titulo');
+            const form = document.getElementById('form-cliente');
+            const titulo = document.getElementById('titulo');
             // dados Pessoais
-            const nomeLabel = document.querySelector('#nome-label');
-            const nome = document.querySelector('#nome');
-            const cpf = document.querySelector('#cpf');
-            const email = document.querySelector('#email');
-            const telefone = document.querySelector('#telefone');
-            const telefoneLabel = document.querySelector('#telefone-label');
+            const nomeLabel = document.getElementById('nome-label');
+            const nome = document.getElementById('nome');
+            const cpf = document.getElementById('cpf');
+            const email = document.getElementById('email');
+            const telefone = document.getElementById('telefone');
+            const telefoneLabel = document.getElementById('telefone-label');
             //    endereço
-            const labelCep = document.querySelector('#labelCep');
-            const inputCep = document.querySelector('#input-cep');
-            const cep = document.querySelector('#cep');
-            const lougradouro = document.querySelector('#lougradouro');
-            const numero = document.querySelector('#numero');
-            const complemento = document.querySelector('#complemento');
-            const bairro = document.querySelector('#bairro');
-            const cidade = document.querySelector('#cidade');
-            const uf = document.querySelector('#uf');
-            const btnClienteAdd = document.getElementById('btn-add');
-            const submitCliente = document.querySelector('#btn-submit');
+            const labelCep = document.getElementById('labelCep');
+            const inputCep = document.getElementById('input-cep');
+            const cep = document.getElementById('cep');
+            const lougradouro = document.getElementById('lougradouro');
+            const numero = document.getElementById('numero');
+            const complemento = document.getElementById('complemento');
+            const bairro = document.getElementById('bairro');
+            const cidade = document.getElementById('cidade');
+            const uf = document.getElementById('uf');
+            const btnClienteEdit = document.getElementById('cliente-edit');
+            const submitCliente = document.getElementById('btn-submit');
             const btnDelete = document.getElementsByClassName('delete');
-            '<% if(clienteUnico!=""){%>'
+
             //submit para atualizar
-            iniciaModal('modal-cliente')
+            btnClienteEdit.addEventListener('click', (e) => {
+                iniciaModal('modal-cliente')
             form.action = "/clientes?_method=PUT"
             titulo.innerHTML = "Atualizar Cliente"
             submitCliente.value = "Atualizar"
@@ -200,89 +201,8 @@
                     nome.style.border = "1px solid var(--color5)"
                     form.submit()
                 }
-            })
-            btnClienteAdd.addEventListener('click', (e) => {
-                e.preventDefault()
-                nome.value = "";
-                cpf.value = "";
-                email.value = "";
-                telefone.value = "";
-                cep.value = ""
-                lougradouro.value = ""
-                numero.value = ""
-                complemento.value = ""
-                bairro.value = ""
-                cidade.value = ""
-                uf.value = ""
-                iniciaModal('modal-cliente')
-                form.action = "/clientes?_method=POST"
-                titulo.innerHTML = "Cadastro Cliente"
-                submitCliente.value = "Salvar"
-                // submit para Cadastrar
-                submitCliente.addEventListener('click', (e) => {
-                    if (nome.value === '') {
-                        e.preventDefault()
-                        telefone.style.border = "1px solid var(--color5)"
-                        nome.style.border = "2px solid red"
-                        nomeLabel.textContent = "* Nome"
-                        nomeLabel.style.color = "red"
-                        telefoneLabel.textContent = "Telefone"
-                        telefoneLabel.style.color = "var(--color5)"
-                    } else if (telefone.value === "") {
-                        e.preventDefault()
-                        nome.style.border = "1px solid var(--color5)"
-                        telefone.style.border = "2px solid red"
-                        telefoneLabel.textContent = " * Telefone"
-                        telefoneLabel.style.color = "red"
-                        nomeLabel.textContent = "Nome"
-                        nomeLabel.style.color = "var(--color5)"
-                    } else {
-                        e.preventDefault()
-                        telefone.style.border = "1px solid var(--color5)"
-                        nome.style.border = "1px solid var(--color5)"
-                        form.submit()
-                    }
                 })
             })
-
-
-            //   fim delete
-            '<%}else{%>'
-
-
-
-            // submit para Cadastrar
-            btnClienteAdd.addEventListener('click', (e) => {
-                e.preventDefault()
-                iniciaModal('modal-cliente')
-                form.action = "/clientes?_method=POST"
-                submitCliente.addEventListener('click', (e) => {
-                    if (nome.value === '') {
-                        e.preventDefault()
-                        telefone.style.border = "1px solid var(--color5)"
-                        nome.style.border = "2px solid red"
-                        nomeLabel.textContent = "* Nome"
-                        nomeLabel.style.color = "red"
-                        telefoneLabel.textContent = "Telefone"
-                        telefoneLabel.style.color = "var(--color5)"
-                    } else if (telefone.value === "") {
-                        e.preventDefault()
-                        nome.style.border = "1px solid var(--color5)"
-                        telefone.style.border = "2px solid red"
-                        telefoneLabel.textContent = " * Telefone"
-                        telefoneLabel.style.color = "red"
-                        nomeLabel.textContent = "Nome"
-                        nomeLabel.style.color = "var(--color5)"
-                    } else {
-                        e.preventDefault()
-                        telefone.style.border = "1px solid var(--color5)"
-                        nome.style.border = "1px solid var(--color5)"
-                        form.submit()
-                    }
-                })
-            })
-
-            '<%}%>'
         </script>
         <script>
             // controle do AUTO PREENCHIMENTO do CEP
@@ -314,20 +234,18 @@
 
 
         <script>
-            const del = document.getElementsByClassName('deleteCliente');
+            const del = document.getElementById('delete-cliente');
             const clienteDeletado = document.querySelector(".cliente-deletado")
-            for (let i = 0; i < del.length; i++) {
-                del[i].addEventListener('click', (e) => {
-                    e.preventDefault()
-                    const id = document.querySelector('#id');
-                    const submit = document.querySelector('.btn-cliente');
-                    const form = document.querySelector('.form-del');
-                    form.action = `/clientes/${del[i].attributes.clienteId.value}/?_method=DELETE`
-                    id.value = del[i].attributes.clienteId.value
-                    iniciaModal('modal-delete');
-                })
-
-            }
+            del.addEventListener('click', (e) => {
+                e.preventDefault()
+                const id = document.getElementById('id');
+                const submit = document.querySelector('.btn-cliente');
+                const form = document.querySelector('.form-del');
+                form.action = `/clientes/${del.attributes.clienteId.value}/?_method=DELETE`
+                id.value = del.attributes.clienteId.value
+                clienteDeletado.innerHTML = del.attributes.nome.value
+                iniciaModal('modal-delete');
+            })
         </script>
 
         <script type="text/javascript" src="/javascript/shared.js"></script>

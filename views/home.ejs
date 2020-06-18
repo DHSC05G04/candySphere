@@ -13,15 +13,59 @@
                     <span class="material-icons">home</span><h2>Home<h2>
                 </section>
                 <section class="itemViewMain">
-                    <section class="itemViewBody">
-                        <img src="/images/logo.png" alt="">
-                        <h2>Bem vindo!</h2>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem cusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                            voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-                            ratione voluptatem sequi nesciunt.
-                        </p>
+                    <section class="itemViewBody produto">
+                        <section id="homeHeader" class="itemViewDesc">
+                            <img id="homeLogo" src="/images/logo2.png" alt="">
+                            <p id="homeText"><b>Aqui ou através da barra de navegação você poderá acessar as seções do seu sistema de gestão.</b></p>
+                        </section>
+                        <section class="adminCardContainer">
+                            <section class="logo">
+                                <span class="material-icons">receipt</span>
+                            </section>
+                            <section class="description">
+                                <h3>Operação</h3>
+                                <p>Funções de vendas, controle de estoque, produto e receitas</p>
+                            </section>
+                            <section class="adminCardFooter">
+                                <button class="material-icons" onclick="window.location.href='<%= `/admin` %>'">remove_red_eye</button>
+                            </section>
+                        </section>
+                        <section class="adminCardContainer">
+                            <section class="logo">
+                                <span class="material-icons">receipt</span>
+                            </section>
+                            <section class="description">
+                                <h3>Financeiro</h3>
+                                <p>Exibição de relatórios financeiros</p>
+                            </section>
+                            <section class="adminCardFooter">
+                                <button class="material-icons" onclick="window.location.href='<%= `/financeiro` %>'">remove_red_eye</button>
+                            </section>
+                        </section>
+                        <section class="adminCardContainer">
+                            <section class="logo">
+                                <span class="material-icons">receipt</span>
+                            </section>
+                            <section class="description">
+                                <h3>Clientes</h3>
+                                <p>Cadastro, edição e visualização de clientes</p>
+                            </section>
+                            <section class="adminCardFooter">
+                                <button class="material-icons" onclick="window.location.href='<%= `/clientes` %>'">remove_red_eye</button>
+                            </section>
+                        </section>
+                        <section class="adminCardContainer">
+                            <section class="logo">
+                                <span class="material-icons">receipt</span>
+                            </section>
+                            <section class="description">
+                                <h3>Funcionários</h3>
+                                <p>Cadastro, edição e visualização de funcionários</p>
+                            </section>
+                            <section class="adminCardFooter">
+                                <button class="material-icons" onclick="window.location.href='<%= `/funcionários` %>'">remove_red_eye</button>
+                            </section>
+                        </section>
                     </section>
                 </section>
             </article>

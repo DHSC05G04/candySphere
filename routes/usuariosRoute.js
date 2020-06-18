@@ -11,6 +11,9 @@ router.put('/',(usuarioController.update));
 router.delete('/',(usuarioController.delete));
 
 router.get('/reset', resetController.resetPassword);
+router.get('/resetTESTE', function(req, res) {
+    return res.render('resetPassword')
+});
 
 
 

@@ -63,6 +63,7 @@ header {
     align-items: center;
     width: 100vw;
     max-width: 1150px;
+    margin-bottom: 5px;
 }
 
 header #logo {
@@ -103,15 +104,10 @@ header #logo {
     width: 15%;
 }
 
-.BorderDeco {
-    width: 100%;
-    height: 20px;
-    background-color: var(--color2);
-    clip-path: polygon(0% 0%, 0% 100%, 50% 50%, 100% 100%, 100% 0%);
-}
-
 header nav {
     display: flex;
+    width: 100%;
+    background-color: var(--color4);
     flex-direction: column;
     align-items: center;
 }
@@ -129,7 +125,7 @@ header ul {
     justify-content: center;
     align-items: flex-end;
     flex-wrap: wrap;
-    margin: 10px 0 0 0;
+    margin: 0 0 0 0;
     padding: 0;
 }
 
@@ -188,20 +184,36 @@ footer ul {
 #loginBody {
     justify-content: center;
     align-items: center;
+    margin:0;
+    padding:0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14;
 }
-#loginBody * { 
-    margin:10px;
+#loginBody *, #loginBody *:before, #loginBody *:after { 
+    margin:5px;
     /* padding:0px; */
 }
 
  /* remove a linha dos links */
 #loginBody a{
 text-decoration: none;
+color: var(--color2);
 }
+
+#login-form #forgotPass{
+    color: var(--color2);
+}
+
+#forgotPass a:hover   {
+    color: var(--color1);
+    font-weight: bolder;
+}
+
 /* esconde as ancoras da tela */
 #loginBody a.links{
     display: none;
     }
+
 .form-container {
     display: flex;
     justify-content: center;
@@ -210,9 +222,10 @@ text-decoration: none;
     height: 95vh;
     margin: 5px auto 5px auto;
     padding: 5px;
-    background-image: url('/images/brigadeiro.png');
+    background-image: url('/images/brigadeiro2.jpg');
     background-size: cover;
     border-radius: 60px;
+    position: relative;
 }
 
 #form-login {
@@ -221,22 +234,40 @@ text-decoration: none;
     align-items: center;
     justify-content: center;
     min-width: 300px;
-    width: 30vw;
-    height: 400px;
+    width: 40vw;
+    height: 360px;
     background-color: var(--color5opacity);
     border-radius: 30px;
 }
 
-form img.logo {
-    width: 40%;
+#form-login-logo {
+    max-width: 80px;
+    min-width: 70px;
+    width: 20vw;
+    margin: 0px auto -40px auto;
 }
 
 form h2 {
     color: var(--color1);
-    font-size: 1.5em;
+    font-size: 1.5em;					
+}
+
+#form-login h2 {
+    color: var(--color1);
+    font-size: 1.25em;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 700
 }
 
 form label {
+    min-width: 250px;
+    width: 30vw;
+    margin: 10px;
+    color: var(--color1);
+    text-align: center;
+}
+
+#form-login label {
     min-width: 250px;
     width: 30vw;
     margin: 10px;
@@ -254,7 +285,22 @@ form input {
     color: var(--color1);
     text-align: center;
     font-size: 20px;
+								
 }
+
+#form-login input {
+    max-width: 300px;
+    width: 90%;
+    height: 30px;
+    background-color: var(--color1);
+    border: none;
+    border-radius: 5px;
+    color: var(--color5);
+    text-align: center;
+    font-size: 1em;
+    margin: 10px auto 10px auto;
+}
+
 
 form button {
     display: block;
@@ -270,21 +316,49 @@ form button {
 }
 
 form button:hover {
-    background-color: var(--color5);
-    color: var(--color1);
+    background-color: var(--color5opacity);
+    color: var(--color2);
     cursor: pointer;
     border: 1px solid var(--color2);
 }
 
-#msgLogin {
-    color: var(--color2);
-    font-size: 0.9em;
-    font-weight: bold;
+#form-login #msgLogin {
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: var(--color1);
+    font-size: 1em;
     text-align: center;
-    text-transform: uppercase;
-    width: -moz-available;
-    height: 40px;
+    padding: 5px;
+    width: 94%;
+    background: #ff000047;
+    align-items: center;
+    display: block;
 }
+
+/* Reset Password */
+.msgSucesso {
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: var(--color1);
+    font-size: 1em;
+    text-align: left;
+    padding: 5px;
+    width: 94%;
+    background: #62d27a91;
+    align-items: center;
+    display: block;
+}
+
+.msgErro {
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: var(--color1);
+    font-size: 1em;
+    text-align: left;
+    padding: 5px;
+    width: 94%;
+    background: #ff000047;
+    align-items: center;
+    display: block;
+}
+
 
 /*Configurações do corpo*/
 main {
@@ -299,16 +373,25 @@ main {
 }
 
 /*Configurações do corpo Home*/
-#home img {
-    height: 30%;
-}
-
 #home h2 {
     text-transform: capitalize;
 }
 
-#home p {
-    margin: 0 10%;
+#homeLogo {
+    border: none;
+    width: 10%;
+}
+
+#homeHeader {
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
+}
+
+#homeText {
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
 }
 
 /*Configurações do corpo Administração*/
@@ -318,7 +401,7 @@ main {
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    margin: 30px 10px;
+    margin: 5px 10px 25px 10px;
     width: 18.75em;
     height: 320px;
     border: 2px solid var(--color5);
@@ -386,11 +469,11 @@ main {
     align-self: flex-start;
     width: 95%;
     max-width: 1000px;
-    height: 95%;
+    height: 98%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 5px;
     background-color: var(--color1);
     z-index: 2;
     border-radius: 1em;
@@ -447,8 +530,8 @@ main {
     overflow-y: auto;
     overflow-x: hidden;
     flex: 1;
-    padding-bottom: 15px;
-    margin: 10px 0 0 20px;
+    padding-bottom: 5px;
+    margin: 5px 0 0 0;
 }
 
 .itemViewDesc {
@@ -567,7 +650,7 @@ textarea {
     display: flex;
     justify-content: center;
     margin: 10px 0 0 0;
-    padding: 15px;
+    padding: 10px;
     border-top: 1px solid var(--color5);
     box-shadow: 0 -2px 5px var(--color5);
     background-color: var(--color2);
@@ -577,7 +660,7 @@ textarea {
 .itemViewFooter button, .modalFooter button, .adminCardFooter button {
     margin: 0 15px;
     padding: 5px;
-    font-size: 2em;
+    font-size: 1.3em;
     background-color: var(--color5);
     color: var(--color1) !important;
     border: 2px solid var(--color1);
@@ -709,7 +792,7 @@ a.btn.material-icons:hover {
 
 .adminCardContainer.produtos {
     width: 14em;
-    height: 300px;
+    height: 285px;
     text-align: center;
 }
 
@@ -1399,6 +1482,10 @@ section#tabela-corpo table#tabela-cliente tr td.email-campo {
 
     header input#menu:checked~#mainNav {
         height: auto;
+    }
+
+    .itemViewFooter button, .modalFooter button, .adminCardFooter button {
+        font-size: 2em;
     }
 }
 

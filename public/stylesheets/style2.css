@@ -183,6 +183,8 @@ footer ul {
     align-items: center;
     margin:0;
     padding:0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14;
 }
 #loginBody *, *:before, *:after { 
     margin:5px;
@@ -195,7 +197,7 @@ text-decoration: none;
 color: var(--color2);
 }
 
-#forgotPass{
+#login-form #forgotPass{
     color: var(--color2);
 }
 
@@ -217,7 +219,7 @@ display: none;
     height: 95vh;
     margin: 5px auto 5px auto;
     padding: 5px;
-    background-image: url('/images/brigadeiro.png');
+    background-image: url('/images/brigadeiro2.jpg');
     background-size: cover;
     border-radius: 60px;
     position: relative;
@@ -229,22 +231,27 @@ display: none;
     align-items: center;
     justify-content: center;
     min-width: 300px;
-    width: 30vw;
-    height: 400px;
+    width: 40vw;
+    height: 360px;
     background-color: var(--color5opacity);
     border-radius: 30px;
 }
 
-form img.logo {
-    width: 30%;
+#form-login-logo {
+    max-width: 80px;
+    min-width: 70px;
+    width: 20vw;
+    margin: 0px auto -40px auto;
 }
 
-form h2 {
+#form-login h2 {
     color: var(--color1);
-    font-size: 1.5em;
+    font-size: 1.25em;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 700
 }
 
-form label {
+#form-login label {
     min-width: 250px;
     width: 30vw;
     margin: 10px;
@@ -252,17 +259,19 @@ form label {
     text-align: center;
 }
 
-form input {
+#form-login input {
     max-width: 300px;
     width: 90%;
-    height: 40px;
+    height: 30px;
     background-color: var(--color2);
     border: none;
     border-radius: 5px;
     color: var(--color5);
     text-align: center;
-    font-size: 20px;
+    font-size: 1em;
+    margin: 10px auto 10px auto;
 }
+
 
 form button {
     display: block;
@@ -278,21 +287,25 @@ form button {
 }
 
 form button:hover {
-    background-color: var(--color5);
+    background-color: var(--color5opacity);
     color: var(--color2);
     cursor: pointer;
     border: 1px solid var(--color2);
 }
 
-#msgLogin {
-    color: var(--color2);
-    font-size: 0.9em;
-    font-weight: bold;
+#form-login #msgLogin {
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: var(--color1);
+    font-size: 1em;
+    /* font-weight: bold; */
     text-align: center;
-    text-transform: uppercase;
-    width: -moz-available;
-    height: 30px;
-    /* border: 1px solid var(--color2); */
+    /* text-transform: uppercase; */
+    /* height: 30px; */
+    padding: 5px;
+    width: 94%;
+    background: #ff000047;
+    align-items: center;
+    display: block;
 }
 
 /*Configurações do corpo*/
