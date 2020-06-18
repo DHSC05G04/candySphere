@@ -65,7 +65,7 @@ const resetController = {
               }
             ], function(err) {
               if (err) return next(err);
-              res.redirect('/resetPassword');
+              res.json(err);
            })},
 
     resetPassword: (req, res,next) => {
