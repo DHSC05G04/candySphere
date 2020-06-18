@@ -367,6 +367,10 @@ main {
     text-align: center;
 }
 
+.homeFas {
+    font-size: 3.5em;
+}
+
 /*Configurações do corpo Administração*/
 .adminCardContainer {
     display: flex;
