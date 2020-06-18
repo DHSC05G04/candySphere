@@ -300,10 +300,7 @@ form button:hover {
     -webkit-font-smoothing: subpixel-antialiased;
     color: var(--color1);
     font-size: 1em;
-    /* font-weight: bold; */
     text-align: center;
-    /* text-transform: uppercase; */
-    /* height: 30px; */
     padding: 5px;
     width: 94%;
     background: #ff000047;
