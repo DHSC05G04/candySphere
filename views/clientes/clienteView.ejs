@@ -15,18 +15,18 @@
                     <section class="itemViewBody">
                         <section class="itemInfo">
                             <h4 class="sectionDivider">Dados cadastrais</h4>
-                            <p><b>Email: </b><%=clienteUnico[0].email%></p>
-                            <p><b>Telefone: </b><%=clienteUnico[0].telefone%></p>
-                            <p><b>Logradouro: </b><%=clienteUnico[0].endereco%><b> - Nº</b> <%=clienteUnico[0].numero%></p>
-                            <p><b>Complemento: </b><%=clienteUnico[0].complemento%> </p>
-                            <p><b>Bairro: </b><%=clienteUnico[0].bairro%> - <b> CEP: </b><%=clienteUnico[0].cep%></p>
-                            <p><b>Cidade: </b><%=clienteUnico[0].cidade%> - <b> UF: </b><%=clienteUnico[0].uf%></p>        
+                            <p><b>Email:</b>&nbsp; <%=clienteUnico[0].email%></p>
+                            <p><b>Telefone:&nbsp; </b> <%=clienteUnico[0].telefone%></p>
+                            <p><b>Logradouro:&nbsp; </b> <%=clienteUnico[0].endereco%><b>&nbsp;-&nbsp;Nº</b>&nbsp; <%=clienteUnico[0].numero%></p>
+                            <p><b>Complemento:&nbsp; </b> <%=clienteUnico[0].complemento%> </p>
+                            <p><b>Bairro:&nbsp; </b> <%=clienteUnico[0].bairro%>&nbsp;-&nbsp;<b> CEP: </b>&nbsp;<%=clienteUnico[0].cep%></p>
+                            <p><b>Cidade:&nbsp; </b> <%=clienteUnico[0].cidade%> &nbsp;-&nbsp;<b> UF: </b>&nbsp;<%=clienteUnico[0].uf%></p>        
                         </section>
                         <section class="itemInfo">
-                            <h4 class="sectionDivider">Relação</h4>
-                            <p><b>Última Compra: </b> 25/03/2019 - R$ 2.350,12 </p>
-                            <p><b>Média:</b> R$ 1.800,21</p>
-                            <p><b>Cliente desde: </b><%=moment(clienteUnico[0].createdAt).format("D/M/Y")%> </p>
+                            <h4 class="sectionDivider">Resumo</h4>
+                            <p><b>Última Compra:&nbsp;</b> 25/03/2019 - R$ 2.350,12 </p>
+                            <p><b>Média:&nbsp;</b> R$ 1.800,21</p>
+                            <p><b>Cliente desde:&nbsp;</b><%=moment(clienteUnico[0].createdAt).format("D/M/Y")%> </p>
                         </section>
                     </section>
                 </section>
@@ -111,20 +111,17 @@
                     <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
                     <h1 id="titulo"> <span class="material-icons">
                             delete
-                        </span> - Delete de Cliente</h1>
+                        </span> - Exclusão de Cliente</h1>
                     <div id="label-cliente"><label for="nome-cliente" id="label-nome">
-                            <h3>Tem certeza que vai deletar o Cliente?</h3>
+                            <h3 style="font-size: 20px; margin-top:15px;">Tem certeza que deseja excluir o Cliente?</h3>
                         </label></div>
-                        <div><h1 class="cliente-deletado"></h1></div>
+                        <div><h1 style="font-size: 20px; margin-top:15px;" class="cliente-deletado"></h1></div>
                     <div id="btn-modal"> <input type="submit" class="btn-cliente" value="Deletar">
                         <input type="submit" id="cancela" class="btn-cliente" value="Cancelar"></div>
-
                 </form>
             </div>
         </div>
-
         <%- include('../partials/footer') %>
-
         <script>
             function iniciaModal(modalId) {
                 const modal = document.getElementById(modalId);
