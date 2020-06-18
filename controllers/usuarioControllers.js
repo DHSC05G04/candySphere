@@ -50,7 +50,7 @@ const usuarioControllers = {
                     console.log('Não foi possivel mandar o email: ' + erro );
                 }
             });
-               const user = await fetch(`${API_BASE}/usuarioss`, {
+               const user = await fetch(`${API_BASE}/usuarios`, {
                 method: "post",
                 body: JSON.stringify(post),
                 headers: {

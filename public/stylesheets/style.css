@@ -189,7 +189,7 @@ footer ul {
     -webkit-font-smoothing: antialiased;
     font-size: 14;
 }
-#loginBody *, *:before, *:after { 
+#loginBody *, #loginBody *:before, #loginBody *:after { 
     margin:5px;
     /* padding:0px; */
 }
@@ -247,11 +247,24 @@ color: var(--color2);
     margin: 0px auto -40px auto;
 }
 
+form h2 {
+    color: var(--color1);
+    font-size: 1.5em;					
+}
+
 #form-login h2 {
     color: var(--color1);
     font-size: 1.25em;
     -webkit-font-smoothing: antialiased;
     font-weight: 700
+}
+
+form label {
+    min-width: 250px;
+    width: 30vw;
+    margin: 10px;
+    color: var(--color1);
+    text-align: center;
 }
 
 #form-login label {
@@ -260,6 +273,19 @@ color: var(--color2);
     margin: 10px;
     color: var(--color1);
     text-align: center;
+}
+
+form input {
+    max-width: 300px;
+    width: 90%;
+    height: 40px;
+    background-color: var(--color4);
+    border: none;
+    border-radius: 5px;
+    color: var(--color1);
+    text-align: center;
+    font-size: 20px;
+								
 }
 
 #form-login input {
