@@ -6,13 +6,14 @@ const isAuthenticated = require('../middlewares/isAuthenticated');
 
 /* GET index page. */
 router.get('/', function(req, res, next) {
-  let tabActive = {homeAct: "active",
-                  adminAct: "inactive",
-                  financeiroAct: "inactive",
-                  clientesAct: "inactive",
-                  funcionariosAct: "inactive",
-                  pdvAct: "inactive"};
-  res.render('index', {tabs: tabActive });
+  // let tabActive = {homeAct: "active",
+  //                 adminAct: "inactive",
+  //                 financeiroAct: "inactive",
+  //                 clientesAct: "inactive",
+  //                 funcionariosAct: "inactive",
+  //                 pdvAct: "inactive"};
+  // res.render('index', {tabs: tabActive });
+  return res.redirect('/home');
 });
 
 router.get('/index', function(req, res, next) {
@@ -33,18 +34,7 @@ router.post("/logar",
                                   failureRedirect: '/index',
                                   msgUser:  'Usuario ou senha inválidos!'
                                 })
-  // passport.authenticate('local', function(err, user, info) {
-  //     if (err) { return next(err); }
-  //     if (!user) {
-  //       return res.render('index', {msgUser: 'Usuario inválido!'}); 
-  //     }
-  //     req.logIn(
-  //       user,
-  //       function(err) {
-  //         if (err) { return next(err); }
-  //       return res.redirect('/users/' + user.username);
-  //     });
-  // })
+
   , function(req, res) {
   // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
   // So we're sending the user back the route to the members page because the redirect will happen on the front end
@@ -58,9 +48,6 @@ router.post("/logar",
     funcionariosAct: "inactive",
     pdvAct: "inactive"
   };
-  console.log("DENTRO DO indexRouter: ");
-  console.log(req.user)
-  console.log('-------');
   res.render('home', { title: 'Express', tabs: tabActive,usuario: req.user });
 });
 
