@@ -8,7 +8,7 @@ const API_BASE = process.env.API_BASE;
 const estoqueController = {
     index: async (req, res) => {
         let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
+                        operacaoAct: "active",
                         financeiroAct: "inactive",
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
@@ -36,7 +36,7 @@ const estoqueController = {
 
     indexById: async (req, res) => {
         let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
+                        operacaoAct: "active",
                         financeiroAct: "inactive",
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
@@ -64,7 +64,7 @@ const estoqueController = {
 
     update: async (req, res) => {
         let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
+                        operacaoAct: "active",
                         financeiroAct: "inactive",
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
@@ -96,7 +96,7 @@ const estoqueController = {
     },
     create: async (req, res) => {
         let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
+                        operacaoAct: "active",
                         financeiroAct: "inactive",
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",

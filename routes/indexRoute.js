@@ -42,7 +42,7 @@ router.post("/logar",
   // res.render('home');
   const tabActive = {
     homeAct: "active",
-    adminAct: "inactive",
+    operacaoAct: "inactive",
     financeiroAct: "inactive",
     clientesAct: "inactive",
     funcionariosAct: "inactive",
