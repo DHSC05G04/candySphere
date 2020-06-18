@@ -6,15 +6,24 @@
     <body id="loginBody">
 
     <main class="form-container">
-        <img class="logo" src="images/logo2.png" alt="">
         <div id="login">
-        <form action="/logar" method="POST" id="form-login">
-            <center><h2>Entre com seus dados de acesso!</h2></center>
-            <div id="msgLogin">
+            <div style="display: flex;">
+				<img class="logo" src="/images/logo2.png" alt="Logo Candy Sphere" style="
+    				    max-width: 80px;
+                        min-width: 70px;
+                        width: 20vw;
+                        margin: 0px auto -40px auto;
+    	        ">
+			</div>
+            <form action="/logar" method="POST" id="form-login">
+                <center><h2>Entre com seus dados de acesso!</h2></center>
                 <% if(typeof msgUser !=='undefined') { %>
-                    <%= msgUser %>
-                <% }%>
-            </div>
+                    <div id="msgLogin">
+                        <%= msgUser %>
+                    </div>
+                <% } else {%>
+                    <div> </div>
+                <% } %> 
             <!-- <label for="email">Login:</label> -->
                 <input
                     type="text" 
@@ -23,6 +32,7 @@
                     height="40px"
                     placeholder="Digite seu nome de usuário"
                 />
+                <!-- <span><label for="email">Senha:</label></span> -->
                 <input
                     type="password"
                     id="password"
