@@ -266,7 +266,7 @@ color: var(--color2);
     max-width: 300px;
     width: 90%;
     height: 30px;
-    background-color: var(--color2);
+    background-color: var(--color1);
     border: none;
     border-radius: 5px;
     color: var(--color5);
@@ -307,6 +307,32 @@ form button:hover {
     align-items: center;
     display: block;
 }
+
+/* Reset Password */
+.msgSucesso {
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: var(--color1);
+    font-size: 1em;
+    text-align: left;
+    padding: 5px;
+    width: 94%;
+    background: #62d27a91;
+    align-items: center;
+    display: block;
+}
+
+.msgErro {
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: var(--color1);
+    font-size: 1em;
+    text-align: left;
+    padding: 5px;
+    width: 94%;
+    background: #ff000047;
+    align-items: center;
+    display: block;
+}
+
 
 /*Configurações do corpo*/
 main {

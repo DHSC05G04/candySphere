@@ -42,6 +42,7 @@ const recebimentoAPIRouter = require('./routes/apis/recebimentosRoute');
 const contasAPIRouter = require('./routes/apis/contaRoute');
 const pagamentosAPIRouter = require('./routes/apis/pagamentosRoute');
 const contaMovimentoAPIRouter = require('./routes/apis/contaMovimentoRoute');
+const authAPIRouter = require('./routes/apis/authRoute')
 
 const app = express();
 
@@ -117,6 +118,7 @@ app.use('/api/v0/recebimentos', recebimentoAPIRouter);
 app.use('/api/v0/contas',contasAPIRouter);
 app.use('/api/v0/pagamentos',pagamentosAPIRouter);
 app.use('/api/v0/conta-movimento',contaMovimentoAPIRouter);
+app.use('/api/v0/auth/',authAPIRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

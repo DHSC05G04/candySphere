@@ -28,7 +28,7 @@ const resetController = {
                             // req.flash('error', 'No account with that email address exists.');
                             // return res.status(400).send('Email não encontrado, segue a vida '+ token);
                             req.flash('info', 'An e-mail has been sent to ' + email + ' with further instructions.');
-                            return res.status(200).send(msgReturn);
+                            return res.status(200).json("info: 'OK'");
                         } else {
                             user.resetPasswordToken = token;
                             user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
