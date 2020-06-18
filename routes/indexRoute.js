@@ -16,8 +16,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/index', function(req, res, next) {
-  const loginError = req.flash('error');
-  return res.render('index', {msgUser: loginError });
+  return res.render('index', {msgUser: req.flash('error') });
 });
 
 router.post('/', isAuthenticated, function(req, res) {
