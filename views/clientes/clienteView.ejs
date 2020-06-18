@@ -61,15 +61,6 @@
                             <div class="dados-complemento" style="width: 20%;">
                                 <input type="submit" id="input-cep" class="btn-cliente" value="Buscar">
                             </div>
-<<<<<<< HEAD
-                            <div class="funcionarios-dados">
-                                <div>
-                                    <label class="label-funcionario" for=""><b>Resumo Cliente</b></label>
-                                    <div><b>Última Compra: </b> 25/03/2019 - R$ 2.350,12 </div>
-                                    <div><b>Média:</b> R$ 1.800,21</div>
-                                    <div><b>Cliente desde: </b><%=moment(clienteUnico[0].createdAt).format("D/M/Y")%> </div>
-                                </div>
-=======
                         </div>
                     </div>
                     <div id="label-cliente" class="lougradouro">
@@ -84,7 +75,6 @@
                             <div class="dados-numero" style="width: 30%;">
                                 <label for="nome-cliente">Nº</label>
                                 <input type="text" id="numero" class="input-cadastro" name="numero" placeholder="Nº">
->>>>>>> develop
                             </div>
                             <div class="dados-complemento" style="width: 70%;">
                                 <label for="nome-cliente">Complemento</label>
@@ -128,13 +118,10 @@
                         <div><h1 class="cliente-deletado"></h1></div>
                     <div id="btn-modal"> <input type="submit" class="btn-cliente" value="Deletar">
                         <input type="submit" id="cancela" class="btn-cliente" value="Cancelar"></div>
-
                 </form>
             </div>
         </div>
-
         <%- include('../partials/footer') %>
-
         <script>
             function iniciaModal(modalId) {
                 const modal = document.getElementById(modalId);
