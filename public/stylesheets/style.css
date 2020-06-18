@@ -61,47 +61,20 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
+    width: var(--contentWidth);
     max-width: 1150px;
     margin-bottom: 5px;
 }
 
 header #logo {
     height: 4em;
-    margin-left: calc(100% - var(--contentWidth));
+    margin: 0 15px 0 5px;
 }
 
 #systemTitle h1 {
     color: var(--color1);
     font-size: 1.5em;
-}
-
-#logout {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 5px 0px;
-    max-height: 30px;
-    width: 10vw;
-    max-width: 128px;
-    box-sizing: border-box;
-    background-color: var(--color2);
-    border: none;
-    border-radius: 1em;
-    font-size: .8em;
-    font-weight: bold;
-    margin-right: calc(100% - var(--contentWidth));
-}
-
-#logout:hover {
-    background-color: var(--color5);
-    color: var(--color1);
-    cursor: pointer;
-    border: 1px solid var(--color2);
-}
-
-#logout img {
-    width: 15%;
+    text-align: center;
 }
 
 header nav {
@@ -403,7 +376,7 @@ main {
     box-sizing: border-box;
     margin: 5px 10px 25px 10px;
     width: 18.75em;
-    height: 320px;
+    height: 17.8em;
     border: 2px solid var(--color5);
     border-radius: 3em;
     box-shadow: 2px 2px 5px var(--color4);
@@ -683,6 +656,37 @@ textarea {
     color: var(--color2) !important;
     border: 2px solid var(--color2);
     box-shadow: 0 0 0 5px var(--color5),
+                inset 5px 5px 7px rgba(0, 0, 0, .7),
+                7px 7px 8px rgba(0, 0, 0, .7);
+    transition: .5s;
+}
+
+#signOut {
+    margin: 0 5px 0 15px;
+    padding: 5px;
+    font-size: 1.3em;
+    background-color: var(--color2);
+    color: var(--color5) !important;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2),
+                7px 7px 8px rgba(0, 0, 0, .7);
+    border-radius: 1.25em;    
+}
+
+#signOut:hover {
+    background-color: var(--color5);
+    color: var(--color1) !important;
+    border: 2px solid var(--color1);
+    box-shadow: 0 0 0 5px var(--color5),
+                7px 7px 8px rgba(0, 0, 0, .7);
+    transition: .5s;    
+}
+
+#signOut:active {
+    background-color: var(--color2);
+    color: var(--color5) !important;
+    border: 2px solid var(--color5);
+    box-shadow: 0 0 0 5px var(--color2),
                 inset 5px 5px 7px rgba(0, 0, 0, .7),
                 7px 7px 8px rgba(0, 0, 0, .7);
     transition: .5s;
@@ -1181,9 +1185,6 @@ div.add-cliente a :hover {
 .lougradouro #nome-cliente{
    width: 100%;
 }
- #numero-cliente{
-  
-  }
 
 .dados-numero{
     display: flex;
