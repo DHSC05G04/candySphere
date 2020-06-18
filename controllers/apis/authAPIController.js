@@ -36,7 +36,7 @@ const authAPIController = {
                         // req.flash('error', 'No account with that email address exists.');
                         // return res.status(400).send('Email não encontrado, segue a vida '+ token);
                         req.flash('info', 'An e-mail has been sent to ' + email + ' with further instructions.');
-                        return res.status(200).json("info: 'OK'");
+                        return res.status(201).json("info: 'OK'");
                     } else {
                         console.log('QRY OK')
                         user.resetPasswordToken = token;
@@ -53,10 +53,10 @@ const authAPIController = {
                   to: email,
                   from:`candySphere Password Recovery <${process.env.EMAIL_USER}>`,
                   subject: '[candySphere] Recuperação de senha',
-                  text: 'You are receiving this because you (or someone else in ' + req.ip +') have requested the reset of the password for your account.\n\n' +
-                    'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                  text: 'Olá ' + user.funcionario.nome + '!\n\nVocê está recebendo este e-mail porque você (ou alguma outra pessoa) solicitou sua troca de senha do sistema candySphere.\n\n' +
+                  'Por favor clique ou copie o link abaixo em seu navegador para trocar sua senha:\n\n' +
                     'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                    'Caso você desconheça esta ação ou lembrou-se de sua senha, fique trnaquilo que sua senha anterior permancerá inalterada.\n\nLembre-se: Este link será válido por apenas 1h ('+user.resetPasswordExpires +')'
                 };
                 const msgReturn = 'An e-mail has been sent to ' + email + ' with further instructions.'
                 Email.sendMail(mailOptions, function(err) {
@@ -66,7 +66,7 @@ const authAPIController = {
                     } else {
                         req.flash('info',msgReturn)
                         // done(err, 'done');
-                        return res.status(200).send(msgReturn); 
+                        return res.status(201).send(msgReturn); 
                     }
                 //   req.flash('info', 'An e-mail has been sent to ' + email + ' with further instructions.');
     
