@@ -11,6 +11,7 @@ Criar um arquivo `.env` na raiz do seu projeto com o conteúdo abaixo.
 
 ```txt
 PORT=3000
+DB_DIALECT=sequelizeDBDialectOption
 DB_NAME=databaseName
 DB_HOST=databaseHost
 DB_PORT=3306
@@ -27,13 +28,13 @@ O arquivo config/database.js terá o conteudo ajustado para carregar estas varia
 require('dotenv').config();
 
 const config = {
-    database: 'candySphere',
+    database: process.env.DB_NAME || 'candySphere',
     host: process.env.DB_HOST || 'localhost',
     port: parseInt(process.env.DB_PORT) || 3306,
-    dialect: 'mysql',
+    dialect: process.env.DB_DIALECT || 'mysql',
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    timestamps: false
+    timestamps: true
 }
 
 module.exports = config;

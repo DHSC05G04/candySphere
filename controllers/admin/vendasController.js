@@ -16,10 +16,13 @@ const vendasController = {
             const produtosAPI = await fetch(`${API_BASE}/produtos`)
             const produtos = await produtosAPI.json()
 
+            const pedidoOk = false
+
             return res.render('admin/vendas', {
                  title: 'Express',
                  tabs: tabActive,
                  produtos,
+                 pedidoOk,
                  API_BASE,
                  usuario:req.session.user,
                  user:req.user
@@ -192,11 +195,14 @@ const vendasController = {
                 })
             })
 
+            const pedidoOk = true
+
             return res.render('admin/vendas', {
                 title: 'Express',
                 tabs: tabActive,
                 produtos,
                 API_BASE,
+                pedidoOk,
                 usuario:req.session.user,
                 user:req.user
                })
