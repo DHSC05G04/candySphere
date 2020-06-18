@@ -237,8 +237,11 @@ display: none;
     border-radius: 30px;
 }
 
-form img.logo {
-    width: 30%;
+#form-login-logo {
+    max-width: 80px;
+    min-width: 70px;
+    width: 20vw;
+    margin: 0px auto -40px auto;
 }
 
 #form-login h2 {

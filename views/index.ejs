@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <%- include('./partials/head') %>
-
+    <%- include('./partials/head2') %>
+ 
     <body id="loginBody">
 
     <main class="form-container">
-        <form action="/logar" method="POST" id="form-login">
-            <img class="logo" src="images/logo2.png" alt="">
-            <div id="infUser"><h2>Login</h2></div>
-            <label for="email">Login:</label>
+        <div id="login">
+            <div style="display: flex;">
+				<img id="form-login-logo" src="/images/logo2.png" alt="Logo Candy Sphere">
+			</div>
+            <form action="/logar" method="POST" id="form-login">
+                <center><h2>Entre com seus dados de acesso!</h2></center>
+                <% if(typeof msgUser !=='undefined' && msgUser.length > 0) { %>
+                    <div id="msgLogin">
+                        <%= msgUser %>
+                    </div>
+                <% } else {%>
+                    <div> </div>
+                <% } %> 
+            <!-- <label for="email">Login:</label> -->
                 <input
                     type="text" 
                     id="email" 
                     name="nome_usuario" 
                     height="40px"
                     placeholder="Digite seu nome de usuário"
-                >
-            
-            <label for="password">Senha:</label>
+                />
+                <!-- <span><label for="email">Senha:</label></span> -->
                 <input
                     type="password"
                     id="password"
                     name="senha"
                     height="40px"
-                >
+                    placeholder="Digite sua senha"
+                />
             <button type="submit">Entrar</button>
+            <div id='forgotPass'> <a href="/usuarios/reset" ></div>Esqueçeu sua Senha?</a></div>
         </form>
+        
+
+    </div>
     </main>
 
   </body>

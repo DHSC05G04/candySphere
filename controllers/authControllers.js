@@ -43,7 +43,7 @@ const authController = {
             // }
             if (login != nome_usuario || !bcrypt.compareSync(senha,senhaHash)) {
 
-                return res.status(403).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
+                return res.status(403).render('index', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
             }
 
             req.session.user = {
@@ -54,7 +54,7 @@ const authController = {
             console.log(req.session.user)
             res.redirect('/home')
         } else {
-            return res.status(400).render('index2', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
+            return res.status(400).render('index', { msgUser: 'Usuario ou Senha invalido!, tente novamente'})
         }
 
     }
