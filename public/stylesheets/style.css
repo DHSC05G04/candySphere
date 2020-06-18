@@ -507,8 +507,8 @@ main {
     overflow-y: auto;
     overflow-x: hidden;
     flex: 1;
-    padding-bottom: 15px;
-    margin: 10px 0 0 20px;
+    padding-bottom: 5px;
+    margin: 5px 0 0 0;
 }
 
 .itemViewDesc {
