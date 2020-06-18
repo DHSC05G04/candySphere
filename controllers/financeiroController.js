@@ -5,7 +5,7 @@ const financeiroController = {
   index: (req, res, next) => {
     let tabActive = {
       homeAct: "inactive",
-      adminAct: "inactive",
+      operacaoAct: "inactive",
       financeiroAct: "active",
       clientesAct: "inactive",
       funcionariosAct: "inactive",
@@ -22,7 +22,7 @@ const financeiroController = {
   vendas: (req, res) => {
     let tabActive = {
       homeAct: "inactive",
-      adminAct: "inactive",
+      operacaoAct: "inactive",
       financeiroAct: "active",
       clientesAct: "inactive",
       funcionariosAct: "inactive",
@@ -44,7 +44,7 @@ const financeiroController = {
   receitas: (req, res) => {
     let tabActive = {
       homeAct: "inactive",
-      adminAct: "inactive",
+      operacaoAct: "inactive",
       financeiroAct: "active",
       clientesAct: "inactive",
       funcionariosAct: "inactive",

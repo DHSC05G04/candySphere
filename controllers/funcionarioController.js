@@ -9,7 +9,7 @@ const funcionarioController = {
     listarFuncionario: async (req, res, next) => {
         let tabActive = {
             homeAct: "inactive",
-            adminAct: "inactive",
+            operacaoAct: "inactive",
             financeiroAct: "inactive",
             clientesAct: "inactive",
             funcionariosAct: "active",
@@ -64,7 +64,7 @@ const funcionarioController = {
     verFuncionario: async (req, res, next) => {
         let tabActive = {
             homeAct: "inactive",
-            adminAct: "inactive",
+            operacaoAct: "inactive",
             financeiroAct: "inactive",
             clientesAct: "inactive",
             funcionariosAct: "active",
@@ -153,7 +153,7 @@ const funcionarioController = {
     modal: async (req,res) =>{
         let tabActive = {
             homeAct: "inactive",
-            adminAct: "inactive",
+            operacaoAct: "inactive",
             financeiroAct: "inactive",
             clientesAct: "inactive",
             funcionariosAct: "active",

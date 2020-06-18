@@ -8,7 +8,7 @@ const API_BASE = process.env.API_BASE;
 const adminController = {
     index: (req, res) => {
         let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
+                        operacaoAct: "active",
                         financeiroAct: "inactive",
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
