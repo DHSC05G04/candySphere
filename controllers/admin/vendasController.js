@@ -77,9 +77,19 @@ const vendasController = {
     },
 
     store: async (req, res) => {
+        let tabActive = {homeAct: "inactive",
+                        operacaoAct: "active",
+                        financeiroAct: "inactive",
+                        clientesAct: "inactive",
+                        funcionariosAct: "inactive",
+                        pdvAct: "inactive"};
+
         const dadosRaw = req.body
 
         try {
+            const produtosAPI = await fetch(`${API_BASE}/produtos`)
+            const produtos = await produtosAPI.json()
+
             const dadosCaixa = {
                 hora_abertura: new Date(),
                 hora_fechamento: new Date(),
@@ -182,7 +192,14 @@ const vendasController = {
                 })
             })
 
-            return res.redirect('/admin/vendas')
+            return res.render('admin/vendas', {
+                title: 'Express',
+                tabs: tabActive,
+                produtos,
+                API_BASE,
+                usuario:req.session.user,
+                user:req.user
+               })
         } catch(error) {
             return res.status(400).json(error.message)
         }
