@@ -353,7 +353,7 @@ main {
     box-sizing: border-box;
     margin: 5px 10px 25px 10px;
     width: 18.75em;
-    height: 320px;
+    height: 17.8em;
     border: 2px solid var(--color5);
     border-radius: 3em;
     box-shadow: 2px 2px 5px var(--color4);
@@ -1162,9 +1162,6 @@ div.add-cliente a :hover {
 .lougradouro #nome-cliente{
    width: 100%;
 }
- #numero-cliente{
-  
-  }
 
 .dados-numero{
     display: flex;
