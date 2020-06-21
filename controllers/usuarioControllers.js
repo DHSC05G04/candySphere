@@ -5,10 +5,9 @@ const config = require("../configs/database");
 const bcrypt = require("bcrypt");
 const Email = require('../configs/email');
 const fetch = require('node-fetch');
-const API_BASE ='http://candyspheredev.herokuapp.com/api/v0'
-
 require('dotenv').config();
 
+const API_BASE = process.env.API_BASE;
 
 const usuarioControllers = {
     index: (req, res) => {
@@ -31,6 +30,8 @@ const usuarioControllers = {
       
 
         try {
+            // LLS ==> VER CHAMADA DE TOKEN DE RESET DE SENHA!!!
+            // LLS ==> VER URL CALULADA
             // const u = await user.json()
             let enviarEmail = {
                 from:`${process.env.EMAIL_USER}`,
@@ -39,10 +40,8 @@ const usuarioControllers = {
                 html: `<ul>
                               <h1>Sistema Candy Sphere</h1>
                               <h3>Parabéns! você agora é um usuário do sistema</h3>
-                              <p>Esse email permitirá ter o seu primeiro acesso ao sistema, onde deverá escolher um usuário e uma senha segura de acesso de acordo com os termos de segurança bem como a (LGPD -Lei Geral de Proteção de Dados‎ )</p>
+                              <p>Esse email permitirá ter o seu primeiro acesso ao sistema, onde deverá escolher uma senha segura de acesso de acordo com os termos de segurança bem como a (LGPD -Lei Geral de Proteção de Dados‎ )</p>
                               <h2><b>Usuário: </b>${nome}</h2>
-                              <h2><b>Senha: </b>${hashSenha}</h2>
-                              <h2><b>Acesso: </b>${nivel==1?"ADM":"USER"}</h2>
                               <h2><b>acesse o link: </b>http://localhost:3000/</h2>
                       </ul>`
             }
@@ -72,7 +71,7 @@ const usuarioControllers = {
         post = {
             id:id,
             nome_usuario:nome,
-            senha:criptSenha,
+            senha:criptSenha, 
             acesso:nivel
        }
         try {

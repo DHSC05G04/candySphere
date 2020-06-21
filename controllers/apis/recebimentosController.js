@@ -7,7 +7,7 @@ const recebimentosControllers = {
             include:[
                 {
                 association:'pedido',
-                attributes: ['entrada','entrega','total','sinal','obervacao'],
+                attributes: ['entrada','entrega','total','sinal','observacao'],
                
             },
                 {

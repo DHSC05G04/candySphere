@@ -40,7 +40,10 @@ module.exports = {
         updated_at:new Date(),
         descricao:"Fornecedor de Bebida"
       },
-    ], {});
+    ], {
+      ignoreDuplicates: true,
+      updateOnDuplicate: false,
+    });
    
   },
 

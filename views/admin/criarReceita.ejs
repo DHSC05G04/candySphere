@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('../partials/head') %>
+
+<body>
+    <%- include('../partials/header') %>
+    <main id="receitaView">
+        <form action="/admin/receitas/criar" id="Visualizacao" method="POST" enctype="multipart/form-data">
+            <section class="itemViewHeader">
+                <span class="material-icons">menu_book</span><h2>Operação / Receita<h2>
+            </section>
+            <section class="itemViewMain">
+                <div class="itemViewDesc">
+                    <h3>Selecione uma foto para sua receita:</h3>
+                    <input class="dataInput" type="file" name="foto">
+                    <p id="recNomeInvalido" class="receitaError">* Nome não pode estar vazio</p>
+                    <h3><label>Nome: </label><input class="dataInput" type="text" maxlimit="3000" name="nome" placeholder="Digite o nome de sua receita" required></h3>
+                </div>
+                <div class="itemViewBody">
+                    <div class="itemInfo">
+                        <h4 class="sectionDivider">Informações</h4>
+                        <p><b>Descrição: </b><input class="dataInput" type="text" maxlimit="3000" name="descricao" placeholder="Descreva sua receita"></p>
+                        <p><b>Tempo de preparo: </b><input class="dataInput" type="number" name="tempo_preparo" placeholder="0"></p>
+                        <p><b>Rendimento: </b><input class="dataInput" type="number" name="rendimento" placeholder="0"></p>
+                    </div>
+                    <div id="infoIngredientes" class="itemInfo">
+                        <h4 id="listaIngredientes" class="sectionDivider">Ingredientes</h4>
+                        <p id="tipoUnError" class="receitaError hidden">*Tipo e unidade não batem. Favor verificar seleções</p>
+                        <p id="ingCont-0" class="Ing"><button id="remIng-0" type="button" class="material-icons addRemItem remIng-0">remove</button>
+                            Quantidade: <input class="dataInput" type="number" placeholder="0" name="quantidade[]" required> 
+                            Unidade: <input id="unIng-0" class="dataInput number" list="unidades-0" placeholder="Unidade" name="unidade[]" required><datalist id="unidades-0"></datalist>
+                            Ingrediente: <input id="ing-0" list="ingredientes-0" class="dataListComponent dataInput" placeholder="Ingrediente" name="ingrediente[]" required><datalist id="ingredientes-0"></datalist></p>
+                        <button id="addIng" type="button" class="material-icons addRemItem">add</button>
+                    </div>
+                    <div id="infoInstrucoes" class="itemInfo">
+                        <h4 class="sectionDivider">Instruções de preparo</h4>
+                        <p id="instCont-0"><button id="remInst-0" type="button" class="material-icons addRemItem">remove</button><b>Instrução:</b>
+                            <textarea class="dataInput" placeholder="Instrução" name="instrucao[]" required></textarea></p>
+                        <button id="addInst" type="button" class="material-icons addRemItem">add</button>
+                    </div>
+                </div>
+            </section>
+            <section class="itemViewFooter">
+                <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                <button type="submit" class="material-icons" onClick="submitValidation()">save</button>
+            </section>
+        </form>
+    </main>
+
+    <%- include('../partials/footer') %>
+    <script>
+        const API = <%- JSON.stringify(API_BASE) %>
+    </script>
+    <script src="/javascript/criaReceita.js"></script>
+    <script type="text/javascript" src="/javascript/shared.js"></script>
+</body>
+
+</html>

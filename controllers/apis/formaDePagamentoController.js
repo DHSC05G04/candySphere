@@ -3,12 +3,24 @@ const {FormasDePagamento} = require("../../models");
 const formasDePagamentosController = {
 
     index: async (req, res) => {
-      
-        try {
-            const formasDePagamento = await FormasDePagamento.findAll();
-            return res.status(200).json(formasDePagamento);
-        } catch (error) {
-            return res.status(400).json(error);
+        if(Object.keys(req.params).length === 0) {
+            try {
+                const formasDePagamento = await FormasDePagamento.findAll();
+                return res.status(200).json(formasDePagamento);
+            } catch (error) {
+                return res.status(400).json(error);
+            }
+        } else {
+            try {
+                const formasDePagamento = await FormasDePagamento.findAll({
+                    where: {
+                        id: req.params.id
+                    }
+                });
+                return res.status(200).json(formasDePagamento);
+            } catch (error) {
+                return res.status(400).json(error);
+            }
         }
        
       

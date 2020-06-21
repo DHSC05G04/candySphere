@@ -2,12 +2,14 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const moment = require('moment');
-const API_BASE = 'http://candyspheredev.herokuapp.com/api/v0';
+require('dotenv').config();
+
+const API_BASE = process.env.API_BASE;
 const funcionarioController = {
     listarFuncionario: async (req, res, next) => {
         let tabActive = {
             homeAct: "inactive",
-            adminAct: "inactive",
+            operacaoAct: "inactive",
             financeiroAct: "inactive",
             clientesAct: "inactive",
             funcionariosAct: "active",
@@ -48,6 +50,8 @@ const funcionarioController = {
                 funcionarios: dataFuncionario,
                 funcionarioUnico:"",
                 usuario: req.session.user,
+                user: req.user,
+                user: req.user,
                 msg:""
             });
 
@@ -60,7 +64,7 @@ const funcionarioController = {
     verFuncionario: async (req, res, next) => {
         let tabActive = {
             homeAct: "inactive",
-            adminAct: "inactive",
+            operacaoAct: "inactive",
             financeiroAct: "inactive",
             clientesAct: "inactive",
             funcionariosAct: "active",
@@ -96,6 +100,7 @@ const funcionarioController = {
                 tabs: tabActive,
                 funcionarios: funcionario,
                 usuario: req.session.user,
+                user: req.user,
                 usuarioCadastrado,
                 moment
             });
@@ -148,7 +153,7 @@ const funcionarioController = {
     modal: async (req,res) =>{
         let tabActive = {
             homeAct: "inactive",
-            adminAct: "inactive",
+            operacaoAct: "inactive",
             financeiroAct: "inactive",
             clientesAct: "inactive",
             funcionariosAct: "active",
@@ -185,6 +190,7 @@ const funcionarioController = {
                 funcionarios: dataFuncionario,
                 funcionarioUnico,
                 usuario: req.session.user,
+                user: req.user,
             });
 
         } catch (error) {

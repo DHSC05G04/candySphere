@@ -8,81 +8,56 @@
         <%- include('../partials/header') %>
 
         <main id="administracaoEstoque">
-            <table id="tabela-estoque">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Quantidade</th>
-                        <th>Custo</th>
-                        <th>Vendável?</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% estoque.forEach(item => {%>
-                    <tr>
-                        <td><%= item.nome %></td>
-                        <td><%= item.quantidade %> <%= item.unMedida.unidade %></td>
-                        <td class="center"><%= item.custo_unitario %></td>
-                        <% if(item.vendavel) { %>
-                            <td class="center"><input type="checkbox" checked disabled></td>
-                        <% } else { %>
-                            <td class="center"><input type="checkbox" disabled></td>
-                        <% }; %>
-                        <td><a class="btn-editar" href=""><span class="material-icons">edit</span></a>
-                            <a class="btn-deletar" href=""><span class="material-icons">delete</span></a>
-                        </td>
-                    </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-            <div class="add-estoque"><a id="btn-add" href="#"><span class="material-icons">add_circle</span></a></div>
+            <article id="Visualizacao">
+                <section class="itemViewHeader">
+                    <span class="material-icons">list_alt</span><h2>Operações / Estoque</h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewBody produto">
+                        <table id="tabela-estoque">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Quantidade</th>
+                                    <th>Custo</th>
+                                    <th>Vendável?</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% estoque.forEach(item => {%>
+                                <tr>
+                                    <td><%= item.nome %></td>
+                                    <td><%= item.quantidade %> <%= item.unMedida.unidade %></td>
+                                    <td class="center"><%= item.custo_unitario %></td>
+                                    <% if(item.vendavel) { %>
+                                        <td class="center"><input type="checkbox" checked disabled></td>
+                                    <% } else { %>
+                                        <td class="center"><input type="checkbox" disabled></td>
+                                    <% }; %>
+                                    <td><a class="btn-editar btn material-icons" href="/admin/estoque/<%= item.id %>">edit</a>
+                                        <a class="btn-deletar btn material-icons" onClick="excluirItem(<%= item.id %>)">delete</a>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                    <button type="button" class="material-icons" onClick="window.location.href='<%= `/admin/estoque/criar` %>'">add</button>
+                </section>
+            </article>            
         </main>
-
-        <div id="modal-estoque" class="modal-container">
-            <div id="conteudo-modal">
-                <form id="form-estoque" action="">
-                    <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
-                    <h1>Cadastro de item</h1>
-                    <label for="nome-item">Nome</label>
-                    <input type="text" id="nome-item" class="input-cadastro" name="nome-item"
-                        placeholder="Digite o nome do item">
-                    <label for="qtd">Quantidade</label>
-                    <input type="number" id="qtd" class="input-cadastro" name="qtd"
-                        placeholder="Quantidade">
-                    <label for="custo">Custo</label>
-                    <input type="number" id="custo" class="input-cadastro" name="custo"
-                        placeholder="Digite o custo da unidade">
-                    <label for="vendavel" class="vendavel">Vendável?</label>
-                    <input type="checkbox" id="vendavel" class="input-cadastro vendavel" name="vendavel">
-                    <input type="number" id="valor" class="input-cadastro" name="valor"
-                        placeholder="Digite o preço de venda da unidade">
-                    <input type="submit" class="btn-cliente" value="Salvar">
-                </form>
-            </div>
-        </div>
 
         <%- include('../partials/footer') %>
 
-        <%- include('../partials/scripts') %>
-
-        <script>
-            function iniciaModal(modalId){
-                const modal = document.getElementById(modalId);
-                modal.classList.add('mostrar');
-                modal.addEventListener('click',(e)=>{
-                   if(e.target.id =='fechar-tudo'){
-                    modal.classList.remove('mostrar');
-                   };
-                });
-            };
-            const btnClienteAdd = document.querySelector('.add-estoque');
-            btnClienteAdd.addEventListener('click',()=>{
-                iniciaModal('modal-estoque');
-               
-            });
+        <script type="text/javascript">
+            const API = <%- JSON.stringify(API_BASE) %>
         </script>
-
+        <script type="text/javascript" src="/javascript/estoque.js"></script>
+        <script type="text/javascript" src="/javascript/shared.js"></script>
     </body>
 
 </html>

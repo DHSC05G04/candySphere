@@ -8,22 +8,42 @@
         <%- include('../partials/header') %>
 
         <main id="administracao">
-            <% receitas.forEach(receita => { %>
-                <a href="/admin/produtos" class="adminCardContainer">
-                    <section class="foto" style="background-image: url(<%= receita.foto %>); background-size: cover;">
+            <article id="Visualizacao">
+                <section class="itemViewHeader">
+                    <span class="material-icons">menu_book</span><h2>Operações / Receitas</h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewBody produto">
+                        <% receitas.forEach(receita => { %>
+                            <section class="adminCardContainer">
+                                <section class="logo" style="background-image: url(<%= receita.foto %>); background-size: cover;">
+                                </section>
+                                <section class="description">
+                                    <h3><%= receita.fabricado.nome %></h3>
+                                    <p><%= receita.descricao %></p>
+                                </section>
+                                <section class="adminCardFooter">
+                                    <button class="material-icons" onclick="window.location.href='<%= `/admin/receitas/${receita.id}` %>'">remove_red_eye</button>
+                                    <button class="material-icons" onclick="excluirReceita(<%= receita.id %>)">delete</button>
+                                </section>
+                            </section>                                
+                        <% }); %>
                     </section>
-                    <section class="description">
-                        <h3><%= receita.nome %></h3>
-                        <p><%= receita.descricao %></p>
-                    </section>
-                </a>                                
-            <% }); %>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                    <button type="button" class="material-icons" onClick="window.location.href='/admin/receitas/criar'">add</button>
+                </section>
+            </article>
         </main>
 
         <%- include('../partials/footer') %>
 
-        <%- include('../partials/scripts') %>
-
+        <script>
+            const API = <%- JSON.stringify(API_BASE) %>;
+        </script>
+        <script src="/javascript/receitas.js"></script>
+        <script type="text/javascript" src="/javascript/shared.js"></script>
     </body>
 
 </html>

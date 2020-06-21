@@ -1,75 +1,24 @@
 const path = require('path');
 const fs = require('fs');
 const fetch = require('node-fetch');
+require('dotenv').config();
 
-const API_BASE = 'http://candyspheredev.herokuapp.com/api/v0';
+const API_BASE = process.env.API_BASE;
 
 const adminController = {
     index: (req, res) => {
         let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
+                        operacaoAct: "active",
                         financeiroAct: "inactive",
                         clientesAct: "inactive",
                         funcionariosAct: "inactive",
                         pdvAct: "inactive"};
-        res.render('admin/admin', { title: 'Express', tabs: tabActive,usuario:req.session.user });
-    },
-    indexProdutos: async (req, res) => {
-        let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
-                        financeiroAct: "inactive",
-                        clientesAct: "inactive",
-                        funcionariosAct: "inactive",
-                        pdvAct: "inactive"};
-
-        try {
-            const produtosAPI = await fetch(`${API_BASE}/produtos`)
-            const produtos = await produtosAPI.json()
-
-            return res.render('admin/produtos', { title: 'Express', tabs: tabActive , produtos,usuario:req.session.user});
-        } catch (error) {
-            return res.send(error)
-        }
-    },
-    indexEstoque: async (req, res) => {
-        let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
-                        financeiroAct: "inactive",
-                        clientesAct: "inactive",
-                        funcionariosAct: "inactive",
-                        pdvAct: "inactive"};
-
-        try {
-
-            const estoqueAPI = await fetch(`${API_BASE}/estocaveis`);
-            const estoque = await estoqueAPI.json();
-
-            return res.render('admin/estoque', { title: 'Express', tabs: tabActive, estoque,usuario:req.session.user });
-            
-        } catch (error) {
-            return res.send(error)            
-        };
-        
-    },
-    indexReceitas: async (req, res) => {
-        let tabActive = {homeAct: "inactive",
-                        adminAct: "active",
-                        financeiroAct: "inactive",
-                        clientesAct: "inactive",
-                        funcionariosAct: "inactive",
-                        pdvAct: "inactive"};
-
-        try {
-            const receitasAPI = await fetch(`${API_BASE}/receitas`);
-            const receitas = await receitasAPI.json();
-    
-            return res.render('admin/receitas', { title: 'Express', tabs: tabActive, receitas,usuario:req.session.user });
-            
-        } catch (error) {
-            return res.send(error);            
-        };
-
-
+        res.render('admin/admin', {
+            title: 'Express',
+            tabs: tabActive,
+            usuario:req.session.user,
+            user: req.user
+         });
     }
 };
 

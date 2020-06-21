@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         hora_fechamento: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
         },
         terminal_id: {
             type: DataTypes.INTEGER,

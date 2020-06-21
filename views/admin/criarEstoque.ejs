@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('../partials/head') %>
+
+<body>
+    <%- include('../partials/header') %>
+    <main id="estoqueView">
+        <form action="/admin/estoque/criar" id="Visualizacao" method="POST" enctype="multipart/form-data">
+            <section class="itemViewHeader">
+                <span class="material-icons">list_alt</span><h2>Operações / Estoque<h2>
+            </section>
+            <section class="itemViewMain">
+                <div class="itemViewDesc">
+                    <h3>Selecione uma foto para o novo item:</h3>
+                    <input class="dataInput" type="file" name="foto">
+                </div>
+                <div class="itemViewBody">
+                    <div class="itemInfo">
+                        <h4 class="sectionDivider">Informações</h4>
+                        <p><b>*Nome: </b><input class="dataInput" type="text" maxlimit="3000" name="nome" placeholder="Digite o nome do item" required></p>
+                        <p><b>*Tipo: </b><input class="dataListComponent dataInput number" id="inputTipo" list="tipos" placeholder="Selecione o tipo" name="tipo_id" required><datalist id="tipos"></datalist></p>
+                        <p><b>Quantidade: </b><input class="dataInput" type="number" placeholder="0" name="quantidade"><b> *Unidade: </b><input id="inputUnidade" class="dataListComponent dataInput number" list="unidades" placeholder="Un de medida" name="unidade_id" required><datalist id="unidades"></datalist></p>
+                        <p><b>Custo unitário: </b>R$ <input class="dataInput" type="number" placeholder="0.00" pattern="^\d+(?:\.\d{1,2})?$" step="0.01" name="custo_unitario"></p>
+                        <p><b>Produto final?: </b>
+                            <select name="vendavel" id="vendavel">
+                                <option value="true">Sim</option>
+                                <option value="false" selected>Não</option>
+                            </select>                                
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="itemViewFooter">
+                <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                <button type="submit" class="material-icons">save</button>
+            </section>
+        </form>
+    </main>
+
+    <%- include('../partials/footer') %>
+    
+    <script type="text/javascript">
+        const API = <%- JSON.stringify(API_BASE) %>
+    </script>
+    <script src="/javascript/criarEstoque.js"></script>
+    <script type="text/javascript" src="/javascript/shared.js"></script>
+</body>
+
+</html>
