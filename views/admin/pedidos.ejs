@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <%- include('../partials/head') %>
+
+    <body>
+
+        <%- include('../partials/header') %>
+
+        <main id="administracaoEstoque">
+            <article id="Visualizacao">
+                <section class="itemViewHeader">
+                    <span class="material-icons">list_alt</span><h2>Operações / Pedidos</h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewBody produto">
+                        <table id="tabela-estoque">
+                            <thead>
+                                <tr>
+                                    <th>Pedido</th>
+                                    <th>Cliente</th>
+                                    <th>Comanda</th>
+                                    <th>Valor</th>
+                                    <th>Entrega</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% pedidos.forEach(pedido => {%>
+                                <tr>
+                                    <td class="center"><%= pedido.id %></td>
+                                    <td><%= pedido.cliente.nome %></td>
+                                    <td class="center"></td>
+                                    <td class="center"> <%= pedido.total %></td>
+                                    <td> <%=moment(pedido.entrega).format("D/M/Y")%> </td>
+                                    <td><a class="btn-editar btn material-icons center" href="/admin/estoque/<%= pedido.id %>">edit</a>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                </section>
+            </article>            
+        </main>
+
+        <%- include('../partials/footer') %>
+
+        <script type="text/javascript">
+            const API = <%- JSON.stringify(API_BASE) %>
+        </script>
+        <script type="text/javascript" src="/javascript/pedidos.js"></script>
+        <script type="text/javascript" src="/javascript/shared.js"></script>
+    </body>
+
+</html>
