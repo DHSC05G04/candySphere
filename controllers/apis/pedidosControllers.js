@@ -4,24 +4,68 @@ const {
 
 const pedidosController = {
     index: async (req, res) => {
-        const pedido = await Pedido.findAll({
-            include:[
-                {
-                association:'cliente',
-                attributes: ['cpf','nome','email',"endereco","telefone",]
-            },
-        ] 
-        })
-        try {
-            
-            return res.status(200).json(pedido);
-
-        } catch (error) {
-            return res.status(400).json(error);
+        if(Object.keys(req.params).length === 0) {
+            try {
+                const pedido = await Pedido.findAll({
+                    include:[
+                        {
+                        association:'cliente',
+                        attributes: ['cpf','nome','email',"endereco","telefone",]
+                    },
+                    {
+                        association: 'comprados',
+                        attributes: ['quantidade'],
+                        include: [
+                            {
+                                association: 'produto',
+                                attributes: ['valor'],
+                                include: [{
+                                    association: 'itemEstoque',
+                                    attributes: ['nome']
+                                }]
+                            }
+                        ]
+                    }
+                ] 
+                })
+                    
+                return res.status(200).json(pedido);
+    
+            } catch (error) {
+                return res.status(400).json(error);
+            }
+        } else if(Object.keys(req.params).length > 0) {
+            try {
+                const pedido = await Pedido.findAll({
+                    where: {
+                        id: req.params.id
+                    },
+                    include:[
+                        {
+                        association:'cliente',
+                        attributes: ['cpf','nome','email',"endereco","telefone",]
+                    },
+                    {
+                        association: 'comprados',
+                        attributes: ['quantidade'],
+                        include: [
+                            {
+                                association: 'produto',
+                                attributes: ['valor'],
+                                include: [{
+                                    association: 'itemEstoque',
+                                    attributes: ['nome']
+                                }]
+                            }
+                        ]
+                    }
+                ] 
+                });
+                return res.status(200).json(pedido);
+            } catch (error) {
+                return res.status(400).json(error);
+            }
         }
-
-
-
     },
     store: async (req, res) => {
        

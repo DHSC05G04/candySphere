@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('../partials/head') %>
+
+<body>
+    <%- include('../partials/header') %>
+    <main id="pedidoView">
+        <main id="Visualizacao">
+            <section class="itemViewHeader">
+                <span class="material-icons">view_list</span><h2>Operações / Pedidos<h2>
+            </section>
+            <section class="itemViewMain">
+                <div class="itemViewDesc">
+                    <h2>Pedido Nº <%= pedido.id %></h2>
+                </div>
+                <div class="itemViewBody">
+                    <div class="itemInfo">
+                        <h4 class="sectionDivider">Informações</h4>
+                        <p><b>Data entrada: &nbsp;</b><%=moment(pedido.entrada).format("D/M/Y")%></p>
+                        <p><b>Data entrega: &nbsp;</b><%=moment(pedido.entrega).format("D/M/Y")%></p>
+                        <p><b>Total: &nbsp;</b>R$<%= pedido.total %></p>
+                        <p><b>Sinal: &nbsp;</b>R$<%= pedido.sinal %></p>
+                    </div>
+                    <div class="itemInfo">
+                        <h4 class="sectionDivider">Cliente</h4>
+                        <p><b>Nome: &nbsp;</b><%= pedido.cliente.nome %></p>
+                        <p><b>Telefone: &nbsp;</b><%= pedido.cliente.telefone %></p>
+                    </div>
+                    <div class="itemInfo">
+                        <h4 class="sectionDivider">Comanda</h4>
+                        <% pedido.comprados.forEach(produto => { %>
+                            <p><%= produto.produto.itemEstoque.nome %>&nbsp;<%= produto.quantidade %>&nbsp;unidades</p>                            
+                        <% }); %>
+                    </div>
+                    <div class="itemInfo">
+                        <h4 class="sectionDivider">Observações</h4>
+                        <p><%= pedido.observacao %></p>
+                    </div>
+                </div>
+            </section>
+            <section class="itemViewFooter">
+                <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+            </section>
+        </main>
+    </main>
+
+    <%- include('../partials/footer') %>
+    
+    <script type="text/javascript" src="/javascript/shared.js"></script>
+</body>
+
+</html>
