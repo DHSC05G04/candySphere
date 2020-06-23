@@ -10,7 +10,7 @@
         <main id="administracaoEstoque">
             <article id="Visualizacao">
                 <section class="itemViewHeader">
-                    <span class="material-icons">list_alt</span><h2>Operações / Pedidos</h2>
+                    <span class="material-icons">view_list</span><h2>Operações / Pedidos</h2>
                 </section>
                 <section class="itemViewMain">
                     <section class="itemViewBody produto">
@@ -22,6 +22,7 @@
                                     <th>Comanda</th>
                                     <th>Valor</th>
                                     <th>Entrega</th>
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,7 +33,7 @@
                                     <td class="center"></td>
                                     <td class="center"> <%= pedido.total %></td>
                                     <td> <%=moment(pedido.entrega).format("D/M/Y")%> </td>
-                                    <td><a class="btn-editar btn material-icons center" href="/admin/estoque/<%= pedido.id %>">edit</a>
+                                    <td class="center"><a class="btn-editar btn material-icons center" href="/admin/pedidos/<%= pedido.id %>">edit</a>
                                     </td>
                                 </tr>
                                 <% }); %>
