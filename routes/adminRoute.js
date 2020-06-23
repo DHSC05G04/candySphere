@@ -45,7 +45,7 @@ router.use(isAuthenticated);
 router.get('/', adminController.index);
 
 router.get('/pedidos', pedidosController.index);
-//router.get('/pedidos/:id', pedidosController.index);
+router.get('/pedidos/:id', pedidosController.indexById);
 
 router.get('/produtos', produtosController.index);
 router.get('/vendas', vendasController.index)
