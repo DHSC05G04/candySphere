@@ -10,6 +10,9 @@ const usuariosController = {
                     include: [{
                         association: 'funcionario',
                         attributes: ["id",'nome', 'email', 'avatar','telefone']
+                    },
+                    {
+                      association: 'nivel_acesso',
                     }]
                 });
     
@@ -26,6 +29,10 @@ const usuariosController = {
                     include: [{
                         association: 'funcionario',
                         attributes: ['nome', 'email', 'avatar']
+                    }
+                    ,
+                    {
+                      association: 'nivel_acesso',
                     }]
                 });
                 return res.status(200).json(usuarios);
@@ -45,6 +52,9 @@ const usuariosController = {
                     include: [{
                         association: 'funcionario',
                         attributes: ['nome', 'email', 'avatar']
+                    },
+                    {
+                      association: 'nivel_acesso',
                     }]
                 });
                 return res.status(200).json(usuarios);

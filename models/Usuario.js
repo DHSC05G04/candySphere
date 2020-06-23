@@ -19,9 +19,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     acesso: {
-      type: DataTypes.INTEGER,
-      default: 0
+      type: DataTypes.INTEGER.UNSIGNED,
+      default: 1
     }, // changed
+    nivel_acesso_id: {
+      type:DataTypes.INTEGER.UNSIGNED,
+      default:1,
+      allowNull:false,
+    },
     funcionario_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
@@ -61,6 +66,13 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Usuario.associate = function(models) {
+
+    Usuario.belongsTo(
+      models.NivelAcesso,{
+      foreignKey: 'nivel_acesso_id',
+      as: 'nivel_acesso'
+    });
+
     // Relacao 1:1 com tbl Usuario. Um usuario precisa ser funcionario
     Usuario.belongsTo(
       models.Funcionario,{
@@ -68,17 +80,12 @@ module.exports = (sequelize, DataTypes) => {
         as: 'funcionario'
       });
 
-      // Usuario.hasMany(
-      //   models.Caixa,{
-      //     foreignKey: 'usuario_id',
-      //     as: 'caixa'
-      // })
+      Usuario.hasMany(
+        models.Caixa,{
+          foreignKey: 'usuario_id',
+          as: 'caixa'
+      })
 
-      Usuario.belongsTo(
-        models.NivelAcesso,{
-        foreignKey: 'acesso',
-        as: 'nivel_acesso'
-      });
 
   };
   // Criado um metodo em nosso modelo de usuario que validara as senhas evitando

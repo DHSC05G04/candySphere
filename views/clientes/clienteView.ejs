@@ -73,11 +73,11 @@
                     <div id="label-cliente" class="lougradouro">
                         <div class="dados-end-pai">
                             <div class="dados-numero" style="width: 30%;">
-                                <label for="nome-cliente">Nº</label>
+                                <label for="numero" id="labelNumero">Nº</label>
                                 <input type="text" id="numero" class="input-cadastro" name="numero" placeholder="Nº">
                             </div>
                             <div class="dados-complemento" style="width: 70%;">
-                                <label for="nome-cliente">Complemento</label>
+                                <label for="complemento">Complemento</label>
                                 <input type="text" id="complemento" class="input-cadastro" name="complemento"
                                     placeholder="Complemento">
                             </div>
@@ -160,6 +160,7 @@
             const btnClienteEdit = document.getElementById('cliente-edit');
             const submitCliente = document.getElementById('btn-submit');
             const btnDelete = document.getElementsByClassName('delete');
+            const labelNumero = document.getElementById('labelNumero');
 
             //submit para atualizar
             btnClienteEdit.addEventListener('click', (e) => {
@@ -195,10 +196,20 @@
                     telefoneLabel.style.color = "red"
                     nomeLabel.textContent = "Nome"
                     nomeLabel.style.color = "var(--color5)"
-                } else {
-                    e.preventDefault()
+                } else if (cep.value != "" && lougradouro.value !="" && (
+                        numero.value==="" || numero.value.toLowerCase !=='S/N' )){
+                    e.preventDefault();
                     telefone.style.border = "1px solid var(--color5)"
                     nome.style.border = "1px solid var(--color5)"
+                    numero.style.border = "2px solid red";
+                    
+
+
+                } else {
+                    e.preventDefault()
+                    telefone.style.border = "1px solid var(--color5)";
+                    nome.style.border = "1px solid var(--color5)"
+                    numero.style.border = "1px solid var(--color5)";
                     form.submit()
                 }
                 })
@@ -215,7 +226,7 @@
                 if (cep.value != "") {
                     e.preventDefault();
                     labelCep.style.color = 'var(--color5)'
-                    labelCep.textContent = "Cep"
+                    labelCep.textContent = "CEP"
                     cep.style.border = "1px solid var(--color5)"
                     const cepData = await buscarCep(cep.value)
                     cep.value = cepData.cep
