@@ -12,7 +12,7 @@ module.exports = {
         unidade_id: 4,
         custo_unitario: 2.50,
         validade: new Date(),
-        vendavel: 0,
+        vendavel: false,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -24,7 +24,7 @@ module.exports = {
         unidade_id: 4,
         custo_unitario: 10.99,
         validade: new Date(),
-        vendavel: 0,
+        vendavel: false,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -36,7 +36,7 @@ module.exports = {
         unidade_id: 4,
         custo_unitario: 6.75,
         validade: new Date(),
-        vendavel: 0,
+        vendavel: false,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -48,7 +48,7 @@ module.exports = {
         unidade_id: 4,
         custo_unitario: 3.45,
         validade: new Date(),
-        vendavel: 0,
+        vendavel: false,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -60,7 +60,7 @@ module.exports = {
         unidade_id: 4,
         custo_unitario: 15.30,
         validade: new Date(),
-        vendavel: 0,
+        vendavel: false,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -72,7 +72,7 @@ module.exports = {
         unidade_id: 4,
         custo_unitario: 4.10,
         validade: new Date(),
-        vendavel: 0,
+        vendavel: false,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -84,7 +84,7 @@ module.exports = {
         unidade_id: 2,
         custo_unitario: 3.25,
         validade: new Date(),
-        vendavel: 0,
+        vendavel: false,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -96,7 +96,7 @@ module.exports = {
         unidade_id: 1,
         custo_unitario: 10.99,
         validade: new Date(),
-        vendavel: 1,
+        vendavel: true,
         receita_id: 1,
         foto: '/images/produtos/brigadeiro.png',
         created_at: new Date(),
@@ -110,7 +110,7 @@ module.exports = {
         unidade_id: 1,
         custo_unitario: 3.00,
         validade: new Date(),
-        vendavel: 1,
+        vendavel: true,
         receita_id: 2,
         foto: '/images/produtos/doce_de_leite.png',
         created_at: new Date(),
@@ -124,7 +124,7 @@ module.exports = {
         unidade_id: 1,
         custo_unitario: 8.00,
         validade: new Date(),
-        vendavel: 1,
+        vendavel: true,
         foto: '/images/produtos/H2O.png',
         created_at: new Date(),
         updated_at: new Date()
@@ -137,7 +137,7 @@ module.exports = {
         unidade_id: 1,
         custo_unitario: 3.50,
         validade: new Date(),
-        vendavel: 1,
+        vendavel: true,
         foto: '/images/produtos/coca.png',
         created_at: new Date(),
         updated_at: new Date()
