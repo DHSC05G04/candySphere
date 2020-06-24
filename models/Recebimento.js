@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     aprovado: {
-      type: DataTypes.INTEGER.UNSIGNED,
+      type: DataTypes.BOOLEAN,
       allowNull: false
     },
     pedido_id: {
