@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL,
       allowNull: false
     },
-    aprovado: DataTypes.INTEGER,
+    aprovado: DataTypes.BOOLEAN,
     usuarios_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
