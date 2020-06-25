@@ -14,17 +14,18 @@ const usuarioControllers = {
         res.send("Deu Certo")
     },
     store: async (req, res) => {
+        console.log(req.body)
         const {
             id,
             nome,
-            nivel,
+            nivel_acesso_id,
             senha
         } = req.body
         const hashSenha = bcrypt.hashSync(senha, 10);
         const post = {
             nome_usuario: nome,
             senha: hashSenha,
-            acesso: nivel,
+            nivel_acesso_id,
             funcionario_id: id
         }
       
@@ -66,13 +67,13 @@ const usuarioControllers = {
     },
     update: async (req,res)=>{
 
-        const {id,nome,nivel,senha} = req.body
+        const {id,nome,nivel_acesso_id,senha} = req.body
         const criptSenha =  bcrypt.hashSync(senha, 10)
         post = {
             id:id,
-            nome_usuario:nome,
-            senha:criptSenha, 
-            acesso:nivel
+            // nome_usuario:nome,
+            // senha:criptSenha, 
+            nivel_acesso_id
        }
         try {
             const user = await fetch(`${API_BASE}/usuarios`, {
@@ -84,7 +85,7 @@ const usuarioControllers = {
             })
             const usu = await user.json();
           
-            res.redirect('/funcionarios')
+            res.redirect('/funcionarios/verFuncionario/'+usu.funcionario.id)
         } catch (error) {
              res.status(400).json(erro)
         }

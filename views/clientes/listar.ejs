@@ -306,7 +306,6 @@
                     form.action = `/clientes/${del[i].attributes.href.value}/?_method=DELETE`
                     id.value = del[i].attributes.href.value
                     clienteDeletado.innerHTML = del[i].attributes.nome.value
-                    console.log(del[i])
                     iniciaModal('modal-delete');
                 })
 

@@ -3,33 +3,33 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('nivel_acessos', [{
-        id: 0,
+        id: 1,
         is_admin: false,
         descricao: 'Sem Acesso'
       },
       {
-        id:1,
+        id:2,
         is_admin: true,
         descricao: 'Administrador'
       },
       {
-        id:2,
-        is_admin:false,
-        descricao: 'Salão'
-      },
-      {
         id:3,
         is_admin:false,
-        descricao: 'RH'
+        descricao: 'PDV'
       },
       {
         id:4,
         is_admin:false,
+        descricao: 'RH'
+      },
+      {
+        id:5,
+        is_admin:false,
         descricao: 'Financeiro'
       },
     ], {
-      ignoreDuplicates: true,
-      updateOnDuplicate: false,
+      ignoreDuplicates: false,
+      updateOnDuplicate: true,
     });
   },
 

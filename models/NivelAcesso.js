@@ -15,17 +15,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(45),
     },
   }, {
-      tableName: 'nivel_acesso',
-      timestamps:false
+      tableName: 'nivel_acessos',
+      timestamps:false,
+      underscored: true
   });
 
   NivelAcesso.associate = function(models) {
       // Relacao 1:1 com tbl Usuario. Um usuario precisa ser funcionario
-    NivelAcesso.hasMany(
+    NivelAcesso.hasOne(
       models.Usuario,{
         foreignKey:'id',
         as: 'usuario'
-      })
+      });
   };
   return NivelAcesso;
 };

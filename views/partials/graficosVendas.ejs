@@ -2,7 +2,7 @@
 <script> function background(teste){
     const cores =[];
     teste.forEach(element => {
-        cores.push(`rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.3)`);
+        cores.push(`rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.7)`);
     });
     return cores;
 }
@@ -11,17 +11,15 @@
 
 <!-- Inicio dos graficos Vendas -->
 <script>
-    var dataTeste =dbData[5].data;
-    var cor = background(dataTeste);
+    var cor = background(dbData.data);
     var ctx = document.getElementById('top-5').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'horizontalBar',
         data: {
-            labels: dbData[5].labels,
+            labels: dbData.label,
             datasets: [{
-                label: 'TOP - 5',
-                data: dbData[5].data,
-                
+                label: 'Produtos x Qtd',
+                data: dbData.data,
                 backgroundColor: cor,
                 borderColor: cor,
                 borderWidth: 1
@@ -29,50 +27,11 @@
         },
         options: {
             scales: {
-                yAxes: [{
+                xAxes: [{
                     ticks: {
                         beginAtZero: true
                     }
                 }]
-            }
-        }
-    });
-</script>
-
-<script>
-    var dataTeste = dbData[6].data;
-    var cor = background(dataTeste);
-    var dataTeste2 = dbData[6].data;
-    var cor2 = background(dataTeste);
-    var ctx = document.getElementById('radar-vendas').getContext('2d');
-    var myRadarChart = new Chart(ctx, {
-        type: 'radar',
-        data:{
-
-            labels:  dbData[7].labels,
-            datasets: [{
-                labels:  dbData[6].labels,
-                label: 'Bolo',
-                data: dbData[6].data,
-                backgroundColor: cor,
-                borderColor: cor,
-                borderWidth: 1
-            },
-            {   
-                label: 'Torta',
-                data: dbData[7].data,
-                backgroundColor: cor2,
-                borderColor: cor2,
-                borderWidth: 1
-            }]},
-        options:{
-            scale: {
-                angleLines: {
-                    display: false
-                },
-                ticks: {
-                    
-                }
             }
         }
     });

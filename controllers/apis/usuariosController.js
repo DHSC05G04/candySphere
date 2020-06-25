@@ -10,6 +10,9 @@ const usuariosController = {
                     include: [{
                         association: 'funcionario',
                         attributes: ["id",'nome', 'email', 'avatar','telefone']
+                    },
+                    {
+                      association: 'nivel_acesso',
                     }]
                 });
     
@@ -26,6 +29,10 @@ const usuariosController = {
                     include: [{
                         association: 'funcionario',
                         attributes: ['nome', 'email', 'avatar']
+                    }
+                    ,
+                    {
+                      association: 'nivel_acesso',
                     }]
                 });
                 return res.status(200).json(usuarios);
@@ -45,6 +52,9 @@ const usuariosController = {
                     include: [{
                         association: 'funcionario',
                         attributes: ['nome', 'email', 'avatar']
+                    },
+                    {
+                      association: 'nivel_acesso',
                     }]
                 });
                 return res.status(200).json(usuarios);
@@ -144,6 +154,30 @@ const usuariosController = {
         } catch (error) {
             return res.status(400).json(error);
         };
+      },
+
+      byFuncId: async (req, res) => {
+          const { funcId } = req.params;
+          console.log(funcId)
+          try {
+            const usuarios = await Usuario.findOne({
+                include: [{
+                    association: 'funcionario',
+                    attributes: ['nome', 'email', 'avatar']
+                },
+                {
+                  association: 'nivel_acesso',
+                }],
+                where: {
+                    funcionario_id: funcId
+                }
+              });
+              console.log(usuarios == null)
+              return res.status(200).json(usuarios);
+          } catch (err) {
+              return res.status(400).json(err)
+          }
+
       }
 }
 

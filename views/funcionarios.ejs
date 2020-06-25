@@ -42,12 +42,12 @@
                                                     delete
                                                 </span></a>
                                     </td>
-                                    <%if(elemento.acesso===1){%>
-                                    <td>ADM</td>
+                                    <%if(elemento.acesso){%>
+                                    <td><%=elemento.acesso %></td>
                                     <%}else if(elemento.acesso===2){%>
                                     <td>USER</td>
                                     <%}else{%>
-                                    <td> não cadastrado </td>
+                                    <td>Não Cadastrado</td>
                                     <%}%>
                                         </tr>
                                 <% }); %>
@@ -182,7 +182,6 @@
                     const form = document.querySelector('.form-del');
                     form.action = `/funcionarios/${del[i].attributes.href.value}/?_method=DELETE`
                     id.value = del[i].attributes.href.value
-                    console.log(id)
                     iniciaModal('modal-delete');
                 })
             }
@@ -208,7 +207,6 @@
             endereco.value = '<%=funcionarioUnico[0].endereco%>'
             salario.value = '<%=funcionarioUnico[0].salario%>'
             iniciaModal('modal-cliente');
-            console.log('<%=funcionarioUnico[0].nome%>')
         </script>
         <% } %>
 
