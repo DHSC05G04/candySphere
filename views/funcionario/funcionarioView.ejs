@@ -200,10 +200,8 @@
                     const id = document.querySelector('#id');
                     const submit = document.querySelector('.btn-cliente');
                     const form = document.querySelector('.form-del');
-                    console.log('Cheguei Aqui!!!')
                     form.action = `/funcionarios/${del[i].attributes.funcId.value}/?_method=DELETE`
                     id.value = del[i].attributes.funcId.value
-                    console.log(id)
                     iniciaModal('modal-delete');
                 })
             }            
