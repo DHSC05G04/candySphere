@@ -85,7 +85,7 @@ const usuarioControllers = {
             })
             const usu = await user.json();
           
-            res.redirect('/funcionarios/verFuncionario/'+usu.id)
+            res.redirect('/funcionarios/verFuncionario/'+usu.funcionario.id)
         } catch (error) {
              res.status(400).json(erro)
         }

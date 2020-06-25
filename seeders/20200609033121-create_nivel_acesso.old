@@ -15,7 +15,7 @@ module.exports = {
       {
         id:3,
         is_admin:false,
-        descricao: 'Salão'
+        descricao: 'PDV'
       },
       {
         id:4,
@@ -28,8 +28,8 @@ module.exports = {
         descricao: 'Financeiro'
       },
     ], {
-      // ignoreDuplicates: false,
-      // updateOnDuplicate: true,
+      ignoreDuplicates: false,
+      updateOnDuplicate: true,
     });
   },
 
