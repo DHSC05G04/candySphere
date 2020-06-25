@@ -96,7 +96,11 @@ const authAPIController = {
             console.log('TOKEN: ' + token)
             try{
                 const userNotExpired = await db.Usuario.findOne(
-                    {
+                    {   attributes:["id",'reset_token','reset_token_expires'],
+                        include: [{
+                            association: 'funcionario',
+                            attributes: ["id",'email']
+                        }],
                         where:{
                             reset_token_expires: {
                             [Op.gte]: new Date() + 300000 // tolerancia de 5 minutos
