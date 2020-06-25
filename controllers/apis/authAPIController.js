@@ -2,6 +2,7 @@
 require('dotenv').config();
 const crypto = require('crypto');
 const async = require('async');
+const moment = require('moment');
 const { Op } = require('sequelize');
 
 const db = require('../../models');
@@ -39,8 +40,8 @@ const authAPIController = {
                         return res.status(201).json("info: 'OK'");
                     } else {
                         console.log('QRY OK')
-                        user.resetPasswordToken = token;
-                        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+                        user.reset_token = token;
+                        user.reset_token_expires = Date.now() + 3600000; // 1 hour
                         user.save();
                         done(null,token, user, msgReturn);
                         }
@@ -54,9 +55,9 @@ const authAPIController = {
                   from:`candySphere Password Recovery <${process.env.EMAIL_USER}>`,
                   subject: '[candySphere] Recuperação de senha',
                   text: 'Olá ' + user.funcionario.nome + '!\n\nVocê está recebendo este e-mail porque você (ou alguma outra pessoa) solicitou sua troca de senha do sistema candySphere.\n\n' +
-                  'Por favor clique ou copie o link abaixo em seu navegador para trocar sua senha:\n\n' +
+                  'Por favor clique ou copie o link abaixo em seu navegador e siga as orientações na tela:\n\n' +
                     'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-                    'Caso você desconheça esta ação ou lembrou-se de sua senha, fique trnaquilo que sua senha anterior permancerá inalterada.\n\nLembre-se: Este link será válido por apenas 1h ('+user.resetPasswordExpires +')'
+                    'Caso você desconheça esta ação ou lembrou-se de sua senha, fique tranquilo que sua senha anterior permancerá inalterada.\n\nLembre-se: Este link será válido por apenas 1h)'
                 };
                 const msgReturn = 'An e-mail has been sent to ' + email + ' with further instructions.'
                 Email.sendMail(mailOptions, function(err) {
@@ -85,6 +86,29 @@ const authAPIController = {
     resetPassword: (req, res,next) => {
         // console.log('teste')
         return res.status(200).render('index', {msgUser: 'Recurso em desenvolvimento!'})
+    },
+
+    getUserByToken: async function (req,res,next){
+        const {token} = req.params;
+        if(!token){
+            return res.status(400).json("err: 'No token found on request!'")
+        } else {
+            console.log('TOKEN: ' + token)
+            try{
+                const userNotExpired = await db.Usuario.findOne(
+                    {
+                        where:{
+                            reset_token_expires: {
+                            [Op.gte]: new Date() + 300000 // tolerancia de 5 minutos
+                        },
+                        reset_token: token
+
+                }})
+                return res.status(200).json(userNotExpired);
+            } catch(err) {
+                return res.status(400).json(error);     
+            }
+    }
     }
 
 }

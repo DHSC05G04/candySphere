@@ -70,6 +70,12 @@ const resetController = {
 
     resetPassword: (req, res,next) => {
         // console.log('teste')
+        // db.Usuario.findOne(
+        //   where:{
+
+        //   }
+        // )
+
         return res.status(200).render('index', {msgUser: 'Recurso em desenvolvimento!'})
     }
 
