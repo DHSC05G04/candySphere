@@ -13,7 +13,11 @@ module.exports = {
       {id:3,
       descricao: 'cancelada',
     },
-   ], {});
+   ], {
+    ignoreDuplicates: true,
+    updateOnDuplicate: false,
+    logging:true
+   });
 
   },
 

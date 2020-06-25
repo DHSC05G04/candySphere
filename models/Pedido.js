@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     entrega: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     },
     total: DataTypes.DECIMAL,
     sinal: DataTypes.DECIMAL,
-    obervacao: DataTypes.STRING,
+    observacao: DataTypes.STRING,
     status_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
@@ -49,7 +49,6 @@ module.exports = (sequelize, DataTypes) => {
     paranoid: true,
     tableName: 'pedidos',
     timestamps:true
-
   });
   Pedido.associate = function(models) {
     // Relacao 1:1 com tbl Usuario. Um usuario precisa ser funcionario
@@ -75,8 +74,12 @@ module.exports = (sequelize, DataTypes) => {
           as: 'pedido'
         })
 
-   
-
+        Pedido.hasMany(
+          models.Comanda,{
+            foreignKey: 'pedido_id',
+            as: 'comprados'
+          }
+        )
   };
   return Pedido;
 };

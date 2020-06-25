@@ -8,7 +8,7 @@ module.exports = {
         pedido_id:1,
         caixa_id:1,
         forma_pagamento_id:2,
-        aprovado:1,
+        aprovado:true,
         created_at: new Date(),
         updated_at: new Date(),
       },
@@ -17,7 +17,7 @@ module.exports = {
         pedido_id:2,
         caixa_id:2,
         forma_pagamento_id:1,
-        aprovado:1,
+        aprovado:true,
         created_at: new Date(),
         updated_at: new Date(),
       },
@@ -26,11 +26,14 @@ module.exports = {
         pedido_id:3,
         caixa_id:3,
         forma_pagamento_id:1,
-        aprovado:1,
+        aprovado:true,
         created_at: new Date(),
         updated_at: new Date(),
       },
-    ], {});
+    ], {
+      ignoreDuplicates: true,
+      updateOnDuplicate: false,
+    });
    
   },
 

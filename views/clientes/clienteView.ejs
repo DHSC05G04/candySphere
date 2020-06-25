@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <%- include('../partials/head') %>
+    <body>
+        <%- include('../partials/header') %>
+        <main id="funcionarios">
+            <article id="Visualizacao">
+                <section class="itemViewHeader">
+                    <span class="material-icons">people</span><h2>Cliente</h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewDesc">
+                        <h3><%=clienteUnico[0].nome%></h3>
+                    </section>
+                    <section class="itemViewBody">
+                        <section class="itemInfo">
+                            <h4 class="sectionDivider">Dados cadastrais</h4>
+                            <p><b>Email:</b>&nbsp; <%=clienteUnico[0].email%></p>
+                            <p><b>Telefone:&nbsp; </b> <%=clienteUnico[0].telefone%></p>
+                            <p><b>Logradouro:&nbsp; </b> <%=clienteUnico[0].endereco%><b>&nbsp;-&nbsp;Nº</b>&nbsp; <%=clienteUnico[0].numero%></p>
+                            <p><b>Complemento:&nbsp; </b> <%=clienteUnico[0].complemento%> </p>
+                            <p><b>Bairro:&nbsp; </b> <%=clienteUnico[0].bairro%>&nbsp;-&nbsp;<b> CEP: </b>&nbsp;<%=clienteUnico[0].cep%></p>
+                            <p><b>Cidade:&nbsp; </b> <%=clienteUnico[0].cidade%> &nbsp;-&nbsp;<b> UF: </b>&nbsp;<%=clienteUnico[0].uf%></p>        
+                        </section>
+                        <section class="itemInfo">
+                            <h4 class="sectionDivider">Resumo</h4>
+                            <p><b>Última Compra:&nbsp;</b> 25/03/2019 - R$ 2.350,12 </p>
+                            <p><b>Média:&nbsp;</b> R$ 1.800,21</p>
+                            <p><b>Cliente desde:&nbsp;</b><%=moment(clienteUnico[0].createdAt).format("D/M/Y")%> </p>
+                        </section>
+                    </section>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                    <button type="button" id="cliente-edit" class="material-icons">edit</button>
+                    <button type="button" id="delete-cliente" class="material-icons deleteCliente" clienteId="<%= clienteUnico[0].id %>" nome="<%=clienteUnico[0].nome%>">delete</button>
+                </section>
+            </article>
+        </main>
+
+        <div id="modal-cliente" class="modal-container">
+            <div id="conteudo-modal">
+                <form id="form-cliente" method="POST" action="">
+                    <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
+                    <h1 id="titulo">Cadastro de cliente</h1>
+                    <input type="hidden" name="id" value="<%=clienteUnico.length>0?clienteUnico[0].id:""%>">
+                    <div id="label-cliente"><label id="nome-label" for="nome-cliente">Nome</label></div>
+                    <input type="text" id="nome" class="input-cadastro" name="nome" placeholder="Digite o nome do cliente">
+                    <div id="label-cliente"><label for="nome-cliente">CPF</label></div>
+                    <input type="text" id="cpf" class="input-cadastro" name="cpf" placeholder="Digite o CPF do cliente">
+                    <div id="label-cliente"><label for="nome-cliente">Email</label></div>
+                    <input type="text" id="email" class="input-cadastro" name="email" placeholder="Digite o Email">
+                    <div id="label-cliente"><label id="telefone-label" for="nome-cliente">Telefone</label></div>
+                    <input type="text" id="telefone" class="input-cadastro" name="telefone" placeholder="Digite o telefone">
+                    <div id="label-cliente" class="lougradouro">
+                        <div class="dados-end-pai">
+                            <div class="dados-numero" style="width: 30%;">
+                                <label id="labelCep" for="nome-cliente">CEP</label>
+                                <input type="text" id="cep" class="input-cadastro" name="cep" placeholder="Ex:01310000">
+                            </div>
+                            <div class="dados-complemento" style="width: 20%;">
+                                <input type="submit" id="input-cep" class="btn-cliente" value="Buscar">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="label-cliente" class="lougradouro">
+                        <div>
+                            <label for="nome-cliente">Lougradouro</label>
+                            <input type="text" id="lougradouro" class="input-cadastro" name="endereco"
+                                placeholder="Digite o Lougradouro">
+                        </div>
+                    </div>
+                    <div id="label-cliente" class="lougradouro">
+                        <div class="dados-end-pai">
+                            <div class="dados-numero" style="width: 30%;">
+                                <label for="numero" id="labelNumero">Nº</label>
+                                <input type="text" id="numero" class="input-cadastro" name="numero" placeholder="Nº">
+                            </div>
+                            <div class="dados-complemento" style="width: 70%;">
+                                <label for="complemento">Complemento</label>
+                                <input type="text" id="complemento" class="input-cadastro" name="complemento"
+                                    placeholder="Complemento">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="label-cliente" class="lougradouro">
+                        <div class="dados-end-pai">
+                            <div class="dados-numero" style="width: 40%;">
+                                <label for="nome-cliente">Bairro</label>
+                                <input type="text" id="bairro" class="input-cadastro" name="bairro" placeholder="Bairro">
+                            </div>
+                            <div class="dados-complemento" style="width: 40%;">
+                                <label for="nome-cliente">Cidade</label>
+                                <input type="text" id="cidade" class="input-cadastro" name="cidade" placeholder="Cidade">
+                            </div>
+                            <div class="dados-complemento" style="width: 20%;">
+                                <label for="nome-cliente">UF</label>
+                                <input type="text" id="uf" class="input-cadastro" name="uf" placeholder="UF">
+                            </div>
+                        </div>
+                    </div>
+                    <input id="btn-submit" type="submit" class="btn-cliente" value="Salvar">
+                </form>
+            </div>
+        </div>
+
+        <div id="modal-delete" class="modal-container">
+            <div id="conteudo-modal">
+                <form id="form-cliente" class="form-del" method="POST" enctype="multipart/form-data">
+                    <input id="id" name="id" type="hidden" value="">
+                    <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
+                    <h1 id="titulo"> <span class="material-icons">
+                            delete
+                        </span> - Exclusão de Cliente</h1>
+                    <div id="label-cliente"><label for="nome-cliente" id="label-nome">
+                            <h3 style="font-size: 20px; margin-top:15px;">Tem certeza que deseja excluir o Cliente?</h3>
+                        </label></div>
+                        <div><h1 style="font-size: 20px; margin-top:15px;" class="cliente-deletado"></h1></div>
+                    <div id="btn-modal"> <input type="submit" class="btn-cliente" value="Deletar">
+                        <input type="submit" id="cancela" class="btn-cliente" value="Cancelar"></div>
+                </form>
+            </div>
+        </div>
+        <%- include('../partials/footer') %>
+        <script>
+            function iniciaModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.classList.add('mostrar');
+                modal.addEventListener('click', (e) => {
+                    if (e.target.id == 'fechar-tudo') {
+                        e.preventDefault()
+                        modal.classList.remove('mostrar');
+                    }
+                    if (e.target.id == 'cancela') {
+                        e.preventDefault();
+                        modal.classList.remove('mostrar');
+                    }
+                });
+            }
+            // formulário
+            const form = document.getElementById('form-cliente');
+            const titulo = document.getElementById('titulo');
+            // dados Pessoais
+            const nomeLabel = document.getElementById('nome-label');
+            const nome = document.getElementById('nome');
+            const cpf = document.getElementById('cpf');
+            const email = document.getElementById('email');
+            const telefone = document.getElementById('telefone');
+            const telefoneLabel = document.getElementById('telefone-label');
+            //    endereço
+            const labelCep = document.getElementById('labelCep');
+            const inputCep = document.getElementById('input-cep');
+            const cep = document.getElementById('cep');
+            const lougradouro = document.getElementById('lougradouro');
+            const numero = document.getElementById('numero');
+            const complemento = document.getElementById('complemento');
+            const bairro = document.getElementById('bairro');
+            const cidade = document.getElementById('cidade');
+            const uf = document.getElementById('uf');
+            const btnClienteEdit = document.getElementById('cliente-edit');
+            const submitCliente = document.getElementById('btn-submit');
+            const btnDelete = document.getElementsByClassName('delete');
+            const labelNumero = document.getElementById('labelNumero');
+
+            //submit para atualizar
+            btnClienteEdit.addEventListener('click', (e) => {
+                iniciaModal('modal-cliente')
+            form.action = "/clientes?_method=PUT"
+            titulo.innerHTML = "Atualizar Cliente"
+            submitCliente.value = "Atualizar"
+            nome.value = "<%=clienteUnico[0].nome%>";
+            cpf.value = "<%=clienteUnico[0].cpf%>";
+            email.value = "<%=clienteUnico[0].email%>";
+            telefone.value = "<%=clienteUnico[0].telefone%>";
+            cep.value = "<%=clienteUnico[0].cep%>"
+            lougradouro.value = "<%=clienteUnico[0].endereco%>"
+            numero.value = "<%=clienteUnico[0].numero%>"
+            complemento.value = "<%=clienteUnico[0].complemento%>"
+            bairro.value = "<%=clienteUnico[0].bairro%>"
+            cidade.value = "<%=clienteUnico[0].cidade%>"
+            uf.value = "<%=clienteUnico[0].uf%>"
+            submitCliente.addEventListener('click', (e) => {
+                if (nome.value === '') {
+                    e.preventDefault()
+                    telefone.style.border = "1px solid var(--color5)"
+                    nome.style.border = "2px solid red"
+                    nomeLabel.textContent = "* Nome"
+                    nomeLabel.style.color = "red"
+                    telefoneLabel.textContent = "Telefone"
+                    telefoneLabel.style.color = "var(--color5)"
+                } else if (telefone.value === "") {
+                    e.preventDefault()
+                    nome.style.border = "1px solid var(--color5)"
+                    telefone.style.border = "2px solid red"
+                    telefoneLabel.textContent = " * Telefone"
+                    telefoneLabel.style.color = "red"
+                    nomeLabel.textContent = "Nome"
+                    nomeLabel.style.color = "var(--color5)"
+                } else if (cep.value != "" && lougradouro.value !="" && (
+                        numero.value==="" || numero.value.toLowerCase !=='S/N' )){
+                    e.preventDefault();
+                    telefone.style.border = "1px solid var(--color5)"
+                    nome.style.border = "1px solid var(--color5)"
+                    numero.style.border = "2px solid red";
+                    
+
+
+                } else {
+                    e.preventDefault()
+                    telefone.style.border = "1px solid var(--color5)";
+                    nome.style.border = "1px solid var(--color5)"
+                    numero.style.border = "1px solid var(--color5)";
+                    form.submit()
+                }
+                })
+            })
+        </script>
+        <script>
+            // controle do AUTO PREENCHIMENTO do CEP
+            async function buscarCep(cep) {
+                const apiCep = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                const resposta = await apiCep.json();
+                return resposta
+            }
+            inputCep.addEventListener('click', async (e) => {
+                if (cep.value != "") {
+                    e.preventDefault();
+                    labelCep.style.color = 'var(--color5)'
+                    labelCep.textContent = "CEP"
+                    cep.style.border = "1px solid var(--color5)"
+                    const cepData = await buscarCep(cep.value)
+                    cep.value = cepData.cep
+                    lougradouro.value = cepData.logradouro
+                    bairro.value = cepData.bairro
+                    cidade.value = cepData.localidade
+                    uf.value = cepData.uf
+                } else {
+                    e.preventDefault();
+                    labelCep.style.color = 'red'
+                    labelCep.textContent = "Digite um cep"
+                    cep.style.border = "2px solid red"
+                }
+            })
+        </script>
+
+
+        <script>
+            const del = document.getElementById('delete-cliente');
+            const clienteDeletado = document.querySelector(".cliente-deletado")
+            del.addEventListener('click', (e) => {
+                e.preventDefault()
+                const id = document.getElementById('id');
+                const submit = document.querySelector('.btn-cliente');
+                const form = document.querySelector('.form-del');
+                form.action = `/clientes/${del.attributes.clienteId.value}/?_method=DELETE`
+                id.value = del.attributes.clienteId.value
+                clienteDeletado.innerHTML = del.attributes.nome.value
+                iniciaModal('modal-delete');
+            })
+        </script>
+
+        <script type="text/javascript" src="/javascript/shared.js"></script>
+    </body>
+</html>

@@ -1,118 +1,214 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<%- include('../partials/head') %>
+    <%- include('../partials/head') %>
 
-<body>
+    <body>
+        <%- include('../partials/header') %>
+        <main id="funcionarios">
+            <article id="Visualizacao">
+                <section class="itemViewHeader">
+                    <span class="fas fa-id-card-alt"></span><h2>Funcionário</h2>                    
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewDesc funcionario">
+                        <% if(funcionarios[0].avatar == null) { %>
+                            <img src="/images/defaultAvatar.png">
+                        <% } else {%>
+                            <img src="/images/avatar/<%= funcionarios[0].avatar%>">
+                        <% } %>
+                        <h3><%=funcionarios[0].nome%></h3>
+                    </section>
+                    <section class="itemViewBody">
+                        <section class="itemInfo">
+                            <h4 class="sectionDivider">Dados cadastrais</h4>
+                            <p><b>Email: </b><%=funcionarios[0].email %></p>
+                            <p><b>Telefone: </b><%=funcionarios[0].telefone%></p>
+                            <p><b>Logradouro: </b><%=funcionarios[0].endereco%></p>
+                        </section>
+                        <section class="itemInfo">
+                            <h4 class="sectionDivider">Dados funcionais</h4>
+                            <p><b>Cargo: </b> - </p>
+                            <p><b>Salário: R$ </b><%=funcionarios[0].salario%></p>
+                            <p><b>Data de Admisão:
+                                    </b><%=moment(funcionarios[0].createdAt).format("DD/MM/YYYY")%></p>
+                        </section>
+                        <section class="itemInfo">
+                            <h4 class="sectionDivider">Usuário do sistema</h4>
+                            <%console.log('VIEW', usuarioCadastrado == null) %>
+                            <% if(usuarioCadastrado !== null ) { %>
+                                <p>
+                                    <b>Usuário: </b><%=usuarioCadastrado.funcionario.email %>
+                                </p>
+                                <p>
+                                    <b>Perfil de  Acesso: </b><%=usuarioCadastrado.nivel_acesso.descricao%>
+                                </p>
+                                <p>
+                                    <b>Usuário desde: </b> <%=moment(usuarioCadastrado.createdAt).format("DD/MM/YYYY")%>
+                                </p>    
+                                <div class="infoFooter">
+                                    <button type="button" id="btn-edit" class="fas fa-user-edit addRemItem"></button>
+                                    <button type="button" id="btn-excluir" class="material-icons addRemItem">delete</button>
+                                </div>
+                            <% } else { %>
+                                <p> Sem Acesso
+                                <div class="infoFooter">
+                                    <button type="button" id="btn-add" class="material-icons addRemItem">person_add_alt_1</button>                                
+                                </div>
+                            <% } %>
+                        </section>
+                    </section>                    
+                </section>
+                <section class="itemViewFooter">
+                    <button class="material-icons" onclick="retornar()">arrow_back</button>
+                    <button type="button" class="material-icons" onClick="window.location.href='/funcionarios/atualizar/<%= funcionarios[0].id%>'">edit</button>
+                    <button type="button" id="delete-funcionario" class="material-icons delete-funcionario" funcId="<%= funcionarios[0].id %>">delete</button>
+                </section>
+            </article>
+        </main>
 
-    <%- include('../partials/header') %>
+        <div id="modal-usuario" class="modal-container">
+            <div id="conteudo-modal">
+                <form id="form-cliente" class="form-usuario" method="POST" action="/usuarios" name="form-usuario"
+                    style="position: relative;">
+                    <h1 id="titulo">Cadastro de Usuário</h1>
+                    <button id="fechar-tudo" class="fechar-modal">x</button>
+                    <input type="hidden" id="id" name="id" value="<%=funcionarios[0].id%>">
+                    <div id="label-cliente"><label for="nome-cliente">Nome de Usuário</label></div>
+                    <input type="text" id="nome-usuario" class="input-cadastro" name="nome"
+                        placeholder="Digite o nome de Usuario" value="<%=funcionarios[0].email%>" disabled>
+                    <div id="label-cliente"><label id="label-acesso" for="nome-cliente">Privilégio</label></div>
+                    <select type="select" id="acesso" class="input-cadastro" name="nivel_acesso_id">
+                        <option value="" disabled >Escolha o nível de acesso</option>
+                        <option value="1">Sem Acesso</option>
+                        <option value="2">Administrador</option>
+                        <option value="3">PDV</option>
+                        <option value="4">RH</option>
+                        <option value="5">Financeiro</option>
 
-    <main id="funcionarios">
+                        <!-- <option value="1">ADM</option>
+                        <option value="2">USER</option> -->
+                    </select>
+                    <div id="label-cliente"><label id="nova-senha" for="nome-cliente">Senha</label></div>
+                    <input type="password" id="senha" class="input-cadastro" value="<%=funcionarios[0].email%>" name="senha" placeholder="Digite uma senha" hidden>
 
-        <section id="tabela-corpo">
-
-
-            <table id="tabela-funcionario">
-                <thead>
-                    <tr>
-                        <th id="titulo-card-ver-funcionario"><span
-                                class="material-icons">account_box</span></a><span>Funcionario</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="nome-campo">
-                            <div id="foto-perfil">
-                                <img src="/images/IMG_20180411_111301015~3.jpg" alt="">
-                                <div id="nome-funcionario"> <span id="nome"></span> </div>
-                            </div>
-                            <div class="funcionarios-dados">
-                                <label class="label-funcionario" for=""><b>Contatos</b></label>
-                                <div><b>Email: </b> <span id="email"></span></div>
-                                <div><b>Telefone: </b><span id="telefone"></span></div>
-                            </div>
-                            <div class="funcionarios-dados">
-                                <label class="label-funcionario" for=""><b>Endereço</b></label>
-                                <div><b>Logradouro: </b> Rua Silvio Galicho <b>Nº: </b>27</div>
-                                <div><b>CEP: </b>05797-440</div>
-                                <div><b>Bairro: </b>Jd Ipê</div>
-                                <div><b>Cidade: </b>São Paulo <b>UF: </b>SP </div>
-                            </div>
-                            <div class="funcionarios-dados">
-                                <label class="label-funcionario" for=""><b>Dados Funcionais</b></label>
-                                <div><b>Cargo: </b>Desenvolvedor de Sistema</div>
-                                <div><b>Salário: </b>R$ 20.000,00</div>
-                                <div><b>Data de Admisão: </b>22/01/2020</div>
-                                <div><b>Usuario do Sistema: </b>Sim</div>
-                            </div>
-                        </td>
-
-
-                </tbody>
-            </table>
-            <div class="add-cliente"> <a id="btn-add" href="#"><span class="material-icons">add_circle</span></a></div>
-        </section>
-
-    </main>
-<br>
-    <div id="modal-cliente" class="modal-container">
-        <div id="conteudo-modal">
-            <form id="form-cliente" action="">
-                <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
-                <h1>Cadastro de funcionários</h1>
-                <div id="label-cliente"><label for="nome-cliente">Nome</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="nome-cliente"
-                    placeholder="Digite o nome do funcionário">
-                <div id="label-cliente"><label for="nome-cliente">Email</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="email-cliente"
-                    placeholder="Digite o Email">
-                <div id="label-cliente"><label for="nome-cliente">Telefone</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="tel-cliente"
-                    placeholder="Digite o telefone">
-                <div id="label-cliente"><label for="nome-cliente">Endereço</label></div>
-                <input type="text" id="nome-cliente" class="input-cadastro" name="end-cliente"
-                    placeholder="Digite o Endereço">
-                <input type="submit" class="btn-cliente" value="Salvar">
-            </form>
+                    <input type="submit" id="input-usuario" onclick="" class="btn-cliente btn-submit" value="Salvar">
+                </form>
+            </div>
         </div>
-    </div>
 
-    <%- include('../partials/footer') %>
 
-    <%- include('../partials/scripts') %>
+        <!-- Modal Delete -->
+        <div id="modal-delete" class="modal-container">
+            <div id="conteudo-modal">
+                <form id="form-cliente" class="form-del" method="POST" action="/usuarios?_method=DELETE">
+                    <input id="id-del" name="id" type="hidden" value="">
+                    <div class="btn-fechar"> <button id="fechar-tudo" class="fechar-modal">x</button></div>
+                    <h1 id="titulo"> <span class="material-icons">
+                            delete
+                        </span> - Exclusão de Usuário</h1>
+                    <div id="label-cliente"><label for="nome-cliente" id="label-nome">
+                            <h3 style="font-size: 20px; margin-top:15px;">Tem certeza que deseja excluir o Usuário?</h3>
+                        </label></div>
+                    <div id="btn-modal"> <input type="submit" class="btn-cliente" value="Deletar">
+                        <input type="submit" id="cancela" class="btn-cliente" value="Cancelar"></div>
+                </form>
+            </div>
+        </div>
+        <!-- Fim de Modal Usuário -->
 
-    <script>
-        const nome = document.getElementById('nome')
-        const email = document.getElementById('email')
-        const telefone = document.getElementById('telefone')
-    async function  getFuncionario(){
-        const resposta = await fetch("http://localhost:3000/api/v0/funcionarios/1");
-        const funcionario = await resposta.json()
-        nome.innerHTML = funcionario[0].nome
-        email.innerHTML = funcionario[0].email
-        telefone.innerHTML = funcionario[0].telefone
-        console.log(funcionario[0].nome)
-
-    }
+        <%- include('../partials/footer') %>
         
-        function iniciaModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.add('mostrar');
-            modal.addEventListener('click', (e) => {
-                if (e.target.id == 'fechar-tudo') {
-                    modal.classList.remove('mostrar');
-                }
+        <script>
+            function iniciaModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.classList.add('mostrar');
+                modal.addEventListener('click', (e) => {
+                    if (e.target.id == 'fechar-tudo') {
+                        e.preventDefault();
+                        modal.classList.remove('mostrar');
+                    }
+                });
+            }
+            const btnUsuarioAdd = document.querySelector('#btn-add');
+            btnUsuarioAdd.addEventListener('click', (e) => {
+                e.preventDefault()
+                const confirmaSenha = document.querySelector("#confirma-senha")
+                const confirmaLabelSenha = document.querySelector("#confirmaLabel-senha")
+
+                iniciaModal('modal-usuario');
             });
-        }
-        const btnClienteAdd = document.querySelector('.add-cliente');
-        btnClienteAdd.addEventListener('click', () => {
-            iniciaModal('modal-cliente');
+        </script>
+        <script>
+            const submit = document.querySelector(".btn-submit")
+            const labelAcesso = document.querySelector("#label-acesso")
+            const form = document.querySelector('#input-usuario');
+            submit.addEventListener('click', (e) => {
+                const acesso = document.querySelector("#acesso")
+                const opt = acesso.value
+                form.action = '/usuarios'
+                if (opt == "" || opt == undefined) {
+                    e.preventDefault()
+                    acesso.style.border = "2px solid red"
+                    labelAcesso.style.color = "red"
+                    labelAcesso.innerHTML = 'Privilégio - escolha o nível de acesso'
+                }
 
-        });
 
-        getFuncionario()
-    </script>
+            })
+        </script>
+        '<%if(usuarioCadastrado !== null ){%>'
+        <script>
+            const btnUsuarioEdit = document.querySelector('#btn-edit');
+            const id = document.querySelector('#id');
+            const titulo = document.querySelector('#titulo');
+            const usuario = document.querySelector('#nome-usuario');
+            const acesso = document.querySelector('#acesso');
+            const senha = document.querySelector('#nova-senha');
+            const inputUsuario = document.querySelector('#input-usuario');
+            const btnExcluir = document.querySelector('#btn-excluir');
 
-</body>
 
+            btnUsuarioEdit.addEventListener('click', () => {
+                form1 = document.querySelector('form');
+                form1.action = "/usuarios?_method=PUT"
+                inputUsuario.value = "Atualizar"
+                titulo.textContent = "Atualizar Usuário"
+                senha.textContent = "Nova Senha"
+                id.value = '<%=usuarioCadastrado.id%>'
+                usuario.value = '<%=usuarioCadastrado.funcionario.email%>'
+                acesso.value = '<%=usuarioCadastrado.nivel_acesso_id%>'
+                iniciaModal('modal-usuario');
+            });
+
+            formDel = document.querySelector('.form-del');
+            idDelete = document.querySelector('#id-del');
+            btnExcluir.addEventListener('click', (e) => {
+                e.preventDefault()
+                formDel.action = "/usuarios?_method=DELETE"
+                idDelete.value = "<%=usuarioCadastrado.id%>"
+                iniciaModal('modal-delete')
+            })
+        </script>
+        '<%}%>'
+
+        <script>
+            const del = document.getElementsByClassName('delete-funcionario');
+            for (let i = 0; i < del.length; i++) {
+                del[i].addEventListener('click', (e) => {
+                    e.preventDefault()
+                    const id = document.querySelector('#id');
+                    const submit = document.querySelector('.btn-cliente');
+                    const form = document.querySelector('.form-del');
+                    form.action = `/funcionarios/${del[i].attributes.funcId.value}/?_method=DELETE`
+                    id.value = del[i].attributes.funcId.value
+                    iniciaModal('modal-delete');
+                })
+            }            
+        </script>
+        <script>
+            const API = <%- JSON.stringify(API_BASE) %>
+        </script>
+        <script type="text/javascript" src="/javascript/shared.js"></script>
+    </body>
 </html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <%- include('../partials/head') %>
+
+    <body>
+
+        <%- include('../partials/header') %>
+
+        <main id="financeiro">
+            <article id="Visualizacao">
+                <section class="itemViewHeader">
+                    <span class="material-icons">pie_chart</span><h2>Financeiro / Receitas x Despesas<h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewBody">
+                        <section id="dash-board">
+                            <form id="datas" action="">
+                                <div id="periodo">
+                                    <div class="input-data">
+                                        <label for="data-inicial">data inicial</label>
+                                        <input type="date" id="data-inicial">
+                                    </div>
+                                    <div class="input-data">
+                                        <label for="data-final">data final</label>
+                                        <input type="date" id="data-final">
+                                    </div>
+                                    <div class="input-data">
+                                        <label id="btn-label" for="data-inicial">.</label>
+                                        <input type="submit" id="btn-data" value="Buscar">
+                                    </div>
+                                </div>
+                        
+                            </form>
+                        
+                            <div id="cards">
+                                <div class="card-container">
+                                    <div class="card-main">
+                                        <div class="card-left">
+                                            <span class="material-icons">
+                                                monetization_on
+                                            </span>
+                                        </div>
+                                        <div class="card-dados">
+                                            <div>Faturamento</div>
+                                            <div>R$<%= finData.vendas %></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-main">
+                                        <div class="card-left">
+                                            <span class="material-icons">
+                                                local_atm
+                                            </span>
+                                        </div>
+                                        <div class="card-dados">
+                                            <div>Lucros</div>
+                                            <div>R$<%= finData.lucro %></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-main">
+                                        <div class="card-left">
+                                            <span class="material-icons">
+                                                local_mall
+                                            </span>
+                                        </div>
+                                        <div class="card-dados">
+                                            <div>Despesas</div>
+                                            <div>R$<%= finData.despesas %></div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                        
+                                <div id="graficos">
+                                    <div class="grafico-meio">
+                                        <canvas id="pizza-despesa"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick="retornar()">arrow_back</button>
+                </section>
+            </article>
+        </main>
+    
+        <%- include('../partials/footer') %>
+
+        <%- include('../partials/CDNgraficos') %>
+        
+        <!-- Importa o objeto dataFinanceiro de forma que os scripts seguintes consigam utilizá-lo -->
+        <script>
+            var dbData = <%- JSON.stringify(despesas) %>;
+        </script>
+
+        <%- include('../partials/graficosReceitas') %>
+        
+        <script type="text/javascript" src="/javascript/shared.js"></script>
+    </body>
+</html>

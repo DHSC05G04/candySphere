@@ -9,15 +9,12 @@ const ingredientesController = {
                 const ingredientes = await Ingrediente.findAll({
                     include: [{
                         association: 'componente',
-                        attributes: ['nome']
+                        attributes: ['id', 'tipo_id', 'nome']
                     },{
                         association: 'unidade',
-                        attributes: ['unidade']
-                    },{
-                        association: 'origem',
-                        attributes: ['nome']
+                        attributes: ['id', 'unidade']
                     }]
-                });;
+                });
 
                 return res.status(200).json(ingredientes);
             } catch (error) {
@@ -31,13 +28,10 @@ const ingredientesController = {
                     },
                     include: [{
                         association: 'componente',
-                        attributes: ['nome']
+                        attributes: ['id', 'tipo_id', 'nome']
                     },{
                         association: 'unidade',
-                        attributes: ['unidade']
-                    },{
-                        association: 'origem',
-                        attributes: ['nome']
+                        attributes: ['id', 'unidade']
                     }]
                 });
                 return res.status(200).json(ingredientes);
@@ -56,13 +50,10 @@ const ingredientesController = {
                     },
                     include: [{
                         association: 'componente',
-                        attributes: ['nome']
+                        attributes: ['id', 'tipo_id', 'nome']
                     },{
                         association: 'unidade',
-                        attributes: ['unidade']
-                    },{
-                        association: 'origem',
-                        attributes: ['nome']
+                        attributes: ['id', 'unidade']
                     }]
                 });
                 return res.status(200).json(ingredientes);

@@ -1,16 +1,15 @@
 <header>
     <section id="systemTitle">
-        <img id="logo" src="/images/logo.png" alt="">
+        <img id="logo" src="/images/logo2.png" alt="">
         <h1>Sistema de Gestão de Confeitaria</h1>
-        <a id="logout" href="/logout"><img src="/images/userAvatar.png" alt=""><%= usuario.login %> <img src="/images/logout.png" alt=""></a>
+        <button type="button" id="signOut" class="fas fa-sign-out-alt" onClick="window.location.href='/logout'"></button>
     </section>
-    <div class="BorderDeco"></div>
     <nav>
         <input type="checkbox" id="menu">
         <label for="menu" id="icone-sanduiche" class="material-icons">reorder</label>
         <ul id="mainNav">
             <li class=<%= tabs.homeAct %>><a href="/home">Home</a></li>
-            <li class=<%= tabs.adminAct %>><a href="/admin">Administração</a></li>
+            <li class=<%= tabs.operacaoAct %>><a href="/admin">Operação</a></li>
             <li class=<%= tabs.financeiroAct %>><a href="/financeiro">Financeiro</a></li>
             <li class=<%= tabs.clientesAct %>><a href="/clientes">Clientes</a></li>
             <li class=<%= tabs.funcionariosAct %>><a href="/funcionarios">Funcionários</a></li>

@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10,4),
       allowNull: false
     },
-    ativo: DataTypes.INTEGER,
+    ativo: DataTypes.BOOLEAN,
     
     createdAt: {
       type: DataTypes.DATE,

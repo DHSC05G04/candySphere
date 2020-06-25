@@ -1,0 +1,38 @@
+<!-- Função para pegar core aleatorias -->
+<script> function background(teste){
+    const cores =[];
+    teste.forEach(element => {
+        cores.push(`rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.7)`);
+    });
+    return cores;
+}
+</script>
+
+
+<!-- Inicio dos graficos Vendas -->
+<script>
+    var cor = background(dbData.data);
+    var ctx = document.getElementById('top-5').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: dbData.label,
+            datasets: [{
+                label: 'Produtos x Qtd',
+                data: dbData.data,
+                backgroundColor: cor,
+                borderColor: cor,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>

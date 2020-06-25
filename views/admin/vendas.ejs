@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <%- include('../partials/head') %>
+
+    <body>
+
+        <%- include('../partials/header') %>
+
+        <main id="administracao">
+            <article id="Visualizacao" class="produto">
+                <section class="itemViewHeader">
+                    <span class="material-icons">shopping_cart</span>
+                    <h2>Operações / PDV</h2>
+                </section>
+                <section class="itemViewMain">
+                    <section class="itemViewBody produto">
+                        <% produtos.forEach((produto) => { %>
+                            <section class="adminCardContainer produtos">
+                                <section class="foto" style="background-image: url(<%= produto.itemEstoque.foto %>); background-size: cover;">
+                                </section>
+                                <section class="description">
+                                    <h3><%= produto.itemEstoque.nome %></h3>
+                                    <p class="valor">R$ <%= produto.valor %></p>
+                                </section>
+                                <section class="adminCardFooter">
+                                    <button type="button" id=<%= `Button-${produto.id}` %> class="btn material-icons addCart" onClick=<%= `addToCart(${produto.id})` %>>add_shopping_cart</button>
+                                </section>
+                            </section>                                
+                        <% }); %>
+                    </section>
+                </section>
+                <section class="itemViewFooter">
+                    <button type="button" class="material-icons" onClick="window.location.href='/admin'">arrow_back</button>
+                    <button type="button" class="material-icons" onClick=iniciaModal(modalCarrinho)>shopping_cart</button>
+                </section>
+            </article>
+        </main>
+
+        <%- include('../partials/footer') %>
+        
+        <section id="modalPedido" class="modal-container">
+            <section class="modal">
+                <section class="conteudoModal">
+                    <section class="modalHeader">
+                        <button id="fechar-tudo" class="fecharModal">x</button>
+                        <h2>Pedido realizado com sucesso!</h1>
+                    </section>
+                </section>
+            </section>
+        </section>
+
+        <section id="modalCarrinho" class="modal-container">
+            <section class="modal">
+                <section class="conteudoModal">
+                    <section class="modalHeader">
+                        <button id="fechar-tudo" class="fecharModal">x</button>
+                        <h2>Carrinho de Compras</h1>
+                    </section>
+                    <section class="modalMain">
+                        <table id="compras">
+                            <thead>
+                                <tr>        
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaCompras">
+                            </tbody>
+                        </table>
+                    </section>
+                    <section class="modalFooter">
+                        <button type="button" onClick="checkout()"><span class="material-icons">shopping_cart</span>Checkout</button>
+                    </section>
+                </section>
+            </section>
+        </section>
+
+        <script type="text/javascript">
+            const API = <%- JSON.stringify(API_BASE) %>
+        </script>
+        <script type="text/javascript" src="/javascript/vendas.js"></script>
+        <% if(pedidoOk != undefined && pedidoOk == true) { %>
+            <script type="text/javascript">
+                iniciaModal('modalPedido')
+            </script>
+        <% } %>
+        <script type="text/javascript" src="/javascript/shared.js"></script>
+    </body>
+
+</html>

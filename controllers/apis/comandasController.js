@@ -9,7 +9,7 @@ const comandasControllers = {
             const comanda = await Comanda.findAll({
                 include: [{
                         association: 'pedido',
-                        attributes: ['entrada', 'entrega', 'total', 'sinal', 'obervacao']
+                        attributes: ['entrada', 'entrega', 'total', 'sinal', 'observacao']
                     },
                     {
                         association: 'produto',

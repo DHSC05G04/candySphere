@@ -1,7 +1,8 @@
 {
-    "liveServer.settings.multiRootWorkspaceName": "candySphere",
     "files.exclude": {
-        "**/.git": false,
-        "**/.gitkeep": false
-    }
+        "**/.git": true,
+        "**/.gitkeep": true,
+        "**/node_modules": true
+    },
+
 }
