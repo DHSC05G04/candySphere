@@ -12,7 +12,11 @@
                 </section>
                 <section class="itemViewMain">
                     <section class="itemViewDesc funcionario">
-                        <img src="/images/avatar/<%= funcionarios[0].avatar%>">
+                        <% if(funcionarios[0].avatar == null) { %>
+                            <img src="/images/defaultAvatar.png">
+                        <% } else {%>
+                            <img src="/images/avatar/<%= funcionarios[0].avatar%>">
+                        <% } %>
                         <h3><%=funcionarios[0].nome%></h3>
                     </section>
                     <section class="itemViewBody">
@@ -25,31 +29,29 @@
                         <section class="itemInfo">
                             <h4 class="sectionDivider">Dados funcionais</h4>
                             <p><b>Cargo: </b> - </p>
-                            <p><b>Salário:R$ </b><%=funcionarios[0].salario%></p>
+                            <p><b>Salário: R$ </b><%=funcionarios[0].salario%></p>
                             <p><b>Data de Admisão:
                                     </b><%=moment(funcionarios[0].createdAt).format("DD/MM/YYYY")%></p>
                         </section>
                         <section class="itemInfo">
                             <h4 class="sectionDivider">Usuário do sistema</h4>
-                            <p><b>Usuário: </b><% if(usuarioCadastrado.length <=0) { %>
-                                    <span>Não cadastrado</span>
-                                <% } else { %>
-                                    <%= usuarioCadastrado[0].nome_usuario %>
-                                <% } %>
-                            </p>
-                            <% if(usuarioCadastrado.length > 0) { %>
-                                <p><b>Acesso: </b><% if(usuarioCadastrado.length > 0) {if(usuarioCadastrado[0].acesso == 1){ %>
-                                        "ADM"
-                                    <% } else if(usuarioCadastrado[0].acesso==2){ %>
-                                        "USER"
-                                    <% }} %>
+                            <%console.log('VIEW', usuarioCadastrado == null) %>
+                            <% if(usuarioCadastrado !== null ) { %>
+                                <p>
+                                    <b>Usuário: </b><%=usuarioCadastrado.funcionario.email %>
                                 </p>
-                                <p><b>Data de Início: </b><%=moment(usuarioCadastrado[0].createdAt).format("DD/MM/YYYY")%></p>
+                                <p>
+                                    <b>Perfil de  Acesso: </b><%=usuarioCadastrado.nivel_acesso.descricao%>
+                                </p>
+                                <p>
+                                    <b>Usuário desde: </b> <%=moment(usuarioCadastrado.createdAt).format("DD/MM/YYYY")%>
+                                </p>    
                                 <div class="infoFooter">
                                     <button type="button" id="btn-edit" class="fas fa-user-edit addRemItem"></button>
                                     <button type="button" id="btn-excluir" class="material-icons addRemItem">delete</button>
                                 </div>
                             <% } else { %>
+                                <p> Sem Acesso
                                 <div class="infoFooter">
                                     <button type="button" id="btn-add" class="material-icons addRemItem">person_add_alt_1</button>                                
                                 </div>
@@ -71,19 +73,24 @@
                     style="position: relative;">
                     <h1 id="titulo">Cadastro de Usuário</h1>
                     <button id="fechar-tudo" class="fechar-modal">x</button>
-                    <input type="hidden" id="id" name="id" value="<%=funcionarios[0].id%> ">
+                    <input type="hidden" id="id" name="id" value="<%=funcionarios[0].id%>">
                     <div id="label-cliente"><label for="nome-cliente">Nome de Usuário</label></div>
                     <input type="text" id="nome-usuario" class="input-cadastro" name="nome"
-                        placeholder="Digite o nome de Usuario" value="<%=funcionarios[0].email%>">
+                        placeholder="Digite o nome de Usuario" value="<%=funcionarios[0].email%>" disabled>
                     <div id="label-cliente"><label id="label-acesso" for="nome-cliente">Privilégio</label></div>
-                    <select type="select" id="acesso" class="input-cadastro" name="nivel">
-                        <option value="" disabled selected>Escolha o nível de acesso</option>
-                        <option value="1">ADM</option>
-                        <option value="2">USER</option>
+                    <select type="select" id="acesso" class="input-cadastro" name="nivel_acesso_id">
+                        <option value="" disabled >Escolha o nível de acesso</option>
+                        <option value="1">Sem Acesso</option>
+                        <option value="2">Administrador</option>
+                        <option value="3">PDV</option>
+                        <option value="4">RH</option>
+                        <option value="5">Financeiro</option>
+
+                        <!-- <option value="1">ADM</option>
+                        <option value="2">USER</option> -->
                     </select>
                     <div id="label-cliente"><label id="nova-senha" for="nome-cliente">Senha</label></div>
-                    <input type="password" id="senha" class="input-cadastro" value="<%=funcionarios[0].email%>" name="senha"
-                        placeholder="Digite uma senha">
+                    <input type="password" id="senha" class="input-cadastro" value="<%=funcionarios[0].email%>" name="senha" placeholder="Digite uma senha" hidden>
 
                     <input type="submit" id="input-usuario" onclick="" class="btn-cliente btn-submit" value="Salvar">
                 </form>
@@ -140,7 +147,7 @@
                 const acesso = document.querySelector("#acesso")
                 const opt = acesso.value
                 form.action = '/usuarios'
-                if (opt == "" | opt == undefined) {
+                if (opt == "" || opt == undefined) {
                     e.preventDefault()
                     acesso.style.border = "2px solid red"
                     labelAcesso.style.color = "red"
@@ -150,7 +157,7 @@
 
             })
         </script>
-        '<%if(usuarioCadastrado.length >0){%>'
+        '<%if(usuarioCadastrado !== null ){%>'
         <script>
             const btnUsuarioEdit = document.querySelector('#btn-edit');
             const id = document.querySelector('#id');
@@ -168,9 +175,9 @@
                 inputUsuario.value = "Atualizar"
                 titulo.textContent = "Atualizar Usuário"
                 senha.textContent = "Nova Senha"
-                id.value = '<%=usuarioCadastrado[0].id%>'
-                usuario.value = '<%=usuarioCadastrado[0].nome_usuario%>'
-                acesso.value = '<%=usuarioCadastrado[0].acesso%>'
+                id.value = '<%=usuarioCadastrado.id%>'
+                usuario.value = '<%=usuarioCadastrado.funcionario.email%>'
+                acesso.value = '<%=usuarioCadastrado.nivel_acesso_id%>'
                 iniciaModal('modal-usuario');
             });
 
@@ -179,7 +186,7 @@
             btnExcluir.addEventListener('click', (e) => {
                 e.preventDefault()
                 formDel.action = "/usuarios?_method=DELETE"
-                idDelete.value = "<%=usuarioCadastrado[0].id%>"
+                idDelete.value = "<%=usuarioCadastrado.id%>"
                 iniciaModal('modal-delete')
             })
         </script>
@@ -201,7 +208,9 @@
                 })
             }            
         </script>
-
+        <script>
+            const API = <%- JSON.stringify(API_BASE) %>
+        </script>
         <script type="text/javascript" src="/javascript/shared.js"></script>
     </body>
 </html>

@@ -36,7 +36,7 @@ const funcionarioController = {
 
                 for (j = 0; j < UsuariosData.length; j++) {
                     if (FuncObj[i].id === UsuariosData[j].funcionario_id) {
-                        funcComp.acesso = UsuariosData[j].acesso
+                        funcComp.acesso = UsuariosData[j].nivel_acesso.descricao
                     }
                 }
                 dataFuncionario.push(funcComp)
@@ -51,7 +51,7 @@ const funcionarioController = {
                 funcionarioUnico:"",
                 usuario: req.session.user,
                 user: req.user,
-                user: req.user,
+                API_BASE,
                 msg:""
             });
 
@@ -72,27 +72,26 @@ const funcionarioController = {
         };
         try {
 
-            const {
-                id
-            } = req.params
+            const {id} = req.params;
             const funcionarioAPI = await fetch(`${API_BASE}/funcionarios/${id}`);
             const funcionario = await funcionarioAPI.json();
-            const usuarioAPI = await fetch(`${API_BASE}/usuarios`);
+            const usuarioAPI = await fetch(`${API_BASE}/usuarios/byFuncId/${id}`);
             const usuarios = await usuarioAPI.json();
 
-            const usuarioCadastrado = []
-            usuarios.forEach(usu => {
-                if (funcionario[0].id === usu.funcionario_id) {
-                    usuarioCadastrado.push(usu)
-                }
+            // const usuarioCadastrado = []
+            // usuarios.forEach(usu => {
+            //     if (funcionario[0].id === usu.funcionario_id) {
+            //         usuarioCadastrado.push(usu)
+            //     }
 
 
-            })
-
-            if (usuarioCadastrado.length <= 0) {
+            // })
+            const usuarioCadastrado = usuarios
+            console.log('Retorno: ',usuarioCadastrado == null)
+            if (usuarioCadastrado == null) {
                 console.log("não tem cadastro")
             } else {
-                console.log(usuarioCadastrado[0])
+                console.log(usuarioCadastrado)
             }
 
             res.render('funcionario/funcionarioView', {
@@ -102,7 +101,9 @@ const funcionarioController = {
                 usuario: req.session.user,
                 user: req.user,
                 usuarioCadastrado,
-                moment
+                API_BASE,
+                moment,
+                fetch
             });
         } catch (error) {
             return res.send(error)
@@ -179,7 +180,7 @@ const funcionarioController = {
                 }
                 for (j = 0; j < UsuariosData.length; j++) {
                     if (FuncObj[i].id === UsuariosData[j].funcionario_id) {
-                        funcComp.acesso = UsuariosData[j].acesso
+                        funcComp.acesso = UsuariosData[j].nivel_acesso.descricao
                     }
                 }
                 dataFuncionario.push(funcComp)
@@ -191,6 +192,7 @@ const funcionarioController = {
                 funcionarioUnico,
                 usuario: req.session.user,
                 user: req.user,
+                API_BASE
             });
 
         } catch (error) {
