@@ -42,12 +42,12 @@
                                                     delete
                                                 </span></a>
                                     </td>
-                                    <%if(elemento.acesso===1){%>
-                                    <td>ADM</td>
+                                    <%if(elemento.acesso){%>
+                                    <td><%=elemento.acesso %></td>
                                     <%}else if(elemento.acesso===2){%>
                                     <td>USER</td>
                                     <%}else{%>
-                                    <td> não cadastrado </td>
+                                    <td>Não Cadastrado</td>
                                     <%}%>
                                         </tr>
                                 <% }); %>

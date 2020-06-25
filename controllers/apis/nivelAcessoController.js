@@ -4,7 +4,12 @@ const nivelAcessoController = {
         index: async (req, res) => {
             
             try {
-                const nivelAcesso = await NivelAcesso.findAll()
+                const nivelAcesso = await NivelAcesso.findAll({
+                    order:[
+                        ['descricao', 'ASC']
+
+                    ]}
+                )
                 return res.status(200).json(nivelAcesso)
                
             } catch (error) {

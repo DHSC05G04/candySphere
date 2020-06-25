@@ -11,5 +11,6 @@ router.put('/', usuariosController.update);
 router.put('/:id', usuariosController.update);
 router.delete('/', usuariosController.delete);
 router.delete('/:id', usuariosController.delete);
+router.get('/byFuncId/:funcId', usuariosController.byFuncId)
 
 module.exports = router;
