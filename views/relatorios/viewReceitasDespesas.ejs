@@ -43,7 +43,7 @@
                                         </div>
                                         <div class="card-dados">
                                             <div>Faturamento</div>
-                                            <div>R$ 20.545,33</div>
+                                            <div>R$<%= finData.vendas %></div>
                                         </div>
                                     </div>
                                     <div class="card-main">
@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="card-dados">
                                             <div>Lucros</div>
-                                            <div>R$ 99.999.999,99</div>
+                                            <div>R$<%= finData.lucro %></div>
                                         </div>
                                     </div>
                                     <div class="card-main">
@@ -65,7 +65,7 @@
                                         </div>
                                         <div class="card-dados">
                                             <div>Despesas</div>
-                                            <div>R$ 545,33</div>
+                                            <div>R$<%= finData.despesas %></div>
                                         </div>
                                     </div>
                                 </div>
@@ -73,18 +73,7 @@
                         
                                 <div id="graficos">
                                     <div class="grafico-meio">
-                                        <canvas id="barra"></canvas>
-                                    </div>
-                                    <div class="grafico-meio">
                                         <canvas id="pizza-despesa"></canvas>
-                                    </div>
-                                                       <!-- **********************************************
-                                    Gráfico misto***********************************-->
-                                    <div class="grafico-meio">
-                                        <canvas id="bar-line"></canvas>
-                                    </div>
-                                    <div class="grafico-baixo">
-                                        <canvas id="linha-diario"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +92,7 @@
         
         <!-- Importa o objeto dataFinanceiro de forma que os scripts seguintes consigam utilizá-lo -->
         <script>
-            var dbData = <%- JSON.stringify(dataFinanceiro) %>;
+            var dbData = <%- JSON.stringify(despesas) %>;
         </script>
 
         <%- include('../partials/graficosReceitas') %>
