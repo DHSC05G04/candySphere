@@ -76,7 +76,7 @@ const resetController = {
         //   }
         // )
 
-        return res.status(200).render('index', {msgUser: 'Recurso em desenvolvimento!'})
+        return res.status(200).render('newPassword', {msgUser: 'Recurso em desenvolvimento!'})
     }
 
 }
