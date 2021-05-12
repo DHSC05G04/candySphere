@@ -9,7 +9,7 @@
     "async": "3.2.0",
     "bcrypt": "^4.0.1",
     "body-parser": "1.19.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
